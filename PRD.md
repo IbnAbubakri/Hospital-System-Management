@@ -1976,7 +1976,7 @@ Auxiliary nurses use a pink color scheme:
 
 | Version | Date | Author | Changes |
 |---------|------|--------|---------|
-| 1.0 | February 1, 2026 | Claude Code | Initial PRD creation |
+| 1.0 | February 1, 2026 | Product Team | Initial PRD creation |
 
 ---
 

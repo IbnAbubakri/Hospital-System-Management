@@ -1,8 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MediCore Hospital Management System
+
+A comprehensive, role-based hospital management system built with Next.js 16, TypeScript, and Ant Design.
+
+## Features
+
+- **Role-Based Access Control (RBAC)** - Administrator, Doctors, and Auxiliary Nurses
+- **Frontend-Only Authentication** - No backend required for demonstration
+- **Department-Based Data Segregation** - Each doctor sees only their assigned patients
+- **Auxiliary Nurse Triage System** - Nurses receive complaints and assign patients to doctors
+- **Doctor Availability Scheduling** - Track doctor availability by day and time slots
+- **Real-time Notifications** - Doctors receive appointment alerts
+- **Department Color Coding** - Visual distinction per department
+- **Comprehensive Patient Management** - 12 patients with realistic medical data
+- **EMR System** - Electronic Medical Records with 9 records
+- **Multi-Department Support** - Cardiology, General Medicine, Orthopedics, Pediatrics, Neurology
+
+## Tech Stack
+
+- **Framework:** Next.js 16.1.6 (App Router)
+- **Language:** TypeScript 5.0
+- **UI Library:** Ant Design 6.2.2
+- **Styling:** Tailwind CSS 4.0
+- **State Management:** React Context API
+- **Icons:** Ant Design Icons
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18+
+- npm, yarn, pnpm, or bun
+
+### Installation
+
+```bash
+# Install dependencies
+npm install
+# or
+yarn install
+# or
+pnpm install
+```
+
+### Development Server
 
 ```bash
 npm run dev
@@ -10,27 +50,239 @@ npm run dev
 yarn dev
 # or
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## User Roles & Login Credentials
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Administrator
 
-## Learn More
+| Field | Value |
+|-------|-------|
+| Username | `admin` |
+| Password | `admin123` |
+| Department | Administration |
+| Access | Full system access - all patients, EMRs, departments |
 
-To learn more about Next.js, take a look at the following resources:
+### Doctors (5)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Username | Password | Name | Department | Patients |
+|----------|----------|------|------------|----------|
+| `adeleke` | `adeleke123` | Dr. Emeka Adeleke | Cardiology | 2 patients |
+| `ibrahim` | `ibrahim123` | Dr. Ibrahim Musa | General Medicine | 2 patients |
+| `okonkwo` | `okonkwo123` | Dr. Chinedu Okonkwo | Orthopedics | 2 patients |
+| `yusuf` | `yusuf123` | Dr. Aisha Yusuf | Pediatrics | 6 patients |
+| `nnamani` | `nnamani123` | Dr. Chioma Nnamani | Neurology | 1 patient |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Auxiliary Nurses (5) - NEW!
 
-## Deploy on Vercel
+| Username | Password | Name | Department |
+|----------|----------|------|------------|
+| `nurse_amaka` | `nurse123` | Amaka Okafor | General Triage |
+| `nurse_grace` | `nurse123` | Grace Adebayo | General Triage |
+| `nurse_chinedu` | `nurse123` | Chinedu Eze | General Triage |
+| `nurse_funmilayo` | `nurse123` | Funmilayo Adewale | General Triage |
+| `nurse_kelechi` | `nurse123` | Kelechi Nnamdi | General Triage |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**All nurses use the same password:** `nurse123`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Features Overview
+
+### 1. Auxiliary Nurse Triage System
+
+Located at `/triage`
+
+Nurses can:
+- **Receive patient complaints** - Enter symptoms and chief complaints
+- **Auto-detect department** - System suggests appropriate department based on complaint
+- **Assess severity** - Routine, Urgent, or Critical
+- **View doctor availability** - See which doctors are available on selected date
+- **Assign to doctor** - Select available doctor and time slot
+- **Schedule appointment** - Create appointment that doctor will see
+
+**Workflow:**
+```
+Patient arrives → Nurse enters complaint → System detects department
+→ Nurse selects date → See available doctors → Select doctor & time
+→ Appointment created → Doctor receives notification
+```
+
+### 2. Doctor Availability System
+
+Each doctor has:
+- **Working days** - Specific days they see patients
+- **Time slots** - Available appointment times
+- **Daily capacity** - Maximum appointments per day
+
+**Example Schedule:**
+- Dr. Emeka Adeleke (Cardiology): Monday, Wednesday, Friday | 6 slots/day
+- Dr. Ibrahim Musa (General Medicine): Mon, Tue, Thu, Fri | 8 slots/day
+- Dr. Aisha Yusuf (Pediatrics): Mon-Fri | 8 slots/day
+
+### 3. Notification System
+
+Doctors receive:
+- **Notification bell** in header with badge count
+- **Upcoming appointments list** in dropdown
+- **Auto-refresh** on login
+- **Quick access** to appointment details
+
+### 4. Department Color Coding
+
+| Department | Primary Color | Gradient |
+|------------|--------------|----------|
+| Cardiology | Red | `#EF4444` → `#DC2626` |
+| General Medicine | Blue | `#3B82F6` → `#2563EB` |
+| Orthopedics | Orange | `#F59E0B` → `#D97706` |
+| Pediatrics | Purple | `#A855F7` → `#9333EA` |
+| Neurology | Green | `#10B981` → `#059669` |
+| Administration | Indigo | `#6366F1` → `#4F46E5` |
+| Auxiliary Nurse | Pink | `#EC4899` → `#DB2777` |
+
+## Project Structure
+
+```
+hospital-frontend/
+├── app/
+│   ├── (auth)/
+│   │   └── login/page.tsx          # Login page with all user accounts displayed
+│   ├── (dashboard)/
+│   │   └── page.tsx                 # Personalized dashboard per role
+│   ├── patients/
+│   │   ├── page.tsx                 # Patient list (filtered by role)
+│   │   ├── [id]/page.tsx           # Patient detail (access controlled)
+│   │   └── appointments/
+│   │       ├── page.tsx             # Appointments list
+│   │       └── calendar/page.tsx    # Calendar view
+│   ├── clinical/
+│   │   ├── consultation/page.tsx    # Doctor consultation (pre-selected)
+│   │   ├── emr/page.tsx             # EMR records (filtered)
+│   │   └── inpatients/
+│   │       └── admission/page.tsx  # Patient admission
+│   ├── triage/
+│   │   └── page.tsx                 # Nurse triage center
+│   └── layout.tsx                   # Root layout with providers
+│
+├── components/
+│   ├── layout/
+│   │   ├── MainLayout.tsx           # Main app layout
+│   │   └── UserHeader.tsx            # User header with notifications
+│   ├── shared/
+│   │   ├── ErrorBoundary.tsx        # Global error handler
+│   │   └── ProtectedRoute.tsx        # Route protection
+│   └── ...
+│
+└── lib/
+    ├── contexts/
+    │   └── AuthContext.tsx           # Authentication & authorization
+    ├── departmentColors.ts           # Department color schemes
+    ├── patientAssignments.ts         # Patient-to-doctor mapping
+    ├── emrAssignments.ts             # EMR-to-doctor mapping
+    ├── dataFilters.ts                # Data filtering logic
+    └── mockData.ts                   # All mock data (users, patients, doctors)
+```
+
+## Key Files
+
+### Authentication
+- `lib/contexts/AuthContext.tsx` - Complete auth system with RBAC
+- `components/auth/ProtectedRoute.tsx` - Route protection component
+
+### Data Management
+- `lib/mockData.ts` - All users, patients, doctors, availability schedules
+- `lib/patientAssignments.ts` - Which patient is assigned to which doctor
+- `lib/emrAssignments.ts` - Which EMR was created by which doctor
+- `lib/dataFilters.ts` - Filtering logic for all data types
+
+### UI Components
+- `lib/departmentColors.ts` - Color scheme definitions
+- `components/layout/UserHeader.tsx` - User profile header with notifications
+
+## Documentation
+
+- **[JOURNEY.md](./JOURNEY.md)** - Complete system documentation explaining how everything works
+- **[FRONTENDUSER.md](./FRONTENDUSER.md)** - Implementation plan and task checklist
+
+## Data Summary
+
+### Users
+- 1 Administrator
+- 5 Doctors (one per department)
+- 5 Auxiliary Nurses
+- **Total: 11 user accounts**
+
+### Patients
+- 12 total patients
+- 6 pediatric patients (ages 3-11)
+- Assigned to doctors based on medical specialty
+
+### EMR Records
+- 9 medical records
+- Created by respective doctors
+- Realistic medical data with Nigerian names
+
+### Departments
+- Cardiology
+- General Medicine
+- Orthopedics
+- Pediatrics
+- Neurology
+- General Triage (Nurses)
+
+## Role Permissions
+
+| Permission | Admin | Doctor | Nurse |
+|-----------|-------|--------|-------|
+| View all patients | ✅ | ❌ | ✅ |
+| View assigned patients only | N/A | ✅ | N/A |
+| Create EMR | ✅ | ✅ | ❌ |
+| View all EMRs | ✅ | ❌ | ❌ |
+| View own EMRs | N/A | ✅ | N/A |
+| Triage patients | ✅ | ❌ | ✅ |
+| Schedule appointments | ✅ | ✅ | ✅ |
+| View doctor availability | ✅ | ❌ | ✅ |
+| Receive notifications | ❌ | ✅ | ❌ |
+
+## Development
+
+### Available Scripts
+
+```bash
+npm run dev          # Start development server
+npm run build        # Build for production
+npm run start        # Start production server
+npm run lint         # Run ESLint
+```
+
+### Environment Variables
+
+No environment variables required - this is a frontend-only demo using mock data.
+
+## Browser Support
+
+- Chrome (recommended)
+- Firefox
+- Safari
+- Edge
+
+## Future Enhancements
+
+- Real backend API integration
+- Real-time WebSocket notifications
+- SMS/email notifications for appointments
+- Patient portal
+- Billing and invoicing
+- Inventory management
+- Staff scheduling
+- Advanced reporting and analytics
+
+## License
+
+This project is for demonstration purposes.
+
+## Support
+
+For questions or issues, please refer to the documentation files:
+- [JOURNEY.md](./JOURNEY.md) - Complete system guide
+- [FRONTENDUSER.md](./FRONTENDUSER.md) - Implementation details

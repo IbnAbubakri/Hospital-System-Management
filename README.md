@@ -1,6 +1,44 @@
-# MediCore Hospital Management System
+# Hospital Management System
 
 A comprehensive, role-based hospital management system built with Next.js 16, TypeScript, and Ant Design.
+
+## 🌐 Live Deployment
+
+**URL:** https://hospital-system-management-nhk9wb47r.vercel.app
+
+## 🔐 Login Credentials
+
+| Role | Email | Password | Department | Access |
+|------|-------|----------|------------|--------|
+| **Administrator** | admin@lagosmedical.com | admin123 | Administration | Full system access |
+| **Doctor** | adeleke@lagosmedical.com | adeleke123 | Cardiology | Clinical & patient data |
+| **Doctor** | ibrahim@lagosmedical.com | ibrahim123 | General Medicine | Clinical & patient data |
+| **Doctor** | okonkwo@lagosmedical.com | okonkwo123 | Orthopedics | Clinical & patient data |
+| **Doctor** | yusuf@lagosmedical.com | yusuf123 | Pediatrics | Clinical & patient data |
+| **Auxiliary Nurse** | ngozi@lagosmedical.com | ngozi123 | Emergency | Triage & admissions |
+| **Auxiliary Nurse** | amina@lagosmedical.com | amina123 | Triage | Triage & admissions |
+| **Auxiliary Nurse** | grace@lagosmedical.com | grace123 | Inpatient Ward | Patient care |
+
+## 📱 Key Pages
+
+### Main Pages
+- **Root:** `/` - Redirects to login or dashboard
+- **Login:** `/login` - Sign in page
+- **Dashboard:** `/dashboard` - Main dashboard (after login)
+
+### Modules (All accessible after login)
+- `/patients` - Patient management
+- `/clinical` - Clinical services
+- `/laboratory` - Laboratory services
+- `/radiology` - Radiology & imaging
+- `/pharmacy` - Pharmacy management
+- `/inventory` - Inventory & stock
+- `/billing` - Billing & invoices
+- `/staff` - Staff management
+- `/reports` - Reports & analytics
+- `/emergency` - Emergency services
+- `/triage` - Triage center
+- And 200+ more pages!
 
 ## Features
 
@@ -60,32 +98,27 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 | Field | Value |
 |-------|-------|
-| Username | `admin` |
+| Email | `admin@lagosmedical.com` |
 | Password | `admin123` |
 | Department | Administration |
-| Access | Full system access - all patients, EMRs, departments |
+| Access | Full system access - all features and departments |
 
-### Doctors (5)
-
-| Username | Password | Name | Department | Patients |
-|----------|----------|------|------------|----------|
-| `adeleke` | `adeleke123` | Dr. Emeka Adeleke | Cardiology | 2 patients |
-| `ibrahim` | `ibrahim123` | Dr. Ibrahim Musa | General Medicine | 2 patients |
-| `okonkwo` | `okonkwo123` | Dr. Chinedu Okonkwo | Orthopedics | 2 patients |
-| `yusuf` | `yusuf123` | Dr. Aisha Yusuf | Pediatrics | 6 patients |
-| `nnamani` | `nnamani123` | Dr. Chioma Nnamani | Neurology | 1 patient |
-
-### Auxiliary Nurses (5) - NEW!
+### Doctors (4)
 
 | Username | Password | Name | Department |
 |----------|----------|------|------------|
-| `nurse_amaka` | `nurse123` | Amaka Okafor | General Triage |
-| `nurse_grace` | `nurse123` | Grace Adebayo | General Triage |
-| `nurse_chinedu` | `nurse123` | Chinedu Eze | General Triage |
-| `nurse_funmilayo` | `nurse123` | Funmilayo Adewale | General Triage |
-| `nurse_kelechi` | `nurse123` | Kelechi Nnamdi | General Triage |
+| `adeleke` | `adeleke123` | Dr. Emeka Adeleke | Cardiology |
+| `ibrahim` | `ibrahim123` | Dr. Ibrahim Musa | General Medicine |
+| `okonkwo` | `okonkwo123` | Dr. Chinedu Okonkwo | Orthopedics |
+| `yusuf` | `yusuf123` | Dr. Yusuf Abdullahi | Pediatrics |
 
-**All nurses use the same password:** `nurse123`
+### Auxiliary Nurses (3)
+
+| Username | Password | Name | Department |
+|----------|----------|------|------------|
+| `ngozi` | `ngozi123` | Ngozi Okafor | Emergency |
+| `amina` | `amina123` | Amina Mohammed | Triage |
+| `grace` | `grace123` | Grace Eze | Inpatient Ward |
 
 ## Features Overview
 

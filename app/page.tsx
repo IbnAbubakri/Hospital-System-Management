@@ -11,11 +11,10 @@ export default function Home() {
 
   useEffect(() => {
     if (!loading) {
-      if (user) {
-        router.replace('/dashboard');
-      } else {
+      if (!user) {
         router.replace('/login');
       }
+      // If user is logged in, stay on this page (dashboard is served from root via (dashboard) group)
     }
   }, [user, loading, router]);
 

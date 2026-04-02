@@ -22,7 +22,7 @@ export default function LoginPage() {
 
       if (success) {
         message.success('Welcome back!');
-        router.push('/');
+        router.push('/dashboard');
       } else {
         message.error('Invalid email or password.');
       }

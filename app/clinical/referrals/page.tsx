@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
-import { Modal, Form, Select, Input, Space } from 'antd';
+import { Modal, Form, Select, Input, Space, Alert } from 'antd';
 import { UserOutlined, PlusOutlined, TeamOutlined } from '@ant-design/icons';
 import { PageShell, StatCard, ModernTable, SearchFilterBar, StatusTag, GradientButton } from '@/components/design-system';
 import { useAuth } from '@/lib/contexts/AuthContext';
@@ -25,9 +25,9 @@ const mockReferrals: Referral[] = [
     id: 'REF-2024-0892',
     patient: 'Chukwuemeka Okonkwo',
     mrn: 'MRN-2024-0001',
-    from: 'Dr. Emeka Adeleke',
+    from: 'Dr. Ngozi Adeleke',
     fromDept: 'Cardiology',
-    to: 'Dr. Ibrahim Musa',
+    to: 'Dr. Emeka Okoro',
     toDept: 'General Medicine',
     reason: 'Hypertension with diabetes complications',
     urgency: 'Routine',
@@ -38,9 +38,9 @@ const mockReferrals: Referral[] = [
     id: 'REF-2024-0891',
     patient: 'Ngozi Eze',
     mrn: 'MRN-2024-0005',
-    from: 'Dr. Chinedu Okonkwo',
+    from: 'Dr. Tunde Bakare',
     fromDept: 'Orthopedics',
-    to: 'Dr. Chioma Nnamani',
+    to: 'Dr. Chinedu Nwosu',
     toDept: 'Neurology',
     reason: 'Persistent back pain with neurological symptoms',
     urgency: 'Urgent',
@@ -53,7 +53,7 @@ const mockReferrals: Referral[] = [
     mrn: 'MRN-2024-0007',
     from: 'Dr. Aisha Yusuf',
     fromDept: 'Pediatrics',
-    to: 'Dr. Emeka Adeleke',
+    to: 'Dr. Ngozi Adeleke',
     toDept: 'Cardiology',
     reason: 'Cardiac murmur detected during routine exam',
     urgency: 'Urgent',
@@ -64,9 +64,9 @@ const mockReferrals: Referral[] = [
     id: 'REF-2024-0889',
     patient: 'Amaka Okafor',
     mrn: 'MRN-2024-0002',
-    from: 'Dr. Ibrahim Musa',
+    from: 'Dr. Emeka Okoro',
     fromDept: 'General Medicine',
-    to: 'Dr. Chinedu Okonkwo',
+    to: 'Dr. Tunde Bakare',
     toDept: 'Orthopedics',
     reason: 'Chronic joint pain evaluation',
     urgency: 'Routine',
@@ -79,7 +79,7 @@ const mockReferrals: Referral[] = [
     mrn: 'MRN-2024-0003',
     from: 'Dr. Nnamdi Okoro',
     fromDept: 'Emergency',
-    to: 'Dr. Chioma Nnamani',
+    to: 'Dr. Chinedu Nwosu',
     toDept: 'Neurology',
     reason: 'Acute neurological symptoms - stroke rule out',
     urgency: 'Critical',
@@ -102,12 +102,26 @@ const mockReferrals: Referral[] = [
 ];
 
 export default function ReferralsPage() {
-  const { hasPermission } = useAuth();
+  const { hasPermission, user } = useAuth();
   const [searchText, setSearchText] = useState('');
   const [statusFilter, setStatusFilter] = useState<string | undefined>();
   const [urgencyFilter, setUrgencyFilter] = useState<string | undefined>();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [form] = Form.useForm();
+
+  if (!hasPermission('view_emr') && user?.role !== 'Administrator') {
+    return (
+      <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)', padding: '16px' }}>
+        <Alert
+          title="Access Denied"
+          description="You don't have permission to access this page. Please contact your administrator."
+          type="error"
+          showIcon
+          style={{ marginTop: '24px', borderRadius: '12px' }}
+        />
+      </div>
+    );
+  }
 
   const filteredReferrals = useMemo(() => {
     return mockReferrals.filter((referral) => {

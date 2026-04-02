@@ -27,7 +27,7 @@ export default function AttendancePage() {
     {
       id: '1',
       staffId: 'EMP-001',
-      staffName: 'Dr. Emeka Adeleke',
+      staffName: 'Dr. Ngozi Adeleke',
       department: 'Cardiology',
       date: '2024-02-02',
       checkIn: '08:05',
@@ -38,7 +38,7 @@ export default function AttendancePage() {
     {
       id: '2',
       staffId: 'EMP-002',
-      staffName: 'Dr. Ibrahim Musa',
+      staffName: 'Dr. Emeka Okoro',
       department: 'General Medicine',
       date: '2024-02-02',
       checkIn: '07:55',

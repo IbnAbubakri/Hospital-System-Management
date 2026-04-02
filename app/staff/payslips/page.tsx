@@ -8,8 +8,8 @@ const { Title, Text } = Typography;
 
 export default function StaffPayslipsPage() {
   const payslips = [
-    { id: '1', employeeId: 'EMP-001', name: 'Dr. Emeka Adeleke', month: 'January 2024', basic: '₦800,000', allowances: '₦200,000', bonuses: '₦100,000', deductions: '₦80,000', netPay: '₦1,020,000', status: 'Generated' },
-    { id: '2', employeeId: 'EMP-002', name: 'Dr. Ibrahim Musa', month: 'January 2024', basic: '₦750,000', allowances: '₦150,000', bonuses: '₦100,000', deductions: '₦75,000', netPay: '₦925,000', status: 'Generated' },
+    { id: '1', employeeId: 'EMP-001', name: 'Dr. Ngozi Adeleke', month: 'January 2024', basic: '₦800,000', allowances: '₦200,000', bonuses: '₦100,000', deductions: '₦80,000', netPay: '₦1,020,000', status: 'Generated' },
+    { id: '2', employeeId: 'EMP-002', name: 'Dr. Emeka Okoro', month: 'January 2024', basic: '₦750,000', allowances: '₦150,000', bonuses: '₦100,000', deductions: '₦75,000', netPay: '₦925,000', status: 'Generated' },
   ];
 
   const columns = [

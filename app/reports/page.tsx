@@ -1,18 +1,38 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Card, Typography, Select, DatePicker, Button, Row, Col, Table } from 'antd';
+import { Card, Typography, Select, DatePicker, Button, Row, Col, Table, Alert } from 'antd';
 import { BarChartOutlined, FileTextOutlined, FolderOutlined, DollarOutlined, DownloadOutlined, PlusOutlined } from '@ant-design/icons';
 import { useRouter } from 'next/navigation';
 import { PageShell, StatCard, GradientButton } from '@/components/design-system';
+import { useAuth } from '@/lib/contexts/AuthContext';
 
 const { Option } = Select;
 const { Title, Text } = Typography;
 
 export default function ReportsPage() {
   const router = useRouter();
+  const { hasPermission } = useAuth();
   const [reportType, setReportType] = useState<string | undefined>();
   const [category, setCategory] = useState<string | undefined>();
+
+  if (!hasPermission('reports:view') && !hasPermission('reports:clinical:view')) {
+    return (
+      <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)', padding: '16px' }}>
+        <Alert
+          title="Access Denied"
+          description="You don't have permission to access reports. Please contact your administrator."
+          type="error"
+          showIcon
+          style={{ marginTop: '24px', borderRadius: '12px' }}
+        />
+      </div>
+    );
+  }
+
+  const canViewFinancial = hasPermission('reports:financial:view');
+  const canViewOperational = hasPermission('reports:utilization:view') || hasPermission('reports:operational:view');
+  const canViewClinical = hasPermission('reports:clinical:view') || hasPermission('reports:patient:view');
 
   const reportCategories = [
     {
@@ -59,7 +79,12 @@ export default function ReportsPage() {
       count: 15,
       path: '/reports',
     },
-  ];
+  ].filter((cat) => {
+    if (cat.key === 'financial') return canViewFinancial;
+    if (cat.key === 'operational') return canViewOperational;
+    if (cat.key === 'inventory') return hasPermission('reports:inventory:view') || hasPermission('reports:view');
+    return canViewClinical;
+  });
 
   const recentReports = [
     {

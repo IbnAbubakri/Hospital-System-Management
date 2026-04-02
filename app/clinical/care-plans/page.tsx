@@ -2,7 +2,7 @@
 
 import React, { useMemo, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
-import { Form, Input, Select, DatePicker, Space, Typography, Modal, Row, Col, Empty, List, App } from 'antd';
+import { Form, Input, Select, DatePicker, Space, Typography, Modal, Row, Col, Empty, List, App, Alert } from 'antd';
 import { PlusOutlined, CheckCircleOutlined, FileTextOutlined, UserOutlined } from '@ant-design/icons';
 import { PageShell, InfoCard, StatusTag, GradientButton } from '@/components/design-system';
 import { useAuth } from '@/lib/contexts/AuthContext';
@@ -50,6 +50,20 @@ export default function CarePlansPage() {
   }, [user]);
 
   const patient = accessiblePatients.find((p: any) => p.id === params.id) as any;
+
+  if (!hasPermission('view_emr') && user?.role !== 'Administrator') {
+    return (
+      <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)', padding: '16px' }}>
+        <Alert
+          title="Access Denied"
+          description="You don't have permission to access this page. Please contact your administrator."
+          type="error"
+          showIcon
+          style={{ marginTop: '24px', borderRadius: '12px' }}
+        />
+      </div>
+    );
+  }
 
   // CRITICAL SECURITY: Check permission and patient access
   if (!hasPermission('clinical:view_emr')) {
@@ -127,7 +141,7 @@ export default function CarePlansPage() {
       ],
       startDate: '2024-01-25',
       endDate: '2024-04-25',
-      createdBy: 'Dr. Emeka Adeleke',
+      createdBy: 'Dr. Ngozi Adeleke',
       status: 'Active',
     },
   ]);

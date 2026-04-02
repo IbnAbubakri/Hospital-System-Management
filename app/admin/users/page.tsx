@@ -21,8 +21,8 @@ interface UserAccount {
 
 const mockUsers: UserAccount[] = [
   { id: 'u1', username: 'admin', fullName: 'System Administrator', email: 'admin@hosp.com', role: 'Administrator', department: 'Administration', status: 'active', lastLogin: new Date('2024-02-05T08:30'), createdAt: new Date('2023-01-01') },
-  { id: 'u2', username: 'adeleke', fullName: 'Dr. Emeka Adeleke', email: 'emeka.adeleke@hosp.com', role: 'Doctor', department: 'Cardiology', status: 'active', lastLogin: new Date('2024-02-05T07:45'), createdAt: new Date('2023-06-01') },
-  { id: 'u3', username: 'ibrahim', fullName: 'Dr. Ibrahim Musa', email: 'ibrahim.musa@hosp.com', role: 'Doctor', department: 'General Medicine', status: 'active', lastLogin: new Date('2024-02-04T16:20'), createdAt: new Date('2023-01-15') },
+  { id: 'u2', username: 'adeleke', fullName: 'Dr. Ngozi Adeleke', email: 'emeka.adeleke@hosp.com', role: 'Doctor', department: 'Cardiology', status: 'active', lastLogin: new Date('2024-02-05T07:45'), createdAt: new Date('2023-06-01') },
+  { id: 'u3', username: 'ibrahim', fullName: 'Dr. Emeka Okoro', email: 'ibrahim.musa@hosp.com', role: 'Doctor', department: 'General Medicine', status: 'active', lastLogin: new Date('2024-02-04T16:20'), createdAt: new Date('2023-01-15') },
 ];
 
 const mockRoles = [

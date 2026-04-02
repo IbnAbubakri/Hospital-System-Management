@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Modal, Form, Select, Input, Space } from 'antd';
+import { Modal, Form, Select, Input, Space, Alert } from 'antd';
 import { CheckCircleOutlined, ClockCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import { PageShell, StatCard, ModernTable, SearchFilterBar, StatusTag, GradientButton } from '@/components/design-system';
 import { useAuth } from '@/lib/contexts/AuthContext';
@@ -34,7 +34,7 @@ const mockMedications: MedicationAdministration[] = [
     dosage: '10mg',
     route: 'Oral',
     frequency: 'Daily',
-    prescribedBy: 'Dr. Emeka Adeleke',
+    prescribedBy: 'Dr. Ngozi Adeleke',
     scheduledTime: '2024-02-05 08:00',
     administeredTime: '2024-02-05 08:15',
     administeredBy: 'Nurse Amaka Okafor',
@@ -49,7 +49,7 @@ const mockMedications: MedicationAdministration[] = [
     dosage: '20mg',
     route: 'Oral',
     frequency: 'Twice Daily',
-    prescribedBy: 'Dr. Emeka Adeleke',
+    prescribedBy: 'Dr. Ngozi Adeleke',
     scheduledTime: '2024-02-05 20:00',
     status: 'Scheduled',
   },
@@ -61,7 +61,7 @@ const mockMedications: MedicationAdministration[] = [
     dosage: '500mg',
     route: 'Oral',
     frequency: 'Twice Daily',
-    prescribedBy: 'Dr. Ibrahim Musa',
+    prescribedBy: 'Dr. Emeka Okoro',
     scheduledTime: '2024-02-05 08:00',
     administeredTime: '2024-02-05 08:10',
     administeredBy: 'Nurse Grace Adebayo',
@@ -87,7 +87,7 @@ const mockMedications: MedicationAdministration[] = [
     dosage: '400mg',
     route: 'Oral',
     frequency: 'TID',
-    prescribedBy: 'Dr. Chinedu Okonkwo',
+    prescribedBy: 'Dr. Tunde Bakare',
     scheduledTime: '2024-02-04 18:00',
     status: 'Missed',
     notes: 'Patient refused due to drowsiness',
@@ -100,7 +100,7 @@ const mockMedications: MedicationAdministration[] = [
     dosage: '20 units',
     route: 'SC',
     frequency: 'Daily',
-    prescribedBy: 'Dr. Ibrahim Musa',
+    prescribedBy: 'Dr. Emeka Okoro',
     scheduledTime: '2024-02-05 22:00',
     status: 'Held',
     notes: 'Held pending blood glucose results',
@@ -114,6 +114,20 @@ export default function MARPage() {
   const [selectedMed, setSelectedMed] = useState<MedicationAdministration | null>(null);
   const [searchText, setSearchText] = useState('');
   const [form] = Form.useForm();
+
+  if (!hasPermission('view_emr') && user?.role !== 'Administrator') {
+    return (
+      <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)', padding: '16px' }}>
+        <Alert
+          title="Access Denied"
+          description="You don't have permission to access this page. Please contact your administrator."
+          type="error"
+          showIcon
+          style={{ marginTop: '24px', borderRadius: '12px' }}
+        />
+      </div>
+    );
+  }
 
   // CRITICAL SECURITY: Restrict access to clinical staff
   if (!hasPermission('clinical:mar:view')) {

@@ -32,7 +32,7 @@ export default function LeaveManagementPage() {
     {
       id: '1',
       staffId: 'EMP-001',
-      staffName: 'Dr. Emeka Adeleke',
+      staffName: 'Dr. Ngozi Adeleke',
       department: 'Cardiology',
       leaveType: 'Annual',
       startDate: '2024-02-10',
@@ -41,12 +41,12 @@ export default function LeaveManagementPage() {
       reason: 'Family vacation to travel home for traditional ceremony',
       status: 'Approved',
       appliedOn: '2024-01-25',
-      approvedBy: 'Dr. Ibrahim Musa',
+      approvedBy: 'Dr. Emeka Okoro',
     },
     {
       id: '2',
       staffId: 'EMP-002',
-      staffName: 'Dr. Ibrahim Musa',
+      staffName: 'Dr. Emeka Okoro',
       department: 'General Medicine',
       leaveType: 'Sick',
       startDate: '2024-02-05',
@@ -55,7 +55,7 @@ export default function LeaveManagementPage() {
       reason: 'Medical procedure and recovery',
       status: 'Approved',
       appliedOn: '2024-02-04',
-      approvedBy: 'Dr. Emeka Adeleke',
+      approvedBy: 'Dr. Ngozi Adeleke',
     },
     {
       id: '3',
@@ -101,7 +101,7 @@ export default function LeaveManagementPage() {
     {
       id: '6',
       staffId: 'EMP-003',
-      staffName: 'Dr. Chinedu Okonkwo',
+      staffName: 'Dr. Tunde Bakare',
       department: 'Orthopedics',
       leaveType: 'Annual',
       startDate: '2024-02-25',

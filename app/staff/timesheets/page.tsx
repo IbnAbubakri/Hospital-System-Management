@@ -42,7 +42,7 @@ export default function TimesheetsPage() {
     {
       id: '1',
       staffId: 'EMP-001',
-      staffName: 'Dr. Emeka Adeleke',
+      staffName: 'Dr. Ngozi Adeleke',
       department: 'Cardiology',
       weekStart: '2024-01-29',
       weekEnd: '2024-02-04',
@@ -51,12 +51,12 @@ export default function TimesheetsPage() {
       totalHours: 46,
       status: 'Approved',
       submittedOn: '2024-02-04',
-      approvedBy: 'Dr. Ibrahim Musa',
+      approvedBy: 'Dr. Emeka Okoro',
     },
     {
       id: '2',
       staffId: 'EMP-002',
-      staffName: 'Dr. Ibrahim Musa',
+      staffName: 'Dr. Emeka Okoro',
       department: 'General Medicine',
       weekStart: '2024-01-29',
       weekEnd: '2024-02-04',
@@ -65,7 +65,7 @@ export default function TimesheetsPage() {
       totalHours: 46,
       status: 'Approved',
       submittedOn: '2024-02-04',
-      approvedBy: 'Dr. Emeka Adeleke',
+      approvedBy: 'Dr. Ngozi Adeleke',
     },
     {
       id: '3',
@@ -84,7 +84,7 @@ export default function TimesheetsPage() {
     {
       id: '4',
       staffId: 'EMP-003',
-      staffName: 'Dr. Chinedu Okonkwo',
+      staffName: 'Dr. Tunde Bakare',
       department: 'Orthopedics',
       weekStart: '2024-01-29',
       weekEnd: '2024-02-04',

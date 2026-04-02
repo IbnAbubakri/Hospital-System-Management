@@ -28,6 +28,23 @@ export interface User {
   lastLogin?: Date;
 }
 
+// Notification type definition
+export interface Notification {
+  id: string;
+  type: 'appointment' | 'reminder' | 'alert' | 'lab_result' | 'prescription';
+  title: string;
+  message: string;
+  patientName?: string;
+  mrn?: string;
+  appointmentTime?: string;
+  department?: string;
+  severity?: string;
+  read: boolean;
+  createdAt: string;
+  doctorId?: string;
+  patientId?: string;
+}
+
 // Auth context type definition
 interface AuthContextType {
   user: User | null;
@@ -45,6 +62,10 @@ interface AuthContextType {
   getPatientStats: () => { total: number; active: number; newThisMonth: number; withAllergies: number };
   getPendingAppointments: () => any[];
   getNotificationCount: () => number;
+  getNotifications: () => Notification[];
+  addNotification: (doctorId: string, notification: Omit<Notification, 'id' | 'createdAt'>) => void;
+  markNotificationAsRead: (notificationId: string) => void;
+  markAllNotificationsAsRead: () => void;
   clearNotifications: () => void;
 }
 
@@ -56,14 +77,36 @@ interface AuthProviderProps {
   children: ReactNode;
 }
 
-// Storage key
+// Storage keys
 const STORAGE_KEY = 'hospital_user_session';
 const TOKEN_KEY = 'hospital_token';
+const NOTIFICATIONS_KEY = 'hospital_notifications';
 
 // Auth Provider Component
 export function AuthProvider({ children }: AuthProviderProps) {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [notifications, setNotifications] = useState<Notification[]>([]);
+
+  // Load notifications on mount
+  useEffect(() => {
+    const loadNotifications = () => {
+      try {
+        const stored = localStorage.getItem(NOTIFICATIONS_KEY);
+        if (stored) {
+          setNotifications(JSON.parse(stored));
+        }
+      } catch (error) {
+        console.error('Failed to load notifications:', error);
+      }
+    };
+    loadNotifications();
+  }, []);
+
+  // Persist notifications to localStorage
+  useEffect(() => {
+    localStorage.setItem(NOTIFICATIONS_KEY, JSON.stringify(notifications));
+  }, [notifications]);
 
   // Check for existing session on mount
   useEffect(() => {
@@ -152,19 +195,28 @@ export function AuthProvider({ children }: AuthProviderProps) {
         'reports:disease_trends:view',
         'reports:outcomes:view',
         'reports:utilization:view',
-        // NOTE: NO financial reports access for Doctors
+        // No financial reports for Doctors
       ],
       AuxiliaryNurse: [
         'view_patients',
         'triage_patients',
         'create_appointments',
         'view_all_doctors',
+        'view_lab_results',
         // Report permissions for AuxiliaryNurses
-        'reports:patient:view',        // For triage
-        'reports:utilization:view',    // Bed utilization for triage
-        // NOTE: NO financial, clinical, or doctor metrics access for Nurses
+        'reports:patient:view',
+        'reports:utilization:view',
       ],
-      Administrator: ['*'], // All permissions
+      Nurse: [
+        'view_patients',
+        'triage_patients',
+        'create_appointments',
+        'view_all_doctors',
+        'view_lab_results',
+        'reports:patient:view',
+        'reports:utilization:view',
+      ],
+      Administrator: ['*'],
     };
 
     const permissions = rolePermissions[user.role] || [];
@@ -215,15 +267,55 @@ export function AuthProvider({ children }: AuthProviderProps) {
     });
   };
 
-  // Get notification count
+  // Get notifications for current user (doctors only)
+  const getNotifications = (): Notification[] => {
+    if (!user) return [];
+    if (user.role === 'Doctor') {
+      return notifications.filter(
+        (n) => n.doctorId === user.id || !n.doctorId
+      ).sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+    }
+    return [];
+  };
+
+  // Add notification for a specific doctor
+  const addNotification = (doctorId: string, notification: Omit<Notification, 'id' | 'createdAt'>) => {
+    const newNotification: Notification = {
+      ...notification,
+      id: `notif-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+      createdAt: new Date().toISOString(),
+      doctorId,
+      read: false,
+    };
+    setNotifications((prev) => [newNotification, ...prev]);
+  };
+
+  // Mark notification as read
+  const markNotificationAsRead = (notificationId: string) => {
+    setNotifications((prev) =>
+      prev.map((n) => (n.id === notificationId ? { ...n, read: true } : n))
+    );
+  };
+
+  // Mark all notifications as read
+  const markAllNotificationsAsRead = () => {
+    setNotifications((prev) => prev.map((n) => ({ ...n, read: true })));
+  };
+
+  // Get notification count (unread)
   const getNotificationCount = (): number => {
-    return getPendingAppointments().length;
+    if (!user) return 0;
+    if (user.role === 'Doctor') {
+      return notifications.filter(
+        (n) => (n.doctorId === user.id || !n.doctorId) && !n.read
+      ).length;
+    }
+    return 0;
   };
 
   // Clear notifications (mark as viewed)
   const clearNotifications = () => {
-    // In a real app, this would mark notifications as read in the database
-    // For now, we'll just log it
+    markAllNotificationsAsRead();
   };
 
   const value: AuthContextType = {
@@ -242,6 +334,10 @@ export function AuthProvider({ children }: AuthProviderProps) {
     getPatientStats,
     getPendingAppointments,
     getNotificationCount,
+    getNotifications,
+    addNotification,
+    markNotificationAsRead,
+    markAllNotificationsAsRead,
     clearNotifications,
   };
 

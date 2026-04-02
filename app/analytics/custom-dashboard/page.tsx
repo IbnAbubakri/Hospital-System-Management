@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Card, Typography, Row, Col, Table, Button, Tag, Space, Modal, Form, Input, Select, App } from 'antd';
-import { PlusOutlined, SettingOutlined } from '@ant-design/icons';
+import { PlusOutlined, SettingOutlined, TeamOutlined, DollarOutlined, BedOutlined, InboxOutlined, StarOutlined, ExperimentOutlined, BarChartOutlined, SwapOutlined, RiseOutlined, CreditCardOutlined, HomeOutlined } from '@ant-design/icons';
 
 const { Title } = Typography;
 
@@ -19,18 +19,18 @@ export default function CustomDashboardPage() {
   ];
 
   const availableWidgets = [
-    { id: 'patientStats', name: 'Patient Statistics', category: 'Clinical', icon: '👥' },
-    { id: 'revenue', name: 'Revenue Tracker', category: 'Financial', icon: '💰' },
-    { id: 'occupancy', name: 'Bed Occupancy', category: 'Operations', icon: '🛏️' },
-    { id: 'admissions', name: 'Admissions Rate', category: 'Clinical', icon: '📥' },
-    { id: 'quality', name: 'Quality Metrics', category: 'Quality', icon: '⭐' },
-    { id: 'expenses', name: 'Operating Expenses', category: 'Financial', icon: '💸' },
-    { id: 'mortality', name: 'Mortality Rate', category: 'Clinical', icon: '📊' },
-    { id: 'readmissions', name: 'Readmission Rate', category: 'Quality', icon: '🔄' },
-    { id: 'profitability', name: 'Profitability Analysis', category: 'Financial', icon: '📈' },
-    { id: 'receivables', name: 'Accounts Receivable', category: 'Financial', icon: '💳' },
-    { id: 'staffing', name: 'Staffing Levels', category: 'HR', icon: '👥' },
-    { id: 'patientAcuity', name: 'Patient Acuity', category: 'Clinical', icon: '🏥' },
+    { id: 'patientStats', name: 'Patient Statistics', category: 'Clinical', icon: <TeamOutlined /> },
+    { id: 'revenue', name: 'Revenue Tracker', category: 'Financial', icon: <DollarOutlined /> },
+    { id: 'occupancy', name: 'Bed Occupancy', category: 'Operations', icon: <BedOutlined /> },
+    { id: 'admissions', name: 'Admissions Rate', category: 'Clinical', icon: <InboxOutlined /> },
+    { id: 'quality', name: 'Quality Metrics', category: 'Quality', icon: <StarOutlined /> },
+    { id: 'expenses', name: 'Operating Expenses', category: 'Financial', icon: <ExperimentOutlined /> },
+    { id: 'mortality', name: 'Mortality Rate', category: 'Clinical', icon: <BarChartOutlined /> },
+    { id: 'readmissions', name: 'Readmission Rate', category: 'Quality', icon: <SwapOutlined /> },
+    { id: 'profitability', name: 'Profitability Analysis', category: 'Financial', icon: <RiseOutlined /> },
+    { id: 'receivables', name: 'Accounts Receivable', category: 'Financial', icon: <CreditCardOutlined /> },
+    { id: 'staffing', name: 'Staffing Levels', category: 'HR', icon: <TeamOutlined /> },
+    { id: 'patientAcuity', name: 'Patient Acuity', category: 'Clinical', icon: <HomeOutlined /> },
   ];
 
   const columns = [
@@ -140,7 +140,9 @@ export default function CustomDashboardPage() {
           <Form.Item name="widgets" label="Select Widgets" rules={[{ required: true }]}>
             <Select mode="multiple" placeholder="Choose widgets for your dashboard">
               {availableWidgets.map(widget => (
-                <Select.Option key={widget.id} value={widget.id}>{widget.icon} {widget.name}</Select.Option>
+                <Select.Option key={widget.id} value={widget.id}>
+                  {widget.icon} {widget.name}
+                </Select.Option>
               ))}
             </Select>
           </Form.Item>

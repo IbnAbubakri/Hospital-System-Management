@@ -29,7 +29,7 @@ export const patientDoctorAssignments: Record<string, string> = {
   // No patients assigned to Orthopedics only
 
   // Neurology Patients - Dr. Chinedu Nwosu
-  // No patients assigned to Neurology only
+  '4': DOCTOR_IDS.NWOSU,    // Chioma Eze - Migraine, Neurological issues
 
   // Pediatrics Patients - Dr. Aisha Yusuf
   '6': DOCTOR_IDS.YUSUF,    // Bimpe Alake - URTI (young adult, assigned to peds for demo)

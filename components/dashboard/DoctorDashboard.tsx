@@ -25,7 +25,7 @@ const { Title, Text } = Typography;
 
 export function DoctorDashboard() {
   const router = useRouter();
-  const { user, getUserFullName, getPatientStats } = useAuth();
+  const { user, getUserFullName, getPatientStats, getNotificationCount } = useAuth();
 
   // Get department colors for personalization
   const departmentColors = user?.department ? getDepartmentColors(user.department) : null;
@@ -201,7 +201,7 @@ export function DoctorDashboard() {
             </div>
 
             {/* Notification Bell for Doctors */}
-            <Badge count={todayAppointments} size="default" offset={[0, 0]}>
+            <Badge count={todayAppointments + getNotificationCount()} size="default" offset={[0, 0]} style={{ backgroundColor: '#EF4444' }}>
               <div
                 style={{
                   width: '56px',

@@ -20,7 +20,7 @@ export default function RadiologyAnnotatePage() {
     { id: 'circle', label: 'Circle', icon: '○' },
     { id: 'rectangle', label: 'Rectangle', icon: '□' },
     { id: 'line', label: 'Line', icon: '/' },
-    { id: 'measurement', label: 'Measurement', icon: '📏' },
+    { id: 'measurement', label: 'Measure', icon: 'Ruler' },
     { id: 'text', label: 'Text', icon: 'T' },
     { id: 'angle', label: 'Angle', icon: '∠' },
   ];

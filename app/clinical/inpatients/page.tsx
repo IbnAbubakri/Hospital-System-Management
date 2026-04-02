@@ -11,9 +11,23 @@ import { useAuth } from '@/lib/contexts/AuthContext';
 
 export default function InpatientsPage() {
   const router = useRouter();
-  const { hasPermission } = useAuth();
+  const { hasPermission, user } = useAuth();
   const [searchText, setSearchText] = useState('');
   const [statusFilter, setStatusFilter] = useState<string | undefined>();
+
+  if (!hasPermission('view_patients') && user?.role !== 'Administrator') {
+    return (
+      <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)', padding: '16px' }}>
+        <Alert
+          title="Access Denied"
+          description="You don't have permission to access this page. Please contact your administrator."
+          type="error"
+          showIcon
+          style={{ marginTop: '24px', borderRadius: '12px' }}
+        />
+      </div>
+    );
+  }
 
   // CRITICAL SECURITY: Restrict access to clinical staff
   if (!hasPermission('clinical:inpatients:view')) {

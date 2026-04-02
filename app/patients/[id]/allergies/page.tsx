@@ -58,7 +58,7 @@ export default function PatientAllergiesPage() {
       severity: 'Severe',
       reaction: 'Anaphylaxis, difficulty breathing, swelling',
       diagnosedDate: '2020-03-15',
-      diagnosedBy: 'Dr. Emeka Adeleke',
+      diagnosedBy: 'Dr. Ngozi Adeleke',
       notes: 'Carry epinephrine auto-injector at all times'},
     {
       id: '2',
@@ -76,7 +76,7 @@ export default function PatientAllergiesPage() {
       severity: 'Mild',
       reaction: 'Sneezing, runny nose, itchy eyes',
       diagnosedDate: '2018-04-10',
-      diagnosedBy: 'Dr. Ibrahim Musa',
+      diagnosedBy: 'Dr. Emeka Okoro',
       notes: 'Seasonal - worse in spring'},
   ]);
 

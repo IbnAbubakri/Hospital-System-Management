@@ -54,8 +54,8 @@ export default function TelemedicinePage() {
             marginBottom: '24px'
           }}>
             <div style={{ color: 'white', textAlign: 'center' }}>
-              <div style={{ fontSize: '64px', marginBottom: '16px' }}>📹</div>
-              <div>Dr. Emeka Adeleke</div>
+              <div style={{ fontSize: '48px', marginBottom: '16px' }}>[Video Call]</div>
+              <div>Dr. Ngozi Adeleke</div>
               <div style={{ fontSize: '14px', marginTop: '8px' }}>Connecting...</div>
             </div>
           </div>
@@ -103,9 +103,9 @@ export default function TelemedicinePage() {
             rules={[{ required: true }]}
           >
             <Select placeholder="Select doctor" size="large">
-              <Select.Option value="d1">Dr. Emeka Adeleke - Cardiology</Select.Option>
-              <Select.Option value="d2">Dr. Ibrahim Musa - General Medicine</Select.Option>
-              <Select.Option value="d3">Dr. Chinedu Okonkwo - Orthopedics</Select.Option>
+              <Select.Option value="d1">Dr. Ngozi Adeleke - Cardiology</Select.Option>
+              <Select.Option value="d2">Dr. Emeka Okoro - General Medicine</Select.Option>
+              <Select.Option value="d3">Dr. Tunde Bakare - Orthopedics</Select.Option>
               <Select.Option value="d4">Dr. Aisha Yusuf - Pediatrics</Select.Option>
             </Select>
           </Form.Item>

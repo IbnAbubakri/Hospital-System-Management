@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Card, Typography, List, Avatar, Input, Tag, Space } from 'antd';
-import { SearchOutlined, UserOutlined } from '@ant-design/icons';
+import { SearchOutlined, UserOutlined, MailOutlined, PhoneOutlined } from '@ant-design/icons';
 
 const { Title, Text } = Typography;
 
@@ -10,10 +10,10 @@ export default function StaffDirectoryPage() {
   const [searchText, setSearchText] = React.useState('');
 
   const staff = [
-    { id: '1', name: 'Dr. Emeka Adeleke', role: 'Doctor', department: 'Cardiology', email: 'e.adeleke@hospital.com', phone: '+234 801 234 5678', photo: null },
-    { id: '2', name: 'Dr. Ibrahim Musa', role: 'Doctor', department: 'General Medicine', email: 'i.musa@hospital.com', phone: '+234 802 345 6789', photo: null },
+    { id: '1', name: 'Dr. Ngozi Adeleke', role: 'Doctor', department: 'Cardiology', email: 'e.adeleke@hospital.com', phone: '+234 801 234 5678', photo: null },
+    { id: '2', name: 'Dr. Emeka Okoro', role: 'Doctor', department: 'General Medicine', email: 'i.musa@hospital.com', phone: '+234 802 345 6789', photo: null },
     { id: '3', name: 'Nurse Amaka Okafor', role: 'Nurse', department: 'Nursing', email: 'a.okafor@hospital.com', phone: '+234 803 456 7890', photo: null },
-    { id: '4', name: 'Dr. Chinedu Okonkwo', role: 'Doctor', department: 'Orthopedics', email: 'c.okonkwo@hospital.com', phone: '+234 804 567 8901', photo: null },
+    { id: '4', name: 'Dr. Tunde Bakare', role: 'Doctor', department: 'Orthopedics', email: 'c.okonkwo@hospital.com', phone: '+234 804 567 8901', photo: null },
     { id: '5', name: 'Dr. Aisha Yusuf', role: 'Doctor', department: 'Pediatrics', email: 'a.yusuf@hospital.com', phone: '+234 805 678 9012', photo: null },
   ];
 
@@ -57,8 +57,8 @@ export default function StaffDirectoryPage() {
                 }
                 description={
                   <Space orientation="vertical" size="small">
-                    <Text type="secondary">📧 {item.email}</Text>
-                    <Text type="secondary">📱 {item.phone}</Text>
+                    <Text type="secondary"><MailOutlined /> {item.email}</Text>
+                    <Text type="secondary"><PhoneOutlined /> {item.phone}</Text>
                   </Space>
                 }
               />

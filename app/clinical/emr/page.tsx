@@ -11,6 +11,7 @@ import {
   Drawer,
   Descriptions,
   Typography,
+  Alert,
 } from 'antd';
 import {
   EyeOutlined,
@@ -36,13 +37,27 @@ const { Title, Text } = Typography;
 
 export default function EMRPage() {
   const router = useRouter();
-  const { user, getUserFullName } = useAuth();
+  const { user, getUserFullName, hasPermission } = useAuth();
   const [searchText, setSearchText] = useState('');
   const [doctorFilter, setDoctorFilter] = useState<string | undefined>();
   const [dateFilter, setDateFilter] = useState<any>(null);
   const [mounted, setMounted] = useState(false);
   const [drawerVisible, setDrawerVisible] = useState(false);
   const [selectedEMR, setSelectedEMR] = useState<any>(null);
+
+  if (!hasPermission('view_emr') && user?.role !== 'Administrator') {
+    return (
+      <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)', padding: '16px' }}>
+        <Alert
+          title="Access Denied"
+          description="You don't have permission to access Electronic Medical Records. Please contact your administrator."
+          type="error"
+          showIcon
+          style={{ marginTop: '24px', borderRadius: '12px' }}
+        />
+      </div>
+    );
+  }
 
   // Animated stats
   const [animatedStats, setAnimatedStats] = useState({

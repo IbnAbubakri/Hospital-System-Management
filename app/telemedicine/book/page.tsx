@@ -151,10 +151,10 @@ export default function TelemedicineBookPage() {
 
           <Form.Item label="Doctor" name="doctorId" rules={[{ required: true }]}>
             <Select placeholder="Select Doctor">
-              <Option value="d1">Dr. Emeka Adeleke (Cardiology)</Option>
-              <Option value="d2">Dr. Ibrahim Musa (General Medicine)</Option>
+              <Option value="d1">Dr. Ngozi Adeleke (Cardiology)</Option>
+              <Option value="d2">Dr. Emeka Okoro (General Medicine)</Option>
               <Option value="d4">Dr. Aisha Yusuf (Pediatrics)</Option>
-              <Option value="d5">Dr. Chioma Nnamani (Neurology)</Option>
+              <Option value="d5">Dr. Chinedu Nwosu (Neurology)</Option>
             </Select>
           </Form.Item>
 

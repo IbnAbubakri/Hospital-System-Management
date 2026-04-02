@@ -59,7 +59,7 @@ export default function PatientDocumentsPage() {
       type: 'application/pdf',
       size: 1048576,
       uploadDate: '2024-01-25',
-      uploadedBy: 'Dr. Emeka Adeleke',
+      uploadedBy: 'Dr. Ngozi Adeleke',
       category: 'Lab Result',
       status: 'Verified'},
     {

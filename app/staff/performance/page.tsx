@@ -7,8 +7,8 @@ const { Title, Text } = Typography;
 
 export default function StaffPerformancePage() {
   const performance = [
-    { id: '1', name: 'Dr. Emeka Adeleke', department: 'Cardiology', patients: 45, satisfaction: 92, punctuality: 95, productivity: 88 },
-    { id: '2', name: 'Dr. Ibrahim Musa', department: 'General Medicine', patients: 78, satisfaction: 88, punctuality: 90, productivity: 92 },
+    { id: '1', name: 'Dr. Ngozi Adeleke', department: 'Cardiology', patients: 45, satisfaction: 92, punctuality: 95, productivity: 88 },
+    { id: '2', name: 'Dr. Emeka Okoro', department: 'General Medicine', patients: 78, satisfaction: 88, punctuality: 90, productivity: 92 },
     { id: '3', name: 'Nurse Amaka Okafor', department: 'Nursing', patients: 112, satisfaction: 95, punctuality: 98, productivity: 90 },
   ];
 

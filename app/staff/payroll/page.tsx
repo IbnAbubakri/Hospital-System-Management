@@ -8,8 +8,8 @@ const { Title, Text } = Typography;
 
 export default function StaffPayrollPage() {
   const payroll = [
-    { id: '1', name: 'Dr. Emeka Adeleke', department: 'Cardiology', role: 'Doctor', basic: '₦800,000', allowance: '₦200,000', bonus: '₦100,000', deductions: '₦80,000', net: '₦1,020,000' },
-    { id: '2', name: 'Dr. Ibrahim Musa', department: 'General Medicine', role: 'Doctor', basic: '₦750,000', allowance: '₦150,000', bonus: '₦100,000', deductions: '₦75,000', net: '₦925,000' },
+    { id: '1', name: 'Dr. Ngozi Adeleke', department: 'Cardiology', role: 'Doctor', basic: '₦800,000', allowance: '₦200,000', bonus: '₦100,000', deductions: '₦80,000', net: '₦1,020,000' },
+    { id: '2', name: 'Dr. Emeka Okoro', department: 'General Medicine', role: 'Doctor', basic: '₦750,000', allowance: '₦150,000', bonus: '₦100,000', deductions: '₦75,000', net: '₦925,000' },
     { id: '3', name: 'Nurse Amaka Okafor', department: 'Nursing', role: 'Nurse', basic: '₦250,000', allowance: '₦50,000', bonus: '₦30,000', deductions: '₦25,000', net: '₦305,000' },
   ];
 

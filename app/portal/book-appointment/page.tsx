@@ -44,11 +44,11 @@ export default function BookAppointmentPage() {
   ];
 
   const doctors = {
-    'Cardiology': ['Dr. Emeka Adeleke'],
-    'General Medicine': ['Dr. Ibrahim Musa'],
-    'Orthopedics': ['Dr. Chinedu Okonkwo'],
+    'Cardiology': ['Dr. Ngozi Adeleke'],
+    'General Medicine': ['Dr. Emeka Okoro'],
+    'Orthopedics': ['Dr. Tunde Bakare'],
     'Pediatrics': ['Dr. Aisha Yusuf'],
-    'Neurology': ['Dr. Chioma Nnamani']};
+    'Neurology': ['Dr. Chinedu Nwosu']};
 
   const timeSlots = [
     '09:00 AM', '10:00 AM', '11:00 AM', '12:00 PM',

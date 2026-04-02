@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Card, Typography, Row, Col, Statistic, Progress, Space, Select, DatePicker, Tag, List } from 'antd';
-import { RiseOutlined, FallOutlined, ArrowUpOutlined, ArrowDownOutlined } from '@ant-design/icons';
+import { RiseOutlined, FallOutlined, ArrowUpOutlined, ArrowDownOutlined, LikeOutlined, BedOutlined, CalendarOutlined, SyncOutlined, DollarOutlined, LightningOutlined, ClockCircleOutlined, MedicineBoxOutlined } from '@ant-design/icons';
 
 const { Title } = Typography;
 
@@ -17,7 +17,7 @@ export default function KPITrackerPage() {
       previous: 89,
       unit: '%',
       trend: 'up',
-      icon: '👍',
+      icon: <LikeOutlined />,
       category: 'Quality',
       status: 'on-track',
     },
@@ -28,7 +28,7 @@ export default function KPITrackerPage() {
       previous: 82,
       unit: '%',
       trend: 'down',
-      icon: '🛏️',
+      icon: <BedOutlined />,
       category: 'Operations',
       status: 'below-target',
     },
@@ -39,7 +39,7 @@ export default function KPITrackerPage() {
       previous: 4.5,
       unit: 'days',
       trend: 'up',
-      icon: '📅',
+      icon: <CalendarOutlined />,
       category: 'Operations',
       status: 'above-target',
     },
@@ -50,7 +50,7 @@ export default function KPITrackerPage() {
       previous: 9.2,
       unit: '%',
       trend: 'up',
-      icon: '🔄',
+      icon: <SyncOutlined />,
       category: 'Quality',
       status: 'below-target',
     },
@@ -61,7 +61,7 @@ export default function KPITrackerPage() {
       previous: 115000,
       unit: '₦',
       trend: 'up',
-      icon: '💰',
+      icon: <DollarOutlined />,
       category: 'Financial',
       status: 'below-target',
     },
@@ -72,7 +72,7 @@ export default function KPITrackerPage() {
       previous: 85,
       unit: '%',
       trend: 'up',
-      icon: '⚡',
+      icon: <LightningOutlined />,
       category: 'HR',
       status: 'on-track',
     },
@@ -83,7 +83,7 @@ export default function KPITrackerPage() {
       previous: 22,
       unit: 'min',
       trend: 'up',
-      icon: '⏱️',
+      icon: <ClockCircleOutlined />,
       category: 'Operations',
       status: 'above-target',
     },
@@ -94,7 +94,7 @@ export default function KPITrackerPage() {
       previous: 1.8,
       unit: '%',
       trend: 'up',
-      icon: '💊',
+      icon: <MedicineBoxOutlined />,
       category: 'Safety',
       status: 'below-target',
     },

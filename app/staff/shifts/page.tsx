@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { Card, Row, Col, Typography, Button, Form, Input, Select, DatePicker, TimePicker, Table, Space, Tag, Modal, App, Alert } from 'antd';
-import { PlusOutlined, DeleteOutlined, CalendarOutlined, ClockCircleOutlined } from '@ant-design/icons';
+import { PlusOutlined, DeleteOutlined, CalendarOutlined, ClockCircleOutlined, CheckCircleOutlined, CloseCircleOutlined } from '@ant-design/icons';
 
 const { Title, Text } = Typography;
 
@@ -28,7 +28,7 @@ export default function ShiftSchedulingPage() {
     {
       id: '1',
       staffId: 'EMP-001',
-      staffName: 'Dr. Emeka Adeleke',
+      staffName: 'Dr. Ngozi Adeleke',
       department: 'Cardiology',
       date: '2024-02-02',
       shiftType: 'Morning',
@@ -38,7 +38,7 @@ export default function ShiftSchedulingPage() {
     {
       id: '2',
       staffId: 'EMP-002',
-      staffName: 'Dr. Ibrahim Musa',
+      staffName: 'Dr. Emeka Okoro',
       department: 'General Medicine',
       date: '2024-02-02',
       shiftType: 'Afternoon',
@@ -58,7 +58,7 @@ export default function ShiftSchedulingPage() {
     {
       id: '4',
       staffId: 'EMP-001',
-      staffName: 'Dr. Emeka Adeleke',
+      staffName: 'Dr. Ngozi Adeleke',
       department: 'Cardiology',
       date: '2024-02-03',
       shiftType: 'Morning',
@@ -86,11 +86,11 @@ export default function ShiftSchedulingPage() {
   };
 
   const getShiftConfig = (type: string) => {
-    const configs: Record<string, { color: string; icon: string; hours: string }> = {
-      'Morning': { color: 'blue', icon: '🌅', hours: '08:00 - 16:00' },
-      'Afternoon': { color: 'orange', icon: '☀️', hours: '14:00 - 22:00' },
-      'Night': { color: 'purple', icon: '🌙', hours: '22:00 - 06:00' },
-      'On-Call': { color: 'green', icon: '📞', hours: '24 Hours' }};
+    const configs: Record<string, { color: string; icon: React.ReactNode; hours: string }> = {
+      'Morning': { color: 'blue', icon: 'Morning', hours: '08:00 - 16:00' },
+      'Afternoon': { color: 'orange', icon: 'Afternoon', hours: '14:00 - 22:00' },
+      'Night': { color: 'purple', icon: 'Night', hours: '22:00 - 06:00' },
+      'On-Call': { color: 'green', icon: 'On-Call', hours: '24 Hours' }};
     return configs[type] || configs.Morning;
   };
 
@@ -121,8 +121,8 @@ export default function ShiftSchedulingPage() {
       render: (type: string) => {
         const config = getShiftConfig(type);
         return (
-          <Tag icon={config.icon} color={config.color}>
-            {type} ({config.hours})
+          <Tag color={config.color}>
+            {config.icon} ({config.hours})
           </Tag>
         );
       }},
@@ -170,11 +170,11 @@ export default function ShiftSchedulingPage() {
     missed: shifts.filter((s: any) => s.status === 'Missed').length};
 
   const staffList = [
-    { id: 'EMP-001', name: 'Dr. Emeka Adeleke', dept: 'Cardiology' },
-    { id: 'EMP-002', name: 'Dr. Ibrahim Musa', dept: 'General Medicine' },
+    { id: 'EMP-001', name: 'Dr. Ngozi Adeleke', dept: 'Cardiology' },
+    { id: 'EMP-002', name: 'Dr. Emeka Okoro', dept: 'General Medicine' },
     { id: 'EMP-003', name: 'Nurse Amaka Okafor', dept: 'Nursing' },
     { id: 'EMP-004', name: 'Nurse Grace Adebayo', dept: 'Nursing' },
-    { id: 'EMP-005', name: 'Dr. Chinedu Okonkwo', dept: 'Orthopedics' },
+    { id: 'EMP-005', name: 'Dr. Tunde Bakare', dept: 'Orthopedics' },
   ];
 
   return (
@@ -214,7 +214,7 @@ export default function ShiftSchedulingPage() {
         <Col xs={12} sm={6}>
           <Card>
             <div className="text-center">
-              <div style={{ fontSize: '32px' }}>✅</div>
+              <CheckCircleOutlined style={{ fontSize: '32px', color: '#10B981' }} />
               <div className="text-2xl font-bold text-green-600 mt-2">{stats.completed}</div>
               <div className="text-sm text-gray-500">Completed</div>
             </div>
@@ -223,7 +223,7 @@ export default function ShiftSchedulingPage() {
         <Col xs={12} sm={6}>
           <Card>
             <div className="text-center">
-              <div style={{ fontSize: '32px' }}>❌</div>
+              <CloseCircleOutlined style={{ fontSize: '32px', color: '#EF4444' }} />
               <div className="text-2xl font-bold text-red-600 mt-2">{stats.missed}</div>
               <div className="text-sm text-gray-500">Missed</div>
             </div>

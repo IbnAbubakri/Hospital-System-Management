@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Modal, Form, Select, Input, Space } from 'antd';
+import { Modal, Form, Select, Input, Space, Alert } from 'antd';
 import { PlusOutlined, MedicineBoxOutlined, EyeOutlined, CheckOutlined } from '@ant-design/icons';
 import { PageShell, StatCard, ModernTable, SearchFilterBar, StatusTag, GradientButton } from '@/components/design-system';
 import { useAuth } from '@/lib/contexts/AuthContext';
@@ -70,11 +70,25 @@ const mockPrescriptions: Prescription[] = [
 ];
 
 export default function PrescriptionsPage() {
-  const { hasPermission } = useAuth();
+  const { hasPermission, user } = useAuth();
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [searchText, setSearchText] = useState('');
   const [statusFilter, setStatusFilter] = useState<string | undefined>();
   const [form] = Form.useForm();
+
+  if (!hasPermission('create_prescription') && !hasPermission('view_emr') && user?.role !== 'Administrator') {
+    return (
+      <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)', padding: '16px' }}>
+        <Alert
+          title="Access Denied"
+          description="You don't have permission to access this page. Please contact your administrator."
+          type="error"
+          showIcon
+          style={{ marginTop: '24px', borderRadius: '12px' }}
+        />
+      </div>
+    );
+  }
 
   // CRITICAL SECURITY: Restrict access to clinical staff
   if (!hasPermission('clinical:write_prescription') && !hasPermission('pharmacy:dispense')) {

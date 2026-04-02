@@ -1,58 +1,43 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { Badge, Dropdown, Typography, Button, Divider } from 'antd';
-import { BellOutlined } from '@ant-design/icons';
+import { BellOutlined, CalendarOutlined, MedicineBoxOutlined, FileTextOutlined, InfoCircleOutlined } from '@ant-design/icons';
+import { useAuth, Notification } from '@/lib/contexts/AuthContext';
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
+
+dayjs.extend(relativeTime);
 
 const { Text } = Typography;
 
-interface Notification {
-  id: string;
-  title: string;
-  message: string;
-  time: string;
-  read: boolean;
-  type: 'info' | 'warning' | 'error' | 'success';
-}
+const getNotificationIcon = (type: Notification['type']) => {
+  switch (type) {
+    case 'appointment':
+      return <CalendarOutlined style={{ color: '#0077B6' }} />;
+    case 'lab_result':
+      return <FileTextOutlined style={{ color: '#10B981' }} />;
+    case 'prescription':
+      return <MedicineBoxOutlined style={{ color: '#F59E0B' }} />;
+    case 'alert':
+      return <InfoCircleOutlined style={{ color: '#EF4444' }} />;
+    default:
+      return <BellOutlined style={{ color: '#0077B6' }} />;
+  }
+};
 
 export function NotificationBell() {
-  const [notifications, setNotifications] = useState<Notification[]>([
-    {
-      id: '1',
-      title: 'New Appointment',
-      message: 'Sarah Johnson has booked an appointment for today',
-      time: '5 minutes ago',
-      read: false,
-      type: 'info',
-    },
-    {
-      id: '2',
-      title: 'Lab Result Ready',
-      message: 'Lab results for John Smith are ready for review',
-      time: '15 minutes ago',
-      read: false,
-      type: 'success',
-    },
-    {
-      id: '3',
-      title: 'Payment Overdue',
-      message: 'Invoice INV-2024-0001 is overdue',
-      time: '1 hour ago',
-      read: true,
-      type: 'warning',
-    },
-  ]);
-
-  const unreadCount = notifications.filter((n) => !n.read).length;
+  const { user, getNotifications, getNotificationCount, markNotificationAsRead, markAllNotificationsAsRead } = useAuth();
+  
+  const notifications = getNotifications();
+  const unreadCount = getNotificationCount();
 
   const handleMarkAsRead = (id: string) => {
-    setNotifications((prev) =>
-      prev.map((n) => (n.id === id ? { ...n, read: true } : n))
-    );
+    markNotificationAsRead(id);
   };
 
   const handleMarkAllAsRead = () => {
-    setNotifications((prev) => prev.map((n) => ({ ...n, read: true })));
+    markAllNotificationsAsRead();
   };
 
   const notificationContent = (
@@ -93,56 +78,80 @@ export function NotificationBell() {
         </div>
       )}
       <div className="max-h-96 overflow-y-auto">
-        {notifications.map((item) => (
-          <div
-            key={item.id}
-            className={`cursor-pointer p-4 border-b last:border-0 transition-all duration-200 ${
-              !item.read ? 'bg-blue-50 hover:bg-blue-100' : 'hover:bg-gray-50'
-            }`}
-            onClick={() => handleMarkAsRead(item.id)}
-            style={{ position: 'relative' }}
-          >
-            {!item.read && (
-              <div
-                style={{
-                  position: 'absolute',
-                  left: 0,
-                  top: 0,
-                  bottom: 0,
-                  width: '4px',
-                  background: 'linear-gradient(180deg, #0077B6 0%, #00B4D8 100%)',
-                }}
-              />
-            )}
-            <div className="flex gap-3">
-              <div
-                className="w-2 h-2 rounded-full flex-shrink-0 mt-2"
-                style={{
-                  backgroundColor: !item.read ? '#0077B6' : 'transparent',
-                }}
-              />
-              <div className="flex-1 min-w-0">
-                <Text
-                  strong={!item.read}
-                  className="block mb-1"
-                  style={{ fontSize: '14px' }}
+        {notifications.length === 0 ? (
+          <div className="p-8 text-center">
+            <BellOutlined style={{ fontSize: '32px', color: '#CBD5E1' }} />
+            <Text type="secondary" className="block mt-2">
+              No notifications yet
+            </Text>
+          </div>
+        ) : (
+          notifications.map((item) => (
+            <div
+              key={item.id}
+              className={`cursor-pointer p-4 border-b last:border-0 transition-all duration-200 ${
+                !item.read ? 'bg-blue-50 hover:bg-blue-100' : 'hover:bg-gray-50'
+              }`}
+              onClick={() => handleMarkAsRead(item.id)}
+              style={{ position: 'relative' }}
+            >
+              {!item.read && (
+                <div
+                  style={{
+                    position: 'absolute',
+                    left: 0,
+                    top: 0,
+                    bottom: 0,
+                    width: '4px',
+                    background: 'linear-gradient(180deg, #0077B6 0%, #00B4D8 100%)',
+                  }}
+                />
+              )}
+              <div className="flex gap-3">
+                <div
+                  className="flex items-center justify-center w-10 h-10 rounded-full flex-shrink-0"
+                  style={{ backgroundColor: item.read ? '#F1F5F9' : '#DBEAFE' }}
                 >
-                  {item.title}
-                </Text>
-                <Text
-                  type="secondary"
-                  className="block text-sm mb-2"
-                  style={{ display: 'block', fontSize: '13px' }}
-                >
-                  {item.message}
-                </Text>
-                <Text type="secondary" style={{ fontSize: '12px' }}>
-                  {item.time}
-                </Text>
+                  {getNotificationIcon(item.type)}
+                </div>
+                <div className="flex-1 min-w-0">
+                  <Text
+                    strong={!item.read}
+                    className="block mb-1"
+                    style={{ fontSize: '14px' }}
+                  >
+                    {item.title}
+                  </Text>
+                  <Text
+                    type="secondary"
+                    className="block text-sm mb-2"
+                    style={{ display: 'block', fontSize: '13px' }}
+                  >
+                    {item.message}
+                  </Text>
+                  {item.patientName && (
+                    <div className="mb-1">
+                      <Text className="text-xs" style={{ color: '#64748B' }}>
+                        Patient: {item.patientName}
+                        {item.mrn && ` (${item.mrn})`}
+                      </Text>
+                    </div>
+                  )}
+                  {item.appointmentTime && (
+                    <div className="mb-1">
+                      <Text className="text-xs" style={{ color: '#64748B' }}>
+                        Time: {item.appointmentTime}
+                      </Text>
+                    </div>
+                  )}
+                  <Text type="secondary" style={{ fontSize: '12px' }}>
+                    {dayjs(item.createdAt).fromNow()}
+                  </Text>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))
+        )}
       </div>
       <Divider className="my-0" />
       <div className="p-3 text-center">

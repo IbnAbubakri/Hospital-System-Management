@@ -31,7 +31,7 @@ export default function OvertimePage() {
     {
       id: '1',
       staffId: 'EMP-001',
-      staffName: 'Dr. Emeka Adeleke',
+      staffName: 'Dr. Ngozi Adeleke',
       department: 'Cardiology',
       date: '2024-02-03',
       hours: 4,
@@ -57,7 +57,7 @@ export default function OvertimePage() {
     {
       id: '3',
       staffId: 'EMP-002',
-      staffName: 'Dr. Ibrahim Musa',
+      staffName: 'Dr. Emeka Okoro',
       department: 'General Medicine',
       date: '2024-02-05',
       hours: 5,

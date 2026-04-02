@@ -24,7 +24,7 @@ const mockSchedule: ShiftScheduleItem[] = [
   {
     id: 'shift1',
     employeeId: 'emp1',
-    employeeName: 'Dr. Emeka Adeleke',
+    employeeName: 'Dr. Ngozi Adeleke',
     department: 'Cardiology',
     date: new Date('2024-02-05'),
     shift: 'Morning Shift',
@@ -38,7 +38,7 @@ const mockSchedule: ShiftScheduleItem[] = [
   {
     id: 'shift2',
     employeeId: 'emp2',
-    employeeName: 'Dr. Ibrahim Musa',
+    employeeName: 'Dr. Emeka Okoro',
     department: 'General Medicine',
     date: new Date('2024-02-05'),
     shift: 'Morning Shift',
@@ -52,7 +52,7 @@ const mockSchedule: ShiftScheduleItem[] = [
   {
     id: 'shift3',
     employeeId: 'emp3',
-    employeeName: 'Dr. Chinedu Okonkwo',
+    employeeName: 'Dr. Tunde Bakare',
     department: 'Orthopedics',
     date: new Date('2024-02-05'),
     shift: 'Morning Shift',

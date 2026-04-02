@@ -14,6 +14,7 @@ import {
   Avatar,
   Typography,
   Divider,
+  Alert,
 } from 'antd';
 import {
   UserOutlined,
@@ -38,11 +39,25 @@ const { Title, Text } = Typography;
 
 export default function ConsultationPage() {
   const router = useRouter();
-  const { user, getUserFullName } = useAuth();
+  const { user, getUserFullName, hasPermission } = useAuth();
   const [selectedPatient, setSelectedPatient] = useState<string>('');
   const [selectedDoctor, setSelectedDoctor] = useState<string>(user?.role === 'Doctor' ? user.id : 'd1');
   const [activeTab, setActiveTab] = useState('emr');
   const [mounted, setMounted] = useState(false);
+
+  if (!hasPermission('view_patients') && user?.role !== 'Administrator') {
+    return (
+      <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)', padding: '16px' }}>
+        <Alert
+          title="Access Denied"
+          description="You don't have permission to access this page. Please contact your administrator."
+          type="error"
+          showIcon
+          style={{ marginTop: '24px', borderRadius: '12px' }}
+        />
+      </div>
+    );
+  }
 
   // Animated stats
   const [animatedStats, setAnimatedStats] = useState({
@@ -459,7 +474,7 @@ export default function ConsultationPage() {
                   {patient.allergies.length > 0 && (
                     <div className="mt-2">
                       <Text className="text-xs" style={{ color: '#EF4444', fontWeight: 600 }}>
-                        ⚠ ALLERGIES:
+                        ALLERGIES:
                       </Text>
                       <div className="flex flex-wrap gap-2 mt-1">
                         {patient.allergies.map((allergy, index) => (

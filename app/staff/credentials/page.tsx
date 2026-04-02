@@ -8,10 +8,10 @@ const { Title, Text } = Typography;
 
 export default function StaffCredentialsPage() {
   const credentials = [
-    { id: '1', name: 'Dr. Emeka Adeleke', license: 'MDCN/12345/2020', expiry: '2025-12-31', status: 'Active', type: 'Medical License' },
-    { id: '2', name: 'Dr. Emeka Adeleke', license: 'ACL/98765/2022', expiry: '2024-06-30', status: 'Expiring Soon', type: 'ACL Certification' },
+    { id: '1', name: 'Dr. Ngozi Adeleke', license: 'MDCN/12345/2020', expiry: '2025-12-31', status: 'Active', type: 'Medical License' },
+    { id: '2', name: 'Dr. Ngozi Adeleke', license: 'ACL/98765/2022', expiry: '2024-06-30', status: 'Expiring Soon', type: 'ACL Certification' },
     { id: '3', name: 'Nurse Amaka Okafor', license: 'NMC/789012/2021', expiry: '2025-03-15', status: 'Active', type: 'Nursing License' },
-    { id: '4', name: 'Dr. Ibrahim Musa', license: 'MDCN/12346/2019', expiry: '2024-11-30', status: 'Expiring Soon', type: 'Medical License' },
+    { id: '4', name: 'Dr. Emeka Okoro', license: 'MDCN/12346/2019', expiry: '2024-11-30', status: 'Expiring Soon', type: 'Medical License' },
   ];
 
   const expiringCount = credentials.filter((c: any) => c.status === 'Expiring Soon').length;

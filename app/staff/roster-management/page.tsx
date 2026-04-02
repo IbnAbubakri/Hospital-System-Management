@@ -9,9 +9,9 @@ const { Title, Text } = Typography;
 export default function StaffRosterPage() {
   const { message } = App.useApp();
   const [roster] = useState([
-    { id: '1', date: '2024-02-05', shift: 'Morning', doctor: 'Dr. Emeka Adeleke', nurse: 'Nurse Amaka Okafor' },
-    { id: '2', date: '2024-02-05', shift: 'Afternoon', doctor: 'Dr. Ibrahim Musa', nurse: 'Nurse Grace Adebayo' },
-    { id: '3', date: '2024-02-05', shift: 'Night', doctor: 'Dr. Chinedu Okonkwo', nurse: 'Nurse Chinedu Eze' },
+    { id: '1', date: '2024-02-05', shift: 'Morning', doctor: 'Dr. Ngozi Adeleke', nurse: 'Nurse Amaka Okafor' },
+    { id: '2', date: '2024-02-05', shift: 'Afternoon', doctor: 'Dr. Emeka Okoro', nurse: 'Nurse Grace Adebayo' },
+    { id: '3', date: '2024-02-05', shift: 'Night', doctor: 'Dr. Tunde Bakare', nurse: 'Nurse Chinedu Eze' },
   ]);
 
   const columns = [

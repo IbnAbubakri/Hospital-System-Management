@@ -18,6 +18,20 @@ export default function DischargePage() {
   const [form] = Form.useForm();
   const [checkedItems, setCheckedItems] = useState<string[]>([]);
 
+  if (!hasPermission('view_emr') && user?.role !== 'Administrator') {
+    return (
+      <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)', padding: '16px' }}>
+        <Alert
+          title="Access Denied"
+          description="You don't have permission to access this page. Please contact your administrator."
+          type="error"
+          showIcon
+          style={{ marginTop: '24px', borderRadius: '12px' }}
+        />
+      </div>
+    );
+  }
+
   const accessiblePatients = useMemo(() => {
     if (!user) return [];
     return filterPatientsByUser(user);
@@ -92,7 +106,7 @@ export default function DischargePage() {
 
   const admissionDetails = {
     admissionDate: 'January 25, 2024',
-    admittingDoctor: 'Dr. Emeka Adeleke',
+    admittingDoctor: 'Dr. Ngozi Adeleke',
     department: 'Cardiology',
     roomBed: 'Room 301, Bed 2',
     lengthOfStay: '8 days',

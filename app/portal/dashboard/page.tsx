@@ -19,7 +19,7 @@ export default function PortalDashboardPage() {
   const router = useRouter();
 
   const upcomingAppointments = [
-    { id: '1', doctor: 'Dr. Emeka Adeleke', date: 'Feb 10, 2024', time: '10:00 AM', type: 'Follow-up', department: 'Cardiology' },
+    { id: '1', doctor: 'Dr. Ngozi Adeleke', date: 'Feb 10, 2024', time: '10:00 AM', type: 'Follow-up', department: 'Cardiology' },
     { id: '2', doctor: 'Dr. Aisha Yusuf', date: 'Feb 15, 2024', time: '02:00 PM', type: 'Consultation', department: 'Pediatrics' },
   ];
 

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { App, Card, Form, Input, Select, Button, DatePicker, Row, Col, Typography, Alert, Tag, Divider, List, Avatar} from 'antd';
 import {
   UserOutlined,
@@ -12,7 +12,7 @@ import {
   WarningOutlined} from '@ant-design/icons';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/lib/contexts/AuthContext';
-import { mockPatients, doctorAvailability, getDepartmentByComplaint, getAvailableDoctorsForDay } from '@/lib/mockData';
+import { mockPatients, doctorAvailability, getDepartmentByComplaint, getAvailableDoctorsForDay, mockUsers } from '@/lib/mockData';
 import dayjs from 'dayjs';
 
 const { TextArea } = Input;
@@ -22,18 +22,35 @@ const { Title, Text } = Typography;
 export default function TriagePage() {
   const { message } = App.useApp();
   const router = useRouter();
-  const { user, getUserFullName } = useAuth();
+  const { user, getUserFullName, hasPermission, addNotification, getNotifications } = useAuth();
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
   const [selectedDepartment, setSelectedDepartment] = useState<string | null>(null);
   const [selectedDate, setSelectedDate] = useState<dayjs.Dayjs | null>(dayjs());
   const [availableDoctors, setAvailableDoctors] = useState<any[]>([]);
 
+  // Permission check - only nurses and admins can access triage
+  if (!hasPermission('triage_patients') && user?.role !== 'Administrator') {
+    return (
+      <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)' }}>
+        <div style={{ padding: '32px' }}>
+          <Alert
+            title="Access Denied"
+            description="You don't have permission to access the triage center. This area is restricted to nurses and administrators only."
+            type="error"
+            showIcon
+            style={{ borderRadius: '12px' }}
+          />
+        </div>
+      </div>
+    );
+  }
+
   // Get day of week from selected date
   const dayOfWeek = selectedDate ? selectedDate.format('dddd') : '';
 
   // Update available doctors when department or date changes
-  React.useEffect(() => {
+  useEffect(() => {
     if (selectedDepartment && dayOfWeek) {
       const doctors = getAvailableDoctorsForDay(selectedDepartment, dayOfWeek);
       setAvailableDoctors(doctors);
@@ -58,9 +75,29 @@ export default function TriagePage() {
       // Simulate API call
       await new Promise((resolve) => setTimeout(resolve, 1500));
 
-      // Get doctor name
+      // Get doctor and patient information
       const selectedDoctor = availableDoctors.find((d) => d.doctorId === values.doctorId);
       const doctorName = selectedDoctor?.doctorName || 'Unknown';
+      const selectedPatient = mockPatients.find((p) => p.id === values.patientId);
+      const patientName = selectedPatient ? `${selectedPatient.firstName} ${selectedPatient.lastName}` : 'Unknown Patient';
+
+      // Send notification to the assigned doctor
+      const notification = {
+        id: `notif-${Date.now()}`,
+        type: 'appointment' as const,
+        title: 'New Patient Assignment',
+        message: `${patientName} has been assigned to you for ${values.date?.format('MMMM D, YYYY')} at ${values.time}`,
+        patientName: patientName,
+        mrn: selectedPatient?.mrn || '',
+        appointmentTime: `${values.date?.format('MMMM D, YYYY')} at ${values.time}`,
+        department: selectedDepartment || '',
+        severity: values.severity as string,
+        read: false,
+        createdAt: new Date().toISOString(),
+      };
+
+      // Add notification to doctor's notifications
+      addNotification(values.doctorId as string, notification);
 
       message.success(
         <>
@@ -69,6 +106,9 @@ export default function TriagePage() {
           </div>
           <div style={{ marginTop: '8px', fontSize: '12px' }}>
             Patient assigned to <strong>{doctorName}</strong> on {values.date?.format('MMMM D, YYYY')} at {values.time}
+          </div>
+          <div style={{ marginTop: '4px', fontSize: '11px', color: '#10B981' }}>
+            Doctor has been notified
           </div>
         </>
       );

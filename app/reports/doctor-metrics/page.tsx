@@ -24,11 +24,11 @@ export default function DoctorMetricsPage() {
   const [doctorFilter, setDoctorFilter] = useState<string | undefined>();
 
   const doctors = [
-    { id: 'd1', name: 'Dr. Emeka Adeleke', department: 'Cardiology', patients: 45, consultations: 156, satisfaction: 92, revenue: '₦3.2M' },
-    { id: 'd2', name: 'Dr. Ibrahim Musa', department: 'General Medicine', patients: 78, consultations: 234, satisfaction: 88, revenue: '₦4.1M' },
-    { id: 'd3', name: 'Dr. Chinedu Okonkwo', department: 'Orthopedics', patients: 34, consultations: 98, satisfaction: 90, revenue: '₦2.8M' },
+    { id: 'd1', name: 'Dr. Ngozi Adeleke', department: 'Cardiology', patients: 45, consultations: 156, satisfaction: 92, revenue: '₦3.2M' },
+    { id: 'd2', name: 'Dr. Emeka Okoro', department: 'General Medicine', patients: 78, consultations: 234, satisfaction: 88, revenue: '₦4.1M' },
+    { id: 'd3', name: 'Dr. Tunde Bakare', department: 'Orthopedics', patients: 34, consultations: 98, satisfaction: 90, revenue: '₦2.8M' },
     { id: 'd4', name: 'Dr. Aisha Yusuf', department: 'Pediatrics', patients: 67, consultations: 189, satisfaction: 95, revenue: '₦3.5M' },
-    { id: 'd5', name: 'Dr. Chioma Nnamani', department: 'Neurology', patients: 23, consultations: 67, satisfaction: 87, revenue: '₦1.6M' },
+    { id: 'd5', name: 'Dr. Chinedu Nwosu', department: 'Neurology', patients: 23, consultations: 67, satisfaction: 87, revenue: '₦1.6M' },
   ];
 
   const columns = [

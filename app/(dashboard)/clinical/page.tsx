@@ -29,7 +29,7 @@ export default function ClinicalDashboardPage() {
     {
       key: '2',
       patient: 'Adanna Okafor',
-      doctor: 'Dr. Ibrahim Musa',
+      doctor: 'Dr. Emeka Okoro',
       department: 'General Medicine',
       diagnosis: 'Viral Infection',
       time: '11:00 AM',

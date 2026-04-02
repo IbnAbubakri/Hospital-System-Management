@@ -1,22 +1,48 @@
 'use client';
 
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 import { ReactNode } from 'react';
+import { Spin } from 'antd';
 import { MainLayout } from '@/components/layout/MainLayout';
+import { useAuth } from '@/lib/contexts/AuthContext';
 
 export function RootContent({ children }: { children: ReactNode }) {
   const pathname = usePathname();
+  const router = useRouter();
+  const { user, isLoading } = useAuth();
 
-  // Check if we're on an auth route (login, forgot-password, reset-password)
   const isAuthRoute = pathname?.startsWith('/login') ||
                       pathname?.startsWith('/forgot-password') ||
                       pathname?.startsWith('/reset-password');
 
-  // Don't show MainLayout with sidebar for auth routes
+  useEffect(() => {
+    if (!isLoading && !isAuthRoute) {
+      if (!user) {
+        router.replace('/login');
+      }
+    }
+  }, [user, isLoading, isAuthRoute, router]);
+
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <Spin size="large" />
+      </div>
+    );
+  }
+
+  if (!user && !isAuthRoute) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <Spin size="large" />
+      </div>
+    );
+  }
+
   if (isAuthRoute) {
     return <>{children}</>;
   }
 
-  // Show MainLayout with sidebar for all other routes
   return <MainLayout>{children}</MainLayout>;
 }

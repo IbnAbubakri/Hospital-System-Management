@@ -1,90 +1,128 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Layout } from 'antd';
-import { Sidebar } from './Sidebar';
-import { MobileHeader } from './MobileHeader';
+import { Layout, Menu } from 'antd';
+import type { MenuProps } from 'antd';
+import { GlobalHeader } from './GlobalHeader';
 import { useBreakpoint } from '@/lib/utils/responsive';
+import { useRouter, usePathname } from 'next/navigation';
+import { useAuth } from '@/lib/contexts/AuthContext';
+import { getMenuItemsForRole } from '@/lib/constants/roleNavigation';
 
-const { Content } = Layout;
+const { Sider, Content } = Layout;
 
 interface MainLayoutProps {
   children: React.ReactNode;
-  /**
-   * Optional page title to show in mobile header
-   */
-  title?: string;
-  /**
-   * Optional actions for mobile header (notifications, profile, etc.)
-   */
-  headerActions?: React.ReactNode;
 }
 
-export function MainLayout({
-  children,
-  title,
-  headerActions,
-}: MainLayoutProps) {
-  // Desktop sidebar collapse state
+export function MainLayout({ children }: MainLayoutProps) {
   const [collapsed, setCollapsed] = useState(false);
-
-  // Mobile sidebar drawer state
-  const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
-
-  // Get current breakpoint for responsive behavior
+  const [mobileOpen, setMobileOpen] = useState(false);
   const { isDesktop } = useBreakpoint();
-
-  // Auto-collapse sidebar on smaller screens (everything below desktop)
   const isSmallScreen = !isDesktop;
+  const router = useRouter();
+  const pathname = usePathname();
+  const { user } = useAuth();
+
+  const menuItems = user ? getMenuItemsForRole(user.role) : [];
+
+  const flattenMenu = (items: any[], key = 'key', path = 'path'): { key: string; path: string }[] => {
+    return items.reduce((acc: any[], item: any) => {
+      if (item[path]) acc.push({ key: item[key], path: item[path] });
+      if (item.children) acc.push(...flattenMenu(item.children, key, path));
+      return acc;
+    }, []);
+  };
+
+  const pathMap = flattenMenu(menuItems);
+  const currentKey = pathMap.find(m => m.path === pathname)?.key || 'dashboard';
+
+  const menuProps: MenuProps = {
+    selectedKeys: [currentKey],
+    items: menuItems,
+    onClick: ({ key }) => {
+      const item = pathMap.find(m => m.key === key);
+      if (item?.path) router.push(item.path);
+    },
+  };
 
   return (
-    <Layout
-      style={{
-        minHeight: '100vh',
-        background: '#f8fafc',
-      }}
-    >
-      {/* Sidebar with mobile overlay support */}
-      <Sidebar
-        collapsed={isSmallScreen ? true : collapsed}
-        onCollapse={setCollapsed}
-        mobileOpen={mobileSidebarOpen}
-        onMobileClose={() => setMobileSidebarOpen(false)}
+    <Layout style={{ minHeight: '100vh' }}>
+      {/* Top Header - Horizontal */}
+      <GlobalHeader
+        showMenuButton
+        onMenuClick={() => setMobileOpen(true)}
       />
 
-      {/* Mobile Header */}
-      <MobileHeader
-        title={title}
-        onMenuClick={() => setMobileSidebarOpen(true)}
-        actions={headerActions}
-      />
-
-      {/* Main Content Area */}
-      <Layout
-        className="transition-all duration-300"
-        style={{
-          background: 'transparent',
-          marginLeft: isSmallScreen ? '0px' : collapsed ? '70px' : '280px',
-        }}
-      >
-        <Content
-          className="main-content"
-          style={{
-            paddingTop: isSmallScreen ? '60px' : '0', // Space for mobile header
-            padding: isSmallScreen ? '16px' : '24px', // Responsive padding
-            background: 'transparent',
-            overflow: 'auto',
-            minHeight: '100vh',
-          }}
-        >
-          <div
+      <Layout hasSider>
+        {/* Sidebar - Vertical */}
+        {!isSmallScreen && (
+          <Sider
+            collapsible
+            collapsed={collapsed}
+            onCollapse={setCollapsed}
+            trigger={null}
+            width={280}
+            collapsedWidth={70}
             style={{
-              maxWidth: '100%',
-              overflow: 'hidden',
+              position: 'fixed',
+              left: 0,
+              top: 64,
+              bottom: 0,
+              background: '#fff',
+              borderRight: '1px solid #f0f0f0',
+              overflow: 'auto',
             }}
           >
-            {children}
+            <Menu
+              mode="inline"
+              {...menuProps}
+              style={{ border: 'none', marginTop: 8 }}
+            />
+          </Sider>
+        )}
+
+        {/* Mobile Menu Drawer */}
+        {isSmallScreen && mobileOpen && (
+          <div
+            style={{
+              position: 'fixed',
+              inset: 0,
+              zIndex: 1000,
+              background: 'rgba(0,0,0,0.5)',
+            }}
+            onClick={() => setMobileOpen(false)}
+          >
+            <div
+              style={{
+                width: 280,
+                height: '100%',
+                background: '#fff',
+                padding: 16,
+              }}
+              onClick={e => e.stopPropagation()}
+            >
+              <Menu
+                mode="inline"
+                {...menuProps}
+                onClick={() => setMobileOpen(false)}
+              />
+            </div>
           </div>
+        )}
+
+        {/* Main Content */}
+        <Content
+          style={{
+            marginLeft: isSmallScreen ? 0 : collapsed ? 70 : 280,
+            marginTop: 64,
+            padding: isSmallScreen ? 16 : 24,
+            minHeight: 'calc(100vh - 64px)',
+            background: '#f8fafc',
+            transition: 'margin-left 0.2s',
+          }}
+        >
+          {children}
         </Content>
       </Layout>
     </Layout>

@@ -43,7 +43,9 @@ A comprehensive, role-based hospital management system built with Next.js 16, Ty
 
 - **Root:** `/` - Redirects to login or dashboard
 - **Login:** `/login` - Sign in page
-- **Dashboard:** `/dashboard` - Main dashboard (after login)
+- **Dashboard:** `/` - Main dashboard (after login)
+- **Profile:** `/profile` - User profile page
+- **Settings:** `/settings` - User settings page
 
 ### Modules (All accessible after login)
 
@@ -194,12 +196,15 @@ hospital-frontend/
 │
 ├── components/
 │   ├── layout/
-│   │   ├── MainLayout.tsx         # Main app layout
-│   │   └── UserHeader.tsx         # User header with notifications
+│   │   ├── MainLayout.tsx         # Main app layout with sidebar
+│   │   ├── Sidebar.tsx            # Navigation sidebar
+│   │   ├── DashboardLayout.tsx    # Dashboard layout with header
+│   │   └── RootContent.tsx        # Auth wrapper
 │   ├── shared/
-│   │   ├── ErrorBoundary.tsx      # Global error handler
-│   │   ├── PermissionGuard.tsx    # Permission wrapper
-│   │   └── ProtectedRoute.tsx      # Route protection
+│   │   ├── ErrorBoundary.tsx       # Global error handler
+│   │   ├── PermissionGuard.tsx     # Permission wrapper
+│   │   ├── PlaceholderPage.tsx    # Module placeholder page
+│   │   └── ProtectedRoute.tsx     # Route protection
 │   └── ...
 │
 └── lib/

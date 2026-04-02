@@ -350,12 +350,11 @@ export function Sidebar({
                   lineHeight: 1,
                 }}
               >
-                LM
+                MC
               </span>
             </div>
           ) : (
             <div className="flex items-center gap-3 px-6 w-full">
-              {/* Logo */}
               <div
                 className="flex items-center justify-center rounded-xl relative overflow-hidden flex-shrink-0"
                 style={{
@@ -374,11 +373,10 @@ export function Sidebar({
                     lineHeight: 1,
                   }}
                 >
-                  LM
+                  MC
                 </span>
               </div>
 
-              {/* Hospital Name */}
               <div className="flex flex-col">
                 <Text
                   style={{
@@ -390,7 +388,7 @@ export function Sidebar({
                     fontFamily: 'system-ui, -apple-system, sans-serif',
                   }}
                 >
-                  Lagos Medical
+                  MediCore
                 </Text>
                 <Text
                   style={{
@@ -402,7 +400,7 @@ export function Sidebar({
                     fontFamily: 'system-ui, -apple-system, sans-serif',
                   }}
                 >
-                  Specialist Hospital
+                  Hospital Management
                 </Text>
               </div>
             </div>
@@ -504,70 +502,10 @@ export function Sidebar({
             >
               Close Menu
             </span>
-          </div>
-        </div>
-
-        {/* User Info Section (bottom) */}
-        {!collapsed && user && (
-          <div
-            className="relative overflow-hidden"
-            style={{
-              borderTop: '1px solid rgba(255, 255, 255, 0.08)',
-              padding: '16px',
-              background: 'linear-gradient(180deg, rgba(59, 130, 246, 0.06) 0%, transparent 100%)',
-            }}
-          >
-            <div className="flex items-center gap-3">
-              <div
-                className="flex items-center justify-center rounded-full flex-shrink-0"
-                style={{
-                  width: '36px',
-                  height: '36px',
-                  background: user.role === 'AuxiliaryNurse'
-                    ? 'linear-gradient(135deg, #EC4899 0%, #DB2777 100%)'
-                    : user.role === 'Doctor'
-                    ? 'linear-gradient(135deg, #3B82F6 0%, #2563EB 100%)'
-                    : 'linear-gradient(135deg, #10B981 0%, #059669 100%)',
-                  border: '2px solid rgba(255, 255, 255, 0.2)',
-                }}
-              >
-                <span style={{ color: 'white', fontSize: '14px', fontWeight: 600 }}>
-                  {user.firstName.charAt(0)}{user.lastName.charAt(0)}
-                </span>
-              </div>
-              <div className="flex flex-col flex-1 min-w-0">
-                <Text
-                  style={{
-                    color: 'white',
-                    fontSize: '13px',
-                    fontWeight: 600,
-                    lineHeight: '18px',
-                    whiteSpace: 'nowrap',
-                    overflow: 'hidden',
-                    textOverflow: 'ellipsis',
-                  }}
-                >
-                  {user.role === 'Doctor' ? 'Dr. ' : ''}{user.firstName} {user.lastName}
-                </Text>
-                <Text
-                  style={{
-                    color: 'rgba(255, 255, 255, 0.5)',
-                    fontSize: '11px',
-                    fontWeight: 400,
-                    lineHeight: '14px',
-                    whiteSpace: 'nowrap',
-                    overflow: 'hidden',
-                    textOverflow: 'ellipsis',
-                  }}
-                >
-                  {user.role}{user.department && ` • ${user.department}`}
-                </Text>
-              </div>
             </div>
           </div>
-        )}
-      </div>
-    </Sider>
+        </div>
+      </Sider>
     </>
   );
 }

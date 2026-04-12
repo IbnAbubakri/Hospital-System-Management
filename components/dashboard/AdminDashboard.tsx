@@ -172,7 +172,7 @@ export function AdminDashboard() {
       trend: '+15%',
       bg: '#E0E7FF',
       border: '#C7D2FE',
-      path: '/billing/invoices',
+      path: '/billing/revenue-cycle/analytics',
     },
   ];
 

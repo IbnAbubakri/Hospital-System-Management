@@ -193,7 +193,27 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
           )}
         </div>
 
-        <div className="collapse-btn" onClick={() => setCollapsed(!collapsed)}>
+        <div style={{ 
+          position: 'absolute', 
+          bottom: 16, 
+          left: '50%', 
+          transform: 'translateX(-50%)',
+          width: 36,
+          height: 36,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          background: 'rgba(255, 255, 255, 0.15)',
+          borderRadius: 8,
+          cursor: 'pointer',
+          transition: 'all 0.3s',
+          color: 'white',
+          fontSize: 16,
+        }} 
+        onClick={() => setCollapsed(!collapsed)}
+        onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255, 255, 255, 0.25)'}
+        onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(255, 255, 255, 0.15)'}
+        >
           {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
         </div>
       </Sider>

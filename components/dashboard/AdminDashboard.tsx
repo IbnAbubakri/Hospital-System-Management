@@ -139,6 +139,7 @@ export function AdminDashboard() {
       trend: '+5%',
       bg: '#EFF6FF',
       border: '#DBEAFE',
+      path: '/patients',
     },
     {
       label: 'Total Staff',
@@ -149,6 +150,7 @@ export function AdminDashboard() {
       trend: '+3%',
       bg: '#D1FAE5',
       border: '#A7F3D0',
+      path: '/staff',
     },
     {
       label: "Today's Appointments",
@@ -159,6 +161,7 @@ export function AdminDashboard() {
       trend: '+12%',
       bg: '#FEF3C7',
       border: '#FDE68A',
+      path: '/scheduling/appointments',
     },
     {
       label: 'Monthly Revenue',
@@ -169,6 +172,7 @@ export function AdminDashboard() {
       trend: '+15%',
       bg: '#E0E7FF',
       border: '#C7D2FE',
+      path: '/billing/invoices',
     },
   ];
 
@@ -290,6 +294,7 @@ export function AdminDashboard() {
               e.currentTarget.style.transform = 'translateY(0)';
               e.currentTarget.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.05)';
             }}
+            onClick={() => stat.path && router.push(stat.path)}
           >
             {/* Shimmer effect */}
             <div

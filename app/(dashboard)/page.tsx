@@ -79,8 +79,8 @@ const appointmentColumns = [
     key: 'patient',
     render: (text: string) => (
       <div className="flex items-center gap-2">
-        <Avatar size="small" style={{ backgroundColor: '#0088FE' }} icon={<UserOutlined />} />
-        <span className="font-medium text-sm">{text}</span>
+        <Avatar size="small" className="bg-[#0088FE]" icon={<UserOutlined />} />
+        <span className="font-medium">{text}</span>
       </div>
     ),
   },
@@ -98,8 +98,8 @@ const appointmentColumns = [
       };
       const c = config[status] || config.pending;
       return (
-        <span className="px-2 py-1 rounded-full text-xs font-medium" style={{ backgroundColor: c.bg, color: c.color }}>
-          {status.replace('-', ' ').toUpperCase()}
+        <span className="inline-block px-2 py-1 rounded-full text-xs font-medium" style={{ backgroundColor: c.bg, color: c.color }}>
+          {status.toUpperCase().replace(' ', '-')}
         </span>
       );
     },
@@ -113,8 +113,8 @@ const taskColumns = [
     key: 'task',
     render: (text: string, record: any) => (
       <div>
-        <div className="font-medium text-sm">{text}</div>
-        <Text type="secondary" className="text-xs">{record.patient}</Text>
+        <div className="font-medium">{text}</div>
+        <Text type="secondary" className="text-sm">{record.patient}</Text>
       </div>
     ),
   },
@@ -131,7 +131,7 @@ const taskColumns = [
         normal: { color: '#52C41A', bg: '#F6FFED' },
       };
       const config = c[p] || c.normal;
-      return <span className="px-2 py-1 rounded-full text-xs font-medium" style={{ backgroundColor: config.bg, color: config.color }}>{p.toUpperCase()}</span>;
+      return <span className="inline-block px-2 py-1 rounded-full text-xs font-medium" style={{ backgroundColor: config.bg, color: config.color }}>{p.toUpperCase()}</span>;
     },
   },
 ];
@@ -174,12 +174,12 @@ export default function DashboardPage() {
   const stats = isAdmin ? adminStats : isDoctor ? doctorStats : nurseStats;
 
   return (
-    <div className="p-6 bg-gray-50 min-h-screen">
+    <div className="bg-gray-50 min-h-screen">
       {/* Header */}
       <div className="mb-6">
-        <Title level={3} className="!mb-1">
-          Welcome back, {user?.firstName} {user?.lastName}
-          <Text type="secondary" className="text-sm ml-2">({user?.role})</Text>
+        <Title level={3} className="!m-0">
+          Welcome back, Engr Faaruq
+          <Text type="secondary" className="ml-2">(Head ADMINISTRATOR)</Text>
         </Title>
         <Text type="secondary">
           {new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
@@ -187,18 +187,18 @@ export default function DashboardPage() {
       </div>
 
       {/* Stats Cards */}
-      <Row gutter={[16, 16]} className="mb-6">
+      <Row gutter={[16, 16]} style={{ marginBottom: '24px' }}>
         {stats.map((stat, index) => (
           <Col xs={24} sm={12} lg={6} key={index}>
-            <Card className="border-0 shadow-sm hover:shadow-md transition-shadow" style={{ borderRadius: '12px' }}>
+            <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow rounded-xl">
               <div className="flex items-center justify-between">
                 <div>
-                  <Text type="secondary" className="text-xs">{stat.title}</Text>
-                  <Title level={2} className="!mb-0 !mt-1">{stat.value}</Title>
-                  <Text type="secondary" className="text-xs">vs last month: {stat.change}</Text>
+                  <Text type="secondary" className="text-sm">{stat.title}</Text>
+                  <Title level={2} className="!m-0 !mb-1">{stat.value}</Title>
+                  <Text type="secondary" className="text-sm">vs last month: {stat.change}</Text>
                 </div>
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center" style={{ backgroundColor: stat.bgColor }}>
-                  <span style={{ color: stat.color, fontSize: '20px' }}>{stat.icon}</span>
+                <div className="p-3 rounded-xl" style={{ backgroundColor: stat.bgColor }}>
+                  <span className="text-xl" style={{ color: stat.color }}>{stat.icon}</span>
                 </div>
               </div>
             </Card>
@@ -209,9 +209,9 @@ export default function DashboardPage() {
       {/* Admin Dashboard */}
       {isAdmin && (
         <>
-          <Row gutter={[16, 16]} className="mb-6">
+          <Row gutter={[24, 24]} style={{ marginBottom: '24px' }}>
             <Col xs={24} lg={16}>
-              <Card title="Patient Visits Trend" className="border-0 shadow-sm" style={{ borderRadius: '12px' }}>
+              <Card title="Patient Visits Trend" className="border-0 shadow-lg rounded-xl">
                 <ResponsiveContainer width="100%" height={260}>
                   <AreaChart data={patientVisitsData}>
                     <defs>
@@ -230,7 +230,7 @@ export default function DashboardPage() {
               </Card>
             </Col>
             <Col xs={24} lg={8}>
-              <Card title="Department Distribution" className="border-0 shadow-sm h-full" style={{ borderRadius: '12px' }}>
+              <Card title="Department Distribution" className="border-0 shadow-lg h-full rounded-xl">
                 <ResponsiveContainer width="100%" height={260}>
                   <PieChart>
                     <Pie data={departmentData} cx="50%" cy="50%" innerRadius={50} outerRadius={80} paddingAngle={2} dataKey="value">
@@ -242,14 +242,14 @@ export default function DashboardPage() {
               </Card>
             </Col>
           </Row>
-          <Row gutter={[16, 16]}>
+          <Row gutter={[24, 24]} style={{ marginBottom: '24px' }}>
             <Col xs={24} lg={16}>
-              <Card title="Upcoming Appointments" extra={<a href="/patients/appointments" className="text-blue-500 text-sm">View All</a>} className="border-0 shadow-sm" style={{ borderRadius: '12px' }}>
+              <Card title="Upcoming Appointments" extra={<a href="/patients/appointments" className="text-blue-500">View All</a>} className="border-0 shadow-lg rounded-xl">
                 <Table dataSource={upcomingAppointments} columns={upcomingColumns} rowKey="id" pagination={false} size="small" />
               </Card>
             </Col>
             <Col xs={24} lg={8}>
-              <Card title="Hospital Overview" className="border-0 shadow-sm" style={{ borderRadius: '12px' }}>
+              <Card title="Hospital Overview" className="border-0 shadow-lg rounded-xl">
                 <div className="space-y-4">
                   <div>
                     <div className="flex justify-between mb-1"><Text>Bed Occupancy</Text><Text>78%</Text></div>
@@ -277,43 +277,43 @@ export default function DashboardPage() {
       {/* Doctor Dashboard */}
       {isDoctor && (
         <>
-          <Row gutter={[16, 16]} className="mb-6">
+          <Row gutter={[24, 24]} style={{ marginBottom: '24px' }}>
             <Col xs={24} lg={16}>
-              <Card title="My Appointments Today" extra={<a href="/patients/appointments" className="text-blue-500 text-sm">View All</a>} className="border-0 shadow-sm" style={{ borderRadius: '12px' }}>
+              <Card title="My Appointments Today" extra={<a href="/patients/appointments" className="text-blue-500">View All</a>} className="border-0 shadow-lg rounded-xl">
                 <Table dataSource={doctorAppointments} columns={appointmentColumns} rowKey="id" pagination={false} size="small" />
               </Card>
             </Col>
             <Col xs={24} lg={8}>
-              <Card title="Notifications" extra={<BellOutlined />} className="border-0 shadow-sm" style={{ borderRadius: '12px' }}>
+              <Card title="Notifications" extra={<BellOutlined />} className="border-0 shadow-lg rounded-xl">
                 <div className="space-y-3">
-                  <div className="flex items-start gap-3 p-2 bg-blue-50 rounded-lg">
-                    <CalendarOutlined className="text-blue-500 mt-1" />
+                  <div className="flex items-start gap-3 p-3 bg-blue-50 rounded-lg">
+                    <CalendarOutlined className="text-blue-500" />
                     <div>
-                      <Text className="text-sm font-medium">New appointment scheduled</Text>
-                      <Text type="secondary" className="text-xs block">Adanna Okafor - 10:30 AM</Text>
+                      <Text className="font-medium">New appointment scheduled</Text>
+                      <Text type="secondary" className="block text-sm">Adanna Okafor - 10:30 AM</Text>
                     </div>
                   </div>
-                  <div className="flex items-start gap-3 p-2 bg-orange-50 rounded-lg">
-                    <AlertOutlined className="text-orange-500 mt-1" />
+                  <div className="flex items-start gap-3 p-3 bg-orange-50 rounded-lg">
+                    <AlertOutlined className="text-orange-500" />
                     <div>
-                      <Text className="text-sm font-medium">Lab results ready</Text>
-                      <Text type="secondary" className="text-xs block">Chukwuemeka Okonkwo - Blood Test</Text>
+                      <Text className="font-medium">Lab results ready</Text>
+                      <Text type="secondary" className="block text-sm">Chukwuemeka Okonkwo - Blood Test</Text>
                     </div>
                   </div>
-                  <div className="flex items-start gap-3 p-2 bg-green-50 rounded-lg">
-                    <FileTextOutlined className="text-green-500 mt-1" />
+                  <div className="flex items-start gap-3 p-3 bg-green-50 rounded-lg">
+                    <FileTextOutlined className="text-green-500" />
                     <div>
-                      <Text className="text-sm font-medium">EMR review needed</Text>
-                      <Text type="secondary" className="text-xs block">Olufemi Adebayo - Follow-up</Text>
+                      <Text className="font-medium">EMR review needed</Text>
+                      <Text type="secondary" className="block text-sm">Olufemi Adebayo - Follow-up</Text>
                     </div>
                   </div>
                 </div>
               </Card>
             </Col>
           </Row>
-          <Row gutter={[16, 16]}>
+          <Row gutter={[24, 24]} style={{ marginBottom: '24px' }}>
             <Col xs={24} lg={12}>
-              <Card title="Patient Visits This Week" className="border-0 shadow-sm" style={{ borderRadius: '12px' }}>
+              <Card title="Patient Visits This Week" className="border-0 shadow-lg rounded-xl">
                 <ResponsiveContainer width="100%" height={200}>
                   <BarChart data={patientVisitsData}>
                     <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#F0F0F0" />
@@ -326,12 +326,12 @@ export default function DashboardPage() {
               </Card>
             </Col>
             <Col xs={24} lg={12}>
-              <Card title="Your Department Stats" className="border-0 shadow-sm" style={{ borderRadius: '12px' }}>
+              <Card title="Your Department Stats" className="border-0 shadow-lg rounded-xl">
                 <div className="space-y-4">
-                  <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg"><Text>Patients Seen This Week</Text><Text strong>32</Text></div>
-                  <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg"><Text>Average Consultation Time</Text><Text strong>15 mins</Text></div>
-                  <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg"><Text>Pending Follow-ups</Text><Text strong>5</Text></div>
-                  <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg"><Text>Prescriptions Written</Text><Text strong>28</Text></div>
+                  <div className="flex justify-between p-3 bg-gray-50 rounded-lg"><Text>Patients Seen This Week</Text><Text strong>32</Text></div>
+                  <div className="flex justify-between p-3 bg-gray-50 rounded-lg"><Text>Average Consultation Time</Text><Text strong>15 mins</Text></div>
+                  <div className="flex justify-between p-3 bg-gray-50 rounded-lg"><Text>Pending Follow-ups</Text><Text strong>5</Text></div>
+                  <div className="flex justify-between p-3 bg-gray-50 rounded-lg"><Text>Prescriptions Written</Text><Text strong>28</Text></div>
                 </div>
               </Card>
             </Col>
@@ -342,25 +342,25 @@ export default function DashboardPage() {
       {/* Nurse Dashboard */}
       {isNurse && (
         <>
-          <Row gutter={[16, 16]} className="mb-6">
+          <Row gutter={[24, 24]} style={{ marginBottom: '24px' }}>
             <Col xs={24} lg={16}>
-              <Card title="Today's Tasks" className="border-0 shadow-sm" style={{ borderRadius: '12px' }}>
+              <Card title="Today's Tasks" className="border-0 shadow-lg rounded-xl">
                 <Table dataSource={nurseTasks} columns={taskColumns} rowKey="id" pagination={false} size="small" />
               </Card>
             </Col>
             <Col xs={24} lg={8}>
-              <Card title="Quick Actions" className="border-0 shadow-sm" style={{ borderRadius: '12px' }}>
+              <Card title="Quick Actions" className="border-0 shadow-lg rounded-xl">
                 <div className="space-y-2">
                   <a href="/triage" className="block p-3 bg-red-50 hover:bg-red-100 rounded-lg text-red-600 font-medium text-center">Start Triage</a>
-                  <a href="/patients/appointments" className="block p-3 bg-blue-50 hover:bg-blue-100 rounded-lg text-blue-600 font-medium text-center">Schedule Appointment</a>
+                  <a href="/patients/appointments" className="block p-3 bg-blue-50 hover:bg-blue-100 rounded-lg font-medium text-center">Schedule Appointment</a>
                   <a href="/patients" className="block p-3 bg-green-50 hover:bg-green-100 rounded-lg text-green-600 font-medium text-center">View Patients</a>
                 </div>
               </Card>
             </Col>
           </Row>
-          <Row gutter={[16, 16]}>
+          <Row gutter={[24, 24]} style={{ marginBottom: '24px' }}>
             <Col xs={24} lg={12}>
-              <Card title="Triage Statistics" className="border-0 shadow-sm" style={{ borderRadius: '12px' }}>
+              <Card title="Triage Statistics" className="border-0 shadow-lg rounded-xl">
                 <ResponsiveContainer width="100%" height={200}>
                   <BarChart data={[{ name: 'Mon', v: 8 }, { name: 'Tue', v: 12 }, { name: 'Wed', v: 6 }, { name: 'Thu', v: 10 }, { name: 'Fri', v: 9 }]}>
                     <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#F0F0F0" />
@@ -373,7 +373,7 @@ export default function DashboardPage() {
               </Card>
             </Col>
             <Col xs={24} lg={12}>
-              <Card title="Available Doctors Today" className="border-0 shadow-sm" style={{ borderRadius: '12px' }}>
+              <Card title="Available Doctors Today" className="border-0 shadow-lg rounded-xl">
                 <div className="space-y-3">
                   {[
                     { name: 'Dr. Ngozi Adeleke', dept: 'Cardiology', slots: '6 slots' },
@@ -381,15 +381,15 @@ export default function DashboardPage() {
                     { name: 'Dr. Tunde Bakare', dept: 'Orthopedics', slots: '5 slots' },
                     { name: 'Dr. Aisha Yusuf', dept: 'Pediatrics', slots: '8 slots' },
                   ].map((doc, i) => (
-                    <div key={i} className="flex items-center justify-between p-2 bg-gray-50 rounded-lg">
+                    <div key={i} className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
                       <div className="flex items-center gap-2">
-                        <Avatar size="small" style={{ backgroundColor: '#0088FE' }} icon={<UserOutlined />} />
+<Avatar size="small" className="bg-[#0088FE]" icon={<UserOutlined />} />
                         <div>
-                          <Text className="text-sm font-medium">{doc.name}</Text>
-                          <Text type="secondary" className="text-xs block">{doc.dept}</Text>
+                          <Text className="font-medium">{doc.name}</Text>
+                          <Text type="secondary" className="block text-sm">{doc.dept}</Text>
                         </div>
                       </div>
-                      <Text type="secondary" className="text-xs">{doc.slots}</Text>
+                      <Text type="secondary" className="text-sm">{doc.slots}</Text>
                     </div>
                   ))}
                 </div>

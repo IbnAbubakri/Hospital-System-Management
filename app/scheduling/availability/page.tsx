@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Card, Typography, Table, Tag, Space, Button, Switch, TimePicker, Modal, Form, Input, App, Select } from 'antd';
-import { PlusOutlined } from '@ant-design/icons';
+import { PlusOutlined, CheckCircleOutlined, CloseCircleOutlined } from '@ant-design/icons';
 
 const { Title } = Typography;
 
@@ -18,6 +18,11 @@ export default function SchedulingAvailabilityPage() {
     { id: 4, doctor: 'Dr. Okafor', department: 'Orthopedics', monday: true, tuesday: true, wednesday: false, thursday: true, friday: true, saturday: false, sunday: false, startTime: '09:00', endTime: '15:00', status: 'On Leave' },
   ];
 
+  // Handle edit schedule
+  const handleEdit = (record: any) => {
+    message.success(`Editing schedule for ${record.doctor}`);
+  };
+
   const columns = [
     { title: 'ID', dataIndex: 'id', key: 'id' },
     { title: 'Doctor', dataIndex: 'doctor', key: 'doctor' },
@@ -26,43 +31,43 @@ export default function SchedulingAvailabilityPage() {
       title: 'Mon',
       dataIndex: 'monday',
       key: 'monday',
-      render: (available: boolean) => <Tag color={available ? 'success' : 'default'}>{available ? '✓' : '✗'}</Tag>,
+      render: (available: boolean) => <Tag color={available ? 'success' : 'default'}>{available ? <CheckCircleOutlined /> : <CloseCircleOutlined />}</Tag>,
       align: 'center' as const},
     {
       title: 'Tue',
       dataIndex: 'tuesday',
       key: 'tuesday',
-      render: (available: boolean) => <Tag color={available ? 'success' : 'default'}>{available ? '✓' : '✗'}</Tag>,
+      render: (available: boolean) => <Tag color={available ? 'success' : 'default'}>{available ? <CheckCircleOutlined /> : <CloseCircleOutlined />}</Tag>,
       align: 'center' as const},
     {
       title: 'Wed',
       dataIndex: 'wednesday',
       key: 'wednesday',
-      render: (available: boolean) => <Tag color={available ? 'success' : 'default'}>{available ? '✓' : '✗'}</Tag>,
+      render: (available: boolean) => <Tag color={available ? 'success' : 'default'}>{available ? <CheckCircleOutlined /> : <CloseCircleOutlined />}</Tag>,
       align: 'center' as const},
     {
       title: 'Thu',
       dataIndex: 'thursday',
       key: 'thursday',
-      render: (available: boolean) => <Tag color={available ? 'success' : 'default'}>{available ? '✓' : '✗'}</Tag>,
+      render: (available: boolean) => <Tag color={available ? 'success' : 'default'}>{available ? <CheckCircleOutlined /> : <CloseCircleOutlined />}</Tag>,
       align: 'center' as const},
     {
       title: 'Fri',
       dataIndex: 'friday',
       key: 'friday',
-      render: (available: boolean) => <Tag color={available ? 'success' : 'default'}>{available ? '✓' : '✗'}</Tag>,
+      render: (available: boolean) => <Tag color={available ? 'success' : 'default'}>{available ? <CheckCircleOutlined /> : <CloseCircleOutlined />}</Tag>,
       align: 'center' as const},
     {
       title: 'Sat',
       dataIndex: 'saturday',
       key: 'saturday',
-      render: (available: boolean) => <Tag color={available ? 'success' : 'default'}>{available ? '✓' : '✗'}</Tag>,
+      render: (available: boolean) => <Tag color={available ? 'success' : 'default'}>{available ? <CheckCircleOutlined /> : <CloseCircleOutlined />}</Tag>,
       align: 'center' as const},
     {
       title: 'Sun',
       dataIndex: 'sunday',
       key: 'sunday',
-      render: (available: boolean) => <Tag color={available ? 'success' : 'default'}>{available ? '✓' : '✗'}</Tag>,
+      render: (available: boolean) => <Tag color={available ? 'success' : 'default'}>{available ? <CheckCircleOutlined /> : <CloseCircleOutlined />}</Tag>,
       align: 'center' as const},
     { title: 'Start Time', dataIndex: 'startTime', key: 'startTime' },
     { title: 'End Time', dataIndex: 'endTime', key: 'endTime' },
@@ -74,8 +79,8 @@ export default function SchedulingAvailabilityPage() {
     {
       title: 'Actions',
       key: 'actions',
-      render: () => (
-        <Button type="link" size="small">Edit</Button>
+      render: (_: any, record: any) => (
+        <Button type="link" size="small" onClick={() => handleEdit(record)}>Edit</Button>
       )},
   ];
 
@@ -88,8 +93,8 @@ export default function SchedulingAvailabilityPage() {
   };
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '1600px', margin: '0 auto' }}>
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+    <div className="  sm: sm: lg: lg: max-w-[1600px] mx-auto">
+      <div className=" -col sm:-row items-start sm:   ">
         <Title level={3}>Staff Availability</Title>
         <Button type="primary" icon={<PlusOutlined />} onClick={() => setIsModalVisible(true)}>
           Set Availability
@@ -110,7 +115,7 @@ export default function SchedulingAvailabilityPage() {
             </Select>
           </Form.Item>
 
-          <Card size="small" title="Working Days" className="mb-4">
+          <Card size="small" title="Working Days" className="">
             <Form.Item name="weekdays" label="Select Working Days">
               <Select mode="multiple" placeholder="Select days" defaultValue={['mon', 'tue', 'wed', 'thu', 'fri']}>
                 <Select.Option value="mon">Monday</Select.Option>
@@ -124,15 +129,15 @@ export default function SchedulingAvailabilityPage() {
             </Form.Item>
           </Card>
 
-          <div style={{ display: 'flex', gap: '16px' }}>
-            <Form.Item name="startTime" label="Start Time" rules={[{ required: true }]} style={{ flex: 1 }}>
+          <div className=" ">
+            <Form.Item name="startTime" label="Start Time" rules={[{ required: true }]} className="-1">
               <Select placeholder="Select start time">
                 <Select.Option value="08:00">08:00 AM</Select.Option>
                 <Select.Option value="09:00">09:00 AM</Select.Option>
                 <Select.Option value="10:00">10:00 AM</Select.Option>
               </Select>
             </Form.Item>
-            <Form.Item name="endTime" label="End Time" rules={[{ required: true }]} style={{ flex: 1 }}>
+            <Form.Item name="endTime" label="End Time" rules={[{ required: true }]} className="-1">
               <Select placeholder="Select end time">
                 <Select.Option value="16:00">04:00 PM</Select.Option>
                 <Select.Option value="17:00">05:00 PM</Select.Option>

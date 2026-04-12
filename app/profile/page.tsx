@@ -31,7 +31,7 @@ export default function ProfilePage() {
       <Row gutter={24}>
         <Col xs={24} lg={8}>
           <Card
-            style={{ borderRadius: 12 }}
+            style={{ borderRadius: '12px' }}
             styles={{ body: { padding: 32, textAlign: 'center' } }}
           >
             <Avatar
@@ -44,7 +44,7 @@ export default function ProfilePage() {
                   : 'linear-gradient(135deg, #10B981 0%, #059669 100%)',
                 fontSize: 36,
                 fontWeight: 600,
-                marginBottom: 16,
+                marginBottom: '16px',
               }}
             >
               {user?.firstName?.[0]}{user?.lastName?.[0]}
@@ -54,7 +54,7 @@ export default function ProfilePage() {
               {user?.role === 'Doctor' ? 'Dr. ' : ''}{user?.firstName} {user?.lastName}
             </Title>
             
-            <Tag color={getRoleColor(user?.role || '')} style={{ marginBottom: 16 }}>
+            <Tag color={getRoleColor(user?.role || '')} style={{ marginBottom: '16px' }}>
               {user?.role}
             </Tag>
             
@@ -67,8 +67,8 @@ export default function ProfilePage() {
         </Col>
 
         <Col xs={24} lg={16}>
-          <Card style={{ borderRadius: 12 }} styles={{ body: { padding: 24 } }}>
-            <Title level={4} style={{ marginBottom: 24 }}>Personal Information</Title>
+          <Card style={{ borderRadius: '12px' }} styles={{ body: { padding: 24 } }}>
+            <Title level={4} style={{ marginBottom: '24px' }}>Personal Information</Title>
             
             <Descriptions column={{ xs: 1, sm: 2 }} labelStyle={{ fontWeight: 500 }}>
               <Descriptions.Item label="Full Name">
@@ -106,8 +106,8 @@ export default function ProfilePage() {
 
             <Divider />
 
-            <Title level={4} style={{ marginBottom: 16 }}>Permissions</Title>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+            <Title level={4} style={{ marginBottom: '16px' }}>Permissions</Title>
+            <div style={{ display: '', flexWrap: 'wrap', gap: '8px' }}>
               {user?.permissions?.map((permission, index) => (
                 <Tag key={index} color="blue">{permission}</Tag>
               )) || <Text type="secondary">No permissions assigned</Text>}

@@ -90,7 +90,7 @@ export default function BookAppointmentPage() {
     switch (currentStep) {
       case 0:
         return (
-          <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" >
+          <div className="  sm: sm: lg: lg:" >
             <Form layout="vertical">
               <Form.Item label="Department" required>
                 <Select
@@ -137,7 +137,7 @@ export default function BookAppointmentPage() {
 
       case 1:
         return (
-          <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" >
+          <div className="  sm: sm: lg: lg:" >
             <Form layout="vertical">
               <Form.Item label="Select Date" required>
                 <DatePicker
@@ -148,7 +148,7 @@ export default function BookAppointmentPage() {
                 />
               </Form.Item>
               <Form.Item label="Select Time Slot" required>
-                <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 ">
                   {timeSlots.map((time) => (
                     <Button
                       key={time}
@@ -167,7 +167,7 @@ export default function BookAppointmentPage() {
 
       case 2:
         return (
-          <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" >
+          <div className="  sm: sm: lg: lg:" >
             <Form layout="vertical">
               <Form.Item label="Reason for Visit" required>
                 <TextArea
@@ -177,8 +177,8 @@ export default function BookAppointmentPage() {
                   onChange={(e) => setFormData({ ...formData, reason: e.target.value })}
                 />
               </Form.Item>
-              <div style={{ padding: '16px', background: '#F9FAFB', borderRadius: '8px' }}>
-                <div className="text-sm text-gray-500 mb-2">Booking Summary</div>
+              <div className=" bg-gray-50 -lg">
+                <div className="  ">Booking Summary</div>
                 <div><strong>Department:</strong> {formData.department}</div>
                 <div><strong>Doctor:</strong> {formData.doctor}</div>
                 <div><strong>Type:</strong> {formData.appointmentType}</div>
@@ -191,11 +191,11 @@ export default function BookAppointmentPage() {
 
       case 3:
         return (
-          <div style={{ padding: '48px 24px', textAlign: 'center' }}>
-            <CheckCircleOutlined style={{ fontSize: '64px', color: '#10B981', marginBottom: '24px' }} />
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">Booking Confirmed!</h2>
-            <p className="text-gray-600 mb-2">Your appointment has been successfully booked.</p>
-            <p className="text-gray-600">You will receive a confirmation email shortly.</p>
+          <div className=" text-center">
+            <CheckCircleOutlined className="text-6xl color: '#10B981' " />
+            <h2 className="text-2xl font-semibold  ">Booking Confirmed!</h2>
+            <p className=" ">Your appointment has been successfully booked.</p>
+            <p className="">You will receive a confirmation email shortly.</p>
           </div>
         );
 
@@ -205,16 +205,16 @@ export default function BookAppointmentPage() {
   };
 
   return (
-    <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)', padding: '16px' }}>
-      <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-        <Card style={{ borderRadius: '12px' }}>
-          <Steps current={currentStep} items={steps} style={{ marginBottom: '32px' }} />
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-slate-50 ">
+      <div className="max-w-[800px] mx-auto">
+        <Card className="-xl">
+          <Steps current={currentStep} items={steps} className="" />
 
-          <div style={{ minHeight: '400px' }}>
+          <div className="min-h-[400px]">
             {renderStep()}
           </div>
 
-          <div className="flex justify-between" style={{ marginTop: '24px' }}>
+          <div className="  ">
             <Button
               disabled={currentStep === 0 || currentStep === 3}
               onClick={() => setCurrentStep(currentStep - 1)}
@@ -229,7 +229,7 @@ export default function BookAppointmentPage() {
           </div>
 
           {currentStep === 3 && (
-            <div style={{ textAlign: 'center', marginTop: '24px' }}>
+            <div className="text-center ">
               <Button type="primary" size="large">
                 Book Another Appointment
               </Button>

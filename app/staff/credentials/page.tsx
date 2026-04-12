@@ -44,7 +44,7 @@ export default function StaffCredentialsPage() {
   ];
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '1200px', margin: '0 auto' }}>
+    <div className="  sm: sm: lg: lg: max-w-6xl mx-auto">
       <Title level={3}>Staff Credentials Management</Title>
 
       {expiringCount > 0 && (
@@ -54,11 +54,11 @@ export default function StaffCredentialsPage() {
           type="warning"
           showIcon
           icon={<ExclamationCircleOutlined />}
-          style={{ marginBottom: '24px' }}
+          className=""
         />
       )}
 
-      <Row gutter={[16, 16]} style={{ marginBottom: '24px' }}>
+      <Row gutter={[16, 16]} className="">
         <Col span={8}>
           <Card>
             <Statistic title="Total Credentials" value={credentials.length} />
@@ -66,12 +66,12 @@ export default function StaffCredentialsPage() {
         </Col>
         <Col span={8}>
           <Card>
-            <Statistic title="Active" value={credentials.filter((c: any) => c.status === 'Active').length} valueStyle={{ color: '#52c41a' }} />
+            <Statistic title="Active" value={credentials.filter((c: any) => c.status === 'Active').length} valueStyle={{ color: '#10B981' }} />
           </Card>
         </Col>
         <Col span={8}>
           <Card>
-            <Statistic title="Expiring Soon" value={expiringCount} valueStyle={{ color: '#faad14' }} />
+            <Statistic title="Expiring Soon" value={expiringCount} valueStyle={{ color: '#EAB308' }} />
           </Card>
         </Col>
       </Row>

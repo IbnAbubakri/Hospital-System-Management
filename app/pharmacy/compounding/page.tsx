@@ -143,7 +143,7 @@ export default function CompoundingPage() {
       </Row>
 
       <Card>
-        <Space style={{ marginBottom: 16 }}>
+        <Space style={{ marginBottom: '16px' }}>
           <Input
             placeholder="Search by patient, medication, or MRN"
             prefix={<SearchOutlined />}

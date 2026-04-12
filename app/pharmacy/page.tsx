@@ -130,7 +130,7 @@ export default function PharmacyPage() {
       }
     >
       {/* Statistics Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-6">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4  ">
         <StatCard
           label="Pending Prescriptions"
           value={stats.pending}
@@ -166,10 +166,10 @@ export default function PharmacyPage() {
       </div>
 
       {/* Prescription Queue Section */}
-      <div className="p-4 sm:p-6" style={{ background: 'white', borderRadius: '12px', border: '1px solid #E2E8F0' }}>
-        <div className="flex items-center gap-2 mb-4">
+      <div className=" sm:" style={{ backgroundColor: '#ffffff', borderRadius: '12px', border: '1px solid #E2E8F0' }}>
+        <div className="   ">
           <MedicineBoxOutlined style={{ color: '#6366F1', fontSize: '20px' }} />
-          <h2 className="text-lg font-semibold text-gray-900">Prescription Queue</h2>
+          <h2 className=" font-semibold ">Prescription Queue</h2>
         </div>
 
         <SearchFilterBar

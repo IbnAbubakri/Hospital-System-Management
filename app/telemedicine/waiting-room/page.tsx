@@ -90,23 +90,23 @@ export default function WaitingRoomPage() {
   ];
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '1400px', margin: '0 auto' }}>
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+    <div className="  sm: sm: lg: lg: max-w-7xl mx-auto">
+      <div className=" -col sm:-row items-start sm:   ">
         <Title level={3}>Telemedicine Waiting Room</Title>
         <Space size="large">
-          <Badge count={appointments.filter(a => a.status === 'ready').length} showZero style={{ backgroundColor: '#52c41a' }}>
-            <span className="text-gray-600">Ready to Join</span>
+            <Badge count={appointments.filter(a => a.status === 'ready').length} showZero className="bg-[#52c41a]">
+            <span className="">Ready to Join</span>
           </Badge>
           <Badge count={appointments.filter(a => a.status === 'waiting').length} showZero>
-            <span className="text-gray-600">Waiting</span>
+            <span className="">Waiting</span>
           </Badge>
-          <Badge count={inProgress.length} showZero style={{ backgroundColor: '#1890ff' }}>
-            <span className="text-gray-600">In Progress</span>
+            <Badge count={inProgress.length} showZero className="bg-[#1890ff]">
+            <span className="">In Progress</span>
           </Badge>
         </Space>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '24px' }}>
+      <div className="grid grid-cols-1 md:grid-cols-2 ">
         <Card title={<Badge count={inProgress.length} showZero overflowCount={99}><span>Active Consultations</span></Badge>}>
           {inProgress.length > 0 ? (
             <List
@@ -114,9 +114,9 @@ export default function WaitingRoomPage() {
               renderItem={(item) => (
                 <List.Item>
                   <List.Item.Meta
-                    avatar={<Avatar icon={<VideoCameraOutlined />} style={{ backgroundColor: '#1890ff' }} />}
+                    avatar={<Avatar icon={<VideoCameraOutlined />} className="bg-[#1890ff]" />}
                     title={
-                      <div className="flex justify-between items-center">
+                      <div className="  ">
                         <span>{item.patient}</span>
                         <Tag color="processing" icon={<ClockCircleOutlined />}>Live - {item.duration} min</Tag>
                       </div>
@@ -124,7 +124,7 @@ export default function WaitingRoomPage() {
                     description={
                       <div>
                         <div>{item.mrn}</div>
-                        <div className="text-sm text-gray-500">with {item.doctor}</div>
+                        <div className=" ">with {item.doctor}</div>
                         <Progress percent={45} showInfo={false} size="small" />
                       </div>
                     }
@@ -133,7 +133,7 @@ export default function WaitingRoomPage() {
               )}
             />
           ) : (
-            <div className="text-center text-gray-400 py-8">No active consultations</div>
+            <div className="text-center  ">No active consultations</div>
           )}
         </Card>
 
@@ -152,16 +152,16 @@ export default function WaitingRoomPage() {
                   <List.Item.Meta
                     avatar={<Avatar icon={<UserOutlined />} />}
                     title={
-                      <div className="flex justify-between items-center">
-                        <span className="text-green-600 font-semibold">{item.patient}</span>
+                      <div className="  ">
+                        <span className="color: '#059669' font-semibold">{item.patient}</span>
                         <Tag color="success">Ready</Tag>
                       </div>
                     }
                     description={
                       <div>
                         <div>{item.mrn}</div>
-                        <div className="text-sm text-gray-500">Scheduled: {item.scheduledTime} • with {item.doctor}</div>
-                        <div className="text-sm text-gray-600">{item.reason}</div>
+                        <div className=" ">Scheduled: {item.scheduledTime} • with {item.doctor}</div>
+                        <div className=" ">{item.reason}</div>
                       </div>
                     }
                   />
@@ -169,7 +169,7 @@ export default function WaitingRoomPage() {
               )}
             />
           ) : (
-            <div className="text-center text-gray-400 py-8">No patients ready</div>
+            <div className="text-center  ">No patients ready</div>
           )}
         </Card>
 
@@ -180,9 +180,9 @@ export default function WaitingRoomPage() {
               renderItem={(item) => (
                 <List.Item>
                   <List.Item.Meta
-                    avatar={<Avatar icon={<ClockCircleOutlined />} style={{ backgroundColor: '#faad14' }} />}
+                    avatar={<Avatar icon={<ClockCircleOutlined />} className="bg-[#faad14]" />}
                     title={
-                      <div className="flex justify-between items-center">
+                      <div className="  ">
                         <span>{item.patient}</span>
                         <Tag color="warning">{item.waitTime} min wait</Tag>
                       </div>
@@ -190,8 +190,8 @@ export default function WaitingRoomPage() {
                     description={
                       <div>
                         <div>{item.mrn}</div>
-                        <div className="text-sm text-gray-500">Scheduled: {item.scheduledTime} • with {item.doctor}</div>
-                        <div className="text-sm text-gray-600">{item.reason}</div>
+                        <div className=" ">Scheduled: {item.scheduledTime} • with {item.doctor}</div>
+                        <div className=" ">{item.reason}</div>
                       </div>
                     }
                   />
@@ -199,7 +199,7 @@ export default function WaitingRoomPage() {
               )}
             />
           ) : (
-            <div className="text-center text-gray-400 py-8">No patients waiting</div>
+            <div className="text-center  ">No patients waiting</div>
           )}
         </Card>
 
@@ -210,9 +210,9 @@ export default function WaitingRoomPage() {
               renderItem={(item) => (
                 <List.Item>
                   <List.Item.Meta
-                    avatar={<Avatar icon={<UserOutlined />} style={{ backgroundColor: '#52c41a' }} />}
+                    avatar={<Avatar icon={<UserOutlined />} className="bg-[#52c41a]" />}
                     title={
-                      <div className="flex justify-between items-center">
+                      <div className="  ">
                         <span>{item.patient}</span>
                         <Tag color="success">{item.duration} min</Tag>
                       </div>
@@ -220,8 +220,8 @@ export default function WaitingRoomPage() {
                     description={
                       <div>
                         <div>{item.mrn}</div>
-                        <div className="text-sm text-gray-500">Scheduled: {item.scheduledTime} • Completed: {item.completedTime}</div>
-                        <div className="text-sm text-gray-600">with {item.doctor}</div>
+                        <div className=" ">Scheduled: {item.scheduledTime} • Completed: {item.completedTime}</div>
+                        <div className=" ">with {item.doctor}</div>
                       </div>
                     }
                   />
@@ -229,7 +229,7 @@ export default function WaitingRoomPage() {
               )}
             />
           ) : (
-            <div className="text-center text-gray-400 py-8">No completed consultations</div>
+            <div className="text-center  ">No completed consultations</div>
           )}
         </Card>
       </div>

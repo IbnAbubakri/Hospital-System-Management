@@ -72,30 +72,30 @@ export default function RecordsViewPage() {
   ];
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '1200px', margin: '0 auto' }}>
+    <div className="  sm: sm: lg: lg: max-w-[1200px] mx-auto">
       <Title level={3}>My Medical Records</Title>
 
       <Card>
         <Tabs defaultActiveKey="documents">
           <TabPane tab="Documents" key="documents">
-            <div style={{ marginBottom: '16px' }}>
-              <RangePicker style={{ marginRight: '8px' }} />
+            <div className="">
+              <RangePicker className="" />
               <Button type="primary">Filter</Button>
             </div>
             <Table dataSource={documents} columns={documentColumns} rowKey="id" pagination={{ pageSize: 10 }} />
           </TabPane>
 
           <TabPane tab="Visit History" key="visits">
-            <div style={{ marginBottom: '16px' }}>
-              <RangePicker style={{ marginRight: '8px' }} />
+            <div className="">
+              <RangePicker className="" />
               <Button type="primary">Filter</Button>
             </div>
             <Table dataSource={visits} columns={visitColumns} rowKey="id" pagination={{ pageSize: 10 }} />
           </TabPane>
 
           <TabPane tab="Vitals History" key="vitals">
-            <div style={{ marginBottom: '16px' }}>
-              <RangePicker style={{ marginRight: '8px' }} />
+            <div className="">
+              <RangePicker className="" />
               <Button type="primary">Filter</Button>
             </div>
             <Table dataSource={vitals} columns={vitalColumns} rowKey="id" pagination={{ pageSize: 10 }} />

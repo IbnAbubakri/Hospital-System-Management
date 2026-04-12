@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Card, Typography, Form, Input, Select, InputNumber, Button, Table, Tag, Space, App } from 'antd';
-import { PlusOutlined, UserAddOutlined } from '@ant-design/icons';
+import { PlusOutlined, UserOutlined } from '@ant-design/icons';
 
 const { Title } = Typography;
 
@@ -57,19 +57,15 @@ export default function TriagePage() {
   };
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '1400px', margin: '0 auto' }}>
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
-        <Title level={3}>Emergency Triage</Title>
-      </div>
-
-      <div style={{ display: 'flex', gap: '24px', flexDirection: 'row', flexWrap: 'wrap' }}>
-        <Card title="New Patient Triage" style={{ flex: 1, minWidth: 350 }}>
+    <div className="  sm: sm: lg: lg: max-w-7xl mx-auto">
+      <div className=" -wrap ">
+        <Card title="New Patient Triage" className="-1 min-w-[350px]">
           <Form form={form} layout="vertical">
             <Form.Item name="patientName" label="Patient Name" rules={[{ required: true }]}>
               <Input placeholder="Enter patient name" />
             </Form.Item>
             <Form.Item name="age" label="Age" rules={[{ required: true }]}>
-              <InputNumber style={{ width: '100%' }} placeholder="Enter age" min={0} max={150} />
+              <InputNumber className="w-full" placeholder="Enter age" min={0} max={150} />
             </Form.Item>
             <Form.Item name="gender" label="Gender" rules={[{ required: true }]}>
               <Select placeholder="Select gender">
@@ -78,21 +74,21 @@ export default function TriagePage() {
               </Select>
             </Form.Item>
 
-            <Card size="small" title="Vital Signs" className="mb-4">
+            <Card size="small" title="Vital Signs" className="">
               <Form.Item name="bloodPressure" label="Blood Pressure">
                 <Input placeholder="e.g., 120/80" />
               </Form.Item>
               <Form.Item name="heartRate" label="Heart Rate">
-                <InputNumber style={{ width: '100%' }} placeholder="bpm" min={0} />
+                <InputNumber className="w-full" placeholder="bpm" min={0} />
               </Form.Item>
               <Form.Item name="temperature" label="Temperature">
-                <InputNumber style={{ width: '100%' }} placeholder="°C" min={30} max={45} />
+                <InputNumber className="w-full" placeholder="°C" min={30} max={45} />
               </Form.Item>
               <Form.Item name="respiratoryRate" label="Respiratory Rate">
-                <InputNumber style={{ width: '100%' }} placeholder="breaths/min" min={0} />
+                <InputNumber className="w-full" placeholder="breaths/min" min={0} />
               </Form.Item>
               <Form.Item name="spo2" label="SpO2">
-                <InputNumber style={{ width: '100%' }} placeholder="%" min={0} max={100} />
+                <InputNumber className="w-full" placeholder="%" min={0} max={100} />
               </Form.Item>
             </Card>
 
@@ -118,14 +114,14 @@ export default function TriagePage() {
             </Form.Item>
 
             <Form.Item>
-              <Button type="primary" block icon={<UserAddOutlined />} onClick={handleSubmit}>
+              <Button type="primary" block icon={<UserOutlined />} onClick={handleSubmit}>
                 Complete Triage
               </Button>
             </Form.Item>
           </Form>
         </Card>
 
-        <Card title="Triage Queue" style={{ flex: 2, minWidth: 500 }}>
+        <Card title="Triage Queue" className="-[2] min-w-[500px]">
           <div className="overflow-x-auto">
         <Table
             dataSource={patients}

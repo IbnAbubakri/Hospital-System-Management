@@ -1,0 +1,273 @@
+PS C:\Users\USER\Desktop\Hospital\hospital-frontend> npm run build
+
+> hospital-frontend@0.1.0 build
+> next build
+
+⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of C:\Users\USER\Desktop\pnpm-lock.yaml as the root directory.
+ To silence this warning, set `turbopack.root` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#root-directory for more information.
+ Detected additional lockfiles:
+   * C:\Users\USER\Desktop\Hospital\hospital-frontend\package-lock.json
+
+▲ Next.js 16.2.3 (Turbopack)
+- Environments: .env.local
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 63s
+  Skipping validation of types
+✓ Finished TypeScript config validation in 135ms
+✓ Collecting page data using 3 workers in 4.1s
+✓ Generating static pages using 3 workers (235/235) in 11.3s
+✓ Finalizing page optimization in 39ms
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ○ /admin
+├ ○ /admin/audit
+├ ○ /admin/audit-logs
+├ ○ /admin/backup
+├ ○ /admin/departments
+├ ○ /admin/facilities
+├ ○ /admin/fees
+├ ○ /admin/health
+├ ○ /admin/integrations
+├ ○ /admin/integrations/dicom
+├ ○ /admin/integrations/fhir
+├ ○ /admin/integrations/hl7
+├ ○ /admin/master-data
+├ ○ /admin/notifications
+├ ○ /admin/organization
+├ ○ /admin/patient-merge
+├ ○ /admin/roles
+├ ○ /admin/security
+├ ○ /admin/users
+├ ○ /analytics
+├ ○ /analytics/comparative
+├ ○ /analytics/custom-dashboard
+├ ○ /analytics/departmental
+├ ○ /analytics/kpi-tracker
+├ ○ /analytics/realtime
+├ ○ /billing
+├ ○ /billing/collections/workflow
+├ ○ /billing/discounts
+├ ○ /billing/fees
+├ ○ /billing/insurance
+├ ○ /billing/invoices
+├ ○ /billing/packages
+├ ○ /billing/payments
+├ ○ /billing/revenue-cycle/analytics
+├ ○ /clinical
+├ ○ /clinical/care-plans
+├ ○ /clinical/clinical-decision-support
+├ ○ /clinical/consents
+├ ○ /clinical/consultation
+├ ○ /clinical/consultations
+├ ○ /clinical/discharge
+├ ○ /clinical/emr
+├ ○ /clinical/inpatients
+├ ○ /clinical/inpatients/admission
+├ ○ /clinical/inpatients/beds
+├ ○ /clinical/inpatients/progress
+├ ○ /clinical/mar
+├ ○ /clinical/nursing
+├ ○ /clinical/nutrition
+├ ○ /clinical/orders
+├ ○ /clinical/prescriptions
+├ ○ /clinical/prescriptions/renew
+├ ○ /clinical/protocols
+├ ○ /clinical/referrals
+├ ○ /clinical/referrals-requests
+├ ○ /clinical/results-tracking
+├ ○ /clinical/social-work
+├ ƒ /clinical/vitals/[id]
+├ ○ /clinical/wound-care
+├ ○ /communications
+├ ○ /communications/alerts
+├ ○ /communications/announcements
+├ ○ /communications/broadcasts
+├ ○ /communications/secure-messaging
+├ ○ /dashboard/executive
+├ ○ /emergency
+├ ○ /emergency/ambulance
+├ ○ /emergency/dashboard
+├ ○ /emergency/tracking
+├ ○ /emergency/tracking-board
+├ ○ /emergency/triage
+├ ○ /financial
+├ ○ /financial/collections
+├ ○ /financial/cost-center
+├ ○ /financial/profit-loss
+├ ○ /financial/receivables
+├ ○ /financial/revenue-cycle
+├ ○ /forgot-password
+├ ○ /insurance/claims
+├ ○ /insurance/claims/new
+├ ○ /insurance/partners
+├ ƒ /insurance/partners/[id]/edit
+├ ○ /insurance/partners/new
+├ ○ /insurance/pre-auth
+├ ○ /insurance/pre-auth/new
+├ ○ /insurance/settlement
+├ ○ /insurance/tariffs
+├ ○ /inventory
+├ ○ /inventory/adjustments
+├ ○ /inventory/catalog
+├ ○ /inventory/consumption
+├ ○ /inventory/contracts
+├ ○ /inventory/expiry-reports
+├ ○ /inventory/grn
+├ ○ /inventory/items
+├ ○ /inventory/purchase-orders
+├ ○ /inventory/purchases
+├ ○ /inventory/reorder-alerts
+├ ○ /inventory/requisitions
+├ ○ /inventory/returns
+├ ○ /inventory/stock
+├ ○ /inventory/tracking
+├ ○ /inventory/transfers
+├ ○ /inventory/vendors
+├ ○ /laboratory
+├ ○ /laboratory/approval
+├ ○ /laboratory/barcodes
+├ ○ /laboratory/catalog
+├ ○ /laboratory/collection
+├ ○ /laboratory/contrast
+├ ○ /laboratory/critical-alerts
+├ ○ /laboratory/equipment
+├ ○ /laboratory/interface/analyzer
+├ ○ /laboratory/lab-reports
+├ ○ /laboratory/orders
+├ ○ /laboratory/qc
+├ ○ /laboratory/reports
+├ ○ /laboratory/results
+├ ○ /laboratory/samples
+├ ○ /laboratory/templates
+├ ○ /laboratory/trends
+├ ○ /laboratory/turnaround
+├ ○ /laboratory/viewer
+├ ○ /laboratory/workflow
+├ ○ /legal/compliance-checklist
+├ ○ /legal/incident-reporting
+├ ○ /legal/policies
+├ ○ /legal/risk-management
+├ ○ /login
+├ ○ /operations
+├ ○ /operations/facilities-maintenance
+├ ○ /operations/helpdesk
+├ ○ /operations/housekeeping
+├ ○ /operations/parking
+├ ○ /operations/security
+├ ○ /patients
+├ ƒ /patients/[id]
+├ ƒ /patients/[id]/allergies
+├ ƒ /patients/[id]/conditions
+├ ƒ /patients/[id]/documents
+├ ƒ /patients/[id]/edit
+├ ƒ /patients/[id]/family-history
+├ ƒ /patients/[id]/timeline
+├ ƒ /patients/[id]/transfer
+├ ○ /patients/appointments
+├ ○ /patients/appointments/calendar
+├ ○ /patients/appointments/new
+├ ○ /patients/new
+├ ○ /patients/search
+├ ○ /pharmacy
+├ ○ /pharmacy/compounding
+├ ○ /pharmacy/controls
+├ ○ /pharmacy/dispensing
+├ ○ /pharmacy/formulary
+├ ○ /pharmacy/interactions
+├ ○ /pharmacy/inventory
+├ ○ /pharmacy/prescriptions
+├ ○ /portal
+├ ○ /portal/appointments
+├ ○ /portal/bills
+├ ○ /portal/book-appointment
+├ ○ /portal/dashboard
+├ ○ /portal/lab-results
+├ ○ /portal/login
+├ ○ /portal/messages
+├ ○ /portal/payment
+├ ○ /portal/payment-online
+├ ○ /portal/profile
+├ ○ /portal/records
+├ ○ /portal/records-view
+├ ○ /portal/refills
+├ ○ /portal/register
+├ ○ /profile
+├ ○ /quality
+├ ○ /quality/accreditation
+├ ○ /quality/audits
+├ ○ /quality/complaints
+├ ○ /quality/improvements
+├ ○ /quality/incidents
+├ ○ /radiology
+├ ○ /radiology/annotate
+├ ○ /radiology/contrast
+├ ○ /radiology/orders
+├ ○ /radiology/pacs
+├ ○ /radiology/reports
+├ ○ /radiology/scan-reports
+├ ○ /radiology/schedule
+├ ○ /radiology/templates
+├ ○ /radiology/viewer
+├ ○ /register
+├ ○ /reports
+├ ○ /reports/builder
+├ ○ /reports/clinical
+├ ○ /reports/comparative
+├ ○ /reports/custom
+├ ○ /reports/disease-trends
+├ ○ /reports/doctor-metrics
+├ ○ /reports/drill-down
+├ ○ /reports/export
+├ ○ /reports/financial
+├ ○ /reports/operational
+├ ○ /reports/outcomes
+├ ○ /reports/patient-stats
+├ ○ /reports/predictive
+├ ○ /reports/readmissions
+├ ○ /reports/scheduled
+├ ○ /reports/utilization
+├ ○ /reset-password
+├ ○ /scheduling
+├ ○ /scheduling/appointments
+├ ○ /scheduling/availability
+├ ○ /scheduling/calendar
+├ ○ /scheduling/conflicts
+├ ○ /scheduling/waitlist
+├ ○ /settings
+├ ○ /staff
+├ ○ /staff/attendance
+├ ○ /staff/benefits
+├ ○ /staff/credentials
+├ ○ /staff/directory
+├ ○ /staff/leave-management
+├ ○ /staff/overtime
+├ ○ /staff/payroll
+├ ○ /staff/payslips
+├ ○ /staff/performance
+├ ○ /staff/records
+├ ○ /staff/register
+├ ○ /staff/roster
+├ ○ /staff/roster-management
+├ ○ /staff/shifts
+├ ○ /staff/timesheets
+├ ○ /staff/training
+├ ○ /telemedicine
+├ ○ /telemedicine/appointment
+├ ○ /telemedicine/book
+├ ○ /telemedicine/monitoring
+├ ○ /telemedicine/video
+├ ○ /telemedicine/waiting-room
+├ ○ /test
+├ ○ /triage
+└ ○ /unauthorized
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
+PS C:\Users\USER\Desktop\Hospital\hospital-frontend>

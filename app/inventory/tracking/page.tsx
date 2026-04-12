@@ -31,29 +31,29 @@ export default function InventoryTrackingPage() {
   );
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '1400px', margin: '0 auto' }}>
+    <div className="  sm: sm: lg: lg: max-w-7xl mx-auto">
       <Title level={3}>Inventory Tracking</Title>
 
-      <div className="flex flex-col lg:flex-row gap-6">
-        <Card title="Items" className="flex-1" style={{ flex: 1 }}>
+      <div className=" -col lg:-row ">
+        <Card title="Items" className="-1 -1">
           <Input.Search
             placeholder="Search items..."
             allowClear
-            style={{ marginBottom: '16px' }}
+            style={{ marginBottom: '4px' }}
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
             prefix={<SearchOutlined />}
           />
-          <Space orientation="vertical" style={{ width: '100%' }} size="middle">
+          <Space orientation="vertical" className="w-full" size="middle">
             {filteredItems.map((item) => (
               <Card
                 key={item.id}
                 size="small"
                 hoverable
                 onClick={() => setSelectedItem(item)}
-                style={{ cursor: 'pointer', border: selectedItem?.id === item.id ? '2px solid #1890ff' : undefined }}
+                className={`cursor-pointer ${selectedItem?.id === item.id ? 'border-2 border-blue-500' : ''}`}
               >
-                <div className="flex justify-between items-start">
+                <div className="  items-start">
                   <div>
                     <Text strong>{item.name}</Text>
                     <br />
@@ -71,8 +71,8 @@ export default function InventoryTrackingPage() {
         </Card>
 
         {selectedItem && (
-          <Card title={`Tracking History: ${selectedItem.name}`} className="flex-1" style={{ flex: 1 }}>
-            <Space orientation="vertical" style={{ width: '100%', marginBottom: '16px' }}>
+          <Card title={`Tracking History: ${selectedItem.name}`} className="-1 -1">
+            <Space orientation="vertical" className="w-full ">
               <div><Text strong>Batch No:</Text> {selectedItem.batch}</div>
               <div><Text strong>Current Location:</Text> {selectedItem.currentLocation}</div>
               <div><Text strong>Quantity:</Text> {selectedItem.quantity}</div>
@@ -87,7 +87,7 @@ export default function InventoryTrackingPage() {
                     <br />
                     <Text type="secondary">Qty: {event.quantity} | By: {event.user}</Text>
                     <br />
-                    <Text type="secondary" style={{ fontSize: '12px' }}>{event.date}</Text>
+                    <Text type="secondary" className="">{event.date}</Text>
                   </div>
                 ),
               }))}

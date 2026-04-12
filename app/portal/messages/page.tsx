@@ -70,42 +70,37 @@ export default function MessagesPage() {
   };
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '1400px', margin: '0 auto' }}>
+    <div className="  sm: sm: lg: lg: max-w-[1400px] mx-auto">
       <Title level={3}>Messages</Title>
 
-      <div style={{ display: 'flex', gap: '24px', height: '600px' }}>
-        <Card title="Inbox" style={{ width: '400px', display: 'flex', flexDirection: 'column' }}>
+      <div className="  h-[600px]">
+        <Card title="Inbox" className="w-[400px]  -col">
           <List
             dataSource={messages}
             renderItem={(item) => (
               <List.Item
                 key={item.id}
                 onClick={() => setSelectedMessage(item)}
-                style={{
-                  cursor: 'pointer',
-                  backgroundColor: selectedMessage?.id === item.id ? '#f0f7ff' : 'transparent',
-                  padding: '12px',
-                  borderRadius: '8px',
-                }}
+                className="cursor-pointer  -lg"
               >
                 <List.Item.Meta
                   avatar={
                     <Badge dot={!item.read} offset={[-5, 5]}>
-                      <Avatar style={{ backgroundColor: '#1890ff' }}>
+                      <Avatar className="bg-blue-500">
                         {item.from.charAt(0)}
                       </Avatar>
                     </Badge>
                   }
                   title={
-                    <div className="flex items-center gap-2">
+                    <div className="  ">
                       <span className={!item.read ? 'font-semibold' : ''}>{item.from}</span>
                       {!item.read && <Tag color="blue">New</Tag>}
                     </div>
                   }
                   description={
                     <div>
-                      <div className="font-medium text-sm">{item.subject}</div>
-                      <div className="text-xs text-gray-500">{item.date}</div>
+                      <div className="font-medium ">{item.subject}</div>
+                      <div className=" ">{item.date}</div>
                     </div>
                   }
                 />
@@ -116,31 +111,31 @@ export default function MessagesPage() {
 
         <Card
           title={selectedMessage ? `Message from ${selectedMessage.from}` : 'Select a message'}
-          style={{ flex: 1, display: 'flex', flexDirection: 'column' }}
+          className="-1  -col"
         >
           {selectedMessage ? (
-            <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
-              <div style={{ flex: 1, overflowY: 'auto' }}>
-                <div className="mb-4">
-                  <div className="flex justify-between items-start mb-3">
+            <div className=" -col h-full">
+              <div className="-1 overflow-y-auto">
+                <div className="">
+                  <div className="  items-start ">
                     <div>
                       <Title level={5}>{selectedMessage.subject}</Title>
                       <Space>
                         <Tag color="blue">{selectedMessage.fromRole}</Tag>
-                        <span className="text-sm text-gray-500">{selectedMessage.department}</span>
+                        <span className=" ">{selectedMessage.department}</span>
                       </Space>
                     </div>
-                    <span className="text-sm text-gray-500">{selectedMessage.date}</span>
+                    <span className=" ">{selectedMessage.date}</span>
                   </div>
-                  <div className="p-4 bg-gray-50 rounded" style={{ lineHeight: '1.6' }}>
+                  <div className=" bg-gray-50 " style={{ lineHeight: '1.6' }}>
                     {selectedMessage.message}
                   </div>
                 </div>
               </div>
 
-              <div style={{ borderTop: '1px solid #f0f0f0', paddingTop: '16px' }}>
+              <div className="border-t ">
                 <Title level={5}>Reply</Title>
-                <Space.Compact style={{ width: '100%' }}>
+                <Space.Compact className="w-full">
                   <TextArea
                     rows={3}
                     value={replyText}
@@ -151,19 +146,19 @@ export default function MessagesPage() {
                     type="primary"
                     icon={<SendOutlined />}
                     onClick={handleSendMessage}
-                    style={{ height: 'auto' }}
+                    className="h-auto"
                   >
                     Send
                   </Button>
                 </Space.Compact>
-                <div style={{ marginTop: '8px' }}>
+                <div className="">
                   <Button size="small" icon={<PaperClipOutlined />}>Attach File</Button>
                 </div>
               </div>
             </div>
           ) : (
-            <div className="flex items-center justify-center h-full text-gray-400">
-              <MessageOutlined style={{ fontSize: '48px', marginBottom: '16px' }} />
+            <div className="   h-full ">
+              <MessageOutlined className="text-5xl " />
               <p>Select a message to view</p>
             </div>
           )}

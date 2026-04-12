@@ -64,37 +64,37 @@ export default function SchedulingWaitlistPage() {
   const urgentCount = waitlist.filter(w => w.priority === 'Urgent' && w.status === 'Waiting').length;
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '1400px', margin: '0 auto' }}>
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+    <div className="  sm: sm: lg: lg: max-w-7xl mx-auto">
+      <div className=" -col sm:-row items-start sm:   ">
         <Title level={3}>Appointment Waitlist</Title>
         <Button type="primary" icon={<PlusOutlined />} onClick={() => setIsModalVisible(true)}>
           Add to Waitlist
         </Button>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px', marginBottom: '24px' }}>
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))]  ">
         <Card>
           <div className="text-center">
-            <div className="text-3xl font-bold text-red-600">{urgentCount}</div>
-            <div className="text-gray-500">Urgent Cases</div>
+            <div className="text-3xl font-bold ">{urgentCount}</div>
+            <div className="">Urgent Cases</div>
           </div>
         </Card>
         <Card>
           <div className="text-center">
-            <div className="text-3xl font-bold text-blue-600">{waitlist.filter(w => w.status === 'Waiting').length}</div>
-            <div className="text-gray-500">Waiting</div>
+            <div className="text-3xl font-bold ">{waitlist.filter(w => w.status === 'Waiting').length}</div>
+            <div className="">Waiting</div>
           </div>
         </Card>
         <Card>
           <div className="text-center">
-            <div className="text-3xl font-bold text-green-600">{waitlist.filter(w => w.status === 'Scheduled').length}</div>
-            <div className="text-gray-500">Scheduled Today</div>
+            <div className="text-3xl font-bold ">{waitlist.filter(w => w.status === 'Scheduled').length}</div>
+            <div className="">Scheduled Today</div>
           </div>
         </Card>
         <Card>
           <div className="text-center">
             <div className="text-3xl font-bold text-purple-600">{waitlist.length}</div>
-            <div className="text-gray-500">Total on Waitlist</div>
+            <div className="">Total on Waitlist</div>
           </div>
         </Card>
       </div>

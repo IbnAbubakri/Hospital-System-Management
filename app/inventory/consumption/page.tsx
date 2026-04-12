@@ -18,8 +18,8 @@ export default function InventoryConsumptionPage() {
     { title: 'Category', dataIndex: 'category', key: 'category', render: (cat: string) => <Tag>{cat}</Tag> },
     { title: 'Month', dataIndex: 'month', key: 'month' },
     { title: 'Opening Stock', dataIndex: 'openingStock', key: 'openingStock' },
-    { title: 'Consumed', dataIndex: 'consumed', key: 'consumed', render: (val: number) => <span className="text-red-600">-{val}</span> },
-    { title: 'Closing Stock', dataIndex: 'closingStock', key: 'closingStock', render: (val: number) => <span className="text-green-600">{val}</span> },
+    { title: 'Consumed', dataIndex: 'consumed', key: 'consumed', render: (val: number) => <span className="">-{val}</span> },
+    { title: 'Closing Stock', dataIndex: 'closingStock', key: 'closingStock', render: (val: number) => <span className="">{val}</span> },
     {
       title: 'Actions',
       key: 'actions',
@@ -28,9 +28,9 @@ export default function InventoryConsumptionPage() {
   ];
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '1200px', margin: '0 auto' }}>
+    <div className="  sm: sm: lg: lg: max-w-6xl mx-auto">
       <Title level={3}>Inventory Consumption Analytics</Title>
-      <Card className="p-4 sm:p-6">
+      <Card className=" sm:">
         <div className="overflow-x-auto">
           <Table dataSource={consumption} columns={columns} rowKey="id" />
         </div>

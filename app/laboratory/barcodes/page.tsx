@@ -114,7 +114,7 @@ export default function BarcodesPage() {
   ];
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '1200px', margin: '0 auto' }}>
+    <div className="  sm: sm: lg: lg:" style={{ maxWidth: '1152px', margin: '0 auto' }}>
       <Title level={3}>Barcode Label Generation & Printing</Title>
 
       <Alert

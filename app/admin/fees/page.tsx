@@ -70,8 +70,8 @@ export default function AdminFeesPage() {
   );
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '1400px', margin: '0 auto' }}>
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
+    <div className="  sm: sm: lg: lg:" style={{ maxWidth: '1280px', margin: '0 auto' }}>
+      <div className=" -col sm:-row sm: sm:  ">
         <Title level={3}>Fee Schedule</Title>
         <Button type="primary" icon={<PlusOutlined />} onClick={() => setIsModalVisible(true)} className="w-full sm:w-auto">
           Add Fee
@@ -79,7 +79,7 @@ export default function AdminFeesPage() {
       </div>
 
       <Card className="overflow-x-auto">
-        <div className="mb-4 flex flex-col sm:flex-row gap-3">
+        <div className="  -col sm:-row ">
           <Input.Search
             placeholder="Search fees..."
             allowClear

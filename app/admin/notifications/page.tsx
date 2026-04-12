@@ -165,7 +165,7 @@ export default function NotificationsPage() {
       subtitle="Configure notification rules, templates, and delivery channels"
     >
       {/* Statistics Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 mb-6">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4  sm: ">
         <StatCard
           label="Active Rules"
           value={notificationRules.filter(r => r.status === 'active').length}
@@ -202,11 +202,11 @@ export default function NotificationsPage() {
       </div>
 
       {/* Notification Rules Section */}
-      <div style={{ background: 'white', borderRadius: '12px', padding: '16px', border: '1px solid #E2E8F0', marginBottom: '24px' }}>
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-4">
-          <div className="flex items-center gap-2">
+      <div style={{ background: '#ffffff', borderRadius: '12px', padding: '16px', border: '1px solid #E5E7EB', marginBottom: '24px' }}>
+        <div className=" -col sm:-row items-start sm:   ">
+          <div className="  ">
             <BellOutlined style={{ color: '#6366F1', fontSize: '20px' }} />
-            <h2 className="text-lg font-semibold text-gray-900">Notification Rules</h2>
+            <h2 className=" font-semibold ">Notification Rules</h2>
           </div>
         </div>
 
@@ -241,11 +241,11 @@ export default function NotificationsPage() {
       </div>
 
       {/* Notification Templates Section */}
-      <div style={{ background: 'white', borderRadius: '12px', padding: '16px', border: '1px solid #E2E8F0', marginBottom: '24px' }}>
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-4">
-          <div className="flex items-center gap-2">
+      <div style={{ background: '#ffffff', borderRadius: '12px', padding: '16px', border: '1px solid #E5E7EB', marginBottom: '24px' }}>
+        <div className=" -col sm:-row items-start sm:   ">
+          <div className="  ">
             <MailOutlined style={{ color: '#8B5CF6', fontSize: '20px' }} />
-            <h2 className="text-lg font-semibold text-gray-900">Notification Templates</h2>
+            <h2 className=" font-semibold ">Notification Templates</h2>
           </div>
           <GradientButton
             variant="secondary"
@@ -265,10 +265,10 @@ export default function NotificationsPage() {
       </div>
 
       {/* Recent Notifications Section */}
-      <div style={{ background: 'white', borderRadius: '12px', padding: '16px', border: '1px solid #E2E8F0' }}>
-        <div className="flex items-center gap-2 mb-4">
+      <div style={{ background: '#ffffff', borderRadius: '12px', padding: '16px', border: '1px solid #E5E7EB' }}>
+        <div className="   ">
           <MessageOutlined style={{ color: '#10B981', fontSize: '20px' }} />
-          <h2 className="text-lg font-semibold text-gray-900">Recent Notifications</h2>
+          <h2 className=" font-semibold ">Recent Notifications</h2>
         </div>
 
         <ModernTable
@@ -282,7 +282,7 @@ export default function NotificationsPage() {
       {/* Create Template Modal */}
       <Modal
         title={
-          <div className="flex items-center gap-2">
+          <div className="  ">
             <MailOutlined style={{ color: '#3B82F6' }} />
             <span>Create Notification Template</span>
           </div>

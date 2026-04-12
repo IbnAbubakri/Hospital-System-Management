@@ -110,7 +110,7 @@ export default function InsurancePartnersPage() {
       title: 'Partner',
       key: 'partner',
       render: (_: any, record: InsurancePartner) => (
-        <div className="partner-name-cell flex items-center gap-3">
+        <div className="partner-name-cell   ">
           <Avatar
             size={40}
             icon={<BankOutlined />}
@@ -119,8 +119,8 @@ export default function InsurancePartnersPage() {
             }}
           />
           <div>
-            <div className="font-medium text-gray-900">{record.name}</div>
-            <div className="text-xs text-gray-500">{record.code}</div>
+            <div className="font-medium ">{record.name}</div>
+            <div className=" ">{record.code}</div>
           </div>
         </div>
       ),
@@ -169,9 +169,9 @@ export default function InsurancePartnersPage() {
       key: 'contact',
       render: (_: any, record: InsurancePartner) => (
         <div>
-          <div className="text-sm font-medium">{record.contactPerson}</div>
-          <div className="text-xs text-gray-500 flex items-center gap-1">
-            <PhoneOutlined style={{ fontSize: '11px' }} /> {record.phoneNumber}
+          <div className=" font-medium">{record.contactPerson}</div>
+          <div className="    ">
+            <PhoneOutlined className="" /> {record.phoneNumber}
           </div>
         </div>
       ),
@@ -182,8 +182,8 @@ export default function InsurancePartnersPage() {
       key: 'panel',
       render: (_: any, record: InsurancePartner) => (
         <div>
-          <div className="text-xs text-gray-500">Doctors: {record.panelDoctors}</div>
-          <div className="text-xs text-gray-500">Hospitals: {record.panelHospitals}</div>
+          <div className=" ">Doctors: {record.panelDoctors}</div>
+          <div className=" ">Hospitals: {record.panelHospitals}</div>
         </div>
       ),
       width: 120,
@@ -202,7 +202,7 @@ export default function InsurancePartnersPage() {
         return (
           <Tag
             icon={status === 'active' ? <CheckCircleOutlined /> : status === 'suspended' ? <CloseCircleOutlined /> : null}
-            style={{ backgroundColor: bg, color, border: 'none', fontWeight: 500, fontSize: '13px', padding: '3px 10px', borderRadius: '6px' }}
+            style={{ backgroundColor: bg, color, border: 'none', fontWeight: 500, fontSize: '14px', padding: '3px 10px', borderRadius: '6px' }}
           >
             {status.charAt(0).toUpperCase() + status.slice(1)}
           </Tag>
@@ -214,9 +214,9 @@ export default function InsurancePartnersPage() {
       title: '',
       key: 'actions',
       render: (_: any, record: InsurancePartner) => (
-        <div className="flex gap-1">
-          <Button type="text" icon={<EyeOutlined />} onClick={() => viewPartner(record)} style={{ padding: '4px 8px' }} />
-          <Button type="text" icon={<EditOutlined />} onClick={() => editPartner(record)} style={{ padding: '4px 8px' }} />
+        <div className=" ">
+          <Button type="text" icon={<EyeOutlined />} onClick={() => viewPartner(record)} className="" />
+          <Button type="text" icon={<EditOutlined />} onClick={() => editPartner(record)} className="" />
         </div>
       ),
       width: 80,
@@ -233,7 +233,7 @@ export default function InsurancePartnersPage() {
   };
 
   return (
-    <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)' }}>
+    <div className="min-h-screen bg-gradient-to-b from-sky-50 to-slate-50">
       <style jsx global>{`
         @keyframes fadeInUp {
           from { opacity: 0; transform: translateY(20px); }
@@ -274,15 +274,15 @@ export default function InsurancePartnersPage() {
       `}</style>
 
       {/* Header */}
-      <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ background: 'linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%)', borderBottom: '1px solid #E2E8F0' }}>
+      <div className="  sm: sm: lg: lg: bg-gradient-to-br from-white to-slate-50 border-b border-slate-200">
         <div className="page-content">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 sm:mb-8">
+          <div className=" -col sm:-row items-start sm:    sm:">
             <div>
-              <div className="flex items-center gap-3 mb-1">
+              <div className="   ">
                 <div style={{ width: '4px', height: '28px', background: 'linear-gradient(180deg, #3B82F6 0%, #2563EB 100%)', borderRadius: '2px' }} />
-                <h1 className="text-2xl font-semibold text-gray-900">Insurance Partners</h1>
+                <h1 className="text-2xl font-semibold ">Insurance Partners</h1>
               </div>
-              <p className="text-gray-500 text-sm" style={{ marginLeft: '7px' }}>
+              <p className="  .5">
                 Manage insurance companies and TPA partners
               </p>
             </div>
@@ -290,15 +290,14 @@ export default function InsurancePartnersPage() {
               type="primary"
               icon={<PlusOutlined />}
               onClick={() => router.push('/insurance/partners/new')}
-              style={{ height: '42px', borderRadius: '10px', fontWeight: 600, padding: '0 20px' }}
-              className="w-full sm:w-auto"
+              className=" -xl font-semibold  w-full sm:w-auto"
             >
               Add Partner
             </Button>
           </div>
 
           {/* Stats Cards */}
-          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4  sm:">
             {[
               { label: 'Total Partners', value: animatedStats.total, color: '#3B82F6', bg: '#EFF6FF', border: '#BFDBFE' },
               { label: 'Active', value: animatedStats.active, color: '#10B981', bg: '#D1FAE5', border: '#A7F3D0' },
@@ -307,11 +306,11 @@ export default function InsurancePartnersPage() {
             ].map((stat, index) => (
               <div
                 key={index}
-                className="stat-card p-4 sm:p-5"
-                style={{ borderRadius: '12px', background: `linear-gradient(135deg, ${stat.bg} 0%, rgba(255,255,255,0.8) 100%)`, border: `1px solid ${stat.border}` }}
+                className="stat-card  sm: -xl border"
+                style={{ background: `linear-gradient(135deg, ${stat.bg} 0%, rgba(255,255,255,0.8) 100%)`, borderColor: stat.border }}
               >
-                <div className="text-sm font-medium" style={{ color: '#64748B', marginBottom: '6px' }}>{stat.label}</div>
-                <div className="stat-number" style={{ fontSize: '28px', fontWeight: 700, color: stat.color, lineHeight: 1 }}>{stat.value}</div>
+                <div className=" font-medium text-slate-500 .5">{stat.label}</div>
+                <div className="stat-number text-2xl font-bold leading-none" style={{ color: stat.color }}>{stat.value}</div>
               </div>
             ))}
           </div>
@@ -319,11 +318,11 @@ export default function InsurancePartnersPage() {
       </div>
 
       {/* Content */}
-      <div className="px-4 sm:px-6 lg:px-8 py-6 page-content" style={{ animationDelay: '0.1s' }}>
+      <div className=" sm: lg:  page-content" style={{ animationDelay: '0.1s' }}>
         {/* Search and Filter Bar */}
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mb-6 p-4 overflow-x-auto" style={{ background: 'white', borderRadius: '12px', border: '1px solid #E2E8F0', boxShadow: '0 1px 3px rgba(0, 0, 0, 0.05)' }}>
-          <div className="flex-1 min-w-[200px]">
-            <Search placeholder="Search partners..." allowClear value={searchText} onChange={(e) => setSearchText(e.target.value)} style={{ borderRadius: '8px' }} />
+        <div className=" -col sm:-row items-stretch sm:    overflow-x-auto bg-white -xl border border-slate-200 shadow">
+          <div className="-1 min-w-[200px]">
+            <Search placeholder="Search partners..." allowClear value={searchText} onChange={(e) => setSearchText(e.target.value)} className="-lg" />
           </div>
           <Select placeholder="Type" value={typeFilter} onChange={setTypeFilter} allowClear className="w-full sm:w-[120px]">
             <Option value="tpa">TPA</Option>
@@ -335,13 +334,13 @@ export default function InsurancePartnersPage() {
             <Option value="inactive">Inactive</Option>
             <Option value="suspended">Suspended</Option>
           </Select>
-          <div className="w-full sm:w-auto text-center" style={{ padding: '8px 16px', borderRadius: '8px', background: 'linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%)', border: '1px solid #BFDBFE' }}>
-            <span className="text-sm font-medium" style={{ color: '#1D4ED8' }}>{filteredPartners.length} partners</span>
+          <div className="w-full sm:w-auto text-center   -lg bg-gradient-to-br from-blue-50 to-blue-100 border border-blue-200">
+            <span className=" font-medium ">{filteredPartners.length} partners</span>
           </div>
         </div>
 
         {/* Table */}
-        <div className="overflow-x-auto" style={{ background: 'white', borderRadius: '12px', border: '1px solid #E2E8F0' }}>
+        <div className="overflow-x-auto bg-white -xl border border-slate-200">
           <Table
             dataSource={filteredPartners}
             columns={columns}

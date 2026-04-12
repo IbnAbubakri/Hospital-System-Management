@@ -130,7 +130,7 @@ export default function ResultsTrackingPage() {
       <Title level={3}>Test Results Tracking</Title>
 
       <Card>
-        <div className="mb-4 flex gap-3">
+        <div className="  ">
           <Input.Search placeholder="Search results..." allowClear style={{ width: 250 }} />
           <Select value={statusFilter} onChange={setStatusFilter} style={{ width: 150 }}>
             <Select.Option value="all">All Status</Select.Option>
@@ -156,19 +156,19 @@ export default function ResultsTrackingPage() {
       >
         {selectedResult && (
           <div>
-            <Card size="small" title="Patient Information" className="mb-4">
+            <Card size="small" title="Patient Information" className="">
               <p><strong>Patient:</strong> {selectedResult.patient}</p>
               <p><strong>MRN:</strong> {selectedResult.mrn}</p>
             </Card>
 
-            <Card size="small" title="Test Information" className="mb-4">
+            <Card size="small" title="Test Information" className="">
               <p><strong>Type:</strong> {selectedResult.type}</p>
               <p><strong>Test:</strong> {selectedResult.test}</p>
               <p><strong>Ordered By:</strong> {selectedResult.orderedBy}</p>
               <p><strong>Performed By:</strong> {selectedResult.performedBy}</p>
             </Card>
 
-            <Card size="small" title="Timeline" className="mb-4">
+            <Card size="small" title="Timeline" className="">
               <p><strong>Ordered:</strong> {selectedResult.orderedDate} at {selectedResult.orderedTime}</p>
               <p><strong>Collected:</strong> {selectedResult.collectedDate} at {selectedResult.collectedTime}</p>
               <p><strong>Expected:</strong> {selectedResult.expectedDate} by {selectedResult.expectedTime}</p>
@@ -182,7 +182,7 @@ export default function ResultsTrackingPage() {
             </Card>
 
             {selectedResult.status === 'Completed' && (
-              <Button type="primary" block className="mt-4">View Full Results</Button>
+              <Button type="primary" block className="">View Full Results</Button>
             )}
           </div>
         )}

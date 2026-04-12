@@ -338,8 +338,7 @@ export default function CostCenterPage() {
 
       {/* Header Section */}
       <div style={{
-        padding: '32px',
-        background: 'linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%)',
+                background: 'linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%)',
         borderBottom: '1px solid #E2E8F0',
         position: 'relative',
         overflow: 'hidden'
@@ -355,8 +354,8 @@ export default function CostCenterPage() {
         }} />
 
         <div className="page-content" style={{ animationDelay: '0s', position: 'relative', zIndex: 1 }}>
-          <div className="flex items-center justify-between mb-6">
-            <div className="flex items-center gap-3 mb-1">
+          <div className="   ">
+            <div className="   ">
               <div style={{
                 width: '4px',
                 height: '28px',
@@ -364,7 +363,7 @@ export default function CostCenterPage() {
                 borderRadius: '2px'
               }} />
               <div>
-                <h1 className="text-2xl font-semibold text-gray-900">
+                <h1 className="text-2xl font-semibold ">
                   Cost Center Management
                 </h1>
               </div>
@@ -373,7 +372,7 @@ export default function CostCenterPage() {
               Add Cost Center
             </Button>
           </div>
-          <p className="text-gray-500 text-sm" style={{ marginLeft: '7px' }}>
+          <p className=" " style={{ marginLeft: '7px' }}>
             Monitor budget allocation and spending by department
           </p>
 
@@ -389,7 +388,7 @@ export default function CostCenterPage() {
                   border: '1px solid #DBEAFE',
                 }}
               >
-                <div className="text-sm font-medium" style={{ color: '#64748B', marginBottom: '6px' }}>
+                <div className=" font-medium" style={{ color: '#6B7280', marginBottom: '6px' }}>
                   Total Budget
                 </div>
                 <div className="stat-number" style={{ fontSize: '24px', fontWeight: 700, color: '#3B82F6', lineHeight: 1 }}>
@@ -407,7 +406,7 @@ export default function CostCenterPage() {
                   border: '1px solid #DDD6FE',
                 }}
               >
-                <div className="text-sm font-medium" style={{ color: '#64748B', marginBottom: '6px' }}>
+                <div className=" font-medium" style={{ color: '#6B7280', marginBottom: '6px' }}>
                   Total Spent
                 </div>
                 <div className="stat-number" style={{ fontSize: '24px', fontWeight: 700, color: '#8B5CF6', lineHeight: 1 }}>
@@ -425,7 +424,7 @@ export default function CostCenterPage() {
                   border: '1px solid #A7F3D0',
                 }}
               >
-                <div className="text-sm font-medium" style={{ color: '#64748B', marginBottom: '6px' }}>
+                <div className=" font-medium" style={{ color: '#6B7280', marginBottom: '6px' }}>
                   Under Budget
                 </div>
                 <div className="stat-number" style={{ fontSize: '24px', fontWeight: 700, color: '#10B981', lineHeight: 1 }}>
@@ -443,7 +442,7 @@ export default function CostCenterPage() {
                   border: '1px solid #FECACA',
                 }}
               >
-                <div className="text-sm font-medium" style={{ color: '#64748B', marginBottom: '6px' }}>
+                <div className=" font-medium" style={{ color: '#6B7280', marginBottom: '6px' }}>
                   Over Budget
                 </div>
                 <div className="stat-number" style={{ fontSize: '24px', fontWeight: 700, color: '#EF4444', lineHeight: 1 }}>
@@ -456,11 +455,11 @@ export default function CostCenterPage() {
       </div>
 
       {/* Content Section */}
-      <div className="px-8 py-6 page-content" style={{ animationDelay: '0.1s' }}>
+      <div className="  page-content" style={{ animationDelay: '0.1s' }}>
         <Card
           title="Cost Centers"
           extra={
-            <div className="flex gap-3">
+            <div className=" ">
               <Search
                 placeholder="Search cost centers..."
                 allowClear
@@ -507,19 +506,19 @@ export default function CostCenterPage() {
         {selectedCenter && (
           <div>
             <Card style={{ marginBottom: '16px' }}>
-              <div className="mb-3">
+              <div className="">
                 <Text type="secondary">Code</Text>
                 <div><Tag color="blue">{selectedCenter.code}</Tag></div>
               </div>
-              <div className="mb-3">
+              <div className="">
                 <Text type="secondary">Name</Text>
                 <div className="text-xl font-semibold">{selectedCenter.name}</div>
               </div>
-              <div className="mb-3">
+              <div className="">
                 <Text type="secondary">Department</Text>
                 <div><Tag>{selectedCenter.department}</Tag></div>
               </div>
-              <div className="mb-3">
+              <div className="">
                 <Text type="secondary">Manager</Text>
                 <div>{selectedCenter.manager}</div>
               </div>

@@ -47,7 +47,7 @@ export default function EMRPage() {
 
   if (!hasPermission('view_emr') && user?.role !== 'Administrator') {
     return (
-      <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)', padding: '16px' }}>
+      <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)' }}>
         <Alert
           title="Access Denied"
           description="You don't have permission to access Electronic Medical Records. Please contact your administrator."
@@ -335,8 +335,8 @@ export default function EMRPage() {
       key: 'date',
       render: (date: string, record: any) => (
         <div>
-          <div className="text-sm text-gray-900">{formatDate(date)}</div>
-          <div className="text-xs text-gray-500">{record.time}</div>
+          <div className="text-gray-600">{formatDate(date)}</div>
+          <div className="text-gray-400 text-sm">{record.time}</div>
         </div>
       ),
       width: 120,
@@ -346,8 +346,8 @@ export default function EMRPage() {
       key: 'patient',
       render: (_: unknown, record: any) => (
         <div>
-          <div className="font-medium text-gray-900">{record.patientName}</div>
-          <div className="text-xs text-gray-500">{record.mrn}</div>
+          <div className="font-medium">{record.patientName}</div>
+          <div className="text-gray-500">{record.mrn}</div>
         </div>
       ),
       width: 200,
@@ -356,7 +356,7 @@ export default function EMRPage() {
       title: 'Doctor',
       dataIndex: 'doctor',
       key: 'doctor',
-      render: (doctor: string) => <span className="text-sm">{doctor}</span>,
+      render: (doctor: string) => <span className="text-gray-700">{doctor}</span>,
       width: 200,
     },
     {
@@ -364,14 +364,14 @@ export default function EMRPage() {
       dataIndex: 'chiefComplaint',
       key: 'chiefComplaint',
       ellipsis: true,
-      render: (text: string) => <span className="text-sm">{text}</span>,
+      render: (text: string) => <span className="text-gray-600">{text}</span>,
     },
     {
       title: 'Diagnosis',
       dataIndex: 'diagnosis',
       key: 'diagnosis',
       render: (diagnosis: string) => (
-        <Tag color="blue" className="text-sm">{diagnosis}</Tag>
+        <Tag color="blue">{diagnosis}</Tag>
       ),
       width: 200,
     },
@@ -476,8 +476,7 @@ export default function EMRPage() {
 
       {/* Header Section */}
       <div style={{
-        padding: '32px',
-        background: 'linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%)',
+                background: 'linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%)',
         borderBottom: '1px solid #E2E8E0',
         position: 'relative',
         overflow: 'hidden'
@@ -485,19 +484,19 @@ export default function EMRPage() {
         <div style={{ position: 'absolute', top: '-50px', right: '-50px', width: '200px', height: '200px', background: 'radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 70%)', borderRadius: '50%' }} />
         <div style={{ position: 'absolute', bottom: '-80px', left: '100px', width: '300px', height: '300px', background: 'radial-gradient(circle, rgba(16, 185, 129, 0.06) 0%, transparent 70%)', borderRadius: '50%' }} />
 
-        <div className="page-content" style={{ animationDelay: '0s', position: 'relative', zIndex: 1 }}>
-          <div className="flex items-center justify-between mb-1">
+        <div className="page-content px-4 sm:px-6 lg:px-8" style={{ animationDelay: '0s', position: 'relative', zIndex: 1 }}>
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div>
               <div className="flex items-center gap-3">
                 <div style={{ width: '4px', height: '28px', background: 'linear-gradient(180deg, #3B82F6 0%, #2563EB 100%)', borderRadius: '2px' }} />
-                <h1 className="text-2xl font-semibold text-gray-900">Electronic Medical Records</h1>
-                {user?.role === 'Doctor' && (
-                  <Text style={{ color: '#64748B', fontSize: '14px' }}>
-                    ({getUserFullName()}'s Records)
-                  </Text>
-                )}
+                <h1 className="text-2xl font-semibold">Electronic Medical Records</h1>
               </div>
-              <p className="text-gray-500 text-sm" style={{ marginLeft: '7px' }}>
+              {user?.role === 'Doctor' && (
+                <Text style={{ color: '#6B7280', fontSize: '14px', marginLeft: '7px' }}>
+                  ({getUserFullName()}'s Records)
+                </Text>
+              )}
+              <p style={{ marginLeft: '7px' }}>
                 {user?.role === 'Administrator'
                   ? 'View and manage all patient medical records and documentation'
                   : `View and manage your ${userFilteredEMR.length} medical record${userFilteredEMR.length !== 1 ? 's' : ''}`
@@ -511,7 +510,6 @@ export default function EMRPage() {
                   borderRadius: '8px',
                   border: `1px solid ${departmentColors?.border || '#BFDBFE'}`,
                   display: 'inline-flex',
-                  alignItems: 'center',
                   gap: '8px'
                 }}>
                   <WarningOutlined style={{ color: departmentColors?.text || '#1D4ED8', fontSize: '14px' }} />
@@ -535,7 +533,7 @@ export default function EMRPage() {
 
       {/* Stats Cards */}
       <div style={{ padding: '24px 32px 0' }}>
-        <div className="grid grid-cols-4 gap-5 page-content" style={{ animationDelay: '0.1s' }}>
+        <div className="grid grid-cols-4 gap-4 page-content" style={{ animationDelay: '0.1s' }}>
           {[
             { label: 'Total Records', value: animatedStats.total, color: '#3B82F6', bg: '#EFF6FF', border: '#DBEAFE' },
             { label: "Today's EMRs", value: animatedStats.today, color: '#10B981', bg: '#D1FAE5', border: '#A7F3D0' },
@@ -547,7 +545,7 @@ export default function EMRPage() {
               className="stat-card"
               style={{ padding: '16px', borderRadius: '12px', background: `linear-gradient(135deg, ${stat.bg} 0%, rgba(255,255,255,0.8) 100%)`, border: `1px solid ${stat.border}`, cursor: 'default' }}
             >
-              <div className="text-sm font-medium" style={{ color: '#64748B', marginBottom: '6px' }}>{stat.label}</div>
+              <div className="font-medium" style={{ color: '#6B7280', marginBottom: '6px' }}>{stat.label}</div>
               <div className="stat-number" style={{ fontSize: '28px', fontWeight: 700, color: stat.color, lineHeight: 1 }}>{stat.value}</div>
             </div>
           ))}
@@ -555,10 +553,10 @@ export default function EMRPage() {
       </div>
 
       {/* Content Section */}
-      <div className="px-8 py-6 page-content" style={{ animationDelay: '0.2s' }}>
+      <div className="px-4 sm:px-6 lg:px-8 page-content" style={{ animationDelay: '0.2s' }}>
         {/* Search and Filter Bar */}
-        <div className="flex items-center gap-3 mb-6 p-4" style={{ background: 'white', borderRadius: '12px', border: '1px solid #E2E8E0', boxShadow: '0 1px 3px rgba(0, 0, 0, 0.05)' }}>
-          <div className="flex-1">
+        <div className="flex flex-col sm:flex-row items-center gap-2 p-4" style={{ backgroundColor: '#ffffff', borderRadius: '12px', border: '1px solid #E2E8E0', boxShadow: '0 1px 3px rgba(0, 0, 0, 0.05)' }}>
+          <div className="w-full">
             <Search
               placeholder="Search EMR by patient, diagnosis, doctor, or complaint..."
               allowClear
@@ -575,12 +573,12 @@ export default function EMRPage() {
           </Select>
           <DatePicker value={dateFilter} onChange={setDateFilter} placeholder="Filter by Date" style={{ width: 150 }} />
           <div style={{ padding: '8px 16px', borderRadius: '8px', background: 'linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%)', border: '1px solid #BFDBFE' }}>
-            <span className="text-sm font-medium" style={{ color: '#1D4ED8' }}>{filteredEMR.length} records</span>
+            <span className="font-medium" style={{ color: '#1D4ED8' }}>{filteredEMR.length} records</span>
           </div>
         </div>
 
         {/* Table */}
-        <div style={{ background: 'white', borderRadius: '12px', border: '1px solid #E2E8E0', overflow: 'hidden', boxShadow: '0 1px 3px rgba(0, 0, 0, 0.05)' }}>
+        <div style={{ backgroundColor: '#ffffff', borderRadius: '12px', border: '1px solid #E2E8E0', overflow: 'hidden', boxShadow: '0 1px 3px rgba(0, 0, 0, 0.05)', marginTop: '16px' }}>
           <Table
             dataSource={filteredEMR}
             columns={columns}
@@ -602,7 +600,7 @@ export default function EMRPage() {
           <div>
             <div style={{ marginBottom: '24px', paddingBottom: '16px', borderBottom: '1px solid #E2E8E0' }}>
               <Title level={4} style={{ margin: 0, marginBottom: '8px' }}>{selectedEMR.patientName}</Title>
-              <Text type="secondary">{selectedEMR.mrn} • {selectedEMR.age} years • {selectedEMR.gender} • {selectedEMR.bloodGroup}</Text>
+              <Text type="secondary">{selectedEMR.mrn} - {selectedEMR.age} years - {selectedEMR.gender} - {selectedEMR.bloodGroup}</Text>
             </div>
 
             <Descriptions title="Visit Information" bordered column={1} size="small">
@@ -627,7 +625,7 @@ export default function EMRPage() {
                 {Object.entries(selectedEMR.vitals).map(([key, value]) => (
                   <div key={key} style={{ background: '#F3F4F6', padding: '12px', borderRadius: '8px' }}>
                     <Text type="secondary" style={{ fontSize: '12px', textTransform: 'capitalize' }}>{key.replace(/([A-Z])/g, ' $1')}</Text>
-                    <div style={{ fontWeight: 600, color: '#1E293B' }}>{value as string}</div>
+                    <div style={{ fontWeight: '600', color: '#1E293B' }}>{value as string}</div>
                   </div>
                 ))}
               </div>

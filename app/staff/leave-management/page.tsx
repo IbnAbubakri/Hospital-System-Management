@@ -150,7 +150,7 @@ export default function LeaveManagementPage() {
         <Space>
           <div>
             <div className="font-medium">{name}</div>
-            <Text type="secondary" className="text-xs">{record.staffId}</Text>
+            <Text type="secondary" className="">{record.staffId}</Text>
           </div>
         </Space>
       ),
@@ -173,7 +173,7 @@ export default function LeaveManagementPage() {
       render: (_: any, record: LeaveRequest) => (
         <div>
           <div className="font-medium">{record.days} day(s)</div>
-          <Text type="secondary" className="text-xs">
+          <Text type="secondary" className="">
             {dayjs(record.startDate).format('MMM DD')} - {dayjs(record.endDate).format('MMM DD')}
           </Text>
         </div>
@@ -219,7 +219,7 @@ export default function LeaveManagementPage() {
           </Button>
           {record.status === 'Pending' && (
             <>
-              <Button type="link" size="small" style={{ color: '#52c41a' }}>Approve</Button>
+              <Button type="link" size="small" className="">Approve</Button>
               <Button type="link" size="small" danger>Reject</Button>
             </>
           )}
@@ -241,10 +241,10 @@ export default function LeaveManagementPage() {
   };
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '1400px', margin: '0 auto' }}>
+    <div className="  sm: sm: lg: lg: max-w-7xl mx-auto">
       <Title level={3}>Leave Management</Title>
 
-      <Row gutter={[24, 24]} style={{ marginBottom: '24px' }}>
+      <Row gutter={[24, 24]} className="">
         <Col xs={24} sm={12} md={6}>
           <Card>
             <Statistic title="Total Requests" value={stats.total} prefix={<CalendarOutlined />} />
@@ -252,23 +252,23 @@ export default function LeaveManagementPage() {
         </Col>
         <Col xs={24} sm={12} md={6}>
           <Card>
-            <Statistic title="Pending" value={stats.pending} valueStyle={{ color: '#faad14' }} />
+            <Statistic title="Pending" value={stats.pending} valueStyle={{ color: '#EAB308' }} />
           </Card>
         </Col>
         <Col xs={24} sm={12} md={6}>
           <Card>
-            <Statistic title="Approved" value={stats.approved} valueStyle={{ color: '#52c41a' }} />
+            <Statistic title="Approved" value={stats.approved} valueStyle={{ color: '#10B981' }} />
           </Card>
         </Col>
         <Col xs={24} sm={12} md={6}>
           <Card>
-            <Statistic title="On Leave" value={stats.onLeave} valueStyle={{ color: '#1890ff' }} />
+            <Statistic title="On Leave" value={stats.onLeave} valueStyle={{ color: '#3B82F6' }} />
           </Card>
         </Col>
       </Row>
 
       <Card>
-        <Space style={{ marginBottom: 16 }}>
+        <Space className="">
           <Select
             placeholder="Status"
             value={statusFilter}

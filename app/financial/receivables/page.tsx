@@ -44,9 +44,9 @@ export default function ReceivablesPage() {
       <Title level={3}>Accounts Receivable</Title>
       <Card>
         <Table dataSource={receivables} columns={columns} rowKey="id" />
-        <div className="mt-4 text-right">
-          <Text strong className="text-lg">Total Outstanding: </Text>
-          <Text className="text-lg text-red-600 ml-2">₦{totalOutstanding.toLocaleString()}</Text>
+        <div className=" text-right">
+          <Text strong className="">Total Outstanding: </Text>
+          <Text className=" color: '#DC2626' ">₦{totalOutstanding.toLocaleString()}</Text>
         </div>
       </Card>
     </div>

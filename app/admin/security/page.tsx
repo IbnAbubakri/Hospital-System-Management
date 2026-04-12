@@ -16,14 +16,14 @@ export default function SecurityPage() {
   // CRITICAL SECURITY: Restrict access to administrators only
   if (!hasPermission('admin:security:view')) {
     return (
-      <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)', padding: '16px' }}>
+      <div className="min-h-screen bg-gradient-to-b from-blue-50 to-slate-50 ">
         <Alert
           title="Access Denied"
           description="You don&apos;tt have permission to access security settings. This area is restricted to administrators only."
           type="error"
           showIcon
           icon={<StopOutlined />}
-          style={{ marginTop: '24px', borderRadius: '12px' }}
+          className=" -xl"
         />
       </div>
     );
@@ -112,7 +112,7 @@ export default function SecurityPage() {
       subtitle="Manage password policies, sessions, and access control"
     >
       {/* Statistics Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 mb-6">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4  sm: ">
         <StatCard
           label="Active Sessions"
           value={activeSessions.length}
@@ -150,10 +150,10 @@ export default function SecurityPage() {
       </div>
 
       {/* Password Policy Section */}
-      <div style={{ marginBottom: '24px' }}>
+      <div className="">
         <InfoCard
           title="Password Policy"
-          icon={<KeyOutlined style={{ color: '#3B82F6' }} />}
+          icon={<KeyOutlined className="" />}
         >
           <Form
             form={securityForm}
@@ -161,7 +161,7 @@ export default function SecurityPage() {
             initialValues={securitySettings.passwordPolicy}
           >
             <Form.Item name="minLength" label="Minimum Password Length">
-              <Select style={{ borderRadius: '8px' }}>
+              <Select className="-lg">
                 <Select.Option value={6}>6 characters</Select.Option>
                 <Select.Option value={8}>8 characters</Select.Option>
                 <Select.Option value={10}>10 characters</Select.Option>
@@ -169,31 +169,31 @@ export default function SecurityPage() {
               </Select>
             </Form.Item>
             <Form.Item name="requireUppercase" valuePropName="checked">
-              <div className="flex items-center gap-2">
+              <div className="  ">
                 <Switch />
                 <span>Require Uppercase Letters</span>
               </div>
             </Form.Item>
             <Form.Item name="requireLowercase" valuePropName="checked">
-              <div className="flex items-center gap-2">
+              <div className="  ">
                 <Switch />
                 <span>Require Lowercase Letters</span>
               </div>
             </Form.Item>
             <Form.Item name="requireNumbers" valuePropName="checked">
-              <div className="flex items-center gap-2">
+              <div className="  ">
                 <Switch />
                 <span>Require Numbers</span>
               </div>
             </Form.Item>
             <Form.Item name="requireSpecialChars" valuePropName="checked">
-              <div className="flex items-center gap-2">
+              <div className="  ">
                 <Switch />
                 <span>Require Special Characters</span>
               </div>
             </Form.Item>
             <Form.Item name="passwordExpiry" label="Password Expiry (Days)">
-              <Select style={{ borderRadius: '8px' }}>
+              <Select className="-lg">
                 <Select.Option value={30}>30 days</Select.Option>
                 <Select.Option value={60}>60 days</Select.Option>
                 <Select.Option value={90}>90 days</Select.Option>
@@ -213,14 +213,14 @@ export default function SecurityPage() {
       </div>
 
       {/* Session Settings Section */}
-      <div style={{ marginBottom: '24px' }}>
+      <div className="">
         <InfoCard
           title="Session Settings"
-          icon={<LockOutlined style={{ color: '#10B981' }} />}
+          icon={<LockOutlined className="" />}
         >
           <Form layout="vertical" initialValues={securitySettings.sessionSettings}>
             <Form.Item name="sessionTimeout" label="Session Timeout (Minutes)">
-              <Select style={{ borderRadius: '8px' }}>
+              <Select className="-lg">
                 <Select.Option value={15}>15 minutes</Select.Option>
                 <Select.Option value={30}>30 minutes</Select.Option>
                 <Select.Option value={60}>60 minutes</Select.Option>
@@ -228,7 +228,7 @@ export default function SecurityPage() {
               </Select>
             </Form.Item>
             <Form.Item name="maxConcurrentSessions" label="Max Concurrent Sessions">
-              <Select style={{ borderRadius: '8px' }}>
+              <Select className="-lg">
                 <Select.Option value={1}>1 session</Select.Option>
                 <Select.Option value={2}>2 sessions</Select.Option>
                 <Select.Option value={3}>3 sessions</Select.Option>
@@ -236,13 +236,13 @@ export default function SecurityPage() {
               </Select>
             </Form.Item>
             <Form.Item name="twoFactorAuth" valuePropName="checked">
-              <div className="flex items-center gap-2">
+              <div className="  ">
                 <Switch />
                 <span>Enable Two-Factor Authentication</span>
               </div>
             </Form.Item>
             <Form.Item name="ipWhitelist" valuePropName="checked">
-              <div className="flex items-center gap-2">
+              <div className="  ">
                 <Switch />
                 <span>Enable IP Whitelist</span>
               </div>
@@ -260,10 +260,10 @@ export default function SecurityPage() {
       </div>
 
       {/* Active Sessions Section */}
-      <div style={{ marginBottom: '24px' }}>
+      <div className="">
         <InfoCard
           title="Active Sessions"
-          icon={<SafetyOutlined style={{ color: '#8B5CF6' }} />}
+          icon={<SafetyOutlined className="" />}
         >
           <ModernTable
             dataSource={activeSessions}
@@ -277,7 +277,7 @@ export default function SecurityPage() {
       {/* Failed Login Attempts Section */}
       <InfoCard
         title="Failed Login Attempts"
-        icon={<SafetyOutlined style={{ color: '#EF4444' }} />}
+        icon={<SafetyOutlined className="" />}
       >
         <ModernTable
           dataSource={failedAttempts}

@@ -15,7 +15,7 @@ export default function StaffTrainingPage() {
   ];
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '1000px', margin: '0 auto' }}>
+    <div className="  sm: sm: lg: lg: max-w-5xl mx-auto">
       <Title level={3}>Training & Development</Title>
       <Card title="Training Programs">
         <List
@@ -23,7 +23,7 @@ export default function StaffTrainingPage() {
           renderItem={(program) => (
             <List.Item>
               <List.Item.Meta
-                avatar={<TrophyOutlined style={{ fontSize: '20px', color: '#F59E0B' }} />}
+                avatar={<TrophyOutlined className="text-xl " />}
                 title={<span className="font-medium">{program.name}</span>}
                 description={
                   <div>

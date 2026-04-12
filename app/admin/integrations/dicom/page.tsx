@@ -147,7 +147,7 @@ export default function DICOMIntegrationPage() {
         return (
           <div style={{ width: 120 }}>
             <Progress percent={percent} size="small" />
-            <Text type="secondary" className="text-xs">{record.storageUsed}GB / {record.storageTotal}GB</Text>
+            <Text type="secondary" className="">{record.storageUsed}GB / {record.storageTotal}GB</Text>
           </div>
         );
       }},
@@ -182,7 +182,7 @@ export default function DICOMIntegrationPage() {
       title="DICOM Configuration"
       subtitle="Manage medical imaging network connections"
     >
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  ">
         <StatCard
           label="Total Nodes"
           value={stats.totalNodes}

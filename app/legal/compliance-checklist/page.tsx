@@ -32,38 +32,38 @@ export default function ComplianceChecklistPage() {
   ];
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '1400px', margin: '0 auto' }}>
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
+    <div className="  sm: sm: lg: lg:" style={{ maxWidth: '1400px', margin: '0 auto' }}>
+      <div className=" -col sm:-row sm: sm:  ">
         <Title level={3}>Compliance Checklist</Title>
-        <Space className="flex flex-col sm:flex-row w-full sm:w-auto gap-2">
+        <Space className=" -col sm:-row w-full sm:w-auto ">
           <Button type="primary" className="w-full sm:w-auto">Run Audit</Button>
           <Button className="w-full sm:w-auto">Export Report</Button>
         </Space>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4  ">
         <Card>
           <div className="text-center">
-            <div className="text-3xl font-bold text-green-600">{categories.filter(c => c.status === 'Compliant').length}/{categories.length}</div>
-            <div className="text-gray-500">Categories Compliant</div>
+            <div className="text-3xl font-bold ">{categories.filter(c => c.status === 'Compliant').length}/{categories.length}</div>
+            <div className="">Categories Compliant</div>
           </div>
         </Card>
         <Card>
           <div className="text-center">
-            <div className="text-3xl font-bold text-blue-600">{Math.round(categories.reduce((sum, c) => sum + c.completed, 0) / categories.reduce((sum, c) => sum + c.items, 0) * 100)}%</div>
-            <div className="text-gray-500">Overall Compliance</div>
+            <div className="text-3xl font-bold ">{Math.round(categories.reduce((sum, c) => sum + c.completed, 0) / categories.reduce((sum, c) => sum + c.items, 0) * 100)}%</div>
+            <div className="">Overall Compliance</div>
           </div>
         </Card>
         <Card>
           <div className="text-center">
-            <div className="text-3xl font-bold text-orange-600">{categories.reduce((sum, c) => sum + (c.items - c.completed), 0)}</div>
-            <div className="text-gray-500">Items Pending</div>
+            <div className="text-3xl font-bold ">{categories.reduce((sum, c) => sum + (c.items - c.completed), 0)}</div>
+            <div className="">Items Pending</div>
           </div>
         </Card>
         <Card>
           <div className="text-center">
             <div className="text-3xl font-bold text-purple-600">{categories.reduce((sum, c) => sum + c.items, 0)}</div>
-            <div className="text-gray-500">Total Checklist Items</div>
+            <div className="">Total Checklist Items</div>
           </div>
         </Card>
       </div>
@@ -80,7 +80,7 @@ export default function ComplianceChecklistPage() {
                   </div>
                 }
                 title={
-                  <div className="flex justify-between items-center">
+                  <div className="  ">
                     <span className="font-medium">{category.name}</span>
                     <Tag color={category.status === 'Compliant' ? 'success' : category.status === 'Minor Issues' ? 'warning' : 'error'}>
                       {category.status}
@@ -89,9 +89,9 @@ export default function ComplianceChecklistPage() {
                 }
                 description={
                   <div>
-                    <div className="flex items-center justify-between mb-2">
+                    <div className="   ">
                       <span>Progress: {category.completed}/{category.items} items</span>
-                      <span className="text-xs text-gray-500">Last audit: {category.lastAudit}</span>
+                      <span className=" ">Last audit: {category.lastAudit}</span>
                     </div>
                     <Progress percent={Math.round((category.completed / category.items) * 100)} size="small" strokeColor={category.status === 'Compliant' ? '#52c41a' : '#faad14'} />
                   </div>

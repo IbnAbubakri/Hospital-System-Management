@@ -33,7 +33,7 @@ export default function PortalRecordsPage() {
 
   return (
     <div>
-      <h2 className="text-2xl font-bold mb-4">My Health Records</h2>
+      <h2 className="text-2xl font-bold ">My Health Records</h2>
 
       <Card>
         <Tabs
@@ -51,12 +51,12 @@ export default function PortalRecordsPage() {
             {
               key: 'labs',
               label: 'Lab Results',
-              children: <div className="text-center py-8 text-gray-500">No lab results available</div>,
+              children: <div className="text-center  ">No lab results available</div>,
             },
             {
               key: 'imaging',
               label: 'Imaging',
-              children: <div className="text-center py-8 text-gray-500">No imaging records available</div>,
+              children: <div className="text-center  ">No imaging records available</div>,
             },
           ]}
         />

@@ -49,11 +49,11 @@ export default function LabViewerPage() {
   ];
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '1400px', margin: '0 auto' }}>
+    <div className="  sm: sm: lg: lg:" style={{ maxWidth: '1280px', margin: '0 auto' }}>
       <Title level={3}>Lab Results Viewer</Title>
 
       <div style={{ display: 'flex', gap: '24px', height: 'calc(100vh - 150px)' }}>
-        <Card title="Recent Results with Images" style={{ width: '400px', overflowY: 'auto' }}>
+        <Card title="Recent Results with Images" style={{ width: '384px', overflowY: 'auto' }}>
           <List
             dataSource={results}
             renderItem={(item) => (
@@ -68,10 +68,10 @@ export default function LabViewerPage() {
                   marginBottom: '8px',
                 }}
               >
-                <List.Item.Meta
-                  avatar={<FileTextOutlined style={{ fontSize: '24px', color: '#1890ff' }} />}
+                  <List.Item.Meta
+                    avatar={<FileTextOutlined style={{ fontSize: '24px', color: '#3B82F6' }} />}
                   title={
-                    <div className="flex justify-between items-center">
+                    <div className="  ">
                       <span>{item.test}</span>
                       <Tag color="success">{item.status}</Tag>
                     </div>
@@ -79,7 +79,7 @@ export default function LabViewerPage() {
                   description={
                     <div>
                       <div>{item.patient} ({item.mrn})</div>
-                      <div className="text-xs text-gray-500">{item.date} • {item.department}</div>
+                      <div className=" ">{item.date} • {item.department}</div>
                     </div>
                   }
                 />
@@ -108,48 +108,48 @@ export default function LabViewerPage() {
               <Title level={5}>Microscopic Images</Title>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '16px' }}>
                 <div>
-                  <div className="text-center mb-2">Blood Smear - Low Power (10x)</div>
+                  <div className="text-center ">Blood Smear - Low Power (10x)</div>
                   <div style={{ backgroundColor: '#f5f5f5', height: '250px', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '8px' }}>
                     <FileTextOutlined style={{ fontSize: '48px', color: '#d9d9d9' }} />
                   </div>
-                  <Space className="mt-2">
+                  <Space className="">
                     <Button size="small" icon={<ZoomInOutlined />}>Zoom</Button>
                     <Button size="small" icon={<DownloadOutlined />}>Download</Button>
                   </Space>
                 </div>
 
                 <div>
-                  <div className="text-center mb-2">Blood Smear - High Power (40x)</div>
+                  <div className="text-center ">Blood Smear - High Power (40x)</div>
                   <div style={{ backgroundColor: '#f5f5f5', height: '250px', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '8px' }}>
                     <FileTextOutlined style={{ fontSize: '48px', color: '#d9d9d9' }} />
                   </div>
-                  <Space className="mt-2">
+                  <Space className="">
                     <Button size="small" icon={<ZoomInOutlined />}>Zoom</Button>
                     <Button size="small" icon={<DownloadOutlined />}>Download</Button>
                   </Space>
                 </div>
 
                 <div>
-                  <div className="text-center mb-2">Cell Morphology Detail (100x)</div>
+                  <div className="text-center ">Cell Morphology Detail (100x)</div>
                   <div style={{ backgroundColor: '#f5f5f5', height: '250px', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '8px' }}>
                     <FileTextOutlined style={{ fontSize: '48px', color: '#d9d9d9' }} />
                   </div>
-                  <Space className="mt-2">
+                  <Space className="">
                     <Button size="small" icon={<ZoomInOutlined />}>Zoom</Button>
                     <Button size="small" icon={<DownloadOutlined />}>Download</Button>
                   </Space>
                 </div>
               </div>
 
-              <Card size="small" title="Technician Notes" className="mt-4">
+              <Card size="small" title="Technician Notes" className="">
                 <p>RBCs show normocytic normochemic morphology. WBC differential within normal limits. Platelets adequate in number. No abnormal cells detected.</p>
               </Card>
             </div>
           ) : (
-            <div className="flex items-center justify-center h-full text-gray-400">
+            <div className="   h-full ">
               <div className="text-center">
                 <FileTextOutlined style={{ fontSize: '64px' }} />
-                <p className="mt-4">Select a lab result to view images</p>
+                <p className="">Select a lab result to view images</p>
               </div>
             </div>
           )}

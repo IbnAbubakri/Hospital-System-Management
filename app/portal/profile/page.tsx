@@ -17,22 +17,22 @@ export default function PortalProfilePage() {
   };
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8">
-      <h2 className="text-2xl font-bold mb-4">My Profile</h2>
+    <div className="  sm: sm: lg: lg:">
+      <h2 className="text-2xl font-bold ">My Profile</h2>
 
       <Row gutter={[16, 16]}>
         <Col xs={24} md={8}>
           <Card className="text-center">
-            <Avatar size={100} icon={<UserOutlined />} className="bg-blue-600 mb-4" />
+            <Avatar size={100} icon={<UserOutlined />} className="bg-blue-600 " />
             <h3 className="text-xl font-semibold">John Smith</h3>
-            <p className="text-gray-500">MRN-2024-0001</p>
-            <div className="mt-4 text-left">
-              <div className="flex items-center gap-2 mb-2">
-                <MailOutlined className="text-gray-400" />
+            <p className="">MRN-2024-0001</p>
+            <div className=" text-left">
+              <div className="   ">
+                <MailOutlined className="" />
                 <span>john.smith@email.com</span>
               </div>
-              <div className="flex items-center gap-2">
-                <PhoneOutlined className="text-gray-400" />
+              <div className="  ">
+                <PhoneOutlined className="" />
                 <span>+1-555-0101</span>
               </div>
             </div>
@@ -40,7 +40,7 @@ export default function PortalProfilePage() {
         </Col>
 
         <Col xs={24} md={16}>
-          <Card title="Personal Information" className="mb-4 p-4 sm:p-6">
+          <Card title="Personal Information" className="  sm:">
             <Form layout="vertical" onFinish={handleUpdate} initialValues={{ firstName: 'John', lastName: 'Smith', email: 'john.smith@email.com', phone: '+1-555-0101' }}>
               <Row gutter={[16, 16]}>
                 <Col xs={24} sm={12}>

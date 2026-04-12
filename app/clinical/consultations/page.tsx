@@ -72,13 +72,13 @@ export default function ClinicalConsultationsPage() {
   // CRITICAL SECURITY: Restrict access to clinical staff
   if (!hasPermission('clinical:consultations:view')) {
     return (
-      <div className="min-h-screen px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)' }}>
-        <div className="bg-white rounded-lg p-4 sm:p-6 border border-gray-200" style={{ border: '1px solid #E2E8F0', borderRadius: '12px' }}>
-          <div className="flex items-center gap-3 p-4 bg-red-50 rounded-lg border border-red-200">
+      <div className="min-h-screen   sm: sm: lg: lg:" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)' }}>
+        <div className="bg-white -lg  sm: border border-gray-200" style={{ border: '1px solid #E5E7EB', borderRadius: '12px' }}>
+          <div className="    bg-red-50 -lg border border-red-200">
             <MedicineBoxOutlined style={{ color: '#DC2626', fontSize: '20px' }} />
             <div>
-              <h3 className="font-semibold text-red-900">Access Denied</h3>
-              <p className="text-sm text-red-700">You don&apos;tt have permission to access consultation management. This area is restricted to clinical staff.</p>
+              <h3 className="font-semibold ">Access Denied</h3>
+              <p className=" ">You don&apos;tt have permission to access consultation management. This area is restricted to clinical staff.</p>
             </div>
           </div>
         </div>
@@ -120,8 +120,8 @@ export default function ClinicalConsultationsPage() {
       key: 'patient',
       render: (_: any, record: Consultation) => (
         <div>
-          <div className="font-medium text-gray-900">{record.patient}</div>
-          <div className="text-xs text-gray-500">{record.mrn}</div>
+          <div className="font-medium ">{record.patient}</div>
+          <div className=" ">{record.mrn}</div>
         </div>
       ),
     },
@@ -186,7 +186,7 @@ export default function ClinicalConsultationsPage() {
       }
     >
       {/* Statistics Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 mb-6">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4  sm: ">
         <StatCard
           label="Total Consultations"
           value={stats.total}
@@ -222,7 +222,7 @@ export default function ClinicalConsultationsPage() {
       </div>
 
       {/* Consultations Section */}
-      <div className="bg-white rounded-lg p-4 sm:p-6 overflow-x-auto" style={{ border: '1px solid #E2E8F0', borderRadius: '12px' }}>
+      <div className="bg-white -lg  sm: overflow-x-auto" style={{ border: '1px solid #E5E7EB', borderRadius: '12px' }}>
         <SearchFilterBar
           searchPlaceholder="Search consultations by patient, ID, or specialist..."
           searchValue={searchText}
@@ -257,7 +257,7 @@ export default function ClinicalConsultationsPage() {
       {/* Request Consultation Modal */}
       <Modal
         title={
-          <div className="flex items-center gap-2">
+          <div className="  ">
             <MedicineBoxOutlined style={{ color: '#3B82F6' }} />
             <span>Request Consultation</span>
           </div>

@@ -12,12 +12,12 @@ export default function PatientTransferPage() {
   const patient = { id: '1', name: 'Chukwuemeka Okonkwo', mrn: 'MRN-2024-0001' };
 
   return (
-    <div style={{ padding: '24px', maxWidth: '800px', margin: '0 auto' }}>
-      <div className="flex items-center gap-4 mb-6">
+    <div className=" max-w-3xl mx-auto">
+      <div className="   ">
         <Button icon={<ArrowLeftOutlined />} onClick={() => router.back()}>
           Back to Patient
         </Button>
-        <Title level={3} className="!mb-0">Transfer Patient</Title>
+        <Title level={3} className="!">Transfer Patient</Title>
       </div>
 
       <Alert
@@ -25,7 +25,7 @@ export default function PatientTransferPage() {
         description={`Process transfer for ${patient.name} (${patient.mrn}) to another department or facility`}
         type="info"
         showIcon
-        style={{ marginBottom: '24px' }}
+        className=""
       />
 
       <Card>

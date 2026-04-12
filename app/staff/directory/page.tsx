@@ -23,10 +23,10 @@ export default function StaffDirectoryPage() {
   );
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '1200px', margin: '0 auto' }}>
+    <div className="  sm: sm: lg: lg: max-w-6xl mx-auto">
       <Title level={3}>Staff Directory</Title>
 
-      <Card style={{ marginBottom: '24px' }}>
+      <Card className="">
         <Input.Search
           placeholder="Search by name, department, or role..."
           allowClear
@@ -44,7 +44,7 @@ export default function StaffDirectoryPage() {
             <List.Item>
               <List.Item.Meta
                 avatar={
-                  <Avatar icon={<UserOutlined />} style={{ background: '#3B82F6' }}>
+                  <Avatar icon={<UserOutlined />} className="bg-blue-500">
                     {item.name.charAt(0)}
                   </Avatar>
                 }

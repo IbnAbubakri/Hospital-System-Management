@@ -20,6 +20,16 @@ export default function LaboratoryEquipmentPage() {
     { id: 'EQ-006', name: 'PCR Machine', model: 'Bio-Rad CFX96', serial: 'CFX96-2024-006', location: 'Molecular Lab', status: 'Operational', lastService: '2024-01-22', nextService: '2024-04-22', uptime: 99, technician: 'Jane Tech' },
   ];
 
+  // Handle edit equipment
+  const handleEditEquipment = (record: any) => {
+    message.success(`Editing equipment: ${record.name}`);
+  };
+
+  // Handle schedule service
+  const handleScheduleService = (record: any) => {
+    message.success(`Scheduling service for ${record.name}`);
+  };
+
   const columns = [
     { title: 'Equipment ID', dataIndex: 'id', key: 'id' },
     { title: 'Name', dataIndex: 'name', key: 'name' },
@@ -45,10 +55,10 @@ export default function LaboratoryEquipmentPage() {
     {
       title: 'Actions',
       key: 'actions',
-      render: () => (
+      render: (_: any, record: any) => (
         <Space>
-          <Button type="link" size="small" icon={<EditOutlined />}>Edit</Button>
-          <Button type="link" size="small" icon={<BuildOutlined />}>Schedule Service</Button>
+          <Button type="link" size="small" icon={<EditOutlined />} onClick={() => handleEditEquipment(record)}>Edit</Button>
+          <Button type="link" size="small" icon={<BuildOutlined />} onClick={() => handleScheduleService(record)}>Schedule Service</Button>
         </Space>
       )},
   ];
@@ -66,42 +76,42 @@ export default function LaboratoryEquipmentPage() {
   const avgUptime = Math.round(equipment.reduce((sum, e) => sum + e.uptime, 0) / equipment.length);
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '1600px', margin: '0 auto' }}>
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 gap-4">
+    <div className="  sm: sm: lg: lg:" style={{ maxWidth: '1600px', margin: '0 auto' }}>
+      <div className=" -col sm:-row items-start sm:   ">
         <Title level={3}>Laboratory Equipment Management</Title>
         <Button type="primary" icon={<PlusOutlined />} onClick={() => setIsModalVisible(true)} className="w-full sm:w-auto">
           Add Equipment
         </Button>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 mb-6">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4  sm: ">
         <Card>
           <div className="text-center">
-            <div className="text-3xl font-bold text-blue-600">{equipment.length}</div>
-            <div className="text-gray-500">Total Equipment</div>
+            <div className="text-3xl font-bold ">{equipment.length}</div>
+            <div className="">Total Equipment</div>
           </div>
         </Card>
         <Card>
           <div className="text-center">
-            <div className="text-3xl font-bold text-green-600">{operationalCount}</div>
-            <div className="text-gray-500">Operational</div>
+            <div className="text-3xl font-bold ">{operationalCount}</div>
+            <div className="">Operational</div>
           </div>
         </Card>
         <Card>
           <div className="text-center">
-            <div className="text-3xl font-bold text-orange-600">{maintenanceCount}</div>
-            <div className="text-gray-500">Needs Maintenance</div>
+            <div className="text-3xl font-bold ">{maintenanceCount}</div>
+            <div className="">Needs Maintenance</div>
           </div>
         </Card>
         <Card>
           <div className="text-center">
             <div className="text-3xl font-bold text-purple-600">{avgUptime}%</div>
-            <div className="text-gray-500">Avg Uptime</div>
+            <div className="">Avg Uptime</div>
           </div>
         </Card>
       </div>
 
-      <Card title="Equipment Inventory" className="p-4 sm:p-6">
+      <Card title="Equipment Inventory" className=" sm:">
         <div className="overflow-x-auto">
           <Table
             dataSource={equipment}

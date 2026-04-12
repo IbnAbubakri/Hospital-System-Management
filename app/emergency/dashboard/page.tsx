@@ -71,8 +71,8 @@ export default function EmergencyDashboardPage() {
   };
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" >
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+    <div className="  sm: sm: lg: lg:" >
+      <div className=" -col sm:-row items-start sm:   ">
         <div>
           <Title level={2}>Emergency Department Dashboard</Title>
           <Text type="secondary">Real-time emergency patient tracking and management</Text>
@@ -86,40 +86,40 @@ export default function EmergencyDashboardPage() {
           description="Triage Level 1-2 patients need urgent care"
           type="error"
           showIcon
-          style={{ marginBottom: '24px' }}
+          className=""
         />
       )}
 
-      <Row gutter={[16, 16]} style={{ marginBottom: '24px' }}>
+      <Row gutter={[16, 16]} className="">
         <Col xs={12} sm={6}>
           <Card>
             <div className="text-center">
-              <div className="text-3xl font-bold text-red-600">{stats.critical}</div>
-              <div className="text-sm text-gray-500">Critical</div>
+              <div className="text-3xl font-bold ">{stats.critical}</div>
+              <div className=" ">Critical</div>
             </div>
           </Card>
         </Col>
         <Col xs={12} sm={6}>
           <Card>
             <div className="text-center">
-              <div className="text-3xl font-bold text-orange-600">{stats.waiting}</div>
-              <div className="text-sm text-gray-500">Waiting</div>
+              <div className="text-3xl font-bold ">{stats.waiting}</div>
+              <div className=" ">Waiting</div>
             </div>
           </Card>
         </Col>
         <Col xs={12} sm={6}>
           <Card>
             <div className="text-center">
-              <div className="text-3xl font-bold text-blue-600">{stats.beingTreated}</div>
-              <div className="text-sm text-gray-500">Being Treated</div>
+              <div className="text-3xl font-bold ">{stats.beingTreated}</div>
+              <div className=" ">Being Treated</div>
             </div>
           </Card>
         </Col>
         <Col xs={12} sm={6}>
           <Card>
             <div className="text-center">
-              <div className="text-3xl font-bold text-green-600">{stats.total}</div>
-              <div className="text-sm text-gray-500">Total Patients</div>
+              <div className="text-3xl font-bold ">{stats.total}</div>
+              <div className=" ">Total Patients</div>
             </div>
           </Card>
         </Col>
@@ -131,34 +131,32 @@ export default function EmergencyDashboardPage() {
             title="Emergency Patient Tracking"
             extra={<Badge count={stats.total} showZero />}
           >
-            <Space orientation="vertical" style={{ width: '100%' }} size="middle">
+            <Space direction="vertical" className="w-full" size="middle">
               {patients.map((patient) => {
                 const config = getTriageConfig(patient.triageLevel);
                 return (
                   <Card
                     key={patient.id}
                     size="small"
-                    style={{
-                      borderLeft: `4px solid ${config.color === 'error' ? '#DC2626' : config.color === 'warning' ? '#F59E0B' : '#3B82F6'}`,
-                    }}
+                    className={`border-l-4 ${config.color === 'error' ? 'border-l-red-600' : config.color === 'warning' ? 'border-l-yellow-500' : 'border-l-blue-500'}`}
                   >
                     <Row gutter={16}>
                       <Col span={16}>
-                        <div className="flex items-center gap-3 mb-2">
-                          <UserOutlined style={{ fontSize: '20px' }} />
-                          <span className="font-medium text-lg">{patient.name}</span>
+                        <div className="   ">
+                          <UserOutlined className="text-xl" />
+                          <span className="font-medium ">{patient.name}</span>
                           <Tag color={config.color}>{config.label} (Level {patient.triageLevel})</Tag>
                           <Tag color={patient.status === 'Being Treated' ? 'blue' : patient.status === 'Waiting' ? 'orange' : 'green'}>
                             {patient.status}
                           </Tag>
                         </div>
-                        <div className="text-gray-600">{patient.chiefComplaint}</div>
-                        <div className="text-sm text-gray-500 mt-1">
+                        <div className="">{patient.chiefComplaint}</div>
+                        <div className="  ">
                           <ClockCircleOutlined /> Arrival: {patient.arrivalTime}
                         </div>
                       </Col>
                       <Col span={8}>
-                        <div className="text-sm">
+                        <div className="">
                           <div><strong>BP:</strong> {patient.vitals.bp}</div>
                           <div><strong>HR:</strong> {patient.vitals.hr} bpm</div>
                           <div><strong>Temp:</strong> {patient.vitals.temp}°C</div>
@@ -175,28 +173,28 @@ export default function EmergencyDashboardPage() {
 
         <Col xs={24} lg={8}>
           <Card title="Department Status">
-            <Space orientation="vertical" style={{ width: '100%' }} size="middle">
+            <Space direction="vertical" className="w-full" size="middle">
               <div>
                 <Text strong>Bed Occupancy</Text>
                 <Progress percent={85} strokeColor="#EF4444" />
-                <Text type="secondary" className="text-sm">17/20 beds occupied</Text>
+                <Text type="secondary" className="">17/20 beds occupied</Text>
               </div>
               <div>
                 <Text strong>Available Doctors</Text>
-                <div className="text-2xl font-bold text-blue-600 mt-1">4</div>
+                <div className="text-2xl font-bold  ">4</div>
               </div>
               <div>
                 <Text strong>Available Nurses</Text>
-                <div className="text-2xl font-bold text-green-600 mt-1">8</div>
+                <div className="text-2xl font-bold color: '#059669' ">8</div>
               </div>
               <div>
                 <Text strong>Average Wait Time</Text>
-                <div className="text-2xl font-bold text-orange-600 mt-1">23 mins</div>
+                <div className="text-2xl font-bold  ">23 mins</div>
               </div>
             </Space>
           </Card>
 
-          <Card title="Recent Activity" style={{ marginTop: '16px' }}>
+          <Card title="Recent Activity" className="">
             <Timeline
               items={[
                 { children: 'Patient #1 admitted to ICU' },

@@ -165,18 +165,19 @@ export function NotificationBell() {
   return (
     <Dropdown
       menu={{ items: [] }}
-      dropdownRender={() => notificationContent}
+      popupRender={() => notificationContent}
       trigger={['click']}
       placement="bottomRight"
     >
-      <Badge count={unreadCount} size="small" offset={[-5, 5]}>
+      <Badge count={unreadCount} size="small" offset={[-5, 5]} style={{ backgroundColor: '#EF4444' }}>
         <Button
           type="text"
-          icon={<BellOutlined className="text-xl" />}
+          icon={<BellOutlined className="text-xl" style={{ color: 'white' }} />}
           className="flex items-center justify-center"
           style={{
             borderRadius: '8px',
             transition: 'all 0.2s',
+            color: 'white',
           }}
         />
       </Badge>

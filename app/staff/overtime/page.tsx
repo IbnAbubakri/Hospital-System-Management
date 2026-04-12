@@ -102,7 +102,7 @@ export default function OvertimePage() {
         <Space>
           <div>
             <div className="font-medium">{name}</div>
-            <Text type="secondary" className="text-xs">{record.staffId}</Text>
+            <Text type="secondary" className="">{record.staffId}</Text>
           </div>
         </Space>
       ),
@@ -165,7 +165,7 @@ export default function OvertimePage() {
           </Button>
           {record.status === 'Pending' && (
             <>
-              <Button type="link" size="small" style={{ color: '#52c41a' }}>Approve</Button>
+              <Button type="link" size="small" className="">Approve</Button>
               <Button type="link" size="small" danger>Reject</Button>
             </>
           )}
@@ -183,10 +183,10 @@ export default function OvertimePage() {
   };
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '1400px', margin: '0 auto' }}>
+    <div className="  sm: sm: lg: lg: max-w-7xl mx-auto">
       <Title level={3}>Overtime Management</Title>
 
-      <Row gutter={[24, 24]} style={{ marginBottom: '24px' }}>
+      <Row gutter={[24, 24]} className="">
         <Col xs={24} sm={12} md={6}>
           <Card>
             <Statistic title="Total Requests" value={stats.total} prefix={<ClockCircleOutlined />} />
@@ -194,7 +194,7 @@ export default function OvertimePage() {
         </Col>
         <Col xs={24} sm={12} md={6}>
           <Card>
-            <Statistic title="Pending" value={stats.pending} valueStyle={{ color: '#faad14' }} />
+            <Statistic title="Pending" value={stats.pending} valueStyle={{ color: '#EAB308' }} />
           </Card>
         </Col>
         <Col xs={24} sm={12} md={6}>
@@ -210,7 +210,7 @@ export default function OvertimePage() {
       </Row>
 
       <Card>
-        <Space style={{ marginBottom: 16 }}>
+        <Space className="">
           <Select
             placeholder="Status"
             value={statusFilter}
@@ -289,7 +289,7 @@ export default function OvertimePage() {
                 <Col span={12}>
                   <Text strong>Overtime Pay:</Text>
                   <br />
-                  <Text style={{ fontSize: '16px', color: '#3f8600', fontWeight: 'bold' }}>
+                  <Text style={{ fontSize: '16px', color: '#16A34A', fontWeight: 'bold' }}>
                     ₦{selectedOvertime.amount.toLocaleString()}
                   </Text>
                 </Col>

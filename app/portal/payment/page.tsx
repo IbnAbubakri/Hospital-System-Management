@@ -17,16 +17,16 @@ export default function PaymentPage() {
   ];
 
   return (
-    <div className="min-h-screen px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)' }}>
-      <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
-        <div style={{ marginBottom: '24px' }}>
+    <div className="min-h-screen   sm: sm: lg: lg: bg-gradient-to-b from-blue-50 to-slate-50">
+      <div className="max-w-[1000px] mx-auto">
+        <div className="">
           <Title level={2}>Make Payment</Title>
           <Text type="secondary">Pay your hospital bills securely online</Text>
         </div>
 
         <Row gutter={[24, 24]}>
           <Col span={24}>
-            <Card style={{ borderRadius: '12px', marginBottom: '24px' }}>
+            <Card className=" -xl">
               <Statistic
                 title="Outstanding Balance"
                 value={198000}
@@ -38,7 +38,7 @@ export default function PaymentPage() {
           </Col>
         </Row>
 
-        <Card style={{ borderRadius: '12px', marginBottom: '24px' }}>
+        <Card className=" -xl">
           <Title level={4}>Select Bills to Pay</Title>
           <List
             dataSource={mockBills.filter(b => b.status === 'pending')}
@@ -57,16 +57,16 @@ export default function PaymentPage() {
                   }
                   description={`Bill #${bill.billNumber} | ${bill.date}`}
                 />
-                <Text strong style={{ fontSize: '18px' }}>₦{bill.amount.toLocaleString()}</Text>
+                <Text strong className="">₦{bill.amount.toLocaleString()}</Text>
               </List.Item>
             )}
           />
         </Card>
 
-        <Card style={{ borderRadius: '12px', marginBottom: '24px' }}>
+        <Card className=" -xl">
           <Title level={4}>Payment Method</Title>
-          <Radio.Group style={{ width: '100%' }} defaultValue="card">
-            <Space direction="vertical" style={{ width: '100%' }}>
+          <Radio.Group className="w-full" defaultValue="card">
+            <Space direction="vertical" className="w-full">
               <Radio value="card">
                 <Space>
                   <CreditCardOutlined />
@@ -89,29 +89,29 @@ export default function PaymentPage() {
           </Radio.Group>
         </Card>
 
-        <Card style={{ borderRadius: '12px' }} className="p-4 sm:p-6">
+        <Card className="-xl">
           <Row gutter={[16, 16]}>
             <Col xs={24} sm={12}>
               <Text type="secondary">Subtotal</Text>
               <br />
-              <Text strong style={{ fontSize: '20px' }}>₦170,000</Text>
+              <Text strong className="text-xl">₦170,000</Text>
             </Col>
             <Col xs={24} sm={12}>
               <Text type="secondary">Transaction Fee</Text>
               <br />
-              <Text strong style={{ fontSize: '20px' }}>₦1,500</Text>
+              <Text strong className="text-xl">₦1,500</Text>
             </Col>
           </Row>
-          <div style={{ marginTop: '16px', paddingTop: '16px', borderTop: '1px solid #f0f0f0' }}>
+          <div className="  border-t">
             <Text type="secondary">Total</Text>
             <br />
-            <Text strong style={{ fontSize: '28px', color: '#ff4d4f' }}>₦171,500</Text>
+            <Text strong className="text-2xl ">₦171,500</Text>
           </div>
           <Button
             type="primary"
             size="large"
             block
-            style={{ marginTop: '24px', height: '48px', fontSize: '18px' }}
+            className="  "
             icon={<ArrowRightOutlined />}
           >
             Proceed to Payment

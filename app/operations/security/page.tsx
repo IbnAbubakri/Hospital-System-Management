@@ -39,7 +39,7 @@ export default function SecurityPage() {
 
   return (
     <div style={{ padding: '24px', maxWidth: '1400px', margin: '0 auto' }}>
-      <div className="flex items-center justify-between mb-6">
+      <div className="   ">
         <Title level={3}>Security Management</Title>
         <Button type="primary" icon={<SafetyOutlined />}>Report Incident</Button>
       </div>
@@ -47,20 +47,20 @@ export default function SecurityPage() {
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '16px', marginBottom: '24px' }}>
         <Card>
           <div className="text-center">
-            <div className="text-3xl font-bold text-red-600">{incidents.filter(i => i.status === 'Under Investigation').length}</div>
-            <div className="text-gray-500">Active Investigations</div>
+            <div className="text-3xl font-bold ">{incidents.filter(i => i.status === 'Under Investigation').length}</div>
+            <div className="">Active Investigations</div>
           </div>
         </Card>
         <Card>
           <div className="text-center">
-            <div className="text-3xl font-bold text-green-600">{incidents.filter(i => i.status === 'Resolved').length}</div>
-            <div className="text-gray-500">Resolved Today</div>
+            <div className="text-3xl font-bold ">{incidents.filter(i => i.status === 'Resolved').length}</div>
+            <div className="">Resolved Today</div>
           </div>
         </Card>
         <Card>
           <div className="text-center">
-            <div className="text-3xl font-bold text-blue-600">{incidents.length}</div>
-            <div className="text-gray-500">Total Incidents</div>
+            <div className="text-3xl font-bold ">{incidents.length}</div>
+            <div className="">Total Incidents</div>
           </div>
         </Card>
       </div>
@@ -77,7 +77,7 @@ export default function SecurityPage() {
               <List.Item.Meta
                 avatar={<SafetyOutlined style={{ fontSize: '20px', color: '#1890ff' }} />}
                 title={
-                  <div className="flex justify-between items-center">
+                  <div className="  ">
                     <span className="font-medium">{schedule.time}</span>
                     <Tag color={schedule.status === 'Active' ? 'success' : 'default'}>{schedule.status}</Tag>
                   </div>

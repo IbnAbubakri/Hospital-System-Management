@@ -103,7 +103,7 @@ export default function LabResultsPage() {
   ];
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '1200px', margin: '0 auto' }}>
+    <div className="  sm: sm: lg: lg: max-w-[1200px] mx-auto">
       <Title level={3}>Lab Results</Title>
 
       <Card>
@@ -129,7 +129,7 @@ export default function LabResultsPage() {
       >
         {selectedResult && (
           <div>
-            <Descriptions column={2} bordered size="small" style={{ marginBottom: '16px' }}>
+            <Descriptions column={2} bordered size="small" className="">
               <Descriptions.Item label="Lab ID">{selectedResult.id}</Descriptions.Item>
               <Descriptions.Item label="Date">{selectedResult.date}</Descriptions.Item>
               <Descriptions.Item label="Ordered By">{selectedResult.orderedBy}</Descriptions.Item>
@@ -137,24 +137,24 @@ export default function LabResultsPage() {
             </Descriptions>
 
             <Title level={5}>Test Results</Title>
-            <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+            <table className="w-full">
               <thead>
-                <tr style={{ borderBottom: '2px solid #f0f0f0' }}>
-                  <th style={{ padding: '8px', textAlign: 'left' }}>Parameter</th>
-                  <th style={{ padding: '8px', textAlign: 'left' }}>Value</th>
-                  <th style={{ padding: '8px', textAlign: 'left' }}>Unit</th>
-                  <th style={{ padding: '8px', textAlign: 'left' }}>Reference Range</th>
-                  <th style={{ padding: '8px', textAlign: 'left' }}>Status</th>
+                <tr className="border-b-2 border-gray-200">
+                  <th className=" text-left">Parameter</th>
+                  <th className=" text-left">Value</th>
+                  <th className=" text-left">Unit</th>
+                  <th className=" text-left">Reference Range</th>
+                  <th className=" text-left">Status</th>
                 </tr>
               </thead>
               <tbody>
                 {selectedResult.values.map((value: any, index: number) => (
-                  <tr key={index} style={{ borderBottom: '1px solid #f0f0f0' }}>
-                    <td style={{ padding: '8px' }}>{value.parameter}</td>
-                    <td style={{ padding: '8px' }}>{value.value}</td>
-                    <td style={{ padding: '8px' }}>{value.unit}</td>
-                    <td style={{ padding: '8px' }}>{value.reference}</td>
-                    <td style={{ padding: '8px' }}>
+                  <tr key={index} className="border-b border-gray-200">
+                    <td className="">{value.parameter}</td>
+                    <td className="">{value.value}</td>
+                    <td className="">{value.unit}</td>
+                    <td className="">{value.reference}</td>
+                    <td className="">
                       <Tag color={value.status === 'Normal' ? 'success' : value.status === 'High' ? 'error' : 'warning'}>
                         {value.status}
                       </Tag>

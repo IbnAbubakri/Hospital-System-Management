@@ -35,13 +35,13 @@ export default function LabWorkflowPage() {
   // CRITICAL SECURITY: Restrict access to laboratory workflow
   if (!hasPermission('laboratory:workflow:view')) {
     return (
-      <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)', padding: '24px' }}>
+      <div className="min-h-screen bg-gradient-to-b from-blue-50 to-slate-50 ">
         <Alert
           message="Access Denied"
           description="You don&apos;tt have permission to access laboratory workflow. This area is restricted to laboratory staff."
           type="error"
           showIcon
-          style={{ marginTop: '24px', borderRadius: '12px' }}
+          className=" "
         />
       </div>
     );
@@ -164,12 +164,10 @@ export default function LabWorkflowPage() {
         <span
           style={{
             padding: '4px 10px',
-            borderRadius: '6px',
-            fontSize: '13px',
-            fontWeight: 500,
+            
+                        fontWeight: 500,
             background: '#DBEAFE',
-            color: '#1E40AF',
-          }}
+                      }}
         >
           {id}
         </span>
@@ -181,7 +179,7 @@ export default function LabWorkflowPage() {
       render: (_: any, r: LabWorkflow) => (
         <div>
           <div className="font-medium">{r.patientName}</div>
-          <div className="text-xs text-gray-500">{r.mrn}</div>
+          <div className=" ">{r.mrn}</div>
         </div>
       )
     },
@@ -203,9 +201,8 @@ export default function LabWorkflowPage() {
           <span
             style={{
               padding: '4px 10px',
-              borderRadius: '6px',
-              fontSize: '12px',
-              fontWeight: 500,
+              
+                            fontWeight: 500,
               background: bg,
               color,
             }}
@@ -288,7 +285,7 @@ export default function LabWorkflowPage() {
       subtitle="Track sample processing from collection to result approval"
     >
       {/* Statistics Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 mb-6">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4  sm: ">
         <StatCard
           label="Pending"
           value={stats.pending}
@@ -335,8 +332,8 @@ export default function LabWorkflowPage() {
       )}
 
       {/* Workflow Queue */}
-      <div style={{ background: 'white', borderRadius: '12px', padding: '24px', border: '1px solid #E2E8F0' }}>
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">Workflow Queue</h3>
+      <div style={{ backgroundColor: '#ffffff', borderRadius: '12px', padding: '24px', border: '1px solid #E2E8F0' }}>
+        <h3 className=" font-semibold  ">Workflow Queue</h3>
 
         <SearchFilterBar
           searchPlaceholder="Search patients, tests, or samples..."
@@ -401,61 +398,59 @@ export default function LabWorkflowPage() {
         {selectedItem && (
           <div>
             <InfoCard title="Sample Information">
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 ">
                 <div>
-                  <div className="text-sm text-gray-500 mb-1">Sample ID</div>
+                  <div className="  ">Sample ID</div>
                   <div>
                     <span
                       style={{
                         padding: '4px 10px',
-                        borderRadius: '6px',
-                        fontSize: '13px',
-                        fontWeight: 500,
+                        
+                                                fontWeight: 500,
                         background: '#DBEAFE',
-                        color: '#1E40AF',
-                      }}
+                                              }}
                     >
                       {selectedItem.sampleId}
                     </span>
                   </div>
                 </div>
                 <div>
-                  <div className="text-sm text-gray-500 mb-1">Patient</div>
-                  <div className="text-xl font-semibold">{selectedItem.patientName}</div>
-                  <div className="text-sm text-gray-500">{selectedItem.mrn}</div>
+                  <div className="  ">Patient</div>
+                  <div className="text font-semibold">{selectedItem.patientName}</div>
+                  <div className=" ">{selectedItem.mrn}</div>
                 </div>
                 <div>
-                  <div className="text-sm text-gray-500 mb-1">Test</div>
+                  <div className="  ">Test</div>
                   <div className="font-medium">{selectedItem.test}</div>
                 </div>
                 <div>
-                  <div className="text-sm text-gray-500 mb-1">Priority</div>
+                  <div className="  ">Priority</div>
                   <div>
                     <StatusTag status={selectedItem.priority} type="lab" />
                   </div>
                 </div>
                 <div>
-                  <div className="text-sm text-gray-500 mb-1">Current Stage</div>
+                  <div className="  ">Current Stage</div>
                   <div>
                     <StatusTag status={selectedItem.stage.toLowerCase().replace(' ', '_')} type="lab" />
                   </div>
                 </div>
                 <div>
-                  <div className="text-sm text-gray-500 mb-1">Status</div>
+                  <div className="  ">Status</div>
                   <div>
                     <StatusTag status={selectedItem.status} type="lab" showIcon />
                   </div>
                 </div>
                 <div>
-                  <div className="text-sm text-gray-500 mb-1">Ordered</div>
+                  <div className="  ">Ordered</div>
                   <div>{selectedItem.orderedDate}</div>
                 </div>
                 <div>
-                  <div className="text-sm text-gray-500 mb-1">Est. Completion</div>
+                  <div className="  ">Est. Completion</div>
                   <div>{selectedItem.estimatedCompletion}</div>
                 </div>
                 <div className="col-span-2">
-                  <div className="text-sm text-gray-500 mb-2">Progress</div>
+                  <div className="  ">Progress</div>
                   <Progress
                     percent={getStatusProgress(selectedItem.status)}
                     status={selectedItem.status === 'pending' ? 'exception' : 'active'}
@@ -475,34 +470,34 @@ export default function LabWorkflowPage() {
 
             {selectedItem.status !== 'pending' && (
               <InfoCard title="Processing Details">
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 ">
                   {selectedItem.collectedDate && (
                     <div>
-                      <div className="text-sm text-gray-500 mb-1">Collected At</div>
+                      <div className="  ">Collected At</div>
                       <div className="font-medium">{selectedItem.collectedDate}</div>
                     </div>
                   )}
                   {selectedItem.startedDate && (
                     <div>
-                      <div className="text-sm text-gray-500 mb-1">Started Processing</div>
+                      <div className="  ">Started Processing</div>
                       <div className="font-medium">{selectedItem.startedDate}</div>
                     </div>
                   )}
                   {selectedItem.completedDate && (
                     <div>
-                      <div className="text-sm text-gray-500 mb-1">Completed At</div>
+                      <div className="  ">Completed At</div>
                       <div className="font-medium">{selectedItem.completedDate}</div>
                     </div>
                   )}
                   {selectedItem.pathologist && (
                     <div>
-                      <div className="text-sm text-gray-500 mb-1">Pathologist</div>
+                      <div className="  ">Pathologist</div>
                       <div className="font-medium">{selectedItem.pathologist}</div>
                     </div>
                   )}
                   {selectedItem.verifiedBy && (
                     <div>
-                      <div className="text-sm text-gray-500 mb-1">Verified By</div>
+                      <div className="  ">Verified By</div>
                       <div className="font-medium">{selectedItem.verifiedBy}</div>
                     </div>
                   )}
@@ -510,7 +505,7 @@ export default function LabWorkflowPage() {
               </InfoCard>
             )}
 
-            <div className="flex gap-2 mt-6">
+            <div className="  ">
               <GradientButton icon={<CheckCircleOutlined />}>
                 {selectedItem.status === 'pending' ? 'Start Processing' :
                  selectedItem.status === 'processing' ? 'For Verification' :

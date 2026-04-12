@@ -47,17 +47,17 @@ export default function TelemedicineMonitoringPage() {
   };
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '1400px', margin: '0 auto' }}>
+    <div className="  sm: sm: lg: lg: max-w-7xl mx-auto">
       <Title level={3}>Telemedicine Monitoring Dashboard</Title>
 
-      <Row gutter={[16, 16]} style={{ marginBottom: '24px' }}>
+      <Row gutter={16} className="">
         <Col span={6}>
           <Card>
             <Statistic
               title="Active Sessions"
               value={activeSessions.length}
               prefix={<VideoCameraOutlined />}
-              valueStyle={{ color: '#52c41a' }}
+              valueStyle={{ color: '#10B981' }}
             />
           </Card>
         </Col>
@@ -82,7 +82,7 @@ export default function TelemedicineMonitoringPage() {
             <Statistic
               title="System Uptime"
               value={systemMetrics.uptime}
-              valueStyle={{ color: '#52c41a' }}
+              valueStyle={{ color: '#10B981' }}
             />
           </Card>
         </Col>
@@ -96,10 +96,10 @@ export default function TelemedicineMonitoringPage() {
               renderItem={(session) => (
                 <List.Item>
                   <List.Item.Meta
-                    avatar={<Avatar size={48} icon={<VideoCameraOutlined />} style={{ background: '#1890ff' }} />}
+                    avatar={<Avatar size={48} icon={<VideoCameraOutlined />} className="bg-[#1890ff]" />}
                     title={
                       <Space>
-                        <span style={{ fontWeight: 600 }}>{session.patient}</span>
+                        <span className="font-semibold">{session.patient}</span>
                         <Tag color="blue">with {session.doctor}</Tag>
                         <Tag color="green" icon={<SyncOutlined />}>Live</Tag>
                       </Space>
@@ -111,7 +111,7 @@ export default function TelemedicineMonitoringPage() {
                           Quality: <Progress
                             percent={session.connectionQuality}
                             size="small"
-                            style={{ width: 80, display: 'inline-block' }}
+                            className=" inline-block"
                             showInfo={false}
                           />
                         </span>
@@ -122,14 +122,14 @@ export default function TelemedicineMonitoringPage() {
                       </Space>
                     }
                   />
-                  <div style={{ minWidth: 200 }}>
+                  <div className="min-w-[200px]">
                     <Space direction="vertical" size="small">
                       <Space>
-                        <HeartOutlined style={{ color: '#ff4d4f' }} />
+                        <HeartOutlined className="" />
                         <span>HR: {session.vitals.heartRate} bpm</span>
                       </Space>
                       <Space>
-                        <WifiOutlined style={{ color: '#1890ff' }} />
+                        <WifiOutlined className="" />
                         <span>SpO2: {session.vitals.oxygen}%</span>
                       </Space>
                       <Space>
@@ -144,7 +144,7 @@ export default function TelemedicineMonitoringPage() {
         </Col>
 
         <Col span={24} lg={8}>
-          <Card title="Connection Quality" style={{ marginBottom: '24px' }}>
+          <Card title="Connection Quality" className="">
             <Progress
               type="circle"
               percent={systemMetrics.avgQuality}
@@ -154,7 +154,7 @@ export default function TelemedicineMonitoringPage() {
                 '100%': '#87d068',
               }}
             />
-            <div style={{ textAlign: 'center', marginTop: 16 }}>
+            <div className="text-center ">
               <Space>
                 <Tag color="green"><SyncOutlined spin /> Video Stable</Tag>
                 <Tag color="green">Audio Clear</Tag>
@@ -163,7 +163,7 @@ export default function TelemedicineMonitoringPage() {
           </Card>
 
           <Card title="System Status">
-            <Space direction="vertical" style={{ width: '100%' }} size="middle">
+            <Space direction="vertical" className="w-full" size="middle">
               <div>
                 <Text type="secondary">Server Status</Text>
                 <br />

@@ -18,6 +18,16 @@ export default function HelpdeskPage() {
     { id: 'TKT-004', title: 'Printer jam in Records', category: 'IT Hardware', priority: 'Medium', status: 'Resolved', submittedBy: 'Records Clerk', department: 'Records', date: '2024-02-04 16:45', assignedTo: 'IT Support' },
   ];
 
+  // Handle view ticket
+  const handleViewTicket = (record: any) => {
+    message.success(`Viewing ticket: ${record.id}`);
+  };
+
+  // Handle update ticket
+  const handleUpdateTicket = (record: any) => {
+    message.success(`Updating ticket: ${record.id}`);
+  };
+
   const columns = [
     { title: 'Ticket ID', dataIndex: 'id', key: 'id' },
     { title: 'Title', dataIndex: 'title', key: 'title' },
@@ -39,10 +49,10 @@ export default function HelpdeskPage() {
     {
       title: 'Actions',
       key: 'actions',
-      render: () => (
+      render: (_: any, record: any) => (
         <Space>
-          <Button type="link" size="small">View</Button>
-          <Button type="link" size="small">Update</Button>
+          <Button type="link" size="small" onClick={() => handleViewTicket(record)}>View</Button>
+          <Button type="link" size="small" onClick={() => handleUpdateTicket(record)}>Update</Button>
         </Space>
       )},
   ];
@@ -56,8 +66,8 @@ export default function HelpdeskPage() {
   };
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '1400px', margin: '0 auto' }}>
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
+    <div className="  sm: sm: lg: lg:" style={{ maxWidth: '1400px', margin: '0 auto' }}>
+      <div className=" -col sm:-row sm: sm:  ">
         <Title level={3}>Helpdesk & Support</Title>
         <Button type="primary" icon={<PlusOutlined />} onClick={() => setIsModalVisible(true)} className="w-full sm:w-auto">
           New Ticket

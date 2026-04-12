@@ -148,7 +148,7 @@ export default function PharmacyPrescriptionsPage() {
       title: 'Actions',
       key: 'actions',
       render: () => (
-        <div style={{ display: 'flex', gap: '8px' }}>
+        <div style={{ display: '', gap: '8px' }}>
           <GradientButton variant="secondary" size="small" icon={<EditOutlined />}>
             Edit
           </GradientButton>
@@ -183,7 +183,7 @@ export default function PharmacyPrescriptionsPage() {
       }
     >
       {/* Statistics Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-6">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4  ">
         <StatCard
           label="Active Prescriptions"
           value={activePrescriptions}
@@ -219,10 +219,10 @@ export default function PharmacyPrescriptionsPage() {
       </div>
 
       {/* All Prescriptions Section */}
-      <div className="p-4 sm:p-6" style={{ background: 'white', borderRadius: '12px', border: '1px solid #E2E8F0' }}>
-        <div className="flex items-center gap-2 mb-4">
+      <div className=" sm:" style={{ background: '#ffffff', borderRadius: '12px', border: '1px solid #E5E7EB' }}>
+        <div className="   ">
           <EditOutlined style={{ color: '#6366F1', fontSize: '20px' }} />
-          <h2 className="text-lg font-semibold text-gray-900">All Prescriptions</h2>
+          <h2 className=" font-semibold ">All Prescriptions</h2>
         </div>
 
         <ModernTable
@@ -250,7 +250,7 @@ export default function PharmacyPrescriptionsPage() {
                 width: '100%',
                 padding: '10px 12px',
                 borderRadius: '8px',
-                border: '1px solid #E2E8F0',
+                border: '1px solid #E5E7EB',
                 fontSize: '14px',
               }}
             >
@@ -267,7 +267,7 @@ export default function PharmacyPrescriptionsPage() {
                 width: '100%',
                 padding: '10px 12px',
                 borderRadius: '8px',
-                border: '1px solid #E2E8F0',
+                border: '1px solid #E5E7EB',
                 fontSize: '14px',
               }}
             >
@@ -285,7 +285,7 @@ export default function PharmacyPrescriptionsPage() {
                 width: '100%',
                 padding: '10px 12px',
                 borderRadius: '8px',
-                border: '1px solid #E2E8F0',
+                border: '1px solid #E5E7EB',
                 fontSize: '14px',
               }}
             >
@@ -306,7 +306,7 @@ export default function PharmacyPrescriptionsPage() {
                   width: '100%',
                   padding: '10px 12px',
                   borderRadius: '8px',
-                  border: '1px solid #E2E8F0',
+                  border: '1px solid #E5E7EB',
                   fontSize: '14px',
                 }}
               />
@@ -321,7 +321,7 @@ export default function PharmacyPrescriptionsPage() {
                   width: '100%',
                   padding: '10px 12px',
                   borderRadius: '8px',
-                  border: '1px solid #E2E8F0',
+                  border: '1px solid #E5E7EB',
                   fontSize: '14px',
                 }}
               />
@@ -334,7 +334,7 @@ export default function PharmacyPrescriptionsPage() {
                 width: '100%',
                 padding: '10px 12px',
                 borderRadius: '8px',
-                border: '1px solid #E2E8F0',
+                border: '1px solid #E5E7EB',
                 fontSize: '14px',
               }}
             >
@@ -353,7 +353,7 @@ export default function PharmacyPrescriptionsPage() {
                 width: '100%',
                 padding: '10px 12px',
                 borderRadius: '8px',
-                border: '1px solid #E2E8F0',
+                border: '1px solid #E5E7EB',
                 fontSize: '14px',
                 fontFamily: 'inherit',
               }}

@@ -21,6 +21,16 @@ export default function LabTemplatesPage() {
     { id: 6, name: 'Liver Function Test', category: 'Gastroenterology', tests: 'Total Bilirubin, Direct Bilirubin, ALT, AST, ALP, Total Protein, Albumin', status: 'Active', lastModified: '2024-01-25', modifiedBy: 'Dr. Eze' },
   ];
 
+  // Handle edit template
+  const handleEditTemplate = (record: any) => {
+    message.success(`Editing template: ${record.name}`);
+  };
+
+  // Handle duplicate template
+  const handleDuplicateTemplate = (record: any) => {
+    message.success(`Duplicating template: ${record.name}`);
+  };
+
   const columns = [
     { title: 'ID', dataIndex: 'id', key: 'id' },
     { title: 'Template Name', dataIndex: 'name', key: 'name' },
@@ -32,10 +42,10 @@ export default function LabTemplatesPage() {
     {
       title: 'Actions',
       key: 'actions',
-      render: () => (
+      render: (_: any, record: any) => (
         <Space>
-          <Button type="link" size="small" icon={<EditOutlined />}>Edit</Button>
-          <Button type="link" size="small" icon={<CopyOutlined />}>Duplicate</Button>
+          <Button type="link" size="small" icon={<EditOutlined />} onClick={() => handleEditTemplate(record)}>Edit</Button>
+          <Button type="link" size="small" icon={<CopyOutlined />} onClick={() => handleDuplicateTemplate(record)}>Duplicate</Button>
         </Space>
       )},
   ];
@@ -55,16 +65,16 @@ export default function LabTemplatesPage() {
   );
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '1400px', margin: '0 auto' }}>
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 gap-4">
+    <div className="  sm: sm: lg: lg:" style={{ maxWidth: '1280px', margin: '0 auto' }}>
+      <div className=" -col sm:-row items-start sm:   ">
         <Title level={3}>Lab Test Templates</Title>
         <Button type="primary" icon={<PlusOutlined />} onClick={() => setIsModalVisible(true)} className="w-full sm:w-auto">
           Create Template
         </Button>
       </div>
 
-      <Card className="p-4 sm:p-6">
-        <div className="mb-4">
+      <Card className=" sm:">
+        <div className="">
           <Input.Search
             placeholder="Search templates..."
             allowClear

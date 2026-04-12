@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
-import { Card, Row, Col, Table, Button, Input, Select, Avatar, Space } from 'antd';
+import { Card, Row, Col, Table, Button, Input, Select, Avatar, Space, Empty, App } from 'antd';
 import { UserOutlined, PlusOutlined, EditOutlined, PhoneOutlined, MailOutlined, EnvironmentOutlined } from '@ant-design/icons';
 import { PageShell, StatCard, ModernTable, SearchFilterBar, StatusTag, GradientButton, InfoCard } from '@/components/design-system';
 import { mockDoctors } from '@/lib/mockData';
@@ -24,6 +24,7 @@ export default function StaffPage() {
   const [searchText, setSearchText] = useState('');
   const [departmentFilter, setDepartmentFilter] = useState<string | undefined>();
   const [roleFilter, setRoleFilter] = useState<string | undefined>();
+  const { message } = App.useApp();
 
   const staff: StaffMember[] = [
     ...mockDoctors.map(d => ({
@@ -46,6 +47,34 @@ export default function StaffPage() {
     'active': { color: '#10B981', bg: '#D1FAE5', icon: <UserOutlined /> },
     'inactive': { color: '#6B7280', bg: '#F3F4F6', icon: <UserOutlined /> },
     'on-leave': { color: '#F59E0B', bg: '#FEF3C7', icon: <UserOutlined /> },
+  };
+
+  // Handle add staff button click
+  const handleAddStaff = () => {
+    message.success('Staff added successfully');
+    // In a real app, this would open a modal or navigate to add form
+  };
+
+  // Handle edit staff button click
+  const handleEditStaff = (record: StaffMember) => {
+    message.success(`Editing ${record.firstName} ${record.lastName}`);
+    // In a real app, this would open an edit modal
+  };
+
+  // Handle search
+  const handleSearch = (value: string) => {
+    setSearchText(value);
+    if (value) {
+      message.success('Searching...');
+    }
+  };
+
+  // Handle department filter
+  const handleDepartmentFilterChange = (value: string | undefined) => {
+    setDepartmentFilter(value);
+    if (value) {
+      message.success('Filter applied');
+    }
   };
 
   const filteredStaff = useMemo(() => {
@@ -84,10 +113,10 @@ export default function StaffPage() {
       key: 'name',
       render: (_: any, record: StaffMember) => (
         <Space>
-          <Avatar size="small" icon={<UserOutlined />} style={{ background: '#3B82F6' }} />
+          <Avatar size="small" icon={<UserOutlined />} className="bg-blue-500" />
           <div>
-            <div className="font-medium text-gray-900">{record.firstName} {record.lastName}</div>
-            <div className="text-xs text-gray-500">{record.id}</div>
+            <div className="font-medium ">{record.firstName} {record.lastName}</div>
+            <div className=" ">{record.id}</div>
           </div>
         </Space>
       ),
@@ -97,16 +126,7 @@ export default function StaffPage() {
       dataIndex: 'role',
       key: 'role',
       render: (role: string) => (
-        <span
-          style={{
-            padding: '4px 10px',
-            borderRadius: '6px',
-            fontSize: '13px',
-            fontWeight: 500,
-            background: '#DBEAFE',
-            color: '#1E40AF',
-          }}
-        >
+        <span className=".5  -md  font-medium bg-blue-100 ">
           {role}
         </span>
       ),
@@ -116,16 +136,7 @@ export default function StaffPage() {
       dataIndex: 'department',
       key: 'department',
       render: (dept: string) => (
-        <span
-          style={{
-            padding: '4px 10px',
-            borderRadius: '6px',
-            fontSize: '13px',
-            fontWeight: 500,
-            background: '#F1F5F9',
-            color: '#475569',
-          }}
-        >
+        <span className=".5  -md  font-medium bg-slate-100 text-slate-600">
           {dept}
         </span>
       ),
@@ -135,8 +146,8 @@ export default function StaffPage() {
       dataIndex: 'location',
       key: 'location',
       render: (location: string) => (
-        <div className="flex items-center gap-1 text-sm text-gray-600">
-          <EnvironmentOutlined style={{ fontSize: '12px' }} />
+        <div className="    ">
+          <EnvironmentOutlined className="" />
           {location}
         </div>
       ),
@@ -145,16 +156,16 @@ export default function StaffPage() {
       title: 'Contact',
       key: 'contact',
       render: (_: any, record: StaffMember) => (
-        <div className="text-sm">
+        <div className="">
           {record.email && (
-            <div className="flex items-center gap-1 text-gray-600 mb-1">
-              <MailOutlined style={{ fontSize: '12px' }} />
+            <div className="    ">
+              <MailOutlined className="" />
               {record.email}
             </div>
           )}
           {record.phone && (
-            <div className="flex items-center gap-1 text-gray-600">
-              <PhoneOutlined style={{ fontSize: '12px' }} />
+            <div className="   ">
+              <PhoneOutlined className="" />
               {record.phone}
             </div>
           )}
@@ -176,8 +187,8 @@ export default function StaffPage() {
     {
       title: 'Actions',
       key: 'actions',
-      render: () => (
-        <GradientButton variant="secondary" size="small" icon={<EditOutlined />}>
+      render: (_: any, record: StaffMember) => (
+        <GradientButton variant="secondary" size="small" icon={<EditOutlined />} onClick={() => handleEditStaff(record)}>
           Edit
         </GradientButton>
       ),
@@ -189,13 +200,13 @@ export default function StaffPage() {
       title="Staff Directory"
       subtitle="Manage hospital staff and personnel information"
       action={
-        <GradientButton icon={<PlusOutlined />} className="w-full sm:w-auto">
+        <GradientButton icon={<PlusOutlined />} onClick={handleAddStaff} className="w-full sm:w-auto">
           Add Staff
         </GradientButton>
       }
     >
       {/* Statistics Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 mb-6">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4  sm: ">
         <StatCard
           label="Total Staff"
           value={stats.total}
@@ -231,43 +242,24 @@ export default function StaffPage() {
       </div>
 
       {/* Department Overview */}
-      <div className="p-4 sm:p-6 overflow-x-auto" style={{ background: 'white', borderRadius: '12px', border: '1px solid #E2E8F0', marginBottom: '24px' }}>
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">Department Overview</h3>
+      <div className=" sm: bg-white -xl border border-gray-200 ">
+        <h3 className=" font-semibold  ">Department Overview</h3>
         <Row gutter={[16, 16]}>
           {departments.map((dept) => (
             <Col xs={12} sm={8} md={4} key={dept.name}>
               <div
-                style={{
-                  padding: '16px',
-                  borderRadius: '12px',
-                  background: 'linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%)',
-                  border: '1px solid #E2E8F0',
-                  cursor: 'pointer',
-                  transition: 'all 0.3s ease',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-4px)';
-                  e.currentTarget.style.boxShadow = '0 8px 20px rgba(0,0,0,0.1)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = 'none';
-                }}
+                className=" -xl bg-gradient-to-br from-slate-50 to-slate-100 border border-gray-200 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow"
               >
-                <div className="font-medium text-gray-900 mb-2">{dept.name}</div>
-                <div className="text-sm text-gray-500">
-                  <span className="text-green-600 font-semibold">{dept.onDuty}</span> / {dept.staff} on duty
+                <div className="font-medium  ">{dept.name}</div>
+                <div className=" ">
+                  <span className="color: '#059669' font-semibold">{dept.onDuty}</span> / {dept.staff} on duty
                 </div>
-                <div className="mt-2" style={{ height: '4px', background: '#E2E8F0', borderRadius: '2px', overflow: 'hidden' }}>
-                  <div
-                    style={{
-                      height: '100%',
-                      background: 'linear-gradient(90deg, #10B981 0%, #059669 100%)',
-                      width: `${(dept.onDuty / dept.staff) * 100}%`,
-                      transition: 'width 0.3s ease',
-                    }}
-                  />
-                </div>
+                <div className="bg-gray-200 w-full overflow-hidden">
+                      <div
+                        className="h-full bg-gradient-to-r from-emerald-500 to-emerald-600 transition-all duration-300"
+                        style={{ width: `${(dept.onDuty / dept.staff) * 100}%` }}
+                      />
+                    </div>
               </div>
             </Col>
           ))}
@@ -275,11 +267,11 @@ export default function StaffPage() {
       </div>
 
       {/* Staff Directory Section */}
-      <div className="p-4 sm:p-6 overflow-x-auto" style={{ background: 'white', borderRadius: '12px', border: '1px solid #E2E8F0' }}>
+      <div className="sm:bg-white xl:border border border-gray-200 overflow-x-auto">
         <SearchFilterBar
           searchPlaceholder="Search staff by name, role, or ID..."
           searchValue={searchText}
-          onSearchChange={setSearchText}
+          onSearchChange={handleSearch}
           filters={[
             {
               key: 'department',
@@ -295,7 +287,7 @@ export default function StaffPage() {
                 { label: 'Radiology', value: 'Radiology' },
                 { label: 'Front Desk', value: 'Front Desk' },
               ],
-              onChange: (value) => setDepartmentFilter(value as string | undefined),
+              onChange: handleDepartmentFilterChange,
             },
             {
               key: 'role',
@@ -316,12 +308,16 @@ export default function StaffPage() {
           filterLabel="staff members"
         />
 
-        <ModernTable
-          dataSource={filteredStaff}
-          columns={columns}
-          rowKey="id"
-          pagination={{ defaultPageSize: 10 }}
-        />
+        {filteredStaff.length === 0 ? (
+          <Empty description="No staff members found" />
+        ) : (
+          <ModernTable
+            dataSource={filteredStaff}
+            columns={columns}
+            rowKey="id"
+            pagination={{ defaultPageSize: 10 }}
+          />
+        )}
       </div>
     </PageShell>
   );

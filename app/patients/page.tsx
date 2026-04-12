@@ -10,6 +10,8 @@ import {
   Drawer,
   Avatar,
   Typography,
+  Empty,
+  App,
 } from 'antd';
 import {
   PlusOutlined,
@@ -38,6 +40,7 @@ export default function PatientsPage() {
   const [selectedPatient, setSelectedPatient] = useState<Patient | null>(null);
   const [drawerVisible, setDrawerVisible] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const { message } = App.useApp();
 
   // Get patients accessible to logged-in user
   const accessiblePatients = useMemo(() => {
@@ -98,6 +101,28 @@ export default function PatientsPage() {
     return () => clearInterval(interval);
   }, []);
 
+  // Handle search with toast
+  const handleSearch = (value: string) => {
+    setSearchText(value);
+    if (value) {
+      message.success('Searching...');
+    }
+  };
+
+  // Handle filter change with toast
+  const handleStatusFilterChange = (value: string | undefined) => {
+    setStatusFilter(value);
+    if (value) {
+      message.success('Filter applied');
+    }
+  };
+
+  // Handle add patient button click
+  const handleAddPatient = () => {
+    message.success('Opening add patient form...');
+    router.push('/patients/new');
+  };
+
   // Filter patients
   const filteredPatients = useMemo(() => {
     return accessiblePatients.filter((patient) => {
@@ -118,8 +143,8 @@ export default function PatientsPage() {
       key: 'patient',
       render: (_: any, record: Patient) => (
         <div className="patient-name-cell">
-          <div className="font-medium text-gray-900">{record.firstName} {record.lastName}</div>
-          <div className="text-xs text-gray-500">{record.mrn}</div>
+          <div className="font-medium">{record.firstName} {record.lastName}</div>
+          <div>{record.mrn}</div>
         </div>
       ),
       sorter: (a: Patient, b: Patient) =>
@@ -129,7 +154,7 @@ export default function PatientsPage() {
       title: 'Age/Sex',
       key: 'ageSex',
       render: (_: any, record: Patient) => (
-        <span className="text-sm">
+        <span>
           {calculateAge(record.dateOfBirth)} / {record.gender.toUpperCase()}
         </span>
       ),
@@ -139,14 +164,14 @@ export default function PatientsPage() {
       title: 'Contact',
       dataIndex: 'contactNumber',
       key: 'contactNumber',
-      render: (phone: string) => <span className="text-sm">{phone}</span>,
+      render: (phone: string) => <span>{phone}</span>,
       width: 140,
     },
     {
       title: 'Last Visit',
       key: 'lastVisit',
       render: (_: any, record: Patient) => (
-        <span className="text-sm text-gray-600">
+        <span>
           {record.lastVisitDate ? formatDate(record.lastVisitDate) : '—'}
         </span>
       ),
@@ -172,9 +197,9 @@ export default function PatientsPage() {
               color,
               border: 'none',
               fontWeight: 500,
-              fontSize: '13px',
+              fontSize: "14px",
               padding: '3px 10px',
-              borderRadius: '6px',
+              
             }}
           >
             {status.charAt(0).toUpperCase() + status.slice(1)}
@@ -422,20 +447,19 @@ export default function PatientsPage() {
       `}</style>
 
       {/* Header Section */}
-      <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8"
+      <div className="px-4 sm:px-6 lg:px-8"
         style={{
           background: 'linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%)',
           borderBottom: '1px solid #E2E8F0',
           position: 'relative',
-          overflow: 'hidden'
+          
         }}>
         {/* Decorative background elements */}
         <div style={{
           position: 'absolute',
           top: '-50px',
           right: '-50px',
-          width: '200px',
-          height: '200px',
+                    height: '200px',
           background: 'radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 70%)',
           borderRadius: '50%',
         }} />
@@ -443,34 +467,35 @@ export default function PatientsPage() {
           position: 'absolute',
           bottom: '-80px',
           left: '100px',
-          width: '300px',
-          height: '300px',
+                    height: '300px',
           background: 'radial-gradient(circle, rgba(16, 185, 129, 0.06) 0%, transparent 70%)',
           borderRadius: '50%',
         }} />
 
         <div className="page-content" style={{ animationDelay: '0s', position: 'relative', zIndex: 1 }}>
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6 sm:mb-8">
-            <div className="flex-1">
-              <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-1">
-                <div style={{
-                  width: '4px',
-                  height: '24px',
-                  background: 'linear-gradient(180deg, #3B82F6 0%, #2563EB 100%)',
-                  borderRadius: '2px'
-                }} />
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+            <div className="w-full sm:w-1/2">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-3">
                 <div>
-                  <h1 className="text-xl sm:text-2xl font-semibold text-gray-900">
-                    Patients
-                  </h1>
-                  {user?.role === 'Doctor' && (
-                    <Text className="text-xs sm:text-sm" style={{ color: '#64748B', marginLeft: '8px' }}>
-                      ({getUserFullName()}'s Patients)
-                    </Text>
-                  )}
+                  <div style={{
+                    width: '4px',
+                    height: '24px',
+                    background: 'linear-gradient(180deg, #3B82F6 0%, #2563EB 100%)',
+                    borderRadius: '2px'
+                  }} />
+                  <div>
+                    <h1 className="text-2xl sm:text-2xl font-semibold">
+                      Patients
+                    </h1>
+                    {user?.role === 'Doctor' && (
+                      <Text style={{ color: '#64748B', marginLeft: '8px' }}>
+                        ({getUserFullName()}'s Patients)
+                      </Text>
+                    )}
+                  </div>
                 </div>
               </div>
-              <p className="text-gray-500 text-xs sm:text-sm" style={{ marginLeft: '7px' }}>
+              <p style={{ marginLeft: '7px' }}>
                 {user?.role === 'Administrator'
                   ? 'Manage all patient records and information'
                   : `View and manage your ${accessiblePatients.length} assigned patient${accessiblePatients.length !== 1 ? 's' : ''}`
@@ -478,17 +503,14 @@ export default function PatientsPage() {
               </p>
               {user?.role === 'Doctor' && (
                 <div style={{
-                  marginTop: '12px',
-                  padding: '8px 12px',
+                                    padding: '8px 12px',
                   background: departmentColors?.bg || 'linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%)',
-                  borderRadius: '8px',
+                  
                   border: `1px solid ${departmentColors?.border || '#BFDBFE'}`,
                   display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '8px'
-                }}>
+                                                    }}>
                   <WarningOutlined style={{ color: departmentColors?.text || '#1D4ED8', fontSize: '14px' }} />
-                  <Text className="text-xs sm:text-sm" style={{ color: departmentColors?.text || '#1E40AF', fontWeight: 500 }}>
+                  <Text style={{ color: departmentColors?.text || '#1E40AF', fontWeight: 500 }}>
                     You can only view patients assigned to you in {user.department}
                   </Text>
                 </div>
@@ -497,11 +519,11 @@ export default function PatientsPage() {
             <Button
               type="primary"
               icon={<PlusOutlined />}
-              onClick={() => router.push('/patients/new')}
+              onClick={handleAddPatient}
               className="w-full sm:w-auto"
               style={{
-                height: '42px',
-                borderRadius: '10px',
+                height: '40px',
+                borderRadius: '12px',
                 fontWeight: 600,
                 padding: '0 20px',
               }}
@@ -511,7 +533,7 @@ export default function PatientsPage() {
           </div>
 
           {/* Stats Cards */}
-          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {[
               { label: 'Total Patients', value: animatedStats.total, color: '#3B82F6', bg: '#EFF6FF', border: '#DBEAFE' },
               { label: 'Active', value: animatedStats.active, color: '#10B981', bg: '#D1FAE5', border: '#A7F3D0' },
@@ -529,7 +551,7 @@ export default function PatientsPage() {
                   cursor: 'default',
                 }}
               >
-                <div className="text-sm font-medium" style={{ color: '#64748B', marginBottom: '6px' }}>
+                <div className="font-medium" style={{ color: '#64748B', marginBottom: '6px' }}>
                   {stat.label}
                 </div>
                 <div className="stat-number" style={{
@@ -547,30 +569,30 @@ export default function PatientsPage() {
       </div>
 
       {/* Content Section */}
-      <div className="px-4 py-4 sm:px-6 sm:py-6 lg:px-8 lg:py-6 page-content" style={{ animationDelay: '0.1s' }}>
+      <div className="px-4 sm:px-6 lg:px-8 page-content" style={{ animationDelay: '0.1s' }}>
         {/* Search and Filter Bar */}
         <div
-          className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mb-6 p-4"
+          className="flex flex-col sm:flex-row items-stretch gap-2"
           style={{
-            background: 'white',
+            background: '#ffffff',
             borderRadius: '12px',
-            border: '1px solid #E2E8F0',
+            border: '1px solid #E5E7EB',
             boxShadow: '0 1px 3px rgba(0, 0, 0, 0.05)',
           }}
         >
-          <div className="w-full sm:flex-1">
+          <div className="w-full">
             <Search
               placeholder="Search patients..."
               allowClear
               value={searchText}
-              onChange={(e) => setSearchText(e.target.value)}
+              onChange={(e) => handleSearch(e.target.value)}
               style={{ borderRadius: '8px' }}
             />
           </div>
           <Select
             placeholder="Status"
             value={statusFilter}
-            onChange={setStatusFilter}
+            onChange={handleStatusFilterChange}
             allowClear
             className="w-full sm:w-auto"
             style={{ width: undefined }}
@@ -580,15 +602,15 @@ export default function PatientsPage() {
             <Option value="transferred">Transferred</Option>
           </Select>
           <div
-            className="w-full sm:w-auto flex items-center justify-center"
+            className="w-full sm:w-auto"
             style={{
               padding: '8px 16px',
-              borderRadius: '8px',
+              
               background: 'linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%)',
               border: '1px solid #BFDBFE',
             }}
           >
-            <span className="text-sm font-medium" style={{ color: '#1D4ED8' }}>
+            <span className="font-medium" style={{ color: '#1D4ED8' }}>
               {filteredPatients.length} patients
             </span>
           </div>
@@ -598,29 +620,33 @@ export default function PatientsPage() {
         <div
           className="overflow-x-auto"
           style={{
-            background: 'white',
-            borderRadius: '12px',
-            border: '1px solid #E2E8F0',
-            overflow: 'hidden',
-            transition: 'all 0.3s ease',
-            boxShadow: '0 1px 3px rgba(0, 0, 0, 0.05)',
-          }}
-        >
-          <Table
-            dataSource={filteredPatients}
-            columns={columns}
-            rowKey="id"
-            scroll={{ x: 'max-content' }}
-            pagination={{
-              defaultPageSize: 20,
-              showSizeChanger: false,
-              showTotal: (total) => `${total} patients`,
-              pageSizeOptions: ['10', '20', '50'],
+              background: '#ffffff',
+              borderRadius: '12px',
+              border: '1px solid #E5E7EB',
+              overflow: 'hidden',
+              transition: 'all 0.3s ease',
+              boxShadow: '0 1px 3px rgba(0, 0, 0, 0.05)',
             }}
-            rowClassName={(record) =>
-              record.id === selectedPatient?.id ? 'bg-blue-50' : ''
-            }
-          />
+          >
+          {filteredPatients.length === 0 ? (
+            <Empty description="No patients found" />
+          ) : (
+            <Table
+              dataSource={filteredPatients}
+              columns={columns}
+              rowKey="id"
+              scroll={{ x: 'max-content' }}
+              pagination={{
+                defaultPageSize: 20,
+                showSizeChanger: false,
+                showTotal: (total) => `${total} patients`,
+                pageSizeOptions: ['10', '20', '50'],
+              }}
+              rowClassName={(record) =>
+                record.id === selectedPatient?.id ? 'bg-blue-50' : ''
+              }
+            />
+          )}
         </div>
       </div>
 
@@ -637,13 +663,13 @@ export default function PatientsPage() {
           <div className="drawer-content h-full flex flex-col">
             {/* Header */}
             <div
-              className="px-4 py-4 sm:px-6 sm:py-6"
+              className="px-6 py-4"
               style={{
                 borderBottom: '1px solid #E2E8F0',
                 background: 'linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%)',
               }}
             >
-              <div className="flex items-start gap-3 sm:gap-4">
+              <div className="flex items-start gap-4">
                 <Avatar
                   size={48}
                   icon={<UserOutlined />}
@@ -662,18 +688,18 @@ export default function PatientsPage() {
                     boxShadow: '0 4px 12px rgba(59, 130, 246, 0.3)',
                   }}
                 />
-                <div className="flex-1 min-w-0">
-                  <h2 className="text-lg sm:text-xl font-semibold text-gray-900 mb-1 truncate">
+                <div className="w-full min-w-0">
+                  <h2 className="text-lg sm:text-xl font-semibold truncate">
                     {selectedPatient.firstName} {selectedPatient.lastName}
                   </h2>
-                  <p className="text-xs sm:text-sm text-gray-500 mb-2">MRN: {selectedPatient.mrn}</p>
+                  <p className="text-sm text-gray-500">MRN: {selectedPatient.mrn}</p>
                   <Tag
                     style={{
                       backgroundColor: getStatusConfig(selectedPatient.status).bg,
                       color: getStatusConfig(selectedPatient.status).color,
                       border: 'none',
                       fontWeight: 500,
-                      borderRadius: '6px',
+                      
                     }}
                   >
                     {getStatusConfig(selectedPatient.status).text}
@@ -683,17 +709,17 @@ export default function PatientsPage() {
             </div>
 
             {/* Content */}
-            <div className="flex-1 overflow-y-auto px-4 py-4 sm:px-6 sm:py-6">
+            <div className="w-full overflow-y-auto p-6">
               {/* Quick Info */}
-              <div
-                className="drawer-section grid grid-cols-3 gap-3 mb-6"
-                style={{
-                  padding: '12px 16px',
-                  background: 'white',
-                  borderRadius: '10px',
-                  border: '1px solid #E2E8F0',
-                }}
-              >
+                <div
+                  className="drawer-section"
+                  style={{
+                    padding: '12px 16px',
+                    background: '#ffffff',
+                    borderRadius: '12px',
+                    border: '1px solid #E5E7EB',
+                  }}
+                >
                 {[
                   { label: 'Age', value: `${calculateAge(selectedPatient.dateOfBirth)}y`, color: '#3B82F6' },
                   { label: 'Gender', value: selectedPatient.gender.toUpperCase(), color: '#10B981' },
@@ -716,8 +742,8 @@ export default function PatientsPage() {
                         {item.value.charAt(0)}
                       </span>
                     </div>
-                    <div className="text-xs text-gray-500 mb-1">{item.label}</div>
-                    <div className="text-sm font-semibold text-gray-900">{item.value}</div>
+                    <div>{item.label}</div>
+                    <div className="font-semibold">{item.value}</div>
                   </div>
                 ))}
               </div>
@@ -727,13 +753,12 @@ export default function PatientsPage() {
                 <div
                   className="drawer-section"
                   style={{
-                    padding: '16px',
-                    background: 'white',
-                    borderRadius: '10px',
-                    border: '1px solid #E2E8F0',
+                                    
+                    
+                    border: '1px solid #E5E7EB',
                   }}
                 >
-                  <h3 className="text-sm font-semibold text-gray-900 mb-3 flex items-center gap-2">
+                  <h3 className="font-semibold mb-3 flex items-center gap-2">
                     <span style={{
                       width: '4px',
                       height: '16px',
@@ -743,13 +768,13 @@ export default function PatientsPage() {
                     Personal Information
                   </h3>
                   <div className="space-y-3">
-                    <div className="flex justify-between text-sm">
+                    <div>
                       <span className="text-gray-500">Date of Birth</span>
-                      <span className="font-medium text-gray-900">{formatDate(selectedPatient.dateOfBirth)}</span>
+                      <span className="font-medium ml-2">{formatDate(selectedPatient.dateOfBirth)}</span>
                     </div>
-                    <div className="flex justify-between text-sm">
+                    <div>
                       <span className="text-gray-500">Registration Date</span>
-                      <span className="font-medium text-gray-900">{formatDate(selectedPatient.registeredDate)}</span>
+                      <span className="font-medium ml-2">{formatDate(selectedPatient.registeredDate)}</span>
                     </div>
                   </div>
                 </div>
@@ -757,13 +782,12 @@ export default function PatientsPage() {
                 <div
                   className="drawer-section"
                   style={{
-                    padding: '16px',
-                    background: 'white',
-                    borderRadius: '10px',
-                    border: '1px solid #E2E8F0',
+                                    
+                    
+                    border: '1px solid #E5E7EB',
                   }}
                 >
-                  <h3 className="text-sm font-semibold text-gray-900 mb-3 flex items-center gap-2">
+                  <h3 className="font-semibold mb-3 flex items-center gap-2">
                     <span style={{
                       width: '4px',
                       height: '16px',
@@ -773,11 +797,11 @@ export default function PatientsPage() {
                     Contact Information
                   </h3>
                   <div className="space-y-2">
-                    <div className="text-sm text-gray-900">{selectedPatient.contactNumber}</div>
+                    <div>{selectedPatient.contactNumber}</div>
                     {selectedPatient.email && (
-                      <div className="text-sm text-gray-900">{selectedPatient.email}</div>
+                      <div>{selectedPatient.email}</div>
                     )}
-                    <div className="text-sm text-gray-600">
+                    <div>
                       {selectedPatient.address.street}
                       <br />
                       {selectedPatient.address.city}, {selectedPatient.address.state}
@@ -788,13 +812,12 @@ export default function PatientsPage() {
                 <div
                   className="drawer-section"
                   style={{
-                    padding: '16px',
-                    background: 'white',
-                    borderRadius: '10px',
-                    border: '1px solid #E2E8F0',
+                                    
+                    
+                    border: '1px solid #E5E7EB',
                   }}
                 >
-                  <h3 className="text-sm font-semibold text-gray-900 mb-3 flex items-center gap-2">
+                  <h3 className="font-semibold mb-3 flex items-center gap-2">
                     <span style={{
                       width: '4px',
                       height: '16px',
@@ -804,32 +827,32 @@ export default function PatientsPage() {
                     Emergency Contact
                   </h3>
                   <div className="space-y-2">
-                    <div className="flex justify-between text-sm">
+                    <div>
                       <span className="text-gray-500">Name</span>
-                      <span className="font-medium text-gray-900">{selectedPatient.emergencyContact.name}</span>
+                      <span className="font-medium ml-2">{selectedPatient.emergencyContact.name}</span>
                     </div>
-                    <div className="flex justify-between text-sm">
+                    <div>
                       <span className="text-gray-500">Relationship</span>
-                      <span className="font-medium text-gray-900">{selectedPatient.emergencyContact.relationship}</span>
+                      <span className="font-medium ml-2">{selectedPatient.emergencyContact.relationship}</span>
                     </div>
-                    <div className="flex justify-between text-sm">
+                    <div>
                       <span className="text-gray-500">Phone</span>
-                      <span className="font-medium text-gray-900">{selectedPatient.emergencyContact.contactNumber}</span>
+                      <span className="font-medium ml-2">{selectedPatient.emergencyContact.contactNumber}</span>
                     </div>
                   </div>
                 </div>
 
                 {selectedPatient.allergies.length > 0 && (
-                  <div
-                    className="drawer-section"
-                    style={{
-                      padding: '16px',
-                      background: 'linear-gradient(135deg, #FEF2F2 0%, #FFFFFF 100%)',
-                      borderRadius: '10px',
-                      border: '1px solid #FECACA',
-                    }}
-                  >
-                    <h3 className="text-sm font-semibold text-red-700 mb-3 flex items-center gap-2">
+                <div
+                  className="drawer-section"
+                  style={{
+                    padding: '16px',
+                    background: '#ffffff',
+                    borderRadius: '12px',
+                    border: '1px solid #E5E7EB',
+                  }}
+                >
+                    <h3 className="font-semibold mb-3 flex items-center gap-2">
                       <span style={{
                         width: '4px',
                         height: '16px',
@@ -846,7 +869,7 @@ export default function PatientsPage() {
                             background: '#FEE2E2',
                             color: '#DC2626',
                             border: 'none',
-                            borderRadius: '6px',
+                            
                             padding: '4px 10px',
                           }}
                         >
@@ -858,16 +881,16 @@ export default function PatientsPage() {
                 )}
 
                 {selectedPatient.chronicConditions.length > 0 && (
-                  <div
-                    className="drawer-section"
-                    style={{
-                      padding: '16px',
-                      background: 'linear-gradient(135deg, #FFF7ED 0%, #FFFFFF 100%)',
-                      borderRadius: '10px',
-                      border: '1px solid #FED7AA',
-                    }}
-                  >
-                    <h3 className="text-sm font-semibold text-orange-700 mb-3 flex items-center gap-2">
+                <div
+                  className="drawer-section"
+                  style={{
+                    padding: '16px',
+                    background: '#ffffff',
+                    borderRadius: '12px',
+                    border: '1px solid #E5E7EB',
+                  }}
+                >
+                    <h3 className="font-semibold mb-3 flex items-center gap-2">
                       <span style={{
                         width: '4px',
                         height: '16px',
@@ -884,7 +907,7 @@ export default function PatientsPage() {
                             background: '#FEF3C7',
                             color: '#D97706',
                             border: 'none',
-                            borderRadius: '6px',
+                            
                             padding: '4px 10px',
                           }}
                         >
@@ -899,35 +922,33 @@ export default function PatientsPage() {
 
             {/* Footer Actions */}
             <div
-              className="flex flex-col sm:flex-row gap-3"
+              className="flex flex-col sm:flex-row gap-2"
               style={{
-                padding: '12px 16px sm:16px 24px',
+                padding: '12px 16px',
                 borderTop: '1px solid #E2E8F0',
-                background: 'white',
+                
               }}
             >
-              <Button
-                type="primary"
-                onClick={() => router.push(`/patients/${selectedPatient.id}`)}
-                style={{
-                  flex: 1,
-                  borderRadius: '8px',
-                  fontWeight: 600,
-                  height: '40px',
-                }}
-              >
+                <Button
+                  type="primary"
+                  onClick={() => router.push(`/patients/${selectedPatient.id}`)}
+                  style={{ flex: 1,
+                    borderRadius: '8px',
+                    fontWeight: 600,
+                    height: '40px',
+                  }}
+                >
                 View Profile
               </Button>
-              <Button
-                onClick={() => router.push(`/patients/${selectedPatient.id}/edit`)}
-                style={{
-                  flex: 1,
-                  borderRadius: '8px',
-                  fontWeight: 600,
-                  height: '40px',
-                  border: '1px solid #D1D5DB',
-                }}
-              >
+                <Button
+                  onClick={() => router.push(`/patients/${selectedPatient.id}/edit`)}
+                  style={{ flex: 1,
+                    borderRadius: '8px',
+                    fontWeight: 600,
+                    height: '40px',
+                    border: '1px solid #D1D5DB',
+                  }}
+                >
                 Edit
               </Button>
             </div>

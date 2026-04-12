@@ -119,13 +119,13 @@ export default function SocialWorkPage() {
   // CRITICAL SECURITY: Restrict access to clinical staff
   if (!hasPermission('clinical:socialwork:view')) {
     return (
-      <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)', padding: '24px' }}>
-        <div style={{ background: 'white', borderRadius: '12px', padding: '24px', border: '1px solid #E2E8F0' }}>
-          <div className="flex items-center gap-3 p-4" style={{ background: '#FEF2F2', borderRadius: '8px', border: '1px solid #FECACA' }}>
+      <div className="min-h-screen bg-gradient-to-b from-sky-50 to-slate-50 ">
+        <div className="bg-white -xl  border border-gray-200">
+          <div className="    bg-red-50 -lg border border-red-200">
             <HeartOutlined style={{ color: '#DC2626', fontSize: '20px' }} />
             <div>
-              <h3 className="font-semibold text-red-900">Access Denied</h3>
-              <p className="text-sm text-red-700">You don&apos;tt have permission to access social work services. This area is restricted to clinical staff.</p>
+              <h3 className="font-semibold ">Access Denied</h3>
+              <p className=" ">You don&apos;tt have permission to access social work services. This area is restricted to clinical staff.</p>
             </div>
           </div>
         </div>
@@ -139,7 +139,7 @@ export default function SocialWorkPage() {
       dataIndex: 'id',
       key: 'id',
       render: (id: string) => (
-        <span style={{ padding: '4px 10px', borderRadius: '6px', fontSize: '13px', fontWeight: 500, background: '#DBEAFE', color: '#1E40AF' }}>
+        <span className="  -md  font-medium bg-blue-100 ">
           {id}
         </span>
       ),
@@ -149,8 +149,8 @@ export default function SocialWorkPage() {
       key: 'patient',
       render: (_: any, record: SocialWorkCase) => (
         <div>
-          <div className="font-medium text-gray-900">{record.patientName}</div>
-          <div className="text-xs text-gray-500">{record.mrn}</div>
+          <div className="font-medium ">{record.patientName}</div>
+          <div className=" ">{record.mrn}</div>
         </div>
       ),
     },
@@ -159,7 +159,7 @@ export default function SocialWorkPage() {
       dataIndex: 'caseType',
       key: 'caseType',
       render: (type: string) => (
-        <span style={{ padding: '4px 10px', borderRadius: '6px', fontSize: '13px', fontWeight: 500, background: '#F3E8FF', color: '#7C3AED' }}>
+        <span className="  -md  font-medium bg-purple-100 text-purple-700">
           {type}
         </span>
       ),
@@ -221,7 +221,7 @@ export default function SocialWorkPage() {
       }
     >
       {/* Statistics Cards */}
-      <div className="grid grid-cols-4 gap-5 mb-6">
+      <div className="grid grid-cols-4  ">
         <StatCard
           label="Total Cases"
           value={stats.total}
@@ -257,7 +257,7 @@ export default function SocialWorkPage() {
       </div>
 
       {/* Social Work Cases Section */}
-      <div style={{ background: 'white', borderRadius: '12px', padding: '24px', border: '1px solid #E2E8F0' }}>
+      <div className="bg-white -xl  border border-gray-200">
         <SearchFilterBar
           searchPlaceholder="Search cases by patient, MRN, or social worker..."
           searchValue={searchText}
@@ -288,7 +288,7 @@ export default function SocialWorkPage() {
       {/* Case Details Drawer */}
       <Drawer
         title={
-          <div className="flex items-center gap-2">
+          <div className="  ">
             <HeartOutlined style={{ color: '#3B82F6' }} />
             <span>Case Details</span>
           </div>
@@ -306,19 +306,19 @@ export default function SocialWorkPage() {
             <InfoCard title="Patient Information">
               <Row gutter={16}>
                 <Col span={12}>
-                  <div className="text-sm text-gray-500 mb-1">Patient Name</div>
+                  <div className="  ">Patient Name</div>
                   <div className="font-medium">{selectedCase.patientName}</div>
                 </Col>
                 <Col span={12}>
-                  <div className="text-sm text-gray-500 mb-1">MRN</div>
+                  <div className="  ">MRN</div>
                   <div>{selectedCase.mrn}</div>
                 </Col>
                 <Col span={12}>
-                  <div className="text-sm text-gray-500 mb-1">Case Type</div>
+                  <div className="  ">Case Type</div>
                   <div>{selectedCase.caseType}</div>
                 </Col>
                 <Col span={12}>
-                  <div className="text-sm text-gray-500 mb-1">Priority</div>
+                  <div className="  ">Priority</div>
                   <div>
                     <span
                       style={{
@@ -345,29 +345,29 @@ export default function SocialWorkPage() {
                   </div>
                 </Col>
                 <Col span={12}>
-                  <div className="text-sm text-gray-500 mb-1">Opened Date</div>
+                  <div className="  ">Opened Date</div>
                   <div>{selectedCase.openedDate}</div>
                 </Col>
                 <Col span={12}>
-                  <div className="text-sm text-gray-500 mb-1">Last Contact</div>
+                  <div className="  ">Last Contact</div>
                   <div>{selectedCase.lastContact}</div>
                 </Col>
               </Row>
             </InfoCard>
 
             <InfoCard title="Status & Assignment">
-              <div className="mb-3">
-                <div className="text-sm text-gray-500 mb-1">Status</div>
+              <div className="">
+                <div className="  ">Status</div>
                 <StatusTag status={selectedCase.status} type="patient" showIcon />
               </div>
               <div>
-                <div className="text-sm text-gray-500 mb-1">Assigned Social Worker</div>
+                <div className="  ">Assigned Social Worker</div>
                 <div>{selectedCase.socialWorker}</div>
               </div>
             </InfoCard>
 
             <InfoCard title="Case Notes">
-              <div className="text-sm text-gray-700">{selectedCase.notes}</div>
+              <div className=" ">{selectedCase.notes}</div>
             </InfoCard>
           </div>
         )}
@@ -376,7 +376,7 @@ export default function SocialWorkPage() {
       {/* New Case Modal */}
       <Modal
         title={
-          <div className="flex items-center gap-2">
+          <div className="  ">
             <PlusOutlined style={{ color: '#3B82F6' }} />
             <span>Create New Case</span>
           </div>

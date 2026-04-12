@@ -49,18 +49,18 @@ export default function QualityControlPage() {
   ];
 
   return (
-    <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)', padding: '24px' }}>
-      <div className="p-4 sm:p-6" style={{ background: 'white', borderRadius: '12px', border: '1px solid #E2E8F0' }}>
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 gap-4">
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-slate-50 ">
+      <div className=" sm: bg-white -xl border border-gray-200">
+        <div className=" -col sm:-row items-start sm:   ">
           <div>
-            <h1 className="text-2xl font-semibold text-gray-900 mb-1">Quality Control</h1>
-            <p className="text-gray-500 text-sm">Lab quality control checks and calibration logs</p>
+            <h1 className="text-2xl font-semibold  ">Quality Control</h1>
+            <p className=" ">Lab quality control checks and calibration logs</p>
           </div>
           <Button type="primary" className="w-full sm:w-auto">Run QC Test</Button>
         </div>
 
-        <div className="flex flex-col sm:flex-row items-center gap-3 mb-6">
-          <Input placeholder="Search QC records..." prefix={<SearchOutlined />} value={searchText} onChange={(e) => setSearchText(e.target.value)} className="w-full sm:flex-1 sm:max-w-xs" />
+        <div className=" -col sm:-row   ">
+          <Input placeholder="Search QC records..." prefix={<SearchOutlined />} value={searchText} onChange={(e) => setSearchText(e.target.value)} className="w-full sm:-1 sm:max-w-xs" />
           <Badge count={filteredQC.length} style={{ background: '#10B981' }} />
         </div>
 

@@ -45,7 +45,7 @@ export default function ParkingPage() {
 
   return (
     <div style={{ padding: '24px', maxWidth: '1400px', margin: '0 auto' }}>
-      <div className="flex items-center justify-between mb-6">
+      <div className="   ">
         <Title level={3}>Parking Management</Title>
         <Button type="primary" icon={<CarOutlined />}>Reserve Spot</Button>
       </div>
@@ -53,26 +53,26 @@ export default function ParkingPage() {
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px', marginBottom: '24px' }}>
         <Card>
           <div className="text-center">
-            <div className="text-3xl font-bold text-green-600">{availableSpots}</div>
-            <div className="text-gray-500">Available Spots</div>
+            <div className="text-3xl font-bold ">{availableSpots}</div>
+            <div className="">Available Spots</div>
           </div>
         </Card>
         <Card>
           <div className="text-center">
-            <div className="text-3xl font-bold text-orange-600">{occupiedSpots}</div>
-            <div className="text-gray-500">Occupied</div>
+            <div className="text-3xl font-bold ">{occupiedSpots}</div>
+            <div className="">Occupied</div>
           </div>
         </Card>
         <Card>
           <div className="text-center">
-            <div className="text-3xl font-bold text-blue-600">{totalSpots}</div>
-            <div className="text-gray-500">Total Spots</div>
+            <div className="text-3xl font-bold ">{totalSpots}</div>
+            <div className="">Total Spots</div>
           </div>
         </Card>
         <Card>
           <div className="text-center">
             <div className="text-3xl font-bold text-purple-600">{occupancyRate}%</div>
-            <div className="text-gray-500">Occupancy Rate</div>
+            <div className="">Occupancy Rate</div>
           </div>
         </Card>
       </div>
@@ -81,7 +81,7 @@ export default function ParkingPage() {
         <Row gutter={[16, 16]}>
           <Col span={8}>
             <Card size="small" title="General Parking ({generalSpots} spots)">
-              <div className="flex items-center justify-between mb-2">
+              <div className="   ">
                 <span>Occupancy</span>
                 <span className="font-semibold">{parkingSpots.filter(p => p.type === 'General' && p.status === 'Occupied').length}/{generalSpots}</span>
               </div>
@@ -90,7 +90,7 @@ export default function ParkingPage() {
           </Col>
           <Col span={8}>
             <Card size="small" title="Reserved Staff ({reservedSpots} spots)">
-              <div className="flex items-center justify-between mb-2">
+              <div className="   ">
                 <span>Occupancy</span>
                 <span className="font-semibold">{parkingSpots.filter(p => p.type === 'Reserved Staff' && p.status === 'Occupied').length}/{reservedSpots}</span>
               </div>
@@ -99,7 +99,7 @@ export default function ParkingPage() {
           </Col>
           <Col span={8}>
             <Card size="small" title="Emergency ({emergencySpots} spots)">
-              <div className="flex items-center justify-between mb-2">
+              <div className="   ">
                 <span>Occupancy</span>
                 <span className="font-semibold">{parkingSpots.filter(p => p.type === 'Emergency' && p.status === 'Occupied').length}/{emergencySpots}</span>
               </div>

@@ -33,6 +33,50 @@ export default function PharmacyDispensingPage() {
     { id: 'RX-2024-0888', patient: 'Emeka Okafor', mrn: 'MRN-2024-0002', medications: 'Omeprazole 20mg, Antacid Suspension', prescribedBy: 'Dr. Nnamdi', date: '2024-02-03', status: 'dispensed', priority: 'Routine' },
   ];
 
+  // Handle search with toast
+  const handleSearchChange = (value: string) => {
+    setSearchText(value);
+    if (value) {
+      message.success('Searching prescriptions...');
+    }
+  };
+
+  // Handle status filter change
+  const handleStatusFilterChange = (value: string | undefined) => {
+    setStatusFilter(value);
+    if (value) {
+      message.success('Filter applied');
+    }
+  };
+
+  // Handle priority filter change
+  const handlePriorityFilterChange = (value: string | undefined) => {
+    setPriorityFilter(value);
+    if (value) {
+      message.success('Filter applied');
+    }
+  };
+
+  // Handle view prescription
+  const handleViewClick = (record: Prescription) => {
+    message.success(`Viewing prescription: ${record.id}`);
+  };
+
+  // Handle dispense button click
+  const handleDispenseClick = (record: Prescription) => {
+    setSelectedPrescription(record);
+    setIsDispenseModalVisible(true);
+  };
+
+  // Handle actual dispense action
+  const handleDispense = () => {
+    form.validateFields().then((values) => {
+      message.success('Medication dispensed successfully');
+      setIsDispenseModalVisible(false);
+      form.resetFields();
+    });
+  };
+
   const filteredPrescriptions = prescriptions.filter((p: any) => {
     const matchesSearch =
       p.patient.toLowerCase().includes(searchText.toLowerCase()) ||
@@ -111,8 +155,8 @@ export default function PharmacyDispensingPage() {
       title: 'Actions',
       key: 'actions',
       render: (_: any, record: Prescription) => (
-        <div style={{ display: 'flex', gap: '8px' }}>
-          <GradientButton variant="secondary" size="small">
+        <div style={{  gap: '8px' }}>
+          <GradientButton variant="secondary" size="small" onClick={() => handleViewClick(record)}>
             View
           </GradientButton>
           {record.status === 'pending' && (
@@ -120,10 +164,7 @@ export default function PharmacyDispensingPage() {
               variant="primary"
               size="small"
               icon={<MedicineBoxOutlined />}
-              onClick={() => {
-                setSelectedPrescription(record);
-                setIsDispenseModalVisible(true);
-              }}
+              onClick={() => handleDispenseClick(record)}
             >
               Dispense
             </GradientButton>
@@ -133,6 +174,7 @@ export default function PharmacyDispensingPage() {
               variant="secondary"
               size="small"
               icon={<PrinterOutlined />}
+              onClick={() => message.success(`Reprinting prescription: ${record.id}`)}
             >
               Reprint
             </GradientButton>
@@ -141,14 +183,6 @@ export default function PharmacyDispensingPage() {
       ),
     },
   ];
-
-  const handleDispense = () => {
-    form.validateFields().then((values) => {
-      message.success(`Prescription ${selectedPrescription?.id} dispensed successfully`);
-      setIsDispenseModalVisible(false);
-      form.resetFields();
-    });
-  };
 
   const pendingCount = prescriptions.filter(p => p.status === 'pending').length;
   const dispensedCount = prescriptions.filter(p => p.status === 'dispensed').length;
@@ -159,7 +193,7 @@ export default function PharmacyDispensingPage() {
       subtitle="Process and track prescription dispensing"
     >
       {/* Statistics Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-6">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4  ">
         <StatCard
           label="Pending"
           value={pendingCount}
@@ -196,16 +230,16 @@ export default function PharmacyDispensingPage() {
       </div>
 
       {/* Prescription Queue Section */}
-      <div className="p-4 sm:p-6" style={{ background: 'white', borderRadius: '12px', border: '1px solid #E2E8F0' }}>
-        <div className="flex items-center gap-2 mb-4">
+      <div className=" sm:" style={{ backgroundColor: '#ffffff', borderRadius: '12px', border: '1px solid #E2E8F0' }}>
+        <div className="   ">
           <MedicineBoxOutlined style={{ color: '#6366F1', fontSize: '20px' }} />
-          <h2 className="text-lg font-semibold text-gray-900">Prescription Queue</h2>
+          <h2 className=" font-semibold ">Prescription Queue</h2>
         </div>
 
         <SearchFilterBar
           searchPlaceholder="Search prescriptions by patient, Rx ID, or medications..."
           searchValue={searchText}
-          onSearchChange={setSearchText}
+          onSearchChange={handleSearchChange}
           filters={[
             {
               key: 'status',
@@ -216,7 +250,7 @@ export default function PharmacyDispensingPage() {
                 { label: 'Pending', value: 'pending' },
                 { label: 'Dispensed', value: 'dispensed' },
               ],
-              onChange: (value) => setStatusFilter(value as string | undefined),
+              onChange: handleStatusFilterChange,
             },
             {
               key: 'priority',
@@ -227,7 +261,7 @@ export default function PharmacyDispensingPage() {
                 { label: 'Urgent', value: 'Urgent' },
                 { label: 'Routine', value: 'Routine' },
               ],
-              onChange: (value) => setPriorityFilter(value as string | undefined),
+              onChange: handlePriorityFilterChange,
             },
           ]}
           resultCount={filteredPrescriptions.length}
@@ -263,23 +297,23 @@ export default function PharmacyDispensingPage() {
             >
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginTop: '8px' }}>
                 <div>
-                  <div style={{ fontSize: '12px', color: '#64748B', marginBottom: '4px' }}>Patient</div>
+                  <div style={{ fontSize: '12px', color: '#6B7280', marginBottom: '4px' }}>Patient</div>
                   <div style={{ fontSize: '14px', fontWeight: 500, color: '#1E293B' }}>{selectedPrescription.patient}</div>
                 </div>
                 <div>
-                  <div style={{ fontSize: '12px', color: '#64748B', marginBottom: '4px' }}>MRN</div>
+                  <div style={{ fontSize: '12px', color: '#6B7280', marginBottom: '4px' }}>MRN</div>
                   <div style={{ fontSize: '14px', fontWeight: 500, color: '#1E293B' }}>{selectedPrescription.mrn}</div>
                 </div>
                 <div style={{ gridColumn: '1 / -1' }}>
-                  <div style={{ fontSize: '12px', color: '#64748B', marginBottom: '4px' }}>Medications</div>
+                  <div style={{ fontSize: '12px', color: '#6B7280', marginBottom: '4px' }}>Medications</div>
                   <div style={{ fontSize: '14px', fontWeight: 500, color: '#1E293B' }}>{selectedPrescription.medications}</div>
                 </div>
                 <div>
-                  <div style={{ fontSize: '12px', color: '#64748B', marginBottom: '4px' }}>Prescribed By</div>
+                  <div style={{ fontSize: '12px', color: '#6B7280', marginBottom: '4px' }}>Prescribed By</div>
                   <div style={{ fontSize: '14px', fontWeight: 500, color: '#1E293B' }}>{selectedPrescription.prescribedBy}</div>
                 </div>
                 <div>
-                  <div style={{ fontSize: '12px', color: '#64748B', marginBottom: '4px' }}>Date</div>
+                  <div style={{ fontSize: '12px', color: '#6B7280', marginBottom: '4px' }}>Date</div>
                   <div style={{ fontSize: '14px', fontWeight: 500, color: '#1E293B' }}>{selectedPrescription.date}</div>
                 </div>
               </div>
@@ -292,7 +326,7 @@ export default function PharmacyDispensingPage() {
                     width: '100%',
                     padding: '10px 12px',
                     borderRadius: '8px',
-                    border: '1px solid #E2E8F0',
+                    border: '1px solid #E5E7EB',
                     fontSize: '14px',
                   }}
                 >
@@ -309,7 +343,7 @@ export default function PharmacyDispensingPage() {
                     width: '100%',
                     padding: '10px 12px',
                     borderRadius: '8px',
-                    border: '1px solid #E2E8F0',
+                    border: '1px solid #E5E7EB',
                     fontSize: '14px',
                   }}
                 >
@@ -327,7 +361,7 @@ export default function PharmacyDispensingPage() {
                     width: '100%',
                     padding: '10px 12px',
                     borderRadius: '8px',
-                    border: '1px solid #E2E8F0',
+                    border: '1px solid #E5E7EB',
                     fontSize: '14px',
                     fontFamily: 'inherit',
                   }}
@@ -340,7 +374,7 @@ export default function PharmacyDispensingPage() {
                     width: '100%',
                     padding: '10px 12px',
                     borderRadius: '8px',
-                    border: '1px solid #E2E8F0',
+                    border: '1px solid #E5E7EB',
                     fontSize: '14px',
                   }}
                 >
@@ -357,7 +391,7 @@ export default function PharmacyDispensingPage() {
                     width: '100%',
                     padding: '10px 12px',
                     borderRadius: '8px',
-                    border: '1px solid #E2E8F0',
+                    border: '1px solid #E5E7EB',
                     fontSize: '14px',
                     fontFamily: 'inherit',
                   }}

@@ -149,12 +149,12 @@ export default function ClinicalProtocolsPage() {
   if (!hasPermission('clinical:protocols:view')) {
     return (
       <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)', padding: '24px' }}>
-        <div style={{ background: 'white', borderRadius: '12px', padding: '24px', border: '1px solid #E2E8F0' }}>
-          <div className="flex items-center gap-3 p-4" style={{ background: '#FEF2F2', borderRadius: '8px', border: '1px solid #FECACA' }}>
+        <div style={{ backgroundColor: '#ffffff', borderRadius: '12px', padding: '24px', border: '1px solid #E2E8F0' }}>
+          <div className="   " style={{ background: '#FEF2F2', borderRadius: '8px', border: '1px solid #FECACA' }}>
             <BookOutlined style={{ color: '#DC2626', fontSize: '20px' }} />
             <div>
-              <h3 className="font-semibold text-red-900">Access Denied</h3>
-              <p className="text-sm text-red-700">You don&apos;tt have permission to access clinical protocols. This area is restricted to clinical staff.</p>
+              <h3 className="font-semibold ">Access Denied</h3>
+              <p className=" ">You don&apos;tt have permission to access clinical protocols. This area is restricted to clinical staff.</p>
             </div>
           </div>
         </div>
@@ -180,8 +180,8 @@ export default function ClinicalProtocolsPage() {
       key: 'name',
       render: (_: any, record: ClinicalProtocol) => (
         <div>
-          <div className="font-medium text-gray-900">{record.name}</div>
-          <div className="text-xs text-gray-500 mt-1">{record.description}</div>
+          <div className="font-medium ">{record.name}</div>
+          <div className="  ">{record.description}</div>
         </div>
       ),
     },
@@ -199,7 +199,7 @@ export default function ClinicalProtocolsPage() {
       title: 'Version',
       dataIndex: 'version',
       key: 'version',
-      render: (version: string) => <span className="text-sm font-mono">{version}</span>,
+      render: (version: string) => <span className=" font-mono">{version}</span>,
     },
     { title: 'Last Updated', dataIndex: 'lastUpdated', key: 'lastUpdated' },
     {
@@ -239,7 +239,7 @@ export default function ClinicalProtocolsPage() {
       }
     >
       {/* Statistics Cards */}
-      <div className="grid grid-cols-4 gap-5 mb-6">
+      <div className="grid grid-cols-4  ">
         <StatCard
           label="Total Protocols"
           value={stats.total}
@@ -275,7 +275,7 @@ export default function ClinicalProtocolsPage() {
       </div>
 
       {/* Protocols Section */}
-      <div style={{ background: 'white', borderRadius: '12px', padding: '24px', border: '1px solid #E2E8F0' }}>
+      <div style={{ backgroundColor: '#ffffff', borderRadius: '12px', padding: '24px', border: '1px solid #E2E8F0' }}>
         <SearchFilterBar
           searchPlaceholder="Search protocols by name, ID, or description..."
           searchValue={searchText}
@@ -303,7 +303,7 @@ export default function ClinicalProtocolsPage() {
       {/* Add Protocol Modal */}
       <Modal
         title={
-          <div className="flex items-center gap-2">
+          <div className="  ">
             <FileTextOutlined style={{ color: '#3B82F6' }} />
             <span>Add Clinical Protocol</span>
           </div>

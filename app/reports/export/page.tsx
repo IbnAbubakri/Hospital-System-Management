@@ -59,15 +59,15 @@ export default function ExportReportPage() {
   };
 
   return (
-    <div style={{ padding: '24px', maxWidth: '1200px', margin: '0 auto' }} className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8">
+    <div className="  sm: sm: lg: lg: max-w-6xl mx-auto">
       <Title level={3}>Export Reports</Title>
 
       <Row gutter={[24, 24]}>
         <Col xs={24} lg={14}>
-          <Card title="Select Reports to Export" className="p-4 sm:p-6">
+          <Card title="Select Reports to Export" className=" sm:">
             <Form layout="vertical" form={form}>
               <Form.Item label="Date Range">
-                <RangePicker style={{ width: '100%' }} />
+                <RangePicker className="w-full" />
               </Form.Item>
 
               <Form.Item label="Report Category">
@@ -81,12 +81,12 @@ export default function ExportReportPage() {
               </Form.Item>
 
               <Form.Item label="Available Reports">
-                <div style={{ maxHeight: '300px', overflowY: 'auto', border: '1px solid #d9d9d9', borderRadius: '4px', padding: '8px' }}>
+                <div className="max-h-[300px] overflow-y-auto border border-gray-300  ">
                   {availableReports.map((report) => (
-                    <div key={report.id} className="flex items-center justify-between p-2 hover:bg-gray-50 rounded">
+                    <div key={report.id} className="    hover:bg-gray-50 ">
                       <div>
                         <div className="font-medium">{report.name}</div>
-                        <div className="text-xs text-gray-500">
+                        <div className=" ">
                           <Tag>{report.category}</Tag>
                           {report.format.join(', ')}
                         </div>
@@ -128,15 +128,15 @@ export default function ExportReportPage() {
         </Col>
 
         <Col xs={24} lg={10}>
-          <Card title="Quick Export" className="p-4 sm:p-6">
-            <Space orientation="vertical" style={{ width: '100%' }}>
+          <Card title="Quick Export" className=" sm:">
+            <Space orientation="vertical" className="w-full">
               <Button block icon={<FilePdfOutlined />} className="w-full">Export All Reports (PDF)</Button>
               <Button block icon={<FileExcelOutlined />} className="w-full">Export All Reports (Excel)</Button>
               <Button block icon={<FileTextOutlined />} className="w-full">Export Summary (CSV)</Button>
             </Space>
           </Card>
 
-          <Card title="Export History" style={{ marginTop: '24px' }} className="p-4 sm:p-6">
+          <Card title="Export History" className="  sm:">
             <div className="overflow-x-auto">
               <Table
                 dataSource={exportHistory}

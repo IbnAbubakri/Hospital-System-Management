@@ -102,7 +102,7 @@ export default function ShiftSchedulingPage() {
       render: (name: string, record: ShiftSchedule) => (
         <div>
           <div className="font-medium">{name}</div>
-          <Text type="secondary" className="text-xs">{record.staffId}</Text>
+          <Text type="secondary" className="">{record.staffId}</Text>
         </div>
       )},
     {
@@ -178,10 +178,10 @@ export default function ShiftSchedulingPage() {
   ];
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '1400px', margin: '0 auto' }}>
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+    <div className="  sm: sm: lg: lg: max-w-7xl mx-auto">
+      <div className=" -col sm:-row items-start sm:   ">
         <div>
-          <Title level={3} className="!mb-1">Shift Scheduling</Title>
+          <Title level={3} className="!">Shift Scheduling</Title>
           <Text type="secondary">Manage staff shifts and duty rosters</Text>
         </div>
         <Space>
@@ -192,40 +192,40 @@ export default function ShiftSchedulingPage() {
         </Space>
       </div>
 
-      <Row gutter={[16, 16]} style={{ marginBottom: '24px' }}>
+      <Row gutter={[16, 16]} className="">
         <Col xs={12} sm={6}>
           <Card>
             <div className="text-center">
-              <CalendarOutlined style={{ fontSize: '32px', color: '#3B82F6' }} />
-              <div className="text-2xl font-bold text-blue-600 mt-2">{stats.total}</div>
-              <div className="text-sm text-gray-500">Total Shifts</div>
+              <CalendarOutlined className="text-3xl " />
+              <div className="text-2xl font-bold  ">{stats.total}</div>
+              <div className=" ">Total Shifts</div>
             </div>
           </Card>
         </Col>
         <Col xs={12} sm={6}>
           <Card>
             <div className="text-center">
-              <ClockCircleOutlined style={{ fontSize: '32px', color: '#F59E0B' }} />
-              <div className="text-2xl font-bold text-orange-600 mt-2">{stats.scheduled}</div>
-              <div className="text-sm text-gray-500">Scheduled</div>
+              <ClockCircleOutlined className="text-3xl " />
+              <div className="text-2xl font-bold  ">{stats.scheduled}</div>
+              <div className=" ">Scheduled</div>
             </div>
           </Card>
         </Col>
         <Col xs={12} sm={6}>
           <Card>
             <div className="text-center">
-              <CheckCircleOutlined style={{ fontSize: '32px', color: '#10B981' }} />
-              <div className="text-2xl font-bold text-green-600 mt-2">{stats.completed}</div>
-              <div className="text-sm text-gray-500">Completed</div>
+              <CheckCircleOutlined className="text-3xl " />
+              <div className="text-2xl font-bold color: '#059669' ">{stats.completed}</div>
+              <div className=" ">Completed</div>
             </div>
           </Card>
         </Col>
         <Col xs={12} sm={6}>
           <Card>
             <div className="text-center">
-              <CloseCircleOutlined style={{ fontSize: '32px', color: '#EF4444' }} />
-              <div className="text-2xl font-bold text-red-600 mt-2">{stats.missed}</div>
-              <div className="text-sm text-gray-500">Missed</div>
+              <CloseCircleOutlined className="text-3xl " />
+              <div className="text-2xl font-bold color: '#DC2626' ">{stats.missed}</div>
+              <div className=" ">Missed</div>
             </div>
           </Card>
         </Col>
@@ -238,7 +238,7 @@ export default function ShiftSchedulingPage() {
           type="error"
           showIcon
           closable
-          style={{ marginBottom: '16px' }}
+          className=""
         />
       )}
 
@@ -292,7 +292,7 @@ export default function ShiftSchedulingPage() {
           <Row gutter={16}>
             <Col span={12}>
               <Form.Item name="date" label="Date" rules={[{ required: true }]}>
-                <DatePicker style={{ width: '100%' }} />
+                <DatePicker className="w-full" />
               </Form.Item>
             </Col>
             <Col span={12}>
@@ -310,12 +310,12 @@ export default function ShiftSchedulingPage() {
           <Row gutter={16}>
             <Col span={12}>
               <Form.Item name="startTime" label="Start Time" rules={[{ required: true }]}>
-                <TimePicker style={{ width: '100%' }} format="HH:mm" />
+                <TimePicker className="w-full" format="HH:mm" />
               </Form.Item>
             </Col>
             <Col span={12}>
               <Form.Item name="endTime" label="End Time" rules={[{ required: true }]}>
-                <TimePicker style={{ width: '100%' }} format="HH:mm" />
+                <TimePicker className="w-full" format="HH:mm" />
               </Form.Item>
             </Col>
           </Row>

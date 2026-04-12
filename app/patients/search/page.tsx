@@ -73,16 +73,7 @@ export default function PatientSearchPage() {
       dataIndex: 'mrn',
       key: 'mrn',
       render: (mrn: string) => (
-        <span
-          style={{
-            padding: '4px 10px',
-            borderRadius: '6px',
-            fontSize: '13px',
-            fontWeight: 600,
-            background: '#DBEAFE',
-            color: '#1E40AF',
-          }}
-        >
+      <span style={{ fontWeight: 600 }} className=".5 -md bg-blue-100">
           {mrn}
         </span>
       ),
@@ -91,30 +82,19 @@ export default function PatientSearchPage() {
       title: 'Patient',
       key: 'patient',
       render: (_: unknown, record: any) => (
-        <div className="flex items-center gap-2">
-          <div
-            style={{
-              width: '36px',
-              height: '36px',
-              borderRadius: '50%',
-              background: 'linear-gradient(135deg, #3B82F6 0%, #2563EB 100%)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              color: 'white',
-              fontSize: '14px',
-              fontWeight: 600,
-            }}
-          >
+        <div className="  ">
+            <div className="  ">
+              <div className="  -full bg-gradient-to-br from-blue-500 to-blue-600      font-semibold">
             {record.firstName.charAt(0)}{record.lastName.charAt(0)}
           </div>
           <div>
-            <div className="font-medium text-gray-900">
+            <div className="font-medium ">
               {record.firstName} {record.lastName}
             </div>
-            <div className="text-xs text-gray-500">{record.email || 'No email'}</div>
+            <div className="">{record.email || 'No email'}</div>
           </div>
         </div>
+      </div>
       ),
       sorter: (a: any, b: any) =>
         `${a.firstName} ${a.lastName}`.localeCompare(`${b.firstName} ${b.lastName}`),
@@ -124,17 +104,15 @@ export default function PatientSearchPage() {
       dataIndex: 'age',
       key: 'age',
       render: (age: number) => (
-        <span style={{ fontWeight: 500 }}>{age} years</span>
-      ),
-    },
+        <span className="font-medium">{age} years</span>
+      ),},
     {
       title: 'Gender',
       dataIndex: 'gender',
       key: 'gender',
       render: (gender: string) => (
-        <span style={{ fontWeight: 500 }}>{gender.toUpperCase()}</span>
-      ),
-    },
+        <span className="font-medium">{gender.toUpperCase()}</span>
+      ),},
     {
       title: 'Phone',
       dataIndex: 'contactNumber',
@@ -145,16 +123,7 @@ export default function PatientSearchPage() {
       dataIndex: 'department',
       key: 'department',
       render: (dept: string) => (
-        <span
-          style={{
-            padding: '4px 10px',
-            borderRadius: '6px',
-            fontSize: '13px',
-            fontWeight: 500,
-            background: '#EDE9FE',
-            color: '#5B21B6',
-          }}
-        >
+      <span className=".5  -md  font-medium bg-violet-100 ">
           {dept}
         </span>
       ),
@@ -169,11 +138,11 @@ export default function PatientSearchPage() {
       title: 'Actions',
       key: 'actions',
       render: (_: unknown, record: any) => (
-        <div className="flex gap-2">
+        <div className="">
           <Button
             type="link"
             size="small"
-            style={{ color: '#3B82F6', fontWeight: 500, padding: 0 }}
+            style={{ color: '#3B82F6' }}
             onClick={() => router.push(`/patients/${record.id}`)}
           >
             View Profile
@@ -181,7 +150,7 @@ export default function PatientSearchPage() {
           <Button
             type="link"
             size="small"
-            style={{ color: '#10B981', fontWeight: 500, padding: 0 }}
+            className=""
             onClick={() => router.push(`/patients/appointments/new?patientId=${record.id}`)}
           >
             Book Appointment
@@ -197,7 +166,7 @@ export default function PatientSearchPage() {
       subtitle="Search and filter patient records"
     >
       {/* Statistics Cards */}
-      <div className="grid grid-cols-4 gap-5 mb-6">
+      <div className="grid grid-cols-4  ">
         <StatCard
           label="Accessible Patients"
           value={accessiblePatients.length}
@@ -233,10 +202,10 @@ export default function PatientSearchPage() {
       </div>
 
       {/* Search Form */}
-      <div style={{ background: 'white', borderRadius: '12px', padding: '24px', border: '1px solid #E2E8F0', marginBottom: '24px' }}>
-        <div className="flex items-center gap-2 mb-4">
-          <SearchOutlined style={{ color: '#059669', fontSize: '20px' }} />
-          <h2 className="text-lg font-semibold text-gray-900">Search Criteria</h2>
+      <div className="bg-white -xl  border border-slate-200 ">
+        <div className="   ">
+          <SearchOutlined className="color: '#10B981' text-xl" />
+          <h2 className=" font-semibold ">Search Criteria</h2>
         </div>
 
         <Form
@@ -254,7 +223,7 @@ export default function PatientSearchPage() {
                   size="large"
                   loading={loading}
                   onSearch={(value) => handleSearch({ searchTerm: value })}
-                  style={{ borderRadius: '8px' }}
+                  className="-lg"
                 />
               </Form.Item>
             </Col>
@@ -267,7 +236,7 @@ export default function PatientSearchPage() {
                   placeholder="All Departments"
                   allowClear
                   size="large"
-                  style={{ borderRadius: '8px' }}
+                  className="-lg"
                 >
                   <Select.Option value="Cardiology">Cardiology</Select.Option>
                   <Select.Option value="General Medicine">General Medicine</Select.Option>
@@ -285,7 +254,7 @@ export default function PatientSearchPage() {
                   placeholder="All"
                   allowClear
                   size="large"
-                  style={{ borderRadius: '8px' }}
+                  className="-lg"
                 >
                   <Select.Option value="Male">Male</Select.Option>
                   <Select.Option value="Female">Female</Select.Option>
@@ -298,7 +267,7 @@ export default function PatientSearchPage() {
                   placeholder="All"
                   allowClear
                   size="large"
-                  style={{ borderRadius: '8px' }}
+                  className="-lg"
                 >
                   <Select.Option value="active">Active</Select.Option>
                   <Select.Option value="inactive">Inactive</Select.Option>
@@ -334,12 +303,7 @@ export default function PatientSearchPage() {
               <Form.Item label=" ">
                 <Button
                   onClick={handleReset}
-                  style={{
-                    height: '42px',
-                    borderRadius: '10px',
-                    fontWeight: 600,
-                    padding: '0 20px',
-                  }}
+                  className=" -xl font-semibold "
                 >
                   Reset Filters
                 </Button>
@@ -351,11 +315,11 @@ export default function PatientSearchPage() {
 
       {/* Search Results */}
       {hasSearched && (
-        <div style={{ background: 'white', borderRadius: '12px', padding: '24px', border: '1px solid #E2E8F0' }}>
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center gap-2">
-              <UserOutlined style={{ color: '#3B82F6', fontSize: '20px' }} />
-              <h2 className="text-lg font-semibold text-gray-900">
+        <div className="bg-white -xl  border border-slate-200">
+          <div className="   ">
+            <div className="  ">
+              <UserOutlined className="color: '#3B82F6' text-xl" />
+              <h2 className=" font-semibold ">
                 Search Results ({searchResults.length})
               </h2>
             </div>
@@ -375,17 +339,10 @@ export default function PatientSearchPage() {
               showGradientHover={true}
             />
           ) : (
-            <div
-              style={{
-                padding: '60px',
-                textAlign: 'center',
-                background: 'linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%)',
-                borderRadius: '10px',
-              }}
-            >
-              <SearchOutlined style={{ fontSize: '48px', color: '#CBD5E1', marginBottom: '16px' }} />
-              <div className="text-lg font-semibold text-gray-700 mb-2">No patients found</div>
-              <div className="text-sm text-gray-500">
+            <div className="text-center bg-gradient-to-br from-slate-50 to-slate-100">
+              <SearchOutlined style={{ fontSize: '48px', color: '#CBD5E1' }} />
+              <div className="font-semibold">No patients found</div>
+              <div className="">
                 Try adjusting your search criteria or filters
               </div>
             </div>
@@ -395,3 +352,4 @@ export default function PatientSearchPage() {
     </PageShell>
   );
 }
+

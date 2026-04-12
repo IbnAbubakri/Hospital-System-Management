@@ -50,7 +50,7 @@ export default function PatientPortalPage() {
   };
 
   const labColumns = [
-    { title: 'Test', dataIndex: 'test', key: 'test', render: (test: string) => <span className="font-medium text-gray-900">{test}</span> },
+    { title: 'Test', dataIndex: 'test', key: 'test', render: (test: string) => <span className="font-medium ">{test}</span> },
     { title: 'Date', dataIndex: 'date', key: 'date' },
     {
       title: 'Status',
@@ -96,7 +96,7 @@ export default function PatientPortalPage() {
       title: 'Amount',
       dataIndex: 'amount',
       key: 'amount',
-      render: (amt: number) => <span className="font-semibold text-gray-900">₦{amt.toLocaleString()}</span>,
+      render: (amt: number) => <span className="font-semibold ">₦{amt.toLocaleString()}</span>,
     },
     {
       title: 'Status',
@@ -135,25 +135,25 @@ export default function PatientPortalPage() {
       }
     >
       {/* Patient Profile Card */}
-      <div style={{ background: 'white', borderRadius: '12px', padding: '16px', border: '1px solid #E2E8F0', marginBottom: '24px' }}>
+      <div className="bg-white -xl  border border-gray-200 ">
         <Row gutter={24} align="middle">
           <Col>
-            <Avatar size={80} icon={<UserOutlined />} style={{ background: 'linear-gradient(135deg, #3B82F6 0%, #2563EB 100%)' }} />
+            <Avatar size={80} icon={<UserOutlined />} className="bg-gradient-to-br from-blue-500 to-blue-700" />
           </Col>
-          <Col flex="1">
-            <Title level={3} className="!mb-1 !text-gray-900">{patientInfo.name}</Title>
-            <Text type="secondary" className="text-sm">Patient ID: {patientInfo.id} • Age: {patientInfo.age} • Blood Type: {patientInfo.bloodType}</Text>
-            <div className="flex gap-4 mt-3 text-sm text-gray-600">
-              <div className="flex items-center gap-1">
-                <MailOutlined style={{ fontSize: '14px' }} />
+          <Col span={1}>
+            <Title level={3} className="! !">{patientInfo.name}</Title>
+            <Text type="secondary" className="">Patient ID: {patientInfo.id} • Age: {patientInfo.age} • Blood Type: {patientInfo.bloodType}</Text>
+            <div className="    ">
+              <div className="  ">
+                <MailOutlined className="" />
                 {patientInfo.email}
               </div>
-              <div className="flex items-center gap-1">
-                <PhoneOutlined style={{ fontSize: '14px' }} />
+              <div className="  ">
+                <PhoneOutlined className="" />
                 {patientInfo.phone}
               </div>
-              <div className="flex items-center gap-1">
-                <EnvironmentOutlined style={{ fontSize: '14px' }} />
+              <div className="  ">
+                <EnvironmentOutlined className="" />
                 {patientInfo.address}
               </div>
             </div>
@@ -162,7 +162,7 @@ export default function PatientPortalPage() {
       </div>
 
       {/* Statistics Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 mb-6">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4  sm: ">
         <StatCard
           label="Medical Records"
           value={stats.medicalRecords}
@@ -202,20 +202,20 @@ export default function PatientPortalPage() {
       <Row gutter={24}>
         <Col xs={24} lg={12}>
           {/* Upcoming Appointments */}
-          <div style={{ background: 'white', borderRadius: '12px', padding: '16px', border: '1px solid #E2E8F0', marginBottom: '24px' }}>
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Upcoming Appointments</h3>
+          <div className="bg-white -xl  border border-gray-200 ">
+            <h3 className=" font-semibold  ">Upcoming Appointments</h3>
             <Timeline>
               {upcomingAppointments.map((apt) => (
                 <Timeline.Item
                   key={apt.id}
-                  dot={<CalendarOutlined style={{ fontSize: '16px', color: '#3B82F6' }} />}
+                  dot={<CalendarOutlined className="text-base " />}
                 >
                   <div>
-                    <div className="font-medium text-gray-900">{apt.doctor}</div>
-                    <div className="text-sm text-gray-500">
+                    <div className="font-medium ">{apt.doctor}</div>
+                    <div className=" ">
                       {apt.department} • {formatDate(apt.date)} at {apt.time}
                     </div>
-                    <div className="mt-2">
+                    <div className="">
                       <StatusTag
                         status={apt.status}
                         type="appointment"
@@ -226,14 +226,14 @@ export default function PatientPortalPage() {
                 </Timeline.Item>
               ))}
             </Timeline>
-            <GradientButton icon={<CalendarOutlined />} block className="mt-4">
+            <GradientButton icon={<CalendarOutlined />} block className="">
               Book New Appointment
             </GradientButton>
           </div>
 
           {/* Recent Lab Results */}
-          <div style={{ background: 'white', borderRadius: '12px', padding: '16px', border: '1px solid #E2E8F0' }}>
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Recent Lab Results</h3>
+          <div className="bg-white -xl  border border-gray-200">
+            <h3 className=" font-semibold  ">Recent Lab Results</h3>
             <ModernTable
               dataSource={recentLabResults}
               columns={labColumns}
@@ -244,22 +244,22 @@ export default function PatientPortalPage() {
 
         <Col xs={24} lg={12}>
           {/* Billing & Payments */}
-          <div style={{ background: 'white', borderRadius: '12px', padding: '16px', border: '1px solid #E2E8F0', marginBottom: '24px' }}>
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Billing & Payments</h3>
+          <div className="bg-white -xl  border border-gray-200 ">
+            <h3 className=" font-semibold  ">Billing & Payments</h3>
             <ModernTable
               dataSource={invoices}
               columns={invoiceColumns}
               pagination={false}
             />
-            <GradientButton icon={<DollarOutlined />} block className="mt-4">
+            <GradientButton icon={<DollarOutlined />} block className="">
               View All Bills
             </GradientButton>
           </div>
 
           {/* Quick Actions */}
-          <div style={{ background: 'white', borderRadius: '12px', padding: '16px', border: '1px solid #E2E8F0' }}>
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h3>
-            <div className="grid grid-cols-2 gap-3">
+          <div className="bg-white -xl  border border-gray-200">
+            <h3 className=" font-semibold  ">Quick Actions</h3>
+            <div className="grid grid-cols-2 ">
               <GradientButton variant="secondary" icon={<FileTextOutlined />} block>
                 View Records
               </GradientButton>
@@ -278,19 +278,19 @@ export default function PatientPortalPage() {
 
             {/* Health Summary */}
             <div>
-              <h4 className="text-base font-semibold text-gray-900 mb-3">Health Summary</h4>
+              <h4 className="text-base font-semibold  ">Health Summary</h4>
               <div className="space-y-2">
-                <div className="flex justify-between items-center p-3 bg-gray-50 rounded">
-                  <span className="text-sm text-gray-600">Blood Pressure</span>
-                  <span className="text-sm font-medium text-gray-900">120/80 mmHg</span>
+                <div className="    bg-gray-50 ">
+                  <span className=" ">Blood Pressure</span>
+                  <span className=" font-medium ">120/80 mmHg</span>
                 </div>
-                <div className="flex justify-between items-center p-3 bg-gray-50 rounded">
-                  <span className="text-sm text-gray-600">Heart Rate</span>
-                  <span className="text-sm font-medium text-gray-900">72 bpm</span>
+                <div className="    bg-gray-50 ">
+                  <span className=" ">Heart Rate</span>
+                  <span className=" font-medium ">72 bpm</span>
                 </div>
-                <div className="flex justify-between items-center p-3 bg-gray-50 rounded">
-                  <span className="text-sm text-gray-600">Last Checkup</span>
-                  <span className="text-sm font-medium text-gray-900">Jan 25, 2024</span>
+                <div className="    bg-gray-50 ">
+                  <span className=" ">Last Checkup</span>
+                  <span className=" font-medium ">Jan 25, 2024</span>
                 </div>
               </div>
             </div>

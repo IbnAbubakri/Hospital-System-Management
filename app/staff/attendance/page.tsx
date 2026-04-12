@@ -93,11 +93,11 @@ export default function AttendancePage() {
       key: 'staffName',
       render: (name: string, record: AttendanceRecord) => (
         <Space>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-            <UserOutlined style={{ color: '#3B82F6' }} />
+          <div className="  ">
+            <UserOutlined className="" />
             <div>
               <div className="font-medium">{name}</div>
-              <Text type="secondary" className="text-xs">{record.staffId}</Text>
+              <Text type="secondary" className="">{record.staffId}</Text>
             </div>
           </div>
         </Space>
@@ -147,10 +147,10 @@ export default function AttendancePage() {
   };
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '1400px', margin: '0 auto' }}>
+    <div className="  sm: sm: lg: lg: max-w-7xl mx-auto">
       <Title level={3}>Time & Attendance Management</Title>
 
-      <Row gutter={[24, 24]} style={{ marginBottom: '24px' }}>
+      <Row gutter={[24, 24]} className="">
         <Col xs={24} sm={12} md={6}>
           <Card>
             <Statistic title="Total Staff" value={stats.total} prefix={<UserOutlined />} />
@@ -158,12 +158,12 @@ export default function AttendancePage() {
         </Col>
         <Col xs={24} sm={12} md={6}>
           <Card>
-            <Statistic title="Present Today" value={stats.present} valueStyle={{ color: '#52c41a' }} />
+            <Statistic title="Present Today" value={stats.present} valueStyle={{ color: '#10B981' }} />
           </Card>
         </Col>
         <Col xs={24} sm={12} md={6}>
           <Card>
-            <Statistic title="Absent" value={stats.absent} valueStyle={{ color: '#ff4d4f' }} />
+            <Statistic title="Absent" value={stats.absent} valueStyle={{ color: '#EF4444' }} />
           </Card>
         </Col>
         <Col xs={24} sm={12} md={6}>
@@ -174,7 +174,7 @@ export default function AttendancePage() {
       </Row>
 
       <Card className="overflow-x-auto">
-        <Space className="flex flex-col sm:flex-row gap-3" style={{ marginBottom: 16 }}>
+        <Space className=" -col sm:-row  ">
           <DatePicker
             value={dayjs(selectedDate)}
             onChange={(date) => setSelectedDate(date ? date.format('YYYY-MM-DD') : '')}

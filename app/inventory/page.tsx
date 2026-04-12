@@ -25,14 +25,13 @@ export default function InventoryPage() {
   // CRITICAL SECURITY: Restrict access to inventory staff
   if (!hasPermission('inventory:view')) {
     return (
-      <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)', padding: '24px' }}>
+      <div className="min-h-screen bg-gradient-to-b from-blue-50 to-slate-50 ">
         <Alert
           title="Access Denied"
           description="You don&apos;tt have permission to access inventory management. This area is restricted to inventory staff and administrators."
           type="error"
           showIcon
-          style={{ marginTop: '24px', borderRadius: '12px' }}
-        />
+          className="xl" />
       </div>
     );
   }
@@ -99,20 +98,11 @@ export default function InventoryPage() {
       title: 'Category',
       dataIndex: 'category',
       key: 'category',
-      render: (cat: string) => (
-        <span
-          style={{
-            padding: '4px 10px',
-            borderRadius: '6px',
-            fontSize: '13px',
-            fontWeight: 500,
-            background: '#F3E8FF',
-            color: '#7C3AED',
-          }}
-        >
-          {cat}
-        </span>
-      ),
+        render: (cat: string) => (
+          <span className=".5  -md  font-medium bg-purple-100 text-purple-700">
+            {cat}
+          </span>
+        ),
     },
     {
       title: 'Stock',
@@ -199,7 +189,7 @@ export default function InventoryPage() {
       }
     >
       {/* Statistics Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-6">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4  ">
         <StatCard
           label="Total Items"
           value={stats.total}
@@ -234,9 +224,9 @@ export default function InventoryPage() {
         />
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 ">
         {/* Inventory Items - Takes 2 columns */}
-        <div className="lg:col-span-2 p-4 sm:p-6" style={{ background: 'white', borderRadius: '12px', border: '1px solid #E2E8F0' }}>
+        <div className="lg:col-span-2  sm: bg-white -xl border border-slate-200">
           <SearchFilterBar
             searchPlaceholder="Search items by name, code, or category..."
             searchValue={searchText}
@@ -254,42 +244,42 @@ export default function InventoryPage() {
         </div>
 
         {/* Sidebar - Takes 1 column */}
-        <div className="space-y-6 p-4 sm:p-6" style={{ background: 'white', borderRadius: '12px', border: '1px solid #E2E8F0' }}>
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Stock Level Overview</h3>
+        <div className="space-y-6  sm: bg-white -xl border border-slate-200">
+            <h3 className=" font-semibold  ">Stock Level Overview</h3>
             <div className="space-y-4">
               <div>
-                <div className="flex justify-between mb-2">
-                  <span className="text-sm font-medium">Medications</span>
-                  <span className="text-sm text-gray-500">75%</span>
+                <div className="  ">
+                  <span className=" font-medium">Medications</span>
+                  <span className=" ">75%</span>
                 </div>
                 <Progress percent={75} strokeColor="#3B82F6" />
               </div>
               <div>
-                <div className="flex justify-between mb-2">
-                  <span className="text-sm font-medium">Consumables</span>
-                  <span className="text-sm text-gray-500">82%</span>
+                <div className="  ">
+                  <span className=" font-medium">Consumables</span>
+                  <span className=" ">82%</span>
                 </div>
                 <Progress percent={82} strokeColor="#10B981" />
               </div>
               <div>
-                <div className="flex justify-between mb-2">
-                  <span className="text-sm font-medium">Equipment</span>
-                  <span className="text-sm text-gray-500">90%</span>
+                <div className="  ">
+                  <span className=" font-medium">Equipment</span>
+                  <span className=" ">90%</span>
                 </div>
                 <Progress percent={90} strokeColor="#F59E0B" />
               </div>
             </div>
 
             {/* Recent Purchase Orders */}
-            <div className="p-4 sm:p-6" style={{ background: 'white', borderRadius: '12px', border: '1px solid #E2E8F0' }}>
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Recent Purchase Orders</h3>
+            <div className=" sm: bg-white -xl border border-slate-200">
+              <h3 className=" font-semibold  ">Recent Purchase Orders</h3>
               <ModernTable
                 dataSource={purchaseOrders}
                 columns={poColumns}
                 pagination={false}
                 size="small"
               />
-              <div className="mt-3 text-center">
+              <div className=" text-center">
                 <GradientButton variant="secondary" size="small" className="w-full sm:w-auto">
                   View All Orders
                 </GradientButton>

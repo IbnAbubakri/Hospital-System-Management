@@ -41,14 +41,14 @@ export default function UsersPage() {
   // CRITICAL SECURITY: Restrict access to administrators only
   if (!hasPermission('admin:users:view')) {
     return (
-      <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)', padding: '16px' }}>
+      <div className="min-h-screen bg-gradient-to-b from-blue-50 to-slate-50 ">
         <Alert
           title="Access Denied"
           description="You don&apos;tt have permission to access user management. This area is restricted to administrators only."
           type="error"
           showIcon
           icon={<StopOutlined />}
-          style={{ marginTop: '24px', borderRadius: '12px' }}
+          className=" -xl"
         />
       </div>
     );
@@ -71,11 +71,11 @@ export default function UsersPage() {
       title: 'User',
       key: 'user',
       render: (_: any, record: UserAccount) => (
-        <div className="flex items-center gap-3">
-          <Avatar size={40} icon={<UserOutlined />} style={{ backgroundColor: '#3B82F6' }} />
+        <div className="  ">
+          <Avatar size={40} icon={<UserOutlined />} className="bg-blue-500" />
           <div>
-            <div className="font-medium text-gray-900">{record.fullName}</div>
-            <div className="text-xs text-gray-500">@{record.username}</div>
+            <div className="font-medium ">{record.fullName}</div>
+            <div className=" ">@{record.username}</div>
           </div>
         </div>
       ),
@@ -87,14 +87,7 @@ export default function UsersPage() {
       key: 'role',
       render: (role: string) => (
         <span
-          style={{
-            padding: '4px 10px',
-            borderRadius: '6px',
-            fontSize: '13px',
-            fontWeight: 500,
-            background: role === 'Administrator' ? '#DBEAFE' : '#F1F5F9',
-            color: role === 'Administrator' ? '#1E40AF' : '#475569',
-          }}
+          className={`.5  -md  font-medium ${role === 'Administrator' ? 'bg-blue-100 ' : 'bg-gray-100 '}`}
         >
           {role.toUpperCase()}
         </span>
@@ -126,14 +119,7 @@ export default function UsersPage() {
           {permissions.map((p: any) => (
             <span
               key={p}
-              style={{
-                padding: '3px 8px',
-                borderRadius: '6px',
-                fontSize: '12px',
-                background: '#F1F5F9',
-                color: '#475569',
-                fontWeight: 500,
-              }}
+              className=" .5 -md  bg-gray-100  font-medium"
             >
               {p}
             </span>
@@ -148,10 +134,7 @@ export default function UsersPage() {
       render: (count: number) => (
         <Badge
           count={count}
-          style={{
-            background: 'linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%)',
-            boxShadow: '0 2px 8px rgba(139, 92, 246, 0.3)',
-          }}
+          className="bg-gradient-to-br from-violet-500 to-violet-700 shadow"
         />
       ),
     },
@@ -177,7 +160,7 @@ export default function UsersPage() {
       }
     >
       {/* Statistics Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 mb-6">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4  sm: ">
         <StatCard
           label="Total Users"
           value={mockUsers.length}
@@ -213,11 +196,11 @@ export default function UsersPage() {
       </div>
 
       {/* User Accounts Section */}
-      <div className="p-4 sm:p-6 overflow-x-auto" style={{ background: 'white', borderRadius: '12px', border: '1px solid #E2E8F0', marginBottom: '24px' }}>
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-4">
-          <div className="flex items-center gap-2">
-            <UserSwitchOutlined style={{ color: '#6366F1', fontSize: '20px' }} />
-            <h2 className="text-lg font-semibold text-gray-900">User Accounts</h2>
+      <div className=" sm: overflow-x-auto bg-white -xl border border-gray-200 ">
+        <div className=" -col sm:-row items-start sm:   ">
+          <div className="  ">
+            <UserSwitchOutlined className="text-indigo-500 text-xl" />
+            <h2 className=" font-semibold ">User Accounts</h2>
           </div>
         </div>
 
@@ -253,11 +236,11 @@ export default function UsersPage() {
       </div>
 
       {/* Roles & Permissions Section */}
-      <div className="p-4 sm:p-6 overflow-x-auto" style={{ background: 'white', borderRadius: '12px', border: '1px solid #E2E8F0' }}>
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-4">
-          <div className="flex items-center gap-2">
-            <SecurityScanOutlined style={{ color: '#8B5CF6', fontSize: '20px' }} />
-            <h2 className="text-lg font-semibold text-gray-900">Roles & Permissions</h2>
+      <div className=" sm: overflow-x-auto bg-white -xl border border-gray-200">
+        <div className=" -col sm:-row items-start sm:   ">
+          <div className="  ">
+            <SecurityScanOutlined className="color: '#8B5CF6' text-xl" />
+            <h2 className=" font-semibold ">Roles & Permissions</h2>
           </div>
           <GradientButton
             variant="secondary"
@@ -279,7 +262,7 @@ export default function UsersPage() {
       {/* Add User Modal */}
       <Modal
         title={
-          <div className="flex items-center gap-2">
+          <div className="  ">
             <UserOutlined style={{ color: '#3B82F6' }} />
             <span>Add New User</span>
           </div>
@@ -288,52 +271,30 @@ export default function UsersPage() {
         onCancel={() => setUserModalVisible(false)}
         okText="Create User"
       >
-        <Form layout="vertical" style={{ marginTop: '24px' }}>
+        <Form layout="vertical" className="">
           <Form.Item label="Full Name" rules={[{ required: true }]}>
             <input
               type="text"
               placeholder="Enter full name"
-              style={{
-                width: '100%',
-                padding: '8px 12px',
-                borderRadius: '8px',
-                border: '1px solid #E2E8F0',
-              }}
+              className="w-full   -lg border border-gray-200"
             />
           </Form.Item>
           <Form.Item label="Username" rules={[{ required: true }]}>
             <input
               type="text"
               placeholder="Enter username"
-              style={{
-                width: '100%',
-                padding: '8px 12px',
-                borderRadius: '8px',
-                border: '1px solid #E2E8F0',
-              }}
+              className="w-full   -lg border border-gray-200"
             />
           </Form.Item>
           <Form.Item label="Email" rules={[{ required: true, type: 'email' }]}>
             <input
               type="email"
               placeholder="Enter email"
-              style={{
-                width: '100%',
-                padding: '8px 12px',
-                borderRadius: '8px',
-                border: '1px solid #E2E8F0',
-              }}
+              className="w-full   -lg border border-gray-200"
             />
           </Form.Item>
           <Form.Item label="Role" rules={[{ required: true }]}>
-            <select
-              style={{
-                width: '100%',
-                padding: '8px 12px',
-                borderRadius: '8px',
-                border: '1px solid #E2E8F0',
-              }}
-            >
+            <select className="w-full   -lg border border-gray-200">
               <option value="">Select role</option>
               <option value="Administrator">Administrator</option>
               <option value="Doctor">Doctor</option>
@@ -341,14 +302,7 @@ export default function UsersPage() {
             </select>
           </Form.Item>
           <Form.Item label="Department" rules={[{ required: true }]}>
-            <select
-              style={{
-                width: '100%',
-                padding: '8px 12px',
-                borderRadius: '8px',
-                border: '1px solid #E2E8F0',
-              }}
-            >
+            <select className="w-full   -lg border border-gray-200">
               <option value="">Select department</option>
               <option value="Cardiology">Cardiology</option>
               <option value="General Medicine">General Medicine</option>
@@ -359,12 +313,7 @@ export default function UsersPage() {
             <input
               type="password"
               placeholder="Enter password"
-              style={{
-                width: '100%',
-                padding: '8px 12px',
-                borderRadius: '8px',
-                border: '1px solid #E2E8F0',
-              }}
+              className="w-full   -lg border border-gray-200"
             />
           </Form.Item>
         </Form>

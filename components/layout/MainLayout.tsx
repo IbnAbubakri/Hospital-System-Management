@@ -54,7 +54,7 @@ export function MainLayout({ children }: MainLayoutProps) {
         onMenuClick={() => setMobileOpen(true)}
       />
 
-      <Layout hasSider>
+      <Layout hasSider style={{ marginTop: '64px' }}>
         {/* Sidebar - Vertical */}
         {!isSmallScreen && (
           <Sider
@@ -69,15 +69,16 @@ export function MainLayout({ children }: MainLayoutProps) {
               left: 0,
               top: 64,
               bottom: 0,
-              background: '#fff',
-              borderRight: '1px solid #f0f0f0',
+              background: 'linear-gradient(180deg, #0EA5E9 0%, #0284C7 50%, #0369A1 100%)',
+              boxShadow: '4px 0 20px 0 rgba(14, 165, 233, 0.25)',
               overflow: 'auto',
+              zIndex: 40,
             }}
           >
             <Menu
               mode="inline"
               {...menuProps}
-              style={{ border: 'none', marginTop: 8 }}
+              style={{ border: 'none', marginTop: 8, background: 'transparent' }}
             />
           </Sider>
         )}
@@ -115,11 +116,12 @@ export function MainLayout({ children }: MainLayoutProps) {
         <Content
           style={{
             marginLeft: isSmallScreen ? 0 : collapsed ? 70 : 280,
-            marginTop: 64,
-            padding: isSmallScreen ? 16 : 24,
+            marginTop: 0,
+            padding: isSmallScreen ? 12 : 16,
             minHeight: 'calc(100vh - 64px)',
             background: '#f8fafc',
             transition: 'margin-left 0.2s',
+            position: 'relative',
           }}
         >
           {children}

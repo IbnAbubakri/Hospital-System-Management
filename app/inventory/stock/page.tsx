@@ -51,7 +51,7 @@ export default function InventoryStockPage() {
   const outOfStockCount = stockItems.filter((i: any) => i.currentStock === 0).length;
 
   return (
-    <div style={{ padding: '24px', maxWidth: '1400px', margin: '0 auto' }}>
+    <div className=" max-w-7xl mx-auto">
       <Title level={3}>Real-Time Stock Levels</Title>
 
       {lowStockCount > 0 && (
@@ -60,32 +60,32 @@ export default function InventoryStockPage() {
           description="Please review and place purchase orders"
           type="warning"
           showIcon
-          style={{ marginBottom: '24px' }}
+          className=""
         />
       )}
 
-      <Row gutter={[16, 16]} style={{ marginBottom: '24px' }}>
+      <Row gutter={[16, 16]} className="">
         <Col span={8}>
           <Card>
             <div className="text-center">
-              <div className="text-2xl font-bold text-blue-600">{stockItems.length}</div>
-              <div className="text-sm text-gray-500">Total Items</div>
+              <div className="text-2xl font-bold ">{stockItems.length}</div>
+              <div className=" ">Total Items</div>
             </div>
           </Card>
         </Col>
         <Col span={8}>
           <Card>
             <div className="text-center">
-              <div className="text-2xl font-bold text-orange-600">{lowStockCount}</div>
-              <div className="text-sm text-gray-500">Low Stock</div>
+              <div className="text-2xl font-bold ">{lowStockCount}</div>
+              <div className=" ">Low Stock</div>
             </div>
           </Card>
         </Col>
         <Col span={8}>
           <Card>
             <div className="text-center">
-              <div className="text-2xl font-bold text-red-600">{outOfStockCount}</div>
-              <div className="text-sm text-gray-500">Out of Stock</div>
+              <div className="text-2xl font-bold ">{outOfStockCount}</div>
+              <div className=" ">Out of Stock</div>
             </div>
           </Card>
         </Col>

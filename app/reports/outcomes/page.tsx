@@ -19,15 +19,15 @@ export default function TreatmentOutcomesPage() {
     { title: 'Procedure', dataIndex: 'procedure', key: 'procedure' },
     { title: 'Department', dataIndex: 'department', key: 'department', render: (dept: string) => <Tag>{dept}</Tag> },
     { title: 'Total Cases', dataIndex: 'total', key: 'total' },
-    { title: 'Successful', dataIndex: 'successful', key: 'successful', render: (val: number) => <span className="text-green-600 font-semibold">{val}</span> },
+    { title: 'Successful', dataIndex: 'successful', key: 'successful', render: (val: number) => <span className="color: '#059669' font-semibold">{val}</span> },
     {
       title: 'Success Rate',
       dataIndex: 'successRate',
       key: 'successRate',
       render: (rate: number) => (
-        <div style={{ width: '100px' }}>
+        <div className="">
           <Progress percent={rate} size="small" strokeColor="#10B981" />
-          <Text className="text-xs">{rate}%</Text>
+          <Text className="">{rate}%</Text>
         </div>
       ),
     },
@@ -40,12 +40,12 @@ export default function TreatmentOutcomesPage() {
   );
 
   return (
-    <div style={{ padding: '24px', maxWidth: '1200px', margin: '0 auto' }} className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8">
+    <div className="  sm: sm: lg: lg: max-w-6xl mx-auto">
       <Title level={3}>Treatment Outcomes & Success Rates</Title>
 
-      <Row gutter={[16, 16]} style={{ marginBottom: '24px' }}>
+      <Row gutter={[16, 16]} className="">
         <Col xs={24} sm={8}>
-          <Card className="p-4 sm:p-6">
+          <Card className=" sm:">
             <Statistic
               title="Overall Success Rate"
               value={overallSuccessRate}
@@ -56,7 +56,7 @@ export default function TreatmentOutcomesPage() {
           </Card>
         </Col>
         <Col xs={24} sm={8}>
-          <Card className="p-4 sm:p-6">
+          <Card className=" sm:">
             <Statistic
               title="Total Procedures"
               value={outcomes.reduce((sum, o) => sum + o.total, 0)}
@@ -64,7 +64,7 @@ export default function TreatmentOutcomesPage() {
           </Card>
         </Col>
         <Col xs={24} sm={8}>
-          <Card className="p-4 sm:p-6">
+          <Card className=" sm:">
             <Statistic
               title="Avg Length of Stay"
               value={(outcomes.reduce((sum, o) => sum + o.avgStay * o.total, 0) / outcomes.reduce((sum, o) => sum + o.total, 0)).toFixed(1)}
@@ -74,7 +74,7 @@ export default function TreatmentOutcomesPage() {
         </Col>
       </Row>
 
-      <Card className="p-4 sm:p-6">
+      <Card className=" sm:">
         <div className="overflow-x-auto">
           <Table
             columns={columns}

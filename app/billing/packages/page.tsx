@@ -39,8 +39,8 @@ export default function PackagesPage() {
   // CRITICAL SECURITY: Restrict access to administrators only
   if (!hasPermission('billing:packages:view')) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-blue-50 to-slate-50 px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8">
-        <Card className="mt-6 rounded-xl">
+      <div className="min-h-screen bg-gradient-to-b from-blue-50 to-slate-50   sm: sm: lg: lg:">
+        <Card className=" -xl">
           <Alert
             title="Access Denied"
             description="You don&apos;tt have permission to access package management. This area is restricted to billing staff and administrators only."
@@ -114,7 +114,7 @@ export default function PackagesPage() {
       width: 600,
       content: (
         <div>
-          <Row gutter={16} className="mb-4">
+          <Row gutter={16} className="">
             <Col span={12}>
               <Text strong>Category:</Text> <Tag>{pkg.category}</Tag>
             </Col>
@@ -122,14 +122,14 @@ export default function PackagesPage() {
               <Text strong>Duration:</Text> {pkg.duration}
             </Col>
           </Row>
-          <Row gutter={16} className="mb-4">
+          <Row gutter={16} className="">
             <Col span={8}>
               <Text strong>Original Price:</Text>{' '}
               <Text delete type="secondary">₦{pkg.originalPrice.toLocaleString()}</Text>
             </Col>
             <Col span={8}>
               <Text strong>Package Price:</Text>{' '}
-              <Text type="success" className="text-lg font-semibold">₦{pkg.packagePrice.toLocaleString()}</Text>
+              <Text type="success" className=" font-semibold">₦{pkg.packagePrice.toLocaleString()}</Text>
             </Col>
             <Col span={8}>
               <Text strong>You Save:</Text>{' '}
@@ -142,7 +142,7 @@ export default function PackagesPage() {
             dataSource={pkg.items}
             renderItem={(item) => (
               <List.Item>
-                <div className="flex justify-between w-full">
+                <div className="  w-full">
                   <span>{item.service}</span>
                   <Tag>₦{item.amount.toLocaleString()}</Tag>
                 </div>
@@ -167,16 +167,7 @@ export default function PackagesPage() {
       dataIndex: 'code',
       key: 'code',
       render: (code: string) => (
-        <span
-          style={{
-            padding: '4px 10px',
-            borderRadius: '6px',
-            fontSize: '13px',
-            fontWeight: 500,
-            background: '#DBEAFE',
-            color: '#1E40AF',
-          }}
-        >
+        <span className=".5  -md  font-medium bg-blue-100 ">
           {code}
         </span>
       )},
@@ -186,7 +177,7 @@ export default function PackagesPage() {
       key: 'name',
       render: (name: string, record: Package) => (
         <Space>
-          <FolderOutlined style={{ color: '#10B981' }} />
+          <FolderOutlined className="" />
           <span className="font-medium">{name}</span>
         </Space>
       )},
@@ -195,16 +186,7 @@ export default function PackagesPage() {
       dataIndex: 'category',
       key: 'category',
       render: (category: string) => (
-        <span
-          style={{
-            padding: '4px 10px',
-            borderRadius: '6px',
-            fontSize: '13px',
-            fontWeight: 500,
-            background: '#F1F5F9',
-            color: '#475569',
-          }}
-        >
+        <span className=".5  -md  font-medium bg-slate-100 text-slate-600">
           {category}
         </span>
       )},
@@ -218,9 +200,9 @@ export default function PackagesPage() {
       render: (_: any, record: Package) => (
         <div>
           <div>
-            <Text delete type="secondary" className="text-sm">₦{record.originalPrice.toLocaleString()}</Text>
+            <Text delete type="secondary" className="">₦{record.originalPrice.toLocaleString()}</Text>
           </div>
-          <div className="font-semibold text-green-600">₦{record.packagePrice.toLocaleString()}</div>
+          <div className="font-semibold ">₦{record.packagePrice.toLocaleString()}</div>
           <div>
             <Tag color="red">{record.discount}% OFF</Tag>
           </div>
@@ -231,16 +213,7 @@ export default function PackagesPage() {
       dataIndex: 'items',
       key: 'items',
       render: (items: PackageItem[]) => (
-        <span
-          style={{
-            padding: '4px 10px',
-            borderRadius: '6px',
-            fontSize: '13px',
-            fontWeight: 500,
-            background: '#D1FAE5',
-            color: '#065F46',
-          }}
-        >
+        <span className=".5  -md  font-medium bg-emerald-100 ">
           {items.length} services
         </span>
       )},
@@ -285,7 +258,7 @@ export default function PackagesPage() {
       }
     >
       {/* Statistics Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-6">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4  ">
         <StatCard
           label="Total Packages"
           value={stats.total}
@@ -323,7 +296,7 @@ export default function PackagesPage() {
       </div>
 
       {/* Package List Section */}
-      <div className="bg-white rounded-xl p-4 sm:p-6 lg:p-6 border border-slate-200">
+      <div className="bg-white -xl  sm: lg: border border-slate-200">
         <SearchFilterBar
           searchPlaceholder="Search packages by name or code..."
           searchValue={searchText}
@@ -363,8 +336,8 @@ export default function PackagesPage() {
       {/* Create Package Modal */}
       <Modal
         title={
-          <div className="flex items-center gap-2">
-            <PlusOutlined style={{ color: '#3B82F6' }} />
+          <div className="  ">
+            <PlusOutlined className="" />
             <span>Create New Package</span>
           </div>
         }
@@ -391,7 +364,7 @@ export default function PackagesPage() {
           message.success('Package created successfully');
           setIsModalOpen(false);
           form.resetFields();
-        }} className="mt-6">
+        }} className="">
           <Form.Item name="name" label="Package Name" rules={[{ required: true }]}>
             <Input placeholder="Enter package name" />
           </Form.Item>
@@ -416,17 +389,17 @@ export default function PackagesPage() {
           <Row gutter={16}>
             <Col span={8}>
               <Form.Item name="originalPrice" label="Original Price (₦)" rules={[{ required: true }]}>
-                <InputNumber placeholder="0" style={{ width: '100%' }} />
+                <InputNumber placeholder="0" className="w-full" />
               </Form.Item>
             </Col>
             <Col span={8}>
               <Form.Item name="packagePrice" label="Package Price (₦)" rules={[{ required: true }]}>
-                <InputNumber placeholder="0" style={{ width: '100%' }} />
+                <InputNumber placeholder="0" className="w-full" />
               </Form.Item>
             </Col>
             <Col span={8}>
               <Form.Item name="discount" label="Discount (%)" rules={[{ required: true }]}>
-                <InputNumber placeholder="0" style={{ width: '100%' }} />
+                <InputNumber placeholder="0" className="w-full" />
               </Form.Item>
             </Col>
           </Row>

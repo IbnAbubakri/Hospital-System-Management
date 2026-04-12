@@ -64,13 +64,13 @@ export default function LabOrdersPage() {
   // CRITICAL SECURITY: Restrict access to lab orders
   if (!hasPermission('laboratory:orders:view')) {
     return (
-      <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)', padding: '24px' }}>
+      <div className="min-h-screen bg-gradient-to-b from-blue-50 to-slate-50 ">
         <Alert
           title="Access Denied"
           description="You don&apos;tt have permission to access lab orders. This area is restricted to clinical staff."
           type="error"
           showIcon
-          style={{ marginTop: '24px', borderRadius: '12px' }}
+          className=" -xl"
         />
       </div>
     );
@@ -82,16 +82,7 @@ export default function LabOrdersPage() {
       dataIndex: 'orderNumber',
       key: 'orderNumber',
       render: (num: string) => (
-        <span
-          style={{
-            padding: '4px 10px',
-            borderRadius: '6px',
-            fontSize: '13px',
-            fontWeight: 500,
-            background: '#DBEAFE',
-            color: '#1E40AF',
-          }}
-        >
+        <span className=".5  -md  font-medium bg-blue-100 ">
           {num}
         </span>
       ),
@@ -103,19 +94,9 @@ export default function LabOrdersPage() {
       dataIndex: 'priority',
       key: 'priority',
       render: (priority: string) => {
-        const color = priority === 'urgent' || priority === 'emergency' ? '#EF4444' : '#64748B';
-        const bg = priority === 'urgent' || priority === 'emergency' ? '#FEE2E2' : '#F1F5F9';
+        const isCritical = priority === 'urgent' || priority === 'emergency';
         return (
-          <span
-            style={{
-              padding: '4px 10px',
-              borderRadius: '6px',
-              fontSize: '12px',
-              fontWeight: 500,
-              background: bg,
-              color,
-            }}
-          >
+          <span className={`.5  -md  font-medium ${isCritical ? 'bg-red-100 ' : 'bg-slate-100 text-slate-600'}`}>
             {priority.toUpperCase()}
           </span>
         );
@@ -155,7 +136,7 @@ export default function LabOrdersPage() {
       }
     >
       {/* Statistics Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 mb-6">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4  sm: ">
         <StatCard
           label="Total Orders"
           value={stats.total}
@@ -192,29 +173,29 @@ export default function LabOrdersPage() {
 
       {/* New Lab Order Form */}
       {hasPermission('laboratory:orders:create') && (
-        <div style={{ background: 'white', borderRadius: '12px', padding: '24px', border: '1px solid #E2E8F0', marginBottom: '24px' }}>
-          <div className="flex items-center gap-2 mb-4">
-            <ExperimentOutlined style={{ color: '#6366F1', fontSize: '20px' }} />
-            <h2 className="text-lg font-semibold text-gray-900">New Lab Order</h2>
+        <div className="bg-white -xl  border border-gray-200 ">
+          <div className="   ">
+            <ExperimentOutlined className="text-xl text-indigo-500" />
+            <h2 className=" font-semibold ">New Lab Order</h2>
           </div>
 
           <Form layout="vertical">
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-3 ">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Patient</label>
+                <label className="block  font-medium  ">Patient</label>
                 <Select placeholder="Select patient" showSearch size="large">
                   {accessiblePatients.map((p: any) => (
                     <Option key={p.id} value={p.id}>{p.firstName} {p.lastName}</Option>
                   ))}
                 </Select>
                 {accessiblePatients.length === 0 && user?.role === 'Doctor' && (
-                  <p style={{ color: '#EF4444', fontSize: '12px', marginTop: '8px' }}>
+                  <p className=" color: '#EF4444' ">
                     No patients assigned to you
                   </p>
                 )}
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Ordering Doctor</label>
+                <label className="block  font-medium  ">Ordering Doctor</label>
                 <Select
                   placeholder="Select doctor"
                   disabled={user?.role === 'Doctor'}
@@ -225,24 +206,16 @@ export default function LabOrdersPage() {
                   ))}
                 </Select>
                 {user?.role === 'Doctor' && (
-                  <div
-                    style={{
-                      marginTop: '8px',
-                      padding: '8px 12px',
-                      background: departmentColors?.bg || 'linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%)',
-                      borderRadius: '6px',
-                      border: `1px solid ${departmentColors?.border || '#BFDBFE'}`
-                    }}
-                  >
-                    <p style={{ color: departmentColors?.text || '#1E40AF', fontSize: '12px', margin: 0 }}>
-                      <WarningOutlined style={{ marginRight: '4px' }} />
+                  <div className="  bg-blue-50 -md border border-blue-200">
+                    <p className="  m-0">
+                      <WarningOutlined className="" />
                       Orders will be created under your name
                     </p>
                   </div>
                 )}
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Priority</label>
+                <label className="block  font-medium  ">Priority</label>
                 <Select size="large">
                   <Option value="routine">Routine</Option>
                   <Option value="urgent">Urgent</Option>
@@ -250,8 +223,8 @@ export default function LabOrdersPage() {
                 </Select>
               </div>
             </div>
-            <div className="mt-4">
-              <label className="block text-sm font-medium text-gray-700 mb-2">Tests</label>
+            <div className="">
+              <label className="block  font-medium  ">Tests</label>
               <Select mode="multiple" placeholder="Select tests" size="large">
                 <Option value="cbc">Complete Blood Count (CBC)</Option>
                 <Option value="bmp">Basic Metabolic Panel (BMP)</Option>
@@ -261,7 +234,7 @@ export default function LabOrdersPage() {
                 <Option value="urinalysis">Urinalysis</Option>
               </Select>
             </div>
-            <div className="mt-4">
+            <div className="">
               <GradientButton icon={<PlusOutlined />} htmlType="submit">
                 Submit Order
               </GradientButton>
@@ -271,8 +244,8 @@ export default function LabOrdersPage() {
       )}
 
       {/* Lab Orders Table */}
-      <div style={{ background: 'white', borderRadius: '12px', padding: '24px', border: '1px solid #E2E8F0' }}>
-        <h3 className="text-base font-semibold text-gray-900 mb-4">Lab Orders ({orders.length})</h3>
+      <div className="bg-white -xl  border border-gray-200">
+        <h3 className="text-base font-semibold  ">Lab Orders ({orders.length})</h3>
         <ModernTable
           dataSource={orders}
           columns={columns}

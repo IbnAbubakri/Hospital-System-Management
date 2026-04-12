@@ -20,7 +20,7 @@ export default function ReorderAlertsPage() {
       title: 'Stock Level',
       key: 'stock',
       render: (_: any, item: any) => (
-        <span className={item.currentStock < item.minStock ? 'text-red-600 font-semibold' : ''}>
+        <span style={item.currentStock < item.minStock ? { color: '#DC2626', fontWeight: 600 } : undefined}>
           {item.currentStock} / {item.minStock}
         </span>
       ),
@@ -45,9 +45,9 @@ export default function ReorderAlertsPage() {
   ];
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '1200px', margin: '0 auto' }}>
+    <div className="  sm: sm: lg: lg: max-w-6xl mx-auto">
       <Title level={3}>Reorder Alerts</Title>
-      <Card title="Items Requiring Restock" className="p-4 sm:p-6">
+      <Card title="Items Requiring Restock" className=" sm:">
         <div className="overflow-x-auto">
           <Table dataSource={alerts} columns={columns} rowKey="id" />
         </div>

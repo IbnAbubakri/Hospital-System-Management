@@ -54,7 +54,7 @@ export default function AnalyzerInterfacePage() {
 
   const columns = [
     { title: 'Sample ID', dataIndex: 'sampleId', key: 'sampleId', render: (id: string) => <Tag color="blue">{id}</Tag> },
-    { title: 'Patient', key: 'patient', render: (_: any, r: AnalyzerResult) => (<div><div className="font-medium">{r.patientName}</div><Text type="secondary" className="text-xs">{r.mrn}</Text></div>) },
+    { title: 'Patient', key: 'patient', render: (_: any, r: AnalyzerResult) => (<div><div className="font-medium">{r.patientName}</div><Text type="secondary" className="">{r.mrn}</Text></div>) },
     { title: 'Test', dataIndex: 'test', key: 'test' },
     { title: 'Analyzer', dataIndex: 'analyzer', key: 'analyzer' },
     { title: 'Status', dataIndex: 'status', key: 'status', render: (s: string) => { const c: Record<string, string> = { completed: 'success', pending: 'default', error: 'error', in_progress: 'processing' }; return <Tag color={c[s]} icon={s === 'in_progress' ? <SyncOutlined spin /> : undefined}>{s.toUpperCase().replace('_', ' ')}</Tag>; } },
@@ -79,8 +79,8 @@ export default function AnalyzerInterfacePage() {
 
       <div style={{ padding: '32px', background: 'linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%)', borderBottom: '1px solid #E2E8F0' }}>
         <div className="page-content">
-          <div className="flex items-center gap-3 mb-6"><div style={{ width: '4px', height: '28px', background: 'linear-gradient(180deg, #3B82F6 0%, #2563EB 100%)', borderRadius: '2px' }} /><div><h1 className="text-2xl font-semibold text-gray-900">Laboratory Analyzer Interface</h1></div></div>
-          <p className="text-gray-500 text-sm" style={{ marginLeft: '7px' }}>Monitor analyzer status and test results in real-time</p>
+          <div className="   "><div style={{ width: '4px', height: '28px', background: 'linear-gradient(180deg, #3B82F6 0%, #2563EB 100%)', borderRadius: '2px' }} /><div><h1 className="text-2xl font-semibold ">Laboratory Analyzer Interface</h1></div></div>
+          <p className=" " style={{ marginLeft: '7px' }}>Monitor analyzer status and test results in real-time</p>
 
           <Row gutter={[16, 16]} style={{ marginTop: '24px' }}>
             {[
@@ -91,7 +91,7 @@ export default function AnalyzerInterfacePage() {
             ].map((stat, i) => (
               <Col xs={12} sm={6} key={i}>
                 <div className="stat-card" style={{ padding: '16px', borderRadius: '12px', background: `linear-gradient(135deg, ${stat.bg} 0%, rgba(255,255,255,0.8) 100%)`, border: `1px solid ${stat.border}` }}>
-                  <div className="text-sm font-medium" style={{ color: '#64748B', marginBottom: '6px' }}>{stat.label}</div>
+                  <div className=" font-medium" style={{ color: '#64748B', marginBottom: '6px' }}>{stat.label}</div>
                   <div style={{ fontSize: '28px', fontWeight: 700, color: stat.color, lineHeight: 1 }}>{stat.value}</div>
                 </div>
               </Col>
@@ -100,8 +100,8 @@ export default function AnalyzerInterfacePage() {
         </div>
       </div>
 
-      <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8 page-content">
-        <Card title="Analyzer Results" extra={<div className="flex flex-col sm:flex-row gap-3"><Search placeholder="Search..." allowClear className="w-full sm:w-auto" style={{ width: 200 }} value={searchText} onChange={(e) => setSearchText(e.target.value)} prefix={<SearchOutlined />} /><Button.Group><Button size="small">Pending</Button><Button size="small" type="primary">Running</Button><Button size="small">Completed</Button></Button.Group></div>}>
+      <div className="  sm: sm: lg: lg: page-content">
+        <Card title="Analyzer Results" extra={<div className=" -col sm:-row "><Search placeholder="Search..." allowClear className="w-full sm:w-auto" style={{ width: 200 }} value={searchText} onChange={(e) => setSearchText(e.target.value)} prefix={<SearchOutlined />} /><Button.Group><Button size="small">Pending</Button><Button size="small" type="primary">Running</Button><Button size="small">Completed</Button></Button.Group></div>}>
           <div className="overflow-x-auto">
             <Table dataSource={filteredResults} columns={columns} rowKey="id" pagination={{ pageSize: 10 }} />
           </div>
@@ -109,7 +109,7 @@ export default function AnalyzerInterfacePage() {
       </div>
 
       <Drawer title="Result Details" placement="right" size="large" open={drawerVisible} onClose={() => { setDrawerVisible(false); setSelectedResult(null); }}>
-        {selectedResult && (<Card><div className="mb-3"><Text type="secondary">Sample ID</Text><div><Tag color="blue">{selectedResult.sampleId}</Tag></div></div><div className="mb-3"><Text type="secondary">Patient</Text><div className="text-xl font-semibold">{selectedResult.patientName}</div><div className="text-sm text-gray-500">{selectedResult.mrn}</div></div><Row gutter={16}><Col span={12}><div className="mb-3"><Text type="secondary">Test</Text><div>{selectedResult.test}</div></div></Col><Col span={12}><div className="mb-3"><Text type="secondary">Analyzer</Text><div>{selectedResult.analyzer}</div></div></Col><Col span={12}><div className="mb-3"><Text type="secondary">Status</Text><div><Tag color="blue">{selectedResult.status.toUpperCase()}</Tag></div></div></Col><Col span={12}><div className="mb-3"><Text type="secondary">Operator</Text><div>{selectedResult.operator}</div></div></Col></Row></Card>)}
+        {selectedResult && (<Card><div className=""><Text type="secondary">Sample ID</Text><div><Tag color="blue">{selectedResult.sampleId}</Tag></div></div><div className=""><Text type="secondary">Patient</Text><div className="text-xl font-semibold">{selectedResult.patientName}</div><div className=" ">{selectedResult.mrn}</div></div><Row gutter={16}><Col span={12}><div className=""><Text type="secondary">Test</Text><div>{selectedResult.test}</div></div></Col><Col span={12}><div className=""><Text type="secondary">Analyzer</Text><div>{selectedResult.analyzer}</div></div></Col><Col span={12}><div className=""><Text type="secondary">Status</Text><div><Tag color="blue">{selectedResult.status.toUpperCase()}</Tag></div></div></Col><Col span={12}><div className=""><Text type="secondary">Operator</Text><div>{selectedResult.operator}</div></div></Col></Row></Card>)}
       </Drawer>
     </div>
   );

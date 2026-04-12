@@ -77,7 +77,7 @@ export default function ScheduledReportsPage() {
     { title: 'Recipients', dataIndex: 'recipients', key: 'recipients', render: (recipients: string[]) => recipients.join(', ') },
     { title: 'Format', dataIndex: 'format', key: 'format', render: (format: string) => <Tag>{format}</Tag> },
     { title: 'Last Run', dataIndex: 'lastRun', key: 'lastRun' },
-    { title: 'Next Run', dataIndex: 'nextRun', key: 'nextRun', render: (date: string) => <span className="text-blue-600">{date}</span> },
+    { title: 'Next Run', dataIndex: 'nextRun', key: 'nextRun', render: (date: string) => <span className="">{date}</span> },
     {
       title: 'Actions',
       key: 'actions',
@@ -91,33 +91,33 @@ export default function ScheduledReportsPage() {
   ];
 
   return (
-    <div style={{ padding: '24px', maxWidth: '1200px', margin: '0 auto' }} className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8">
-      <div className="flex items-center justify-between mb-6 flex-col sm:flex-row gap-3">
+    <div className="  sm: sm: lg: lg: max-w-6xl mx-auto">
+      <div className="    -col sm:-row ">
         <Title level={3}>Scheduled Reports</Title>
         <Button type="primary" icon={<PlusOutlined />} onClick={() => setIsModalOpen(true)} className="w-full sm:w-auto">
           Schedule Report
         </Button>
       </div>
 
-      <Row gutter={[16, 16]} style={{ marginBottom: '24px' }}>
+      <Row gutter={[16, 16]} className="">
         <Col xs={24} sm={8}>
-          <Card className="p-4 sm:p-6">
+          <Card className=" sm:">
             <Statistic title="Total Scheduled" value={reports.length} prefix={<ClockCircleOutlined />} />
           </Card>
         </Col>
         <Col xs={24} sm={8}>
-          <Card className="p-4 sm:p-6">
+          <Card className=" sm:">
             <Statistic title="Daily Reports" value={reports.filter((r: any) => r.frequency === 'Daily').length} />
           </Card>
         </Col>
         <Col xs={24} sm={8}>
-          <Card className="p-4 sm:p-6">
+          <Card className=" sm:">
             <Statistic title="Monthly Reports" value={reports.filter((r: any) => r.frequency === 'Monthly').length} />
           </Card>
         </Col>
       </Row>
 
-      <Card className="p-4 sm:p-6">
+      <Card className=" sm:">
         <div className="overflow-x-auto">
           <Table
             dataSource={reports}

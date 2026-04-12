@@ -30,33 +30,17 @@ export default function TelemedicinePage() {
 
   if (inCall) {
     return (
-      <div style={{
-        minHeight: '100vh',
-        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: '20px'
-      }}>
-        <Card style={{ maxWidth: '800px', width: '100%', textAlign: 'center' }}>
-          <Title level={3} style={{ marginBottom: '24px' }}>
+      <div className="min-h-screen bg-gradient-to-br from-[#667eea] to-[#764ba2]    ">
+        <Card className="max-w-3xl w-full text-center">
+          <Title level={3} className="">
             Video Consultation
           </Title>
 
-          <div style={{
-            width: '100%',
-            height: '400px',
-            background: '#000',
-            borderRadius: '8px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            marginBottom: '24px'
-          }}>
-            <div style={{ color: 'white', textAlign: 'center' }}>
-              <div style={{ fontSize: '48px', marginBottom: '16px' }}>[Video Call]</div>
+          <div className="w-full h-[400px] bg-black -lg    ">
+            <div className=" text-center">
+              <div className="text-[48px] ">[Video Call]</div>
               <div>Dr. Ngozi Adeleke</div>
-              <div style={{ fontSize: '14px', marginTop: '8px' }}>Connecting...</div>
+              <div className=" ">Connecting...</div>
             </div>
           </div>
 
@@ -71,7 +55,7 @@ export default function TelemedicinePage() {
   }
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '800px', margin: '0 auto' }}>
+    <div className="  sm: sm: lg: lg: max-w-3xl mx-auto">
       <Title level={2}>Telemedicine Consultation</Title>
       <Text type="secondary">Connect with your doctor via video call</Text>
 
@@ -80,7 +64,7 @@ export default function TelemedicinePage() {
         description="Ensure you have a stable internet connection and your camera/microphone are working properly."
         type="info"
         showIcon
-        style={{ marginBottom: '24px' }}
+        className=""
       />
 
       <Card>
@@ -113,7 +97,7 @@ export default function TelemedicinePage() {
           <Row gutter={16}>
             <Col span={12}>
               <Form.Item name="date" label="Preferred Date" rules={[{ required: true }]}>
-                <DatePicker style={{ width: '100%' }} size="large" />
+                <DatePicker className="w-full" size="large" />
               </Form.Item>
             </Col>
             <Col span={12}>
@@ -153,7 +137,7 @@ export default function TelemedicinePage() {
         </Form>
       </Card>
 
-      <Card style={{ marginTop: '24px' }}>
+      <Card className="">
         <Title level={4}>Before Your Call</Title>
         <List
           dataSource={[
@@ -165,7 +149,7 @@ export default function TelemedicinePage() {
           ]}
           renderItem={(item) => (
             <List.Item>
-              <CheckCircleOutlined style={{ color: '#10B981', marginRight: '8px' }} />
+                <CheckCircleOutlined className="color: '#10B981' " />
               {item}
             </List.Item>
           )}

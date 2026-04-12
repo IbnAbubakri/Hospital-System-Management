@@ -37,7 +37,7 @@ export default function RadiologyContrastPage() {
   const totalAllergies = allergies.length;
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '1400px', margin: '0 auto' }}>
+    <div className="  sm: sm: lg: lg: max-w-7xl mx-auto">
       <Title level={3}>Contrast Media Safety Management</Title>
 
       <Alert
@@ -46,32 +46,32 @@ export default function RadiologyContrastPage() {
         type="warning"
         showIcon
         icon={<WarningOutlined />}
-        style={{ marginBottom: '24px' }}
+        className=""
       />
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px', marginBottom: '24px' }}>
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))]  ">
         <Card>
           <div className="text-center">
-            <div className="text-3xl font-bold text-red-600">{severeAllergies}</div>
-            <div className="text-gray-500">Severe Allergies</div>
+            <div className="text-3xl font-bold ">{severeAllergies}</div>
+            <div className="">Severe Allergies</div>
           </div>
         </Card>
         <Card>
           <div className="text-center">
-            <div className="text-3xl font-bold text-orange-600">{allergies.filter(a => a.severity === 'Moderate').length}</div>
-            <div className="text-gray-500">Moderate Allergies</div>
+            <div className="text-3xl font-bold ">{allergies.filter(a => a.severity === 'Moderate').length}</div>
+            <div className="">Moderate Allergies</div>
           </div>
         </Card>
         <Card>
           <div className="text-center">
-            <div className="text-3xl font-bold text-blue-600">{totalAllergies}</div>
-            <div className="text-gray-500">Total Recorded</div>
+            <div className="text-3xl font-bold ">{totalAllergies}</div>
+            <div className="">Total Recorded</div>
           </div>
         </Card>
         <Card>
           <div className="text-center">
-            <div className="text-3xl font-bold text-green-600">100%</div>
-            <div className="text-gray-500">Screening Rate</div>
+            <div className="text-3xl font-bold ">100%</div>
+            <div className="">Screening Rate</div>
           </div>
         </Card>
       </div>
@@ -87,10 +87,10 @@ export default function RadiologyContrastPage() {
         </div>
       </Card>
 
-      <Card title="Safety Protocols" style={{ marginTop: '24px' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '16px' }}>
+      <Card title="Safety Protocols" className="">
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] ">
           <Card size="small" type="inner" title="Mild Reaction">
-            <ul style={{ paddingLeft: '20px', margin: 0 }}>
+            <ul className="list-disc pl-5 m-0">
               <li>Monitor patient during procedure</li>
               <li>Have emergency equipment available</li>
               <li>Consider slower contrast injection rate</li>
@@ -98,7 +98,7 @@ export default function RadiologyContrastPage() {
             </ul>
           </Card>
           <Card size="small" type="inner" title="Moderate Reaction">
-            <ul style={{ paddingLeft: '20px', margin: 0 }}>
+            <ul className="list-disc pl-5 m-0">
               <li>Premedication with antihistamines</li>
               <li>Consider alternative contrast agents</li>
               <li>Extended monitoring post-procedure</li>
@@ -106,7 +106,7 @@ export default function RadiologyContrastPage() {
             </ul>
           </Card>
           <Card size="small" type="inner" title="Severe Reaction">
-            <ul style={{ paddingLeft: '20px', margin: 0 }}>
+            <ul className="list-disc pl-5 m-0">
               <li>Avoid contrast if possible</li>
               <li>Use alternative imaging modalities</li>
               <li>If unavoidable: Premedication + ICU setup</li>

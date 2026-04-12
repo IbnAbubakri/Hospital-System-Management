@@ -111,7 +111,7 @@ export default function ReferralsPage() {
 
   if (!hasPermission('view_emr') && user?.role !== 'Administrator') {
     return (
-      <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)', padding: '16px' }}>
+      <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)' }}>
         <Alert
           title="Access Denied"
           description="You don't have permission to access this page. Please contact your administrator."
@@ -140,12 +140,12 @@ export default function ReferralsPage() {
   if (!hasPermission('clinical:referrals:view')) {
     return (
       <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)', padding: '24px' }}>
-        <div style={{ background: 'white', borderRadius: '12px', padding: '24px', border: '1px solid #E2E8F0' }}>
-          <div className="flex items-center gap-3 p-4" style={{ background: '#FEF2F2', borderRadius: '8px', border: '1px solid #FECACA' }}>
+        <div style={{ backgroundColor: '#ffffff', borderRadius: '12px', padding: '24px', border: '1px solid #E2E8F0' }}>
+          <div className="   " style={{ background: '#FEF2F2', borderRadius: '8px', border: '1px solid #FECACA' }}>
             <TeamOutlined style={{ color: '#DC2626', fontSize: '20px' }} />
             <div>
-              <h3 className="font-semibold text-red-900">Access Denied</h3>
-              <p className="text-sm text-red-700">You don&apos;tt have permission to access patient referrals. This area is restricted to clinical staff.</p>
+              <h3 className="font-semibold ">Access Denied</h3>
+              <p className=" ">You don&apos;tt have permission to access patient referrals. This area is restricted to clinical staff.</p>
             </div>
           </div>
         </div>
@@ -169,8 +169,8 @@ export default function ReferralsPage() {
       key: 'patient',
       render: (_: any, record: Referral) => (
         <div>
-          <div className="font-medium text-gray-900">{record.patient}</div>
-          <div className="text-xs text-gray-500">{record.mrn}</div>
+          <div className="font-medium ">{record.patient}</div>
+          <div className=" ">{record.mrn}</div>
         </div>
       ),
     },
@@ -179,8 +179,8 @@ export default function ReferralsPage() {
       key: 'from',
       render: (_: any, record: Referral) => (
         <div>
-          <div className="font-medium text-gray-900">{record.from}</div>
-          <div className="text-xs text-gray-500">{record.fromDept}</div>
+          <div className="font-medium ">{record.from}</div>
+          <div className=" ">{record.fromDept}</div>
         </div>
       ),
     },
@@ -189,8 +189,8 @@ export default function ReferralsPage() {
       key: 'to',
       render: (_: any, record: Referral) => (
         <div>
-          <div className="font-medium text-gray-900">{record.to}</div>
-          <div className="text-xs text-gray-500">{record.toDept}</div>
+          <div className="font-medium ">{record.to}</div>
+          <div className=" ">{record.toDept}</div>
         </div>
       ),
     },
@@ -199,7 +199,7 @@ export default function ReferralsPage() {
       dataIndex: 'reason',
       key: 'reason',
       ellipsis: true,
-      render: (reason: string) => <span className="text-sm text-gray-600">{reason}</span>,
+      render: (reason: string) => <span className=" ">{reason}</span>,
     },
     {
       title: 'Urgency',
@@ -271,7 +271,7 @@ export default function ReferralsPage() {
       }
     >
       {/* Statistics Cards */}
-      <div className="grid grid-cols-4 gap-5 mb-6">
+      <div className="grid grid-cols-4  ">
         <StatCard
           label="Total Referrals"
           value={stats.total}
@@ -307,7 +307,7 @@ export default function ReferralsPage() {
       </div>
 
       {/* Referrals Section */}
-      <div style={{ background: 'white', borderRadius: '12px', padding: '24px', border: '1px solid #E2E8F0' }}>
+      <div style={{ backgroundColor: '#ffffff', borderRadius: '12px', padding: '24px', border: '1px solid #E2E8F0' }}>
         <SearchFilterBar
           searchPlaceholder="Search referrals by patient, ID, or doctor..."
           searchValue={searchText}
@@ -350,7 +350,7 @@ export default function ReferralsPage() {
       {/* Create Referral Modal */}
       <Modal
         title={
-          <div className="flex items-center gap-2">
+          <div className="  ">
             <UserOutlined style={{ color: '#3B82F6' }} />
             <span>Create Patient Referral</span>
           </div>

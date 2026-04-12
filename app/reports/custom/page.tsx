@@ -37,15 +37,15 @@ export default function CustomReportPage() {
   ];
 
   return (
-    <div style={{ padding: '24px', maxWidth: '1200px', margin: '0 auto' }} className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8">
+    <div className="  sm: sm: lg: lg: max-w-6xl mx-auto">
       <Title level={3}>Custom Report Builder</Title>
 
-      <Card style={{ marginBottom: '24px' }} className="p-4 sm:p-6">
+      <Card className="  sm:">
         <Row gutter={[16, 16]}>
           <Col xs={24} sm={6}>
             <Text strong>Report Type</Text>
             <Select
-              style={{ width: '100%', marginTop: '8px' }}
+              className="w-full "
               value={reportType}
               onChange={setReportType}
               options={reportTypes}
@@ -54,7 +54,7 @@ export default function CustomReportPage() {
           <Col xs={24} sm={6}>
             <Text strong>Date Range</Text>
             <DatePicker.RangePicker
-              style={{ width: '100%', marginTop: '8px' }}
+              className="w-full "
               value={dateRange}
               onChange={setDateRange}
             />
@@ -62,7 +62,7 @@ export default function CustomReportPage() {
           <Col xs={24} sm={6}>
             <Text strong>Export Format</Text>
             <Select
-              style={{ width: '100%', marginTop: '8px' }}
+              className="w-full "
               defaultValue="pdf"
               options={[
                 { value: 'pdf', label: 'PDF Document' },
@@ -73,7 +73,7 @@ export default function CustomReportPage() {
           </Col>
           <Col xs={24} sm={6}>
             <Text strong>Actions</Text>
-            <div style={{ marginTop: '8px' }}>
+            <div className="">
               <Space wrap>
                 <Button type="primary" onClick={handleGenerate} loading={loading} className="w-full sm:w-auto">
                   Generate Report
@@ -86,8 +86,8 @@ export default function CustomReportPage() {
         </Row>
       </Card>
 
-      <Card title="Report Preview" className="p-4 sm:p-6">
-        <div className="mb-4">
+      <Card title="Report Preview" className=" sm:">
+        <div className="">
           <Text strong>Report Type:</Text> <Tag color="blue">{reportTypes.find(r => r.value === reportType)?.label}</Tag>
         </div>
         <div className="overflow-x-auto">
@@ -97,7 +97,7 @@ export default function CustomReportPage() {
               { title: 'Metric', dataIndex: 'metric' },
               { title: 'Value', dataIndex: 'value' },
               { title: 'Change', dataIndex: 'change', render: (change: string) => (
-                <span className={change.startsWith('+') ? 'text-green-600' : 'text-red-600'}>{change}</span>
+                <span className={change.startsWith('+') ? '' : ''}>{change}</span>
               )},
               { title: 'Period', dataIndex: 'period' },
             ]}

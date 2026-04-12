@@ -82,8 +82,8 @@ export default function ClinicalReportsPage() {
       key: 'name',
       sorter: (a: Report, b: Report) => a.reportName.localeCompare(b.reportName),
       render: (name: string) => (
-        <div className="flex items-center gap-2">
-          <FileTextOutlined style={{ color: '#3B82F6' }} />
+        <div className="  ">
+          <FileTextOutlined className="" />
           <span className="font-medium">{name}</span>
         </div>
       ),
@@ -96,9 +96,8 @@ export default function ClinicalReportsPage() {
         <span
           style={{
             padding: '4px 10px',
-            borderRadius: '6px',
-            fontSize: '13px',
-            fontWeight: 500,
+            
+                        fontWeight: 500,
             background: category === 'clinical'
               ? '#DBEAFE'
               : category === 'financial'
@@ -150,13 +149,13 @@ export default function ClinicalReportsPage() {
       title: '',
       key: 'actions',
       render: (_: any, record: Report) => (
-        <div className="flex gap-2">
+        <div className=" ">
           <Button
             size="small"
             icon={<DownloadOutlined />}
             disabled={record.status !== 'ready'}
             style={{
-              borderRadius: '8px',
+              
               fontWeight: 500,
             }}
           >
@@ -184,7 +183,7 @@ export default function ClinicalReportsPage() {
           }
         >
           {/* Statistics Cards */}
-          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-6">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4  ">
             <StatCard
               label="Total Reports"
               value={stats.total}
@@ -220,10 +219,10 @@ export default function ClinicalReportsPage() {
           </div>
 
           {/* Reports Table */}
-          <div style={{ background: 'white', borderRadius: '12px', padding: '24px', border: '1px solid #E2E8F0' }} className="p-4 sm:p-6">
-            <div className="flex items-center gap-2 mb-4">
-              <BarChartOutlined style={{ color: '#059669', fontSize: '20px' }} />
-              <h2 className="text-lg font-semibold text-gray-900">All Reports</h2>
+          <div className="bg-white   border border-slate-200">
+            <div className="   ">
+              <BarChartOutlined className=" text" />
+              <h2 className=" font-semibold ">All Reports</h2>
             </div>
 
             <SearchFilterBar
@@ -251,7 +250,7 @@ export default function ClinicalReportsPage() {
               extra={
                 <RangePicker
                   style={{
-                    borderRadius: '8px',
+                    
                   }}
                 />
               }

@@ -116,15 +116,15 @@ export default function RiskManagementPage() {
       </Row>
 
       <Card title="Risk Matrix by Likelihood" style={{ marginBottom: '24px' }}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+        <div style={{ display: '', flexDirection: 'column', gap: '16px' }}>
           {likelihoodLabels.map((likelihood, idx) => {
             const level = idx + 1;
             const riskCount = riskMatrix[level] || 0;
             return (
               <div key={level} style={{ marginBottom: '12px' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+                <div style={{ display: '', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
                   <span style={{ fontWeight: 500 }}>{likelihood}</span>
-                  {riskCount > 0 && <div className="font-semibold">{riskCount}</div>}
+                  {riskCount > 0 && <div style={{ fontWeight: 600 }}>{riskCount}</div>}
                 </div>
                 <Progress
                   percent={(riskCount / risks.length) * 100}

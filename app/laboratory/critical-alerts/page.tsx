@@ -89,7 +89,7 @@ export default function CriticalAlertsPage() {
   };
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '1400px', margin: '0 auto' }}>
+    <div className="  sm: sm: lg: lg:" style={{ maxWidth: '1280px', margin: '0 auto' }}>
       <Title level={3}>Critical Value Alerts</Title>
 
       {stats.pending > 0 && (
@@ -98,7 +98,7 @@ export default function CriticalAlertsPage() {
           type="error"
           showIcon
           closable
-          style={{ marginBottom: '24px' }}
+style={{ marginBottom: '24px' }}
         />
       )}
 
@@ -109,7 +109,7 @@ export default function CriticalAlertsPage() {
               <Badge count={stats.total} showZero style={{ backgroundColor: '#3B82F6' }}>
                 <BellOutlined style={{ fontSize: '32px', color: '#9CA3AF' }} />
               </Badge>
-              <div className="mt-2 text-sm text-gray-500">Total Alerts</div>
+              <div className="  ">Total Alerts</div>
             </div>
           </Card>
         </Col>
@@ -119,7 +119,7 @@ export default function CriticalAlertsPage() {
               <Badge count={stats.critical} showZero style={{ backgroundColor: '#DC2626' }}>
                 <ExclamationCircleOutlined style={{ fontSize: '32px', color: '#9CA3AF' }} />
               </Badge>
-              <div className="mt-2 text-sm text-gray-500">Critical</div>
+              <div className="  ">Critical</div>
             </div>
           </Card>
         </Col>
@@ -129,7 +129,7 @@ export default function CriticalAlertsPage() {
               <Badge count={stats.alert} showZero style={{ backgroundColor: '#F59E0B' }}>
                 <ExclamationCircleOutlined style={{ fontSize: '32px', color: '#9CA3AF' }} />
               </Badge>
-              <div className="mt-2 text-sm text-gray-500">Alerts</div>
+              <div className="  ">Alerts</div>
             </div>
           </Card>
         </Col>
@@ -139,7 +139,7 @@ export default function CriticalAlertsPage() {
               <Badge count={stats.pending} showZero style={{ backgroundColor: '#DC2626' }}>
                 <BellOutlined style={{ fontSize: '32px', color: '#9CA3AF' }} />
               </Badge>
-              <div className="mt-2 text-sm text-gray-500">Pending Action</div>
+              <div className="  ">Pending Action</div>
             </div>
           </Card>
         </Col>
@@ -158,10 +158,7 @@ export default function CriticalAlertsPage() {
                   style={{
                     borderLeft: `4px solid ${alert.criticalLevel === 'Critical' ? '#DC2626' : alert.criticalLevel === 'Alert' ? '#F59E0B' : '#7C3AED'}`,
                     background: alert.criticalLevel === 'Critical' ? '#FEF2F2' : 'transparent',
-                    padding: '16px',
-                    marginBottom: '8px',
-                    borderRadius: '4px',
-                  }}
+                                                                              }}
                 >
                   <List.Item.Meta
                     avatar={
@@ -171,11 +168,7 @@ export default function CriticalAlertsPage() {
                           height: '40px',
                           borderRadius: '50%',
                           background: alert.criticalLevel === 'Critical' ? '#DC2626' : '#F59E0B',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          color: 'white',
-                          fontWeight: 'bold',
+                                                                                                                                  fontWeight: 'bold',
                         }}
                       >
                         {alert.patientName.charAt(0)}
@@ -191,15 +184,15 @@ export default function CriticalAlertsPage() {
                     }
                     description={
                       <div>
-                        <div className="mb-2">
+                        <div className="">
                           <Text strong>{alert.test}</Text>
                           <br />
-                          <Text type="danger" className="text-lg font-semibold">{alert.value}</Text>
+                          <Text type="danger" className=" font-semibold">{alert.value}</Text>
                           <Text type="secondary"> (Reference: {alert.referenceRange})</Text>
                         </div>
-                        <div className="text-sm">
+                        <div className="">
                           <Text type="secondary">{alert.timestamp}</Text>
-                          <span className="mx-2">•</span>
+                          <span className="">•</span>
                           <Text>Action: {alert.action}</Text>
                         </div>
                       </div>
@@ -222,8 +215,8 @@ export default function CriticalAlertsPage() {
                 children: (
                   <div>
                     <div className="font-medium">{alert.test}</div>
-                    <div className="text-xs text-gray-500">{alert.timestamp}</div>
-                    <div className="text-sm">{alert.patientName}</div>
+                    <div className=" ">{alert.timestamp}</div>
+                    <div className="">{alert.patientName}</div>
                   </div>
                 ),
               }))}

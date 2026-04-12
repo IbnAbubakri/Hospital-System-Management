@@ -133,13 +133,13 @@ export default function VitalsPage() {
   };
 
   const columns = [
-    { title: 'Date', dataIndex: 'date', key: 'date', render: (date: string) => <span className="text-sm">{date}</span> },
-    { title: 'Time', dataIndex: 'time', key: 'time', render: (time: string) => <span className="text-sm">{time}</span> },
+    { title: 'Date', dataIndex: 'date', key: 'date', render: (date: string) => <span className="">{date}</span> },
+    { title: 'Time', dataIndex: 'time', key: 'time', render: (time: string) => <span className="">{time}</span> },
     {
       title: 'Temperature (°C)',
       dataIndex: 'temperature',
       key: 'temperature',
-      render: (temp: number) => <span className={temp > 37.5 ? 'text-red-500 font-medium' : ''}>{temp}°C</span>},
+      render: (temp: number) => <span style={temp > 37.5 ? { color: '#EF4444' } : undefined}>{temp}°C</span>},
     {
       title: 'Blood Pressure',
       key: 'bloodPressure',
@@ -155,14 +155,14 @@ export default function VitalsPage() {
       title: 'Heart Rate',
       dataIndex: 'heartRate',
       key: 'heartRate',
-      render: (hr: number) => <span className={hr < 60 || hr > 100 ? 'text-orange-500 font-medium' : ''}>{hr} bpm</span>},
+      render: (hr: number) => <span className={hr < 60 || hr > 100 ? ' font-medium' : ''}>{hr} bpm</span>},
     {
       title: 'SpO2',
       dataIndex: 'oxygenSaturation',
       key: 'oxygenSaturation',
-      render: (spo2: number) => <span className={spo2 < 95 ? 'text-red-500 font-medium' : ''}>{spo2}%</span>},
-    { title: 'BMI', dataIndex: 'bmi', key: 'bmi', render: (bmi: number) => <span className="text-sm">{bmi}</span> },
-    { title: 'Recorded By', dataIndex: 'recordedBy', key: 'recordedBy', render: (name: string) => <span className="text-sm">{name}</span> },
+      render: (spo2: number) => <span style={{ color: '#EF4444' }}>{spo2}%</span>},
+    { title: 'BMI', dataIndex: 'bmi', key: 'bmi', render: (bmi: number) => <span className="">{bmi}</span> },
+    { title: 'Recorded By', dataIndex: 'recordedBy', key: 'recordedBy', render: (name: string) => <span className="">{name}</span> },
     {
       title: 'Actions',
       key: 'actions',

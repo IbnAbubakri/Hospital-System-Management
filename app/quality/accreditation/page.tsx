@@ -77,7 +77,7 @@ export default function QualityAccreditationPage() {
   const overallCompliance = Math.round(standards.reduce((sum, s) => sum + s.compliance, 0) / standards.length);
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '1400px', margin: '0 auto' }}>
+    <div className="  sm: sm: lg: lg:" style={{ maxWidth: '1400px', margin: '0 auto' }}>
       <Title level={3}>Accreditation & Compliance</Title>
 
       <Alert
@@ -88,29 +88,29 @@ export default function QualityAccreditationPage() {
         style={{ marginBottom: '24px' }}
       />
 
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4  ">
         <Card>
           <div className="text-center">
-            <div className="text-3xl font-bold text-green-600">{overallCompliance}%</div>
-            <div className="text-gray-500">Overall Compliance</div>
+            <div className="text-3xl font-bold ">{overallCompliance}%</div>
+            <div className="">Overall Compliance</div>
           </div>
         </Card>
         <Card>
           <div className="text-center">
-            <div className="text-3xl font-bold text-blue-600">{standards.filter(s => s.status === 'Compliant').length}/{standards.length}</div>
-            <div className="text-gray-500">Standards Met</div>
+            <div className="text-3xl font-bold ">{standards.filter(s => s.status === 'Compliant').length}/{standards.length}</div>
+            <div className="">Standards Met</div>
           </div>
         </Card>
         <Card>
           <div className="text-center">
-            <div className="text-3xl font-bold text-orange-600">{standards.reduce((sum, s) => sum + s.findings, 0)}</div>
-            <div className="text-gray-500">Open Findings</div>
+            <div className="text-3xl font-bold ">{standards.reduce((sum, s) => sum + s.findings, 0)}</div>
+            <div className="">Open Findings</div>
           </div>
         </Card>
         <Card>
           <div className="text-center">
             <div className="text-3xl font-bold text-purple-600">{upcomingSurveys.length}</div>
-            <div className="text-gray-500">Upcoming Surveys</div>
+            <div className="">Upcoming Surveys</div>
           </div>
         </Card>
       </div>
@@ -129,10 +129,10 @@ export default function QualityAccreditationPage() {
                   </div>
                 }
                 title={
-                  <div className="flex justify-between items-center">
+                  <div className="  ">
                     <div>
                       <span className="font-medium">{standard.requirement}</span>
-                      <Tag color="blue" className="ml-2">{standard.category}</Tag>
+                      <Tag color="blue" className="">{standard.category}</Tag>
                     </div>
                     <Tag color={standard.status === 'Compliant' ? 'success' : 'warning'} icon={standard.status === 'Compliant' ? <CheckCircleOutlined /> : <WarningOutlined />}>
                       {standard.status}
@@ -142,7 +142,7 @@ export default function QualityAccreditationPage() {
                 description={
                   <div>
                     <Progress percent={standard.compliance} size="small" strokeColor={standard.compliance >= 90 ? '#52c41a' : standard.compliance >= 80 ? '#faad14' : '#ff4d4f'} />
-                    <div className="text-sm text-gray-500 mt-1">
+                    <div className="  ">
                       Last Audit: {standard.lastAudit} • Next Audit: {standard.nextAudit} • {standard.findings} findings
                     </div>
                   </div>

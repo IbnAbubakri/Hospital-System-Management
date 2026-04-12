@@ -90,42 +90,42 @@ export default function AmbulancePage() {
   const onCallAmbulances = ambulances.filter(a => a.status === 'On Call').length;
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '1400px', margin: '0 auto' }}>
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+    <div className="  sm: sm: lg: lg: max-w-7xl mx-auto">
+      <div className=" -col sm:-row items-start sm:   ">
         <Title level={3}>Ambulance Services</Title>
         <Button type="primary" icon={<PlusOutlined />} onClick={() => setIsModalVisible(true)}>
           Dispatch Ambulance
         </Button>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px', marginBottom: '24px' }}>
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))]  ">
         <Card>
           <div className="text-center">
-            <div className="text-3xl font-bold text-blue-600">{ambulances.length}</div>
-            <div className="text-gray-500">Total Ambulances</div>
+            <div className="text-3xl font-bold ">{ambulances.length}</div>
+            <div className="">Total Ambulances</div>
           </div>
         </Card>
         <Card>
           <div className="text-center">
-            <div className="text-3xl font-bold text-green-600">{availableAmbulances}</div>
-            <div className="text-gray-500">Available</div>
+            <div className="text-3xl font-bold ">{availableAmbulances}</div>
+            <div className="">Available</div>
           </div>
         </Card>
         <Card>
           <div className="text-center">
-            <div className="text-3xl font-bold text-orange-600">{onCallAmbulances}</div>
-            <div className="text-gray-500">On Call</div>
+            <div className="text-3xl font-bold ">{onCallAmbulances}</div>
+            <div className="">On Call</div>
           </div>
         </Card>
         <Card>
           <div className="text-center">
             <div className="text-3xl font-bold text-purple-600">{requests.filter(r => r.status === 'En Route').length}</div>
-            <div className="text-gray-500">Active Requests</div>
+            <div className="">Active Requests</div>
           </div>
         </Card>
       </div>
 
-      <Card title="Ambulance Fleet" style={{ marginBottom: '24px' }}>
+      <Card title="Ambulance Fleet" className="">
         <div className="overflow-x-auto">
         <Table
           dataSource={ambulances}

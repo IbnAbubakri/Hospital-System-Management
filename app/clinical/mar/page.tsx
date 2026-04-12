@@ -117,7 +117,7 @@ export default function MARPage() {
 
   if (!hasPermission('view_emr') && user?.role !== 'Administrator') {
     return (
-      <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)', padding: '16px' }}>
+      <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)' }}>
         <Alert
           title="Access Denied"
           description="You don't have permission to access this page. Please contact your administrator."
@@ -133,12 +133,12 @@ export default function MARPage() {
   if (!hasPermission('clinical:mar:view')) {
     return (
       <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)', padding: '24px' }}>
-        <div style={{ background: 'white', borderRadius: '12px', padding: '24px', border: '1px solid #E2E8F0' }}>
-          <div className="flex items-center gap-3 p-4" style={{ background: '#FEF2F2', borderRadius: '8px', border: '1px solid #FECACA' }}>
+        <div style={{ backgroundColor: '#ffffff', borderRadius: '12px', padding: '24px', border: '1px solid #E2E8F0' }}>
+          <div className="   " style={{ background: '#FEF2F2', borderRadius: '8px', border: '1px solid #FECACA' }}>
             <CheckCircleOutlined style={{ color: '#DC2626', fontSize: '20px' }} />
             <div>
-              <h3 className="font-semibold text-red-900">Access Denied</h3>
-              <p className="text-sm text-red-700">You don&apos;tt have permission to access medication administration records. This area is restricted to clinical staff.</p>
+              <h3 className="font-semibold ">Access Denied</h3>
+              <p className=" ">You don&apos;tt have permission to access medication administration records. This area is restricted to clinical staff.</p>
             </div>
           </div>
         </div>
@@ -183,7 +183,7 @@ export default function MARPage() {
       key: 'patient',
       render: (_: any, record: MedicationAdministration) => (
         <div>
-          <div className="font-medium text-gray-900">{record.patientName}</div>
+          <div className="font-medium ">{record.patientName}</div>
         </div>
       ),
     },
@@ -192,8 +192,8 @@ export default function MARPage() {
       key: 'medication',
       render: (_: any, record: MedicationAdministration) => (
         <div>
-          <div className="font-medium text-gray-900">{record.medication}</div>
-          <div className="text-xs text-gray-500">{record.dosage} - {record.route}</div>
+          <div className="font-medium ">{record.medication}</div>
+          <div className=" ">{record.dosage} - {record.route}</div>
         </div>
       ),
     },
@@ -255,7 +255,7 @@ export default function MARPage() {
       }
     >
       {/* Statistics Cards */}
-      <div className="grid grid-cols-4 gap-5 mb-6">
+      <div className="grid grid-cols-4  ">
         <StatCard
           label="Total Medications"
           value={stats.total}
@@ -292,19 +292,19 @@ export default function MARPage() {
 
       {/* Missed Medications Alert */}
       {stats.missed > 0 && (
-        <div className="mb-6 p-4 rounded-lg" style={{ background: '#FEF2F2', border: '1px solid #FECACA' }}>
-          <div className="flex items-center gap-3">
+        <div className="  -lg" style={{ background: '#FEF2F2', border: '1px solid #FECACA' }}>
+          <div className="  ">
             <ClockCircleOutlined style={{ color: '#DC2626', fontSize: '20px' }} />
             <div>
-              <h3 className="font-semibold text-red-900">{stats.missed} medication{stats.missed > 1 ? 's were' : ' was'} missed</h3>
-              <p className="text-sm text-red-700">Please review and address missed medications as soon as possible.</p>
+              <h3 className="font-semibold ">{stats.missed} medication{stats.missed > 1 ? 's were' : ' was'} missed</h3>
+              <p className=" ">Please review and address missed medications as soon as possible.</p>
             </div>
           </div>
         </div>
       )}
 
       {/* MAR Section */}
-      <div style={{ background: 'white', borderRadius: '12px', padding: '24px', border: '1px solid #E2E8F0' }}>
+      <div style={{ backgroundColor: '#ffffff', borderRadius: '12px', padding: '24px', border: '1px solid #E2E8F0' }}>
         <SearchFilterBar
           searchPlaceholder="Search medications by patient, name, or ID..."
           searchValue={searchText}
@@ -341,7 +341,7 @@ export default function MARPage() {
       {/* Confirm Administration Modal */}
       <Modal
         title={
-          <div className="flex items-center gap-2">
+          <div className="  ">
             <CheckCircleOutlined style={{ color: '#10B981' }} />
             <span>Confirm Medication Administration</span>
           </div>

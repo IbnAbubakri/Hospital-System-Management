@@ -278,18 +278,18 @@ export default function ConsultationPage() {
         }} />
 
         <div className="page-content" style={{ animationDelay: '0s', position: 'relative', zIndex: 1 }}>
-          <div className="flex items-center gap-3 mb-1">
+          <div className="   ">
             <div style={{
               width: '4px',
               height: '28px',
               background: 'linear-gradient(180deg, #3B82F6 0%, #2563EB 100%)',
               borderRadius: '2px'
             }} />
-            <h1 className="text-2xl font-semibold text-gray-900">
+            <h1 className="text-2xl font-semibold ">
               Doctor Consultation
             </h1>
           </div>
-          <p className="text-gray-500 text-sm" style={{ marginLeft: '7px' }}>
+          <p className=" " style={{ marginLeft: '7px' }}>
             Conduct patient consultation and create medical records
           </p>
         </div>
@@ -300,7 +300,7 @@ export default function ConsultationPage() {
         padding: '24px 32px 0',
       }}>
         <div
-          className="grid grid-cols-4 gap-5 page-content"
+          className="grid grid-cols-4  page-content"
           style={{ animationDelay: '0.1s' }}
         >
           {[
@@ -320,7 +320,7 @@ export default function ConsultationPage() {
                 cursor: 'default',
               }}
             >
-              <div className="text-sm font-medium" style={{ color: '#64748B', marginBottom: '6px' }}>
+              <div className=" font-medium" style={{ color: '#64748B', marginBottom: '6px' }}>
                 {stat.label}
               </div>
               <div className="stat-number" style={{
@@ -337,12 +337,12 @@ export default function ConsultationPage() {
       </div>
 
       {/* Content Section */}
-      <div className="px-8 py-6 page-content" style={{ animationDelay: '0.2s' }}>
+      <div className="  page-content" style={{ animationDelay: '0.2s' }}>
         {/* Patient & Doctor Selection */}
         <div
-          className="flex flex-col gap-4 mb-6"
+          className=" -col  "
           style={{
-            background: 'white',
+            background: '#ffffff',
             borderRadius: '12px',
             border: '1px solid #E2E8E0',
             boxShadow: '0 1px 3px rgba(0, 0, 0, 0.05)',
@@ -351,7 +351,7 @@ export default function ConsultationPage() {
           <Row gutter={16} style={{ padding: '20px 24px 0' }}>
             <Col xs={24} md={12}>
               <div>
-                <label className="block text-sm font-medium mb-2" style={{ color: '#374151' }}>
+                <label className="block  font-medium " style={{ color: '#374151' }}>
                   Select Patient {user?.role === 'Doctor' && <Text style={{ color: '#64748B', fontSize: '12px' }}>(Your Patients)</Text>}
                 </label>
                 <Select
@@ -387,7 +387,7 @@ export default function ConsultationPage() {
             </Col>
             <Col xs={24} md={12}>
               <div>
-                <label className="block text-sm font-medium mb-2" style={{ color: '#374151' }}>
+                <label className="block  font-medium " style={{ color: '#374151' }}>
                   Attending Doctor {user?.role === 'Doctor' && <Text style={{ color: '#64748B', fontSize: '12px' }}>(You)</Text>}
                 </label>
                 <Select
@@ -443,9 +443,9 @@ export default function ConsultationPage() {
                     }}
                   />
                 </Col>
-                <Col flex="1">
-                  <div className="flex items-center gap-3 mb-2">
-                    <Title level={5} className="!mb-0">
+                <Col span={1}>
+                  <div className="   ">
+                    <Title level={5} className="!">
                       {patient.firstName} {patient.lastName}
                     </Title>
                     <Tag style={{
@@ -457,26 +457,26 @@ export default function ConsultationPage() {
                       {patient.mrn}
                     </Tag>
                   </div>
-                  <div className="flex gap-4 text-sm">
-                    <span style={{ color: '#64748B' }}>
+                  <div className="  ">
+                    <span style={{ color: '#6B7280' }}>
                       <strong style={{ color: '#334155' }}>Age:</strong> {calculateAge(patient.dateOfBirth)}y
                     </span>
-                    <span style={{ color: '#64748B' }}>
+                    <span style={{ color: '#6B7280' }}>
                       <strong style={{ color: '#334155' }}>Gender:</strong> {patient.gender.toUpperCase()}
                     </span>
-                    <span style={{ color: '#64748B' }}>
+                    <span style={{ color: '#6B7280' }}>
                       <strong style={{ color: '#334155' }}>Blood:</strong> {patient.bloodGroup || 'N/A'}
                     </span>
-                    <span style={{ color: '#64748B' }}>
+                    <span style={{ color: '#6B7280' }}>
                       <strong style={{ color: '#334155' }}>Phone:</strong> {patient.contactNumber}
                     </span>
                   </div>
                   {patient.allergies.length > 0 && (
-                    <div className="mt-2">
-                      <Text className="text-xs" style={{ color: '#EF4444', fontWeight: 600 }}>
+                    <div className="">
+                      <Text className="" style={{ color: '#EF4444', fontWeight: 600 }}>
                         ALLERGIES:
                       </Text>
-                      <div className="flex flex-wrap gap-2 mt-1">
+                      <div className=" -wrap  ">
                         {patient.allergies.map((allergy, index) => (
                           <Tag
                             key={index}
@@ -504,7 +504,7 @@ export default function ConsultationPage() {
                         border: '1px solid rgba(255, 255, 255, 0.5)',
                       }}
                     >
-                      <div className="flex items-center gap-2">
+                      <div className="  ">
                         <Avatar
                           size={32}
                           icon={<MedicineBoxOutlined />}
@@ -513,10 +513,10 @@ export default function ConsultationPage() {
                           }}
                         />
                         <div>
-                          <div className="text-sm font-semibold" style={{ color: '#065F46' }}>
-                            Dr. {doctor.firstName} {doctor.lastName}
-                          </div>
-                          <div className="text-xs" style={{ color: '#64748B' }}>
+                            <div className=" font-semibold" style={{ color: '#065F46' }}>
+                              Dr. {doctor.firstName} {doctor.lastName}
+                            </div>
+                            <div className="" style={{ color: '#64748B' }}>
                             {doctor.department}
                           </div>
                         </div>
@@ -533,7 +533,7 @@ export default function ConsultationPage() {
         {patient && doctor ? (
           <div
             style={{
-              background: 'white',
+              background: '#ffffff',
               borderRadius: '12px',
               border: '1px solid #E2E8E0',
               boxShadow: '0 1px 3px rgba(0, 0, 0, 0.05)',
@@ -547,7 +547,7 @@ export default function ConsultationPage() {
                 {
                   key: 'emr',
                   label: (
-                    <span className="flex items-center gap-2">
+                    <span className="  ">
                       <FileTextOutlined />
                       EMR Documentation
                     </span>
@@ -565,7 +565,7 @@ export default function ConsultationPage() {
                 {
                   key: 'prescription',
                   label: (
-                    <span className="flex items-center gap-2">
+                    <span className="  ">
                       <MedicineBoxOutlined />
                       Prescription
                     </span>
@@ -579,7 +579,7 @@ export default function ConsultationPage() {
                 {
                   key: 'vitals',
                   label: (
-                    <span className="flex items-center gap-2">
+                    <span className="  ">
                       <HeartOutlined />
                       Vitals History
                     </span>
@@ -587,7 +587,7 @@ export default function ConsultationPage() {
                   children: (
                     <div style={{ padding: '24px' }}>
                       <div
-                        className="text-center py-12"
+                        className="text-center "
                         style={{
                           background: 'linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%)',
                           borderRadius: '10px',
@@ -603,7 +603,7 @@ export default function ConsultationPage() {
                 {
                   key: 'history',
                   label: (
-                    <span className="flex items-center gap-2">
+                    <span className="  ">
                       <HistoryOutlined />
                       Medical History
                     </span>
@@ -612,8 +612,8 @@ export default function ConsultationPage() {
                     <div style={{ padding: '24px' }}>
                       {patient.chronicConditions.length > 0 ? (
                         <div>
-                          <Title level={5} className="mb-3">Chronic Conditions</Title>
-                          <div className="flex flex-wrap gap-2">
+                          <Title level={5} className="">Chronic Conditions</Title>
+                          <div className=" -wrap ">
                             {patient.chronicConditions.map((condition, index) => (
                               <Tag
                                 key={index}
@@ -633,7 +633,7 @@ export default function ConsultationPage() {
                         </div>
                       ) : (
                         <div
-                          className="text-center py-12"
+                          className="text-center "
                           style={{
                             background: 'linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%)',
                             borderRadius: '10px',
@@ -652,9 +652,9 @@ export default function ConsultationPage() {
           </div>
         ) : (
           <div
-            className="text-center py-12"
+            className="text-center "
             style={{
-              background: 'white',
+              background: '#ffffff',
               borderRadius: '12px',
               border: '1px solid #E2E8E0',
               boxShadow: '0 1px 3px rgba(0, 0, 0, 0.05)',

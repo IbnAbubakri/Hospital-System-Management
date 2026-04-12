@@ -121,7 +121,7 @@ export default function PharmacyInventoryPage() {
               status={record.status === 'Out of Stock' ? 'exception' : record.status === 'Low Stock' ? 'exception' : 'normal'}
               size="small"
             />
-            <Text type="secondary" className="text-xs">{record.currentStock} / {record.maxStock} {record.unit}</Text>
+            <Text type="secondary" className="">{record.currentStock} / {record.maxStock} {record.unit}</Text>
           </div>
         );
       },
@@ -161,36 +161,36 @@ export default function PharmacyInventoryPage() {
   };
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '1400px', margin: '0 auto' }}>
+    <div className="  sm: sm: lg: lg:" style={{ maxWidth: '1400px', margin: '0 auto' }}>
       <Title level={3}>Pharmacy Inventory</Title>
       <Text type="secondary">Manage pharmaceutical stock levels and expiry tracking</Text>
 
       <Row gutter={[16, 16]} style={{ marginTop: '24px', marginBottom: '24px' }}>
         <Col xs={12} sm={6}>
-          <Card className="p-4 sm:p-6">
+          <Card className=" sm:">
             <Statistic title="Total Items" value={stats.total} />
           </Card>
         </Col>
         <Col xs={12} sm={6}>
-          <Card className="p-4 sm:p-6">
+          <Card className=" sm:">
             <Statistic title="In Stock" value={stats.inStock} valueStyle={{ color: '#52c41a' }} />
           </Card>
         </Col>
         <Col xs={12} sm={6}>
-          <Card className="p-4 sm:p-6">
+          <Card className=" sm:">
             <Statistic title="Low Stock" value={stats.lowStock} valueStyle={{ color: '#faad14' }} />
           </Card>
         </Col>
         <Col xs={12} sm={6}>
-          <Card className="p-4 sm:p-6">
+          <Card className=" sm:">
             <Statistic title="Out of Stock" value={stats.outOfStock} valueStyle={{ color: '#ff4d4f' }} />
           </Card>
         </Col>
       </Row>
 
-      <Card className="p-4 sm:p-6">
+      <Card className=" sm:">
         <div className="overflow-x-auto">
-          <Space style={{ marginBottom: 16 }} className="w-full sm:w-auto">
+          <Space style={{ marginBottom: '16px' }} className="w-full sm:w-auto">
             <Input
               placeholder="Search drugs..."
               prefix={<SearchOutlined />}

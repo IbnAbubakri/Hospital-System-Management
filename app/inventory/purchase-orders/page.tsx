@@ -131,25 +131,25 @@ export default function PharmacyPurchasesPage() {
   };
 
   return (
-    <div className="min-h-screen px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)' }}>
-      <div className="p-4 sm:p-6" style={{ background: 'white', borderRadius: '12px', border: '1px solid #E2E8F0' }}>
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+    <div className="min-h-screen   sm: sm: lg: lg: bg-gradient-to-b from-blue-50 to-slate-50">
+      <div className=" sm: bg-white -xl border border-slate-200">
+        <div className=" -col sm:-row items-start sm:   ">
           <div>
-            <h1 className="text-2xl font-semibold text-gray-900 mb-1">Purchase Orders</h1>
-            <p className="text-gray-500 text-sm">Pharmacy purchase order management</p>
+            <h1 className="text-2xl font-semibold  ">Purchase Orders</h1>
+            <p className=" ">Pharmacy purchase order management</p>
           </div>
           <Button type="primary" icon={<PlusOutlined />} className="w-full sm:w-auto">New PO</Button>
         </div>
 
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mb-6">
-          <Input placeholder="Search POs..." prefix={<SearchOutlined />} value={searchText} onChange={(e) => setSearchText(e.target.value)} className="flex-1 max-w-full sm:max-w-[400px]" />
+        <div className=" -col sm:-row items-stretch sm:  ">
+          <Input placeholder="Search POs..." prefix={<SearchOutlined />} value={searchText} onChange={(e) => setSearchText(e.target.value)} className="-1 max-w-full sm:max-w-[400px]" />
           <Select placeholder="Status" value={statusFilter} onChange={setStatusFilter} allowClear className="w-full sm:w-[140px]">
             <Option value="draft">Draft</Option>
             <Option value="submitted">Submitted</Option>
             <Option value="approved">Approved</Option>
             <Option value="received">Received</Option>
           </Select>
-          <Badge count={filteredPOs.length} style={{ background: '#14B8A6' }} />
+          <Badge count={filteredPOs.length} className="bg-teal-500" />
         </div>
 
         <div className="overflow-x-auto">
@@ -177,12 +177,12 @@ export default function PharmacyPurchasesPage() {
               <Descriptions.Item label="Subtotal">{formatCurrency(selectedPO.subtotal)}</Descriptions.Item>
               <Descriptions.Item label="Tax">{formatCurrency(selectedPO.tax)}</Descriptions.Item>
               <Descriptions.Item label="Total" span={2}>
-                <span style={{ fontSize: '18px', fontWeight: 600, color: '#10B981' }}>{formatCurrency(selectedPO.total)}</span>
+                <span className=" font-semibold ">{formatCurrency(selectedPO.total)}</span>
               </Descriptions.Item>
               <Descriptions.Item label="Status">
                 {(() => {
                   const config = getStatusConfig(selectedPO.status);
-                  return <Tag style={{ backgroundColor: config.bg, color: config.color, border: 'none', fontWeight: 500 }}>{config.text}</Tag>;
+        return <Tag className="border-none font-medium" style={{ backgroundColor: config.bg, color: config.color }}>{config.text}</Tag>;
                 })()}
               </Descriptions.Item>
               {selectedPO.approvedBy && (

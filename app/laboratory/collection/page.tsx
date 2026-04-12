@@ -28,7 +28,7 @@ export default function SampleCollectionPage() {
   // CRITICAL SECURITY: Restrict access to sample collection
   if (!hasPermission('laboratory:collection:view')) {
     return (
-      <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)', padding: '24px' }}>
+      <div className="min-h-screen bg-gradient-to-b from-blue-50 to-slate-50 ">
         <Alert
           title="Access Denied"
           description="You don&apos;tt have permission to access sample collection. This area is restricted to laboratory staff and nurses."
@@ -126,8 +126,8 @@ export default function SampleCollectionPage() {
         <span
           style={{
             padding: '4px 10px',
-            borderRadius: '6px',
-            fontSize: '13px',
+            
+            fontSize: "14px",
             fontWeight: 500,
             background: '#E0E7FF',
             color: '#4338CA',
@@ -146,12 +146,10 @@ export default function SampleCollectionPage() {
         <span
           style={{
             padding: '4px 10px',
-            borderRadius: '6px',
-            fontSize: '12px',
-            fontWeight: 500,
+            
+                        fontWeight: 500,
             background: '#DBEAFE',
-            color: '#1E40AF',
-          }}
+                      }}
         >
           {mrn}
         </span>
@@ -171,9 +169,8 @@ export default function SampleCollectionPage() {
           <span
             style={{
               padding: '4px 10px',
-              borderRadius: '6px',
-              fontSize: '12px',
-              fontWeight: 500,
+              
+                            fontWeight: 500,
               background: bg,
               color,
             }}
@@ -215,44 +212,36 @@ export default function SampleCollectionPage() {
       )}
 
       {/* Statistics Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 mb-6">
+<div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4  sm: ">
         <StatCard
-          label="Total Samples"
+          title="Total Samples"
           value={stats.total}
-          color="#6366F1"
-          bg="linear-gradient(135deg, #E0E7FF 0%, rgba(255,255,255,0.8) 100%)"
-          border="#A5B4FC"
-          index={0}
-        />
-        <StatCard
-          label="Collected"
-          value={stats.collected}
-          color="#64748B"
-          bg="linear-gradient(135deg, #F1F5F9 0%, rgba(255,255,255,0.8) 100%)"
-          border="#CBD5E1"
-          index={1}
-        />
-        <StatCard
-          label="In Transit"
-          value={stats.inTransit}
-          color="#06B6D4"
-          bg="linear-gradient(135deg, #CFFAFE 0%, rgba(255,255,255,0.8) 100%)"
-          border="#67E8F9"
-          index={2}
-        />
-        <StatCard
-          label="Processing"
-          value={stats.processing}
+          icon={<ExperimentOutlined />}
           color="#3B82F6"
-          bg="linear-gradient(135deg, #DBEAFE 0%, rgba(255,255,255,0.8) 100%)"
-          border="#93C5FD"
-          index={3}
+        />
+        <StatCard
+          title="Pending"
+          value={stats.pending}
+          icon={<ClockCircleOutlined />}
+          color="#F59E0B"
+        />
+        <StatCard
+          title="Collected"
+          value={stats.collected}
+          icon={<CheckCircleOutlined />}
+          color="#10B981"
+        />
+        <StatCard
+          title="In Transit"
+          value={stats.transit}
+          icon={<CarOutlined />}
+          color="#8B5CF6"
         />
       </div>
 
-      {/* Sample Collection Log */}
-      <div style={{ background: 'white', borderRadius: '12px', padding: '24px', border: '1px solid #E2E8F0' }}>
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">Sample Collection Log</h3>
+      {/* Sample Collection */}
+      <div style={{ backgroundColor: '#ffffff', borderRadius: '12px', padding: '24px', border: '1px solid #E2E8F0' }}>
+        <h3 className=" font-semibold  ">Sample Collection Log</h3>
 
         <SearchFilterBar
           searchPlaceholder="Search samples by patient or sample ID..."

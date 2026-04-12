@@ -272,14 +272,14 @@ export default function ProgressNotesPage() {
                   }
                   description={
                     <div>
-                      <div className="flex items-center gap-4 mb-2 text-sm text-gray-500">
+                      <div className="     ">
                         <Space size="middle">
                           <span><CalendarOutlined /> {note.date}</span>
                           <span>{note.time}</span>
                           <span>{note.author}</span>
                         </Space>
                       </div>
-                      <Text className="text-sm">{note.content}</Text>
+                      <Text className="">{note.content}</Text>
                     </div>
                   }
                 />

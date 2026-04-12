@@ -39,11 +39,11 @@ export default function PatientTimelinePage() {
 
   if (!patient) {
     return (
-      <div style={{ padding: '32px', textAlign: 'center' }}>
+      <div className=" text-center">
         <Title level={3}>Access Denied</Title>
         <Text>Patient not found or you do not have permission to view this page.</Text>
         <br />
-        <Button type="primary" onClick={() => router.back()} style={{ marginTop: '16px' }}>
+          <Button type="primary" onClick={() => router.back()} className="">
           Go Back
         </Button>
       </div>
@@ -126,15 +126,15 @@ export default function PatientTimelinePage() {
 
   const getEventIcon = (type: string) => {
     const icons: Record<string, React.ReactNode> = {
-      visit: <MedicineBoxOutlined style={{ fontSize: '16px' }} />,
-      lab: <FileTextOutlined style={{ fontSize: '16px' }} />,
-      admission: <HomeOutlined style={{ fontSize: '16px' }} />,
-      surgery: <UserOutlined style={{ fontSize: '16px' }} />,
-      prescription: <FileTextOutlined style={{ fontSize: '16px' }} />,
-      emergency: <CalendarOutlined style={{ fontSize: '16px' }} />,
-      checkup: <MedicineBoxOutlined style={{ fontSize: '16px' }} />,
+      visit: <MedicineBoxOutlined className="text-base" />,
+      lab: <FileTextOutlined className="text-base" />,
+      admission: <HomeOutlined className="text-base" />,
+      surgery: <UserOutlined className="text-base" />,
+      prescription: <FileTextOutlined className="text-base" />,
+      emergency: <CalendarOutlined className="text-base" />,
+      checkup: <MedicineBoxOutlined className="text-base" />,
     };
-    return icons[type] || <CalendarOutlined style={{ fontSize: '16px' }} />;
+    return icons[type] || <CalendarOutlined className="text-base" />;
   };
 
   const getEventColor = (type: string) => {
@@ -162,7 +162,7 @@ export default function PatientTimelinePage() {
   ];
 
   return (
-    <div style={{ padding: '24px', maxWidth: '1200px', margin: '0 auto' }}>
+      <div className=" max-w-6xl mx-auto">
       <PageHeader
         title={`${patient.firstName} ${patient.lastName} - Timeline`}
         subtitle={`MRN: ${patient.mrn}`}
@@ -172,8 +172,8 @@ export default function PatientTimelinePage() {
       />
 
       <Card>
-        <div className="flex items-center justify-between mb-6">
-          <Title level={4} className="!mb-0">
+        <div className="   ">
+          <Title level={4} className="!">
             Medical Timeline
           </Title>
           <Space>
@@ -203,15 +203,13 @@ export default function PatientTimelinePage() {
               children: (
                 <Card
                   size="small"
-                  style={{
-                    marginBottom: '16px',
-                    borderLeft: `3px solid ${getEventColor(event.type)}`,
-                  }}
+                  className=" border-l-4"
+                  style={{ borderLeftColor: getEventColor(event.type) }}
                 >
                   <Row gutter={16}>
                     <Col xs={24} sm={8}>
-                      <div className="mb-2">
-                        <Text type="secondary" className="text-xs">
+                      <div className="">
+                        <Text type="secondary" className="">
                           Date & Time
                         </Text>
                         <br />
@@ -226,13 +224,13 @@ export default function PatientTimelinePage() {
                       </div>
                     </Col>
                     <Col xs={24} sm={16}>
-                      <Title level={5} className="!mb-2">
+                      <Title level={5} className="!">
                         {event.title}
                       </Title>
-                      <Text type="secondary" className="text-sm block mb-2">
+                      <Text type="secondary" className=" block ">
                         {event.description}
                       </Text>
-                      <Space size="middle" className="text-sm">
+                      <Space size="middle" className="">
                         <span>
                           <Text type="secondary">Department:</Text> {event.department}
                         </span>

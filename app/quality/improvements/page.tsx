@@ -94,7 +94,7 @@ export default function QualityImprovementsPage() {
 
   return (
     <div style={{ padding: '24px', maxWidth: '1400px', margin: '0 auto' }}>
-      <div className="flex items-center justify-between mb-6">
+      <div className="   ">
         <Title level={3}>Quality Improvement Projects</Title>
         <Button type="primary" icon={<PlusOutlined />}>New Project</Button>
       </div>
@@ -102,26 +102,26 @@ export default function QualityImprovementsPage() {
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px', marginBottom: '24px' }}>
         <Card>
           <div className="text-center">
-            <div className="text-3xl font-bold text-blue-600">{projects.length}</div>
-            <div className="text-gray-500">Active Projects</div>
+            <div className="text-3xl font-bold ">{projects.length}</div>
+            <div className="">Active Projects</div>
           </div>
         </Card>
         <Card>
           <div className="text-center">
-            <div className="text-3xl font-bold text-green-600">{projects.filter(p => p.status === 'Completed').length}</div>
-            <div className="text-gray-500">Completed</div>
+            <div className="text-3xl font-bold ">{projects.filter(p => p.status === 'Completed').length}</div>
+            <div className="">Completed</div>
           </div>
         </Card>
         <Card>
           <div className="text-center">
-            <div className="text-3xl font-bold text-orange-600">{projects.filter(p => p.status === 'Planning').length}</div>
-            <div className="text-gray-500">In Planning</div>
+            <div className="text-3xl font-bold ">{projects.filter(p => p.status === 'Planning').length}</div>
+            <div className="">In Planning</div>
           </div>
         </Card>
         <Card>
           <div className="text-center">
             <div className="text-3xl font-bold text-purple-600">{Math.round(projects.reduce((sum, p) => sum + p.progress, 0) / projects.length)}%</div>
-            <div className="text-gray-500">Avg Progress</div>
+            <div className="">Avg Progress</div>
           </div>
         </Card>
       </div>
@@ -136,11 +136,11 @@ export default function QualityImprovementsPage() {
                 setSelectedProject(project);
                 setIsModalVisible(true);
               }}
-              style={{ cursor: 'pointer', padding: '16px', borderRadius: '8px', marginBottom: '8px', border: '1px solid #f0f0f0' }}
+              style={{ cursor: 'pointer',  borderRadius: '8px', marginBottom: '8px', border: '1px solid #f0f0f0' }}
             >
               <List.Item.Meta
                 title={
-                  <div className="flex justify-between items-center">
+                  <div className="  ">
                     <span className="font-medium">{project.title}</span>
                     <Tag color={project.status === 'Completed' ? 'success' : project.status === 'In Progress' ? 'processing' : 'default'}>
                       {project.status}
@@ -149,14 +149,14 @@ export default function QualityImprovementsPage() {
                 }
                 description={
                   <div>
-                    <div className="flex items-center gap-2 mb-2">
+                    <div className="   ">
                       <Tag color="blue">{project.category}</Tag>
                       <Tag color={project.priority === 'High' ? 'error' : 'warning'}>{project.priority} Priority</Tag>
                     </div>
-                    <div className="text-sm text-gray-500">
+                    <div className=" ">
                       Owner: {project.owner} • Target: {project.targetDate}
                     </div>
-                    <Progress percent={project.progress} size="small" className="mt-2" />
+                    <Progress percent={project.progress} size="small" className="" />
                   </div>
                 }
               />
@@ -171,8 +171,8 @@ export default function QualityImprovementsPage() {
             children: (
               <div>
                 <div className="font-medium">{m.milestone}</div>
-                <div className="text-sm text-gray-500">{m.project}</div>
-                <div className="text-sm text-gray-500">Due: {m.date}</div>
+                <div className=" ">{m.project}</div>
+                <div className=" ">Due: {m.date}</div>
                 <Tag color={m.status === 'Completed' ? 'success' : 'processing'}>{m.status}</Tag>
               </div>
             ),
@@ -191,8 +191,8 @@ export default function QualityImprovementsPage() {
       >
         {selectedProject && (
           <div>
-            <Card size="small" className="mb-4">
-              <div className="grid grid-cols-2 gap-4">
+            <Card size="small" className="">
+              <div className="grid grid-cols-2 ">
                 <div><strong>Category:</strong> {selectedProject.category}</div>
                 <div><strong>Priority:</strong> {selectedProject.priority}</div>
                 <div><strong>Status:</strong> {selectedProject.status}</div>
@@ -206,7 +206,7 @@ export default function QualityImprovementsPage() {
 
             <Progress percent={selectedProject.progress} strokeColor="#52c41a" />
 
-            <Card size="small" title="Project Description" className="mt-4">
+            <Card size="small" title="Project Description" className="">
               <p>This quality improvement project aims to {selectedProject.title.toLowerCase()} through systematic process improvements, staff engagement, and evidence-based practices.</p>
             </Card>
           </div>

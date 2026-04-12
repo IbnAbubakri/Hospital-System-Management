@@ -107,7 +107,7 @@ export default function PharmacyControlsPage() {
         return (
           <div>
             <Progress percent={score} size="small" status={score >= 90 ? 'success' : score >= 70 ? 'normal' : 'exception'} />
-            <Text type="secondary" className="text-xs">{score}%</Text>
+            <Text type="secondary" className="">{score}%</Text>
           </div>
         );
       },
@@ -151,7 +151,7 @@ export default function PharmacyControlsPage() {
       </Row>
 
       <Card>
-        <Space style={{ marginBottom: 16 }}>
+        <Space style={{ marginBottom: '16px' }}>
           <Input
             placeholder="Search controls..."
             prefix={<SearchOutlined />}

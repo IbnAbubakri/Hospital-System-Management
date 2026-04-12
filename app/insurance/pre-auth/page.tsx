@@ -84,8 +84,8 @@ export default function PreAuthorizationsPage() {
       key: 'preAuth',
       render: (_: any, record: PreAuthorization) => (
         <div>
-          <div className="font-medium text-gray-900">{record.preAuthNumber}</div>
-          <div className="text-xs text-gray-500">{record.patientName}</div>
+          <div className="font-medium ">{record.preAuthNumber}</div>
+          <div className=" ">{record.patientName}</div>
         </div>
       ),
     },
@@ -94,8 +94,8 @@ export default function PreAuthorizationsPage() {
       key: 'patient',
       render: (_: any, record: PreAuthorization) => (
         <div>
-          <div className="text-sm">{record.patientName}</div>
-          <div className="text-xs text-gray-500">{record.mrn}</div>
+          <div className="">{record.patientName}</div>
+          <div className=" ">{record.mrn}</div>
         </div>
       ),
     },
@@ -116,8 +116,8 @@ export default function PreAuthorizationsPage() {
       ellipsis: true,
       render: (_: any, record: PreAuthorization) => (
         <div>
-          <div className="text-sm truncate" style={{ maxWidth: '200px' }}>{record.diagnosis}</div>
-          <div className="text-xs text-gray-500">{record.icdCode}</div>
+          <div className=" truncate max-w-[200px]">{record.diagnosis}</div>
+          <div className=" ">{record.icdCode}</div>
         </div>
       ),
     },
@@ -126,9 +126,9 @@ export default function PreAuthorizationsPage() {
       key: 'amount',
       render: (_: any, record: PreAuthorization) => (
         <div>
-          <div className="text-sm font-medium">{formatCurrency(record.estimatedAmount)}</div>
+          <div className=" font-medium">{formatCurrency(record.estimatedAmount)}</div>
           {record.approvedAmount && (
-            <div className="text-xs text-green-600">{formatCurrency(record.approvedAmount)}</div>
+            <div className=" ">{formatCurrency(record.approvedAmount)}</div>
           )}
         </div>
       ),
@@ -150,7 +150,7 @@ export default function PreAuthorizationsPage() {
       title: '',
       key: 'actions',
       render: (_: any, record: PreAuthorization) => (
-        <Button type="text" icon={<EyeOutlined />} onClick={() => viewPreAuth(record)} style={{ padding: '4px 8px' }} />
+        <Button type="text" icon={<EyeOutlined />} onClick={() => viewPreAuth(record)} className="" />
       ),
     },
   ];
@@ -161,7 +161,7 @@ export default function PreAuthorizationsPage() {
   };
 
   return (
-    <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)' }}>
+    <div className="min-h-screen bg-gradient-to-b from-sky-50 to-slate-50">
       <style jsx global>{`
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
@@ -179,39 +179,39 @@ export default function PreAuthorizationsPage() {
         .ant-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4) !important; }
       `}</style>
 
-      <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ background: 'linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%)', borderBottom: '1px solid #E2E8F0' }}>
+      <div className="  sm: sm: lg: lg: bg-gradient-to-br from-white to-slate-50 border-b border-slate-200">
         <div className="page-content">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 sm:mb-8">
+          <div className=" -col sm:-row items-start sm:    sm:">
             <div>
-              <div className="flex items-center gap-3 mb-1">
+              <div className="   ">
                 <div style={{ width: '4px', height: '28px', background: 'linear-gradient(180deg, #3B82F6 0%, #2563EB 100%)', borderRadius: '2px' }} />
-                <h1 className="text-2xl font-semibold text-gray-900">Pre-Authorizations</h1>
+                <h1 className="text-2xl font-semibold ">Pre-Authorizations</h1>
               </div>
-              <p className="text-gray-500 text-sm" style={{ marginLeft: '7px' }}>Manage insurance pre-authorizations</p>
+              <p className="  .5">Manage insurance pre-authorizations</p>
             </div>
-            <Button type="primary" icon={<PlusOutlined />} onClick={() => router.push('/insurance/pre-auth/new')} style={{ height: '42px', borderRadius: '10px', fontWeight: 600, padding: '0 20px' }} className="w-full sm:w-auto">New Pre-Auth</Button>
+            <Button type="primary" icon={<PlusOutlined />} onClick={() => router.push('/insurance/pre-auth/new')} className=" -xl font-semibold  w-full sm:w-auto">New Pre-Auth</Button>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4  sm:">
             {[
               { label: 'Total Requests', value: animatedStats.total, color: '#3B82F6', bg: '#EFF6FF', border: '#BFDBFE' },
               { label: 'Pending', value: animatedStats.pending, color: '#F59E0B', bg: '#FEF3C7', border: '#FDE68A' },
               { label: 'Approved', value: animatedStats.approved, color: '#10B981', bg: '#D1FAE5', border: '#A7F3D0' },
               { label: 'Rejected', value: animatedStats.rejected, color: '#EF4444', bg: '#FEE2E2', border: '#FECACA' },
             ].map((stat, index) => (
-              <div key={index} className="stat-card p-4 sm:p-5" style={{ borderRadius: '12px', background: `linear-gradient(135deg, ${stat.bg} 0%, rgba(255,255,255,0.8) 100%)`, border: `1px solid ${stat.border}` }}>
-                <div className="text-sm font-medium" style={{ color: '#64748B', marginBottom: '6px' }}>{stat.label}</div>
-                <div className="stat-number" style={{ fontSize: '28px', fontWeight: 700, color: stat.color, lineHeight: 1 }}>{stat.value}</div>
+              <div key={index} className="stat-card  sm: -xl border" style={{ background: `linear-gradient(135deg, ${stat.bg} 0%, rgba(255,255,255,0.8) 100%)`, borderColor: stat.border }}>
+                <div className=" font-medium text-slate-500 .5">{stat.label}</div>
+                <div className="stat-number text-2xl font-bold leading-none" style={{ color: stat.color }}>{stat.value}</div>
               </div>
             ))}
           </div>
         </div>
       </div>
 
-      <div className="px-4 sm:px-6 lg:px-8 py-6 page-content" style={{ animationDelay: '0.1s' }}>
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mb-6 p-4 overflow-x-auto" style={{ background: 'white', borderRadius: '12px', border: '1px solid #E2E8F0', boxShadow: '0 1px 3px rgba(0, 0, 0, 0.05)' }}>
-          <div className="flex-1 min-w-[200px]">
-            <Search placeholder="Search pre-authorizations..." allowClear value={searchText} onChange={(e) => setSearchText(e.target.value)} style={{ borderRadius: '8px' }} />
+      <div className=" sm: lg:  page-content" style={{ animationDelay: '0.1s' }}>
+        <div className=" -col sm:-row items-stretch sm:    overflow-x-auto bg-white -xl border border-slate-200 shadow">
+          <div className="-1 min-w-[200px]">
+            <Search placeholder="Search pre-authorizations..." allowClear value={searchText} onChange={(e) => setSearchText(e.target.value)} className="-lg" />
           </div>
           <Select placeholder="Status" value={statusFilter} onChange={setStatusFilter} allowClear className="w-full sm:w-[140px]">
             <Option value="pending">Pending</Option>
@@ -219,12 +219,12 @@ export default function PreAuthorizationsPage() {
             <Option value="approved">Approved</Option>
             <Option value="rejected">Rejected</Option>
           </Select>
-          <div className="w-full sm:w-auto text-center" style={{ padding: '8px 16px', borderRadius: '8px', background: 'linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%)', border: '1px solid #BFDBFE' }}>
-            <span className="text-sm font-medium" style={{ color: '#1D4ED8' }}>{filteredPreAuths.length} requests</span>
+          <div className="w-full sm:w-auto text-center   -lg bg-gradient-to-br from-blue-50 to-blue-100 border border-blue-200">
+            <span className=" font-medium ">{filteredPreAuths.length} requests</span>
           </div>
         </div>
 
-        <div className="overflow-x-auto" style={{ background: 'white', borderRadius: '12px', border: '1px solid #E2E8F0' }}>
+        <div className="overflow-x-auto bg-white -xl border border-slate-200">
           <Table dataSource={filteredPreAuths} columns={columns} rowKey="id" pagination={{ defaultPageSize: 10, showSizeChanger: false, showTotal: (total) => `${total} requests` }} />
         </div>
       </div>
@@ -258,7 +258,7 @@ export default function PreAuthorizationsPage() {
               <Descriptions.Item label="Estimated Amount">{formatCurrency(selectedPreAuth.estimatedAmount)}</Descriptions.Item>
               {selectedPreAuth.approvedAmount && (
                 <Descriptions.Item label="Approved Amount">
-                  <span style={{ color: '#10B981', fontWeight: 600 }}>{formatCurrency(selectedPreAuth.approvedAmount)}</span>
+                  <span className="color: '#10B981' font-semibold">{formatCurrency(selectedPreAuth.approvedAmount)}</span>
                 </Descriptions.Item>
               )}
             </Descriptions>

@@ -119,12 +119,12 @@ export default function PatientStatsPage() {
         totalCount={allDemographics.length}
         filteredCount={demographics.length}
       >
-        <div style={{ padding: '24px', maxWidth: '1400px', margin: '0 auto' }} className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8">
+        <div className="  sm: sm: lg: lg: max-w-7xl mx-auto">
           <Title level={3}>Patient Statistics & Demographics</Title>
 
-          <Row gutter={[24, 24]} style={{ marginBottom: '24px' }}>
+          <Row gutter={[24, 24]} className="">
             <Col xs={24} sm={8}>
-              <Card className="p-4 sm:p-6">
+              <Card className=" sm:">
                 <Statistic
                   title="Total Patients"
                   value={totalPatients}
@@ -133,16 +133,16 @@ export default function PatientStatsPage() {
               </Card>
             </Col>
             <Col xs={24} sm={8}>
-              <Card className="p-4 sm:p-6">
+              <Card className=" sm:">
                 <Statistic
                   title="New This Month"
                   value={newThisMonth}
-                  valueStyle={{ color: '#52c41a' }}
+                  styles={{ content: { color: '#10B981' } }}
                 />
               </Card>
             </Col>
             <Col xs={24} sm={8}>
-              <Card className="p-4 sm:p-6">
+              <Card className=" sm:">
                 <Statistic
                   title="Avg Length of Stay"
                   value={avgLengthOfStay}
@@ -152,9 +152,9 @@ export default function PatientStatsPage() {
             </Col>
           </Row>
 
-          <Row gutter={[24, 24]} style={{ marginBottom: '24px' }}>
+          <Row gutter={[24, 24]} className="">
             <Col xs={24} md={12}>
-              <Card title="Age Distribution" className="p-4 sm:p-6">
+              <Card title="Age Distribution" className=" sm:">
                 <div className="overflow-x-auto">
                   <Table
                     columns={columns}
@@ -167,7 +167,7 @@ export default function PatientStatsPage() {
               </Card>
             </Col>
             <Col xs={24} md={12}>
-              <Card title="Gender Distribution" className="p-4 sm:p-6">
+              <Card title="Gender Distribution" className=" sm:">
                 <div className="overflow-x-auto">
                   <Table
                     columns={genderColumns}
@@ -181,7 +181,7 @@ export default function PatientStatsPage() {
             </Col>
           </Row>
 
-          <Card title="Department Statistics" className="p-4 sm:p-6">
+          <Card title="Department Statistics" className=" sm:">
             <div className="overflow-x-auto">
               <Table
                 columns={departmentColumns}

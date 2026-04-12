@@ -2,6 +2,7 @@
 
 import React, { useState, useMemo } from 'react';
 import { Form, Button, Row, Col, Select, DatePicker, Input, App, Alert } from 'antd';
+import { UserOutlined, CheckCircleOutlined } from '@ant-design/icons';
 import { useRouter } from 'next/navigation';
 import { mockPatients, mockDoctors } from '@/lib/mockData';
 import { useAuth } from '@/lib/contexts/AuthContext';
@@ -190,7 +191,7 @@ export default function AdmissionPage() {
                   border: `1px solid ${departmentColors?.border || '#BFDBFE'}`
                 }}>
                   <span style={{ color: departmentColors?.text || '#1E40AF', fontSize: '12px' }}>
-                    ✓ You are pre-selected as the attending doctor
+                    <CheckCircleOutlined style={{ marginRight: '4px' }} />You are pre-selected as the attending doctor
                   </span>
                 </div>
               )}
@@ -215,7 +216,7 @@ export default function AdmissionPage() {
           </Form.Item>
 
           <Form.Item>
-            <div className="flex gap-3">
+            <div className=" ">
               <GradientButton
                 htmlType="submit"
                 loading={loading}

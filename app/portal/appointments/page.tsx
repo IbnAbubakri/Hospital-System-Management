@@ -16,10 +16,10 @@ export default function PortalAppointmentsPage() {
   };
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8">
-      <h2 className="text-2xl font-bold mb-4">Book Appointment</h2>
+    <div className="  sm: sm: lg: lg:">
+      <h2 className="text-2xl font-bold ">Book Appointment</h2>
 
-      <Card className="p-4 sm:p-6">
+      <Card className=" sm:">
         <Form layout="vertical" onFinish={handleBook}>
           <Row gutter={[16, 16]}>
             <Col xs={24} sm={12}>
@@ -63,7 +63,7 @@ export default function PortalAppointmentsPage() {
             </Col>
           </Row>
           <Form.Item label="Reason for Visit" name="reason" rules={[{ required: true }]}>
-            <select className="w-full px-3 py-2 border rounded-md">
+            <select className="w-full   border -md">
               <option value="">Select reason</option>
               <option value="consultation">General Consultation</option>
               <option value="followup">Follow-up Visit</option>
@@ -72,7 +72,7 @@ export default function PortalAppointmentsPage() {
             </select>
           </Form.Item>
           <Form.Item label="Additional Notes" name="notes">
-            <textarea rows={3} className="w-full px-3 py-2 border rounded-md" placeholder="Any additional information" />
+            <textarea rows={3} className="w-full   border -md" placeholder="Any additional information" />
           </Form.Item>
           <Form.Item>
             <Button type="primary" htmlType="submit" icon={<CalendarOutlined />} size="large" block>

@@ -40,7 +40,7 @@ export default function TelemedicineAppointmentPage() {
   };
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '800px', margin: '0 auto' }}>
+    <div className="  sm: sm: lg: lg: max-w-3xl mx-auto">
       <Title level={3}>Schedule Telemedicine Appointment</Title>
 
       <Card>
@@ -71,7 +71,7 @@ export default function TelemedicineAppointmentPage() {
                 <Select.Option key={doctor.id} value={doctor.id}>
                   <div>
                     <div className="font-medium">{doctor.name}</div>
-                    <div className="text-xs text-gray-500">{doctor.specialty} • Available: {doctor.availability.join(', ')}</div>
+                    <div className=" ">{doctor.specialty} • Available: {doctor.availability.join(', ')}</div>
                   </div>
                 </Select.Option>
               ))}
@@ -88,12 +88,12 @@ export default function TelemedicineAppointmentPage() {
             </Select>
           </Form.Item>
 
-          <div style={{ display: 'flex', gap: '16px' }}>
-            <Form.Item name="date" label="Date" rules={[{ required: true }]} style={{ flex: 1 }}>
-              <DatePicker style={{ width: '100%' }} disabledDate={(current) => current && current < dayjs().startOf('day')} />
+          <div className=" ">
+            <Form.Item name="date" label="Date" rules={[{ required: true }]} className="-1">
+              <DatePicker className="w-full" disabledDate={(current) => current && current < dayjs().startOf('day')} />
             </Form.Item>
 
-            <Form.Item name="time" label="Time" rules={[{ required: true }]} style={{ flex: 1 }}>
+            <Form.Item name="time" label="Time" rules={[{ required: true }]} className="-1">
               <Select placeholder="Select time slot">
                 {timeSlots.map((slot) => (
                   <Select.Option key={slot} value={slot}>{slot}</Select.Option>
@@ -110,8 +110,8 @@ export default function TelemedicineAppointmentPage() {
             <TextArea rows={2} placeholder="List any symptoms you would like to discuss" />
           </Form.Item>
 
-          <Card size="small" title="Important Information" className="mb-4">
-            <ul style={{ paddingLeft: '20px', margin: 0, fontSize: '14px' }}>
+          <Card size="small" title="Important Information" className="">
+            <ul className="pl-5 m-0 ">
               <li>Please ensure you have a stable internet connection</li>
               <li>Use a device with a camera and microphone</li>
               <li>Find a quiet, private location for the consultation</li>

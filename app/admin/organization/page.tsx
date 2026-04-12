@@ -44,7 +44,7 @@ export default function OrganizationSettingsPage() {
       subtitle="Configure your hospital's basic information and operational settings"
     >
       {/* Statistics Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 mb-6">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4  sm: ">
         <StatCard
           label="Departments"
           value={12}

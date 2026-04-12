@@ -226,8 +226,8 @@ export default function CollectionsWorkflowPage() {
       key: 'patient',
       render: (_: any, record: CollectionAccount) => (
         <div>
-          <div className="font-medium text-gray-900">{record.patientName}</div>
-          <Text type="secondary" className="text-xs">{record.mrn}</Text>
+          <div className="font-medium ">{record.patientName}</div>
+          <Text type="secondary" className="">{record.mrn}</Text>
         </div>
       ),
     },
@@ -236,16 +236,7 @@ export default function CollectionsWorkflowPage() {
       dataIndex: 'invoiceNumber',
       key: 'invoiceNumber',
       render: (num: string) => (
-        <span
-          style={{
-            padding: '4px 10px',
-            borderRadius: '6px',
-            fontSize: '13px',
-            fontWeight: 500,
-            background: '#DBEAFE',
-            color: '#1E40AF',
-          }}
-        >
+        <span className=".5  -md  font-medium bg-blue-100 ">
           {num}
         </span>
       ),
@@ -260,7 +251,7 @@ export default function CollectionsWorkflowPage() {
       dataIndex: 'balance',
       key: 'balance',
       render: (amount: number) => (
-        <span className="font-semibold text-red-600">₦{amount.toLocaleString()}</span>
+        <span className="font-semibold ">₦{amount.toLocaleString()}</span>
       ),
       sorter: (a: CollectionAccount, b: CollectionAccount) => a.balance - b.balance,
     },
@@ -280,7 +271,7 @@ export default function CollectionsWorkflowPage() {
       title: 'Contact Attempts',
       dataIndex: 'contactAttempts',
       key: 'contactAttempts',
-      render: (attempts: number) => <Badge count={attempts} style={{ backgroundColor: attempts > 5 ? '#EF4444' : '#3B82F6' }} />,
+      render: (attempts: number) => <Badge count={attempts} className={attempts > 5 ? 'bg-red-500' : 'bg-blue-500'} />,
     },
     {
       title: 'Status',
@@ -319,7 +310,7 @@ export default function CollectionsWorkflowPage() {
       subtitle="Manage and track accounts receivable collection process"
     >
       {/* Statistics Cards */}
-      <div className="grid grid-cols-4 gap-5 mb-6">
+      <div className="grid grid-cols-4  ">
         <StatCard
           label="Total Accounts"
           value={animatedStats.total}
@@ -355,7 +346,7 @@ export default function CollectionsWorkflowPage() {
       </div>
 
       {/* Collection Accounts Section */}
-      <div style={{ background: 'white', borderRadius: '12px', padding: '24px', border: '1px solid #E2E8F0' }}>
+      <div className="bg-white -xl  border border-slate-200">
         <SearchFilterBar
           searchPlaceholder="Search accounts by patient, invoice, or MRN..."
           searchValue={searchText}
@@ -393,8 +384,8 @@ export default function CollectionsWorkflowPage() {
       {/* Detail Drawer */}
       <Drawer
         title={
-          <div className="flex items-center gap-2">
-            <DollarOutlined style={{ color: '#059669' }} />
+          <div className="  ">
+            <DollarOutlined className="" />
             <span>Collection Account Details</span>
           </div>
         }
@@ -417,16 +408,7 @@ export default function CollectionsWorkflowPage() {
                 <Descriptions.Item label="Patient">{selectedAccount.patientName}</Descriptions.Item>
                 <Descriptions.Item label="MRN">{selectedAccount.mrn}</Descriptions.Item>
                 <Descriptions.Item label="Invoice Number">
-                  <span
-                    style={{
-                      padding: '4px 10px',
-                      borderRadius: '6px',
-                      fontSize: '13px',
-                      fontWeight: 500,
-                      background: '#DBEAFE',
-                      color: '#1E40AF',
-                    }}
-                  >
+                  <span className=".5  -md  font-medium bg-blue-100 ">
                     {selectedAccount.invoiceNumber}
                   </span>
                 </Descriptions.Item>
@@ -457,9 +439,9 @@ export default function CollectionsWorkflowPage() {
                   { title: 'Resolved' },
                 ]}
               />
-              <div className="mt-4">
+              <div className="">
                 <Text type="secondary">Contact Attempts: </Text>
-                <Badge count={selectedAccount.contactAttempts} style={{ backgroundColor: selectedAccount.contactAttempts > 5 ? '#EF4444' : '#3B82F6' }} />
+                <Badge count={selectedAccount.contactAttempts} className={selectedAccount.contactAttempts > 5 ? 'bg-red-500' : 'bg-blue-500'} />
               </div>
             </InfoCard>
 
@@ -470,15 +452,15 @@ export default function CollectionsWorkflowPage() {
             >
               <Row gutter={16}>
                 <Col span={12}>
-                  <div className="mb-3">
+                  <div className="">
                     <Text type="secondary">Original Amount</Text>
-                    <div className="text-lg font-semibold text-gray-900">₦{selectedAccount.amount.toLocaleString()}</div>
+                    <div className=" font-semibold ">₦{selectedAccount.amount.toLocaleString()}</div>
                   </div>
                 </Col>
                 <Col span={12}>
-                  <div className="mb-3">
+                  <div className="">
                     <Text type="secondary">Outstanding Balance</Text>
-                    <div className="text-lg font-semibold text-red-600">₦{selectedAccount.balance.toLocaleString()}</div>
+                    <div className=" font-semibold ">₦{selectedAccount.balance.toLocaleString()}</div>
                   </div>
                 </Col>
               </Row>
@@ -489,17 +471,17 @@ export default function CollectionsWorkflowPage() {
               icon={<PhoneOutlined />}
               color="#F59E0B"
             >
-              <div className="mb-4">
+              <div className="">
                 <Text type="secondary">Last Contact: </Text>
                 <Text strong>{selectedAccount.lastContact !== '-' ? selectedAccount.lastContact : 'Not contacted yet'}</Text>
               </div>
-              <div className="mb-4">
+              <div className="">
                 <Text type="secondary">Notes:</Text>
-                <div className="mt-2 p-3 bg-gray-50 rounded" style={{ background: '#F9FAFB', borderRadius: '8px' }}>
+                <div className="  bg-gray-50 -lg">
                   {selectedAccount.notes}
                 </div>
               </div>
-              <div className="flex gap-2">
+              <div className=" ">
                 <GradientButton icon={<PhoneOutlined />}>Log Contact</GradientButton>
                 <GradientButton variant="secondary">Send Reminder</GradientButton>
               </div>

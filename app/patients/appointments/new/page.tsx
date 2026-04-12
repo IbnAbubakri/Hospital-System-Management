@@ -56,7 +56,7 @@ function NewAppointmentContent() {
             name="patientId"
             rules={[{ required: true, message: 'Please select a patient' }]}
           >
-            <select className="w-full px-3 py-2 border rounded-md">
+            <select className="w-full   border -md">
               <option value="">Select Patient</option>
               {mockPatients.map((patient) => (
                 <option key={patient.id} value={patient.id}>
@@ -71,7 +71,7 @@ function NewAppointmentContent() {
             name="doctorId"
             rules={[{ required: true, message: 'Please select a doctor' }]}
           >
-            <select className="w-full px-3 py-2 border rounded-md">
+            <select className="w-full   border -md">
               <option value="">Select Doctor</option>
               {mockDoctors.map((doctor) => (
                 <option key={doctor.id} value={doctor.id}>
@@ -81,13 +81,13 @@ function NewAppointmentContent() {
             </select>
           </Form.Item>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 ">
             <Form.Item
               label="Date"
               name="date"
               rules={[{ required: true, message: 'Please select a date' }]}
             >
-              <input type="date" className="w-full px-3 py-2 border rounded-md" />
+              <input type="date" className="w-full   border -md" />
             </Form.Item>
 
             <Form.Item
@@ -95,7 +95,7 @@ function NewAppointmentContent() {
               name="time"
               rules={[{ required: true, message: 'Please select a time' }]}
             >
-              <select className="w-full px-3 py-2 border rounded-md">
+              <select className="w-full   border -md">
                 <option value="">Select Time</option>
                 <option value="09:00">09:00 AM</option>
                 <option value="09:30">09:30 AM</option>
@@ -118,7 +118,7 @@ function NewAppointmentContent() {
             name="type"
             rules={[{ required: true, message: 'Please select appointment type' }]}
           >
-            <select className="w-full px-3 py-2 border rounded-md">
+            <select className="w-full   border -md">
               <option value="">Select Type</option>
               <option value="new">New Consultation</option>
               <option value="followup">Follow-up</option>
@@ -133,7 +133,7 @@ function NewAppointmentContent() {
           >
             <textarea
               rows={3}
-              className="w-full px-3 py-2 border rounded-md"
+              className="w-full   border -md"
               placeholder="Enter reason for appointment"
             />
           </Form.Item>
@@ -141,23 +141,23 @@ function NewAppointmentContent() {
           <Form.Item label="Additional Notes" name="notes">
             <textarea
               rows={2}
-              className="w-full px-3 py-2 border rounded-md"
+              className="w-full   border -md"
               placeholder="Any additional notes"
             />
           </Form.Item>
 
-          <div className="flex gap-3">
+          <div className=" ">
             <button
               type="submit"
               disabled={loading}
-              className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:opacity-50"
+              className="  bg-blue-600  -md hover:bg-blue-700 disabled:opacity-50"
             >
               {loading ? 'Booking...' : 'Book Appointment'}
             </button>
             <button
               type="button"
               onClick={() => router.back()}
-              className="px-4 py-2 border rounded-md hover:bg-gray-50"
+              className="  border -md hover:bg-gray-50"
             >
               Cancel
             </button>

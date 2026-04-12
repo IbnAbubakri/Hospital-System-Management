@@ -53,7 +53,7 @@ export default function CarePlansPage() {
 
   if (!hasPermission('view_emr') && user?.role !== 'Administrator') {
     return (
-      <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)', padding: '16px' }}>
+      <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)' }}>
         <Alert
           title="Access Denied"
           description="You don't have permission to access this page. Please contact your administrator."
@@ -68,20 +68,21 @@ export default function CarePlansPage() {
   // CRITICAL SECURITY: Check permission and patient access
   if (!hasPermission('clinical:view_emr')) {
     return (
-      <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)', padding: '24px' }}>
+      <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)' }}>
         <div
           style={{
-            background: 'white',
+            backgroundColor: '#ffffff',
             borderRadius: '12px',
             padding: '24px',
             border: '1px solid #E2E8F0',
-          }}
+			}
+		}
         >
-          <div className="flex items-center gap-3 p-4" style={{ background: '#FEF2F2', borderRadius: '8px', border: '1px solid #FECACA' }}>
+          <div className="   " style={{ background: '#FEF2F2', borderRadius: '8px', border: '1px solid #FECACA' }}>
             <FileTextOutlined style={{ color: '#DC2626', fontSize: '20px' }} />
             <div>
-              <h3 className="font-semibold text-red-900">Access Denied</h3>
-              <p className="text-sm text-red-700">You don&apos;tt have permission to view care plans. This area is restricted to clinical staff.</p>
+              <h3 className="font-semibold ">Access Denied</h3>
+              <p className=" ">You don&apos;tt have permission to view care plans. This area is restricted to clinical staff.</p>
             </div>
           </div>
         </div>
@@ -91,23 +92,24 @@ export default function CarePlansPage() {
 
   if (!patient) {
     return (
-      <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)', padding: '24px' }}>
+      <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)' }}>
         <div
           style={{
-            background: 'white',
+            backgroundColor: '#ffffff',
             borderRadius: '12px',
             padding: '24px',
             border: '1px solid #E2E8F0',
-          }}
+			}
+		}
         >
-          <div className="flex items-center gap-3 p-4" style={{ background: '#FEF2F2', borderRadius: '8px', border: '1px solid #FECACA' }}>
+          <div className="   " style={{ background: '#FEF2F2', borderRadius: '8px', border: '1px solid #FECACA' }}>
             <UserOutlined style={{ color: '#DC2626', fontSize: '20px' }} />
             <div>
-              <h3 className="font-semibold text-red-900">Patient Not Found</h3>
-              <p className="text-sm text-red-700">Patient not found or you do not have permission to view this patient.</p>
+              <h3 className="font-semibold ">Patient Not Found</h3>
+              <p className=" ">Patient not found or you do not have permission to view this patient.</p>
             </div>
           </div>
-          <div className="mt-4">
+          <div className="">
             <GradientButton onClick={() => router.back()}>
               Go Back
             </GradientButton>
@@ -224,7 +226,7 @@ export default function CarePlansPage() {
             <Col key={plan.id} xs={24} lg={12}>
               <InfoCard title={plan.title}>
                 <Space direction="vertical" size="small" style={{ width: '100%' }}>
-                  <div className="flex items-center justify-between gap-2 mb-2">
+                  <div className="    ">
                     <Space>
                       <CheckCircleOutlined style={{ color: plan.status === 'Active' ? '#10B981' : '#6B7280' }} />
                       <StatusTag status={plan.status.toLowerCase()} type="patient" />
@@ -249,7 +251,7 @@ export default function CarePlansPage() {
                     <Text type="secondary">Goals:</Text>
                     <ul style={{ marginTop: '8px', paddingLeft: '20px', marginBottom: '0' }}>
                       {plan.goals.map((goal, idx) => (
-                        <li key={idx} className="text-sm">{goal}</li>
+                        <li key={idx} className="">{goal}</li>
                       ))}
                     </ul>
                   </div>

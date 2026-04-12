@@ -72,8 +72,8 @@ export default function AnnouncementsPage() {
   };
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '1200px', margin: '0 auto' }}>
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+    <div className="  sm: sm: lg: lg: max-w-6xl mx-auto">
+      <div className=" -col sm:-row items-start sm:   ">
         <Title level={3}>Announcements</Title>
         <Button type="primary" icon={<PlusOutlined />} onClick={() => setIsModalVisible(true)}>
           New Announcement
@@ -86,12 +86,12 @@ export default function AnnouncementsPage() {
           renderItem={(item) => (
             <List.Item key={item.id}>
               <List.Item.Meta
-                avatar={<BellOutlined style={{ fontSize: '24px', color: '#1890ff' }} />}
+                avatar={<BellOutlined className="text-2xl " />}
                 title={
-                  <div className="flex justify-between items-center">
+                  <div className="  ">
                     <div>
                       <span className="font-semibold">{item.title}</span>
-                      <div className="flex gap-2 mt-1">
+                      <div className="  ">
                         <Tag color="blue">{item.category}</Tag>
                         <Tag color={item.priority === 'High' ? 'error' : item.priority === 'Medium' ? 'warning' : 'default'}>
                           {item.priority} Priority
@@ -99,13 +99,13 @@ export default function AnnouncementsPage() {
                         <Tag color="purple">{item.targetAudience}</Tag>
                       </div>
                     </div>
-                    <div className="text-sm text-gray-500">{item.views} views</div>
+                    <div className=" ">{item.views} views</div>
                   </div>
                 }
                 description={
                   <div>
-                    <p className="text-sm text-gray-700 mb-2">{item.content}</p>
-                    <div className="text-xs text-gray-500">
+                    <p className="  ">{item.content}</p>
+                    <div className=" ">
                       Posted by {item.createdBy} on {item.createdDate} • Expires: {item.expiryDate}
                     </div>
                   </div>
@@ -154,7 +154,7 @@ export default function AnnouncementsPage() {
             <TextArea rows={4} placeholder="Enter announcement content" />
           </Form.Item>
           <Form.Item name="expiryDate" label="Expiry Date">
-            <DatePicker style={{ width: '100%' }} />
+            <DatePicker className="w-full" />
           </Form.Item>
         </Form>
       </Modal>

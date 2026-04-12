@@ -53,7 +53,7 @@ export default function BedsPage() {
       title="Bed Management"
       subtitle="View and manage hospital bed occupancy"
     >
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  ">
         <StatCard
           label="Total Beds"
           value={stats.total}
@@ -90,7 +90,7 @@ export default function BedsPage() {
 
       <div style={{ marginBottom: '16px' }}>
         <Space>
-          <span className="text-gray-600 mr-2">Filter by ward:</span>
+          <span className=" ">Filter by ward:</span>
           <Select
             value={selectedWard}
             onChange={setSelectedWard}
@@ -107,35 +107,35 @@ export default function BedsPage() {
         title="Bed Status"
       >
         {/* Legend */}
-        <div className="flex items-center gap-6 mb-6 pb-4 border-b">
-          <div className="flex items-center gap-2">
-            <div className="w-4 h-4 bg-green-500 rounded"></div>
-            <span className="text-sm">Available</span>
+        <div className="     border-b">
+          <div className="  ">
+            <div className="  bg-green-500 "></div>
+            <span className="">Available</span>
           </div>
-          <div className="flex items-center gap-2">
-            <div className="w-4 h-4 bg-red-500 rounded"></div>
-            <span className="text-sm">Occupied</span>
+          <div className="  ">
+            <div className="  bg-red-500 "></div>
+            <span className="">Occupied</span>
           </div>
-          <div className="flex items-center gap-2">
-            <div className="w-4 h-4 bg-gray-400 rounded"></div>
-            <span className="text-sm">Maintenance</span>
+          <div className="  ">
+            <div className="  bg-gray-400 "></div>
+            <span className="">Maintenance</span>
           </div>
-          <div className="flex items-center gap-2">
-            <div className="w-4 h-4 bg-yellow-500 rounded"></div>
-            <span className="text-sm">Reserved</span>
+          <div className="  ">
+            <div className="  bg-yellow-500 "></div>
+            <span className="">Reserved</span>
           </div>
         </div>
 
         {/* Beds Grid */}
         <Row gutter={16}>
           {filteredBeds.map((bed) => (
-            <Col xs={24} sm={12} md={8} lg={6} key={bed.id} className="mb-4">
+            <Col xs={24} sm={12} md={8} lg={6} key={bed.id} className="">
               <Card
                 size="small"
                 className={`${getStatusBg(bed.status)}`}
                 style={{ borderRadius: '8px' }}
                 title={
-                  <div className="flex items-center justify-between">
+                  <div className="  ">
                     <span className="font-bold">{bed.id}</span>
                     <StatusTag status={bed.status} type="admission" />
                   </div>
@@ -143,20 +143,20 @@ export default function BedsPage() {
               >
                 <div className="space-y-2">
                   <div>
-                    <span className="text-gray-600 text-sm">Ward: </span>
+                    <span className=" ">Ward: </span>
                     <span className="font-medium">{bed.ward}</span>
                   </div>
                   {bed.patient ? (
                     <div>
-                      <div className="flex items-center gap-2 mt-2">
-                        <UserOutlined className="text-gray-500" />
+                      <div className="   ">
+                        <UserOutlined className="" />
                         <span className="font-medium">{bed.patient}</span>
                       </div>
                     </div>
                   ) : (
-                    <div className="text-center py-4">
-                      <UserOutlined className="text-3xl text-gray-300" />
-                      <p className="text-gray-500 text-sm mt-1">Unoccupied</p>
+                    <div className="text-center ">
+                      <UserOutlined className="text-3xl " />
+                      <p className="  ">Unoccupied</p>
                     </div>
                   )}
                 </div>

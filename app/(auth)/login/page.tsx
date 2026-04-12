@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Form, Input, Button, Typography, Divider, Checkbox, Card, App } from 'antd';
-import { MailOutlined, LockOutlined } from '@ant-design/icons';
+import { Form, Input, Button, Typography, Checkbox, Card, App } from 'antd';
+import { MailOutlined, LockOutlined, MedicineBoxOutlined } from '@ant-design/icons';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useAuth } from '@/lib/contexts/AuthContext';
@@ -34,25 +34,25 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
-      <div className="w-full max-w-lg">
-        {/* Logo/Brand */}
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 px-4 py-12">
+      <div className="w-full max-w-md">
+        {/* Logo & Header */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-12 h-12 bg-gray-900 rounded-lg mb-4">
-            <span className="text-white font-semibold text-xl">LM</span>
+          <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl mb-5 shadow-lg" style={{ background: 'linear-gradient(135deg, #0EA5E9 0%, #0284C7 50%, #0369A1 100%)', boxShadow: '0 8px 25px 0 rgba(14, 165, 233, 0.4)' }}>
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2L4 7V17L12 22L20 17V7L12 2Z" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M12 8V16M8 12H16" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+              <circle cx="12" cy="12" r="2.5" fill="white"/>
+            </svg>
           </div>
-          <Title level={2} className="!mb-2 !text-gray-900">
-            Lagos Medical
-          </Title>
-          <Text className="text-gray-500">Sign in to your account to continue</Text>
+          <Title level={1} className="!text-gray-900 !mb-1 !text-3xl font-bold" style={{ letterSpacing: '-0.02em' }}>MedCore</Title>
+          <Text className="text-gray-500 text-sm">Hospital Management System</Text>
         </div>
 
         {/* Login Card */}
-        <Card
-          className="shadow-sm border-0"
-          styles={{
-            body: { padding: '32px' },
-          }}
+        <Card 
+          className="shadow-xl border-0 rounded-2xl"
+          styles={{ body: { padding: '32px' } }}
         >
           <Form
             name="login"
@@ -62,7 +62,7 @@ export default function LoginPage() {
             size="large"
           >
             <Form.Item
-              label={<span className="text-sm font-medium text-gray-700">Email</span>}
+              label={<span className="text-gray-700 font-medium">Email</span>}
               name="email"
               rules={[
                 { required: true, message: 'Please enter your email!' },
@@ -72,41 +72,29 @@ export default function LoginPage() {
               <Input
                 prefix={<MailOutlined className="text-gray-400" />}
                 placeholder="name@example.com"
-                className="rounded-md"
-                style={{
-                  borderRadius: '6px',
-                  border: '1px solid #e5e7eb',
-                }}
+                className="rounded-lg"
+                style={{ borderColor: '#e5e7eb' }}
               />
             </Form.Item>
 
-            <div className="flex items-center justify-between mb-4">
-              <Form.Item
-                label={<span className="text-sm font-medium text-gray-700">Password</span>}
-                name="password"
-                rules={[{ required: true, message: 'Please enter your password!' }]}
-                className="!mb-0 flex-1"
-              >
-                <Input.Password
-                  prefix={<LockOutlined className="text-gray-400" />}
-                  placeholder="••••••••"
-                  className="rounded-md"
-                  style={{
-                    borderRadius: '6px',
-                    border: '1px solid #e5e7eb',
-                  }}
-                />
-              </Form.Item>
-            </div>
+            <Form.Item
+              label={<span className="text-gray-700 font-medium">Password</span>}
+              name="password"
+              rules={[{ required: true, message: 'Please enter your password!' }]}
+            >
+              <Input.Password
+                prefix={<LockOutlined className="text-gray-400" />}
+                placeholder="Enter your password"
+                className="rounded-lg"
+                style={{ borderColor: '#e5e7eb' }}
+              />
+            </Form.Item>
 
-            <div className="flex items-center justify-between mb-6">
+            <div className="flex justify-between items-center mb-6">
               <Form.Item name="remember" valuePropName="checked" noStyle>
-                <Checkbox className="text-sm text-gray-600">Remember me</Checkbox>
+                <Checkbox className="text-gray-600">Remember me</Checkbox>
               </Form.Item>
-              <Link
-                href="/forgot-password"
-                className="text-sm text-gray-600 hover:text-gray-900"
-              >
+              <Link href="/forgot-password" className="text-indigo-600 hover:text-indigo-700 font-medium text-sm">
                 Forgot password?
               </Link>
             </div>
@@ -117,11 +105,10 @@ export default function LoginPage() {
                 htmlType="submit"
                 loading={loading}
                 block
-                className="h-10 rounded-md text-sm font-medium"
+                className="h-12 rounded-lg font-semibold text-base"
                 style={{
-                  background: '#111827',
+                  background: '#4f46e5',
                   border: 'none',
-                  borderRadius: '6px',
                 }}
               >
                 Sign In
@@ -132,17 +119,17 @@ export default function LoginPage() {
 
         {/* Footer */}
         <div className="mt-6 text-center">
-          <Text className="text-sm text-gray-500">
-            Don't have an account?{' '}
-            <Link href="/register" className="text-gray-900 hover:text-gray-700 font-medium">
+          <Text className="text-gray-500 text-sm">
+            Don&apos;t have an account?{' '}
+            <Link href="/register" className="text-indigo-600 hover:text-indigo-700 font-medium">
               Contact your administrator
             </Link>
           </Text>
         </div>
 
         {/* Help Text */}
-        <div className="mt-8 pt-8 border-t border-gray-200">
-          <Text className="text-xs text-gray-400 block text-center">
+        <div className="mt-4 pt-4 border-t border-gray-200">
+          <Text className="block text-center text-gray-400 text-xs">
             For login credentials, please contact your system administrator
           </Text>
         </div>

@@ -118,7 +118,7 @@ export default function WoundCarePage() {
 
   const columns = [
     { title: 'Patient', key: 'patient', render: (_: any, r: WoundCareRecord) => (
-      <div><div className="font-medium">{r.patientName}</div><Text type="secondary" className="text-xs">{r.mrn}</Text></div>
+      <div><div className="font-medium">{r.patientName}</div><Text type="secondary" className="">{r.mrn}</Text></div>
     )},
     { title: 'Location', dataIndex: 'woundLocation', key: 'woundLocation' },
     { title: 'Type', dataIndex: 'woundType', key: 'woundType' },
@@ -135,7 +135,7 @@ export default function WoundCarePage() {
   ];
 
   return (
-    <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)' }}>
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-slate-50">
       <style jsx global>{`
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
@@ -149,18 +149,18 @@ export default function WoundCarePage() {
         .stat-card:hover { transform: translateY(-4px); transition: transform 0.3s ease; box-shadow: 0 12px 24px -8px var(--card-color); }
       `}</style>
 
-      <div style={{ padding: '32px', background: 'linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%)', borderBottom: '1px solid #E2E8F0' }}>
+      <div className=" bg-gradient-to-b from-white to-slate-50 border-b border-gray-200">
         <div className="page-content">
-          <div className="flex items-center justify-between mb-6">
-            <div className="flex items-center gap-3">
+          <div className="   ">
+            <div className="  ">
               <div style={{ width: '4px', height: '28px', background: 'linear-gradient(180deg, #3B82F6 0%, #2563EB 100%)', borderRadius: '2px' }} />
-              <div><h1 className="text-2xl font-semibold text-gray-900">Wound Care Management</h1></div>
+              <div><h1 className="text-2xl font-semibold ">Wound Care Management</h1></div>
             </div>
             <Button type="primary" icon={<PlusOutlined />}>New Assessment</Button>
           </div>
-          <p className="text-gray-500 text-sm" style={{ marginLeft: '7px' }}>Track and manage wound care assessments and treatments</p>
+          <p className="  ml-[7px]">Track and manage wound care assessments and treatments</p>
 
-          <Row gutter={[16, 16]} style={{ marginTop: '24px' }}>
+          <Row gutter={[16, 16]} className="">
             {[
               { label: 'Total Wounds', value: animatedStats.total, color: '#3B82F6', bg: '#EFF6FF', border: '#DBEAFE' },
               { label: 'Healing', value: animatedStats.healing, color: '#10B981', bg: '#D1FAE5', border: '#A7F3D0' },
@@ -169,7 +169,7 @@ export default function WoundCarePage() {
             ].map((stat, i) => (
               <Col xs={12} sm={6} key={i}>
                 <div className="stat-card" style={{ padding: '16px', borderRadius: '12px', background: `linear-gradient(135deg, ${stat.bg} 0%, rgba(255,255,255,0.8) 100%)`, border: `1px solid ${stat.border}` }}>
-                  <div className="text-sm font-medium" style={{ color: '#64748B', marginBottom: '6px' }}>{stat.label}</div>
+                  <div className=" font-medium" style={{ color: '#6B7280', marginBottom: '6px' }}>{stat.label}</div>
                   <div style={{ fontSize: '28px', fontWeight: 700, color: stat.color, lineHeight: 1 }}>{stat.value}</div>
                 </div>
               </Col>
@@ -178,9 +178,9 @@ export default function WoundCarePage() {
         </div>
       </div>
 
-      <div className="px-8 py-6 page-content">
+      <div className="  page-content">
         <Card title="Wound Care Records" extra={
-          <div className="flex gap-3">
+          <div className=" ">
             <Search placeholder="Search..." allowClear style={{ width: 200 }} value={searchText} onChange={(e) => setSearchText(e.target.value)} prefix={<SearchOutlined />} />
             <Select placeholder="Status" value={statusFilter} onChange={setStatusFilter} allowClear style={{ width: 140 }}>
               <Option value="healing">Healing</Option>
@@ -197,16 +197,16 @@ export default function WoundCarePage() {
       <Drawer title="Wound Care Details" placement="right" size="large" open={drawerVisible} onClose={() => { setDrawerVisible(false); setSelectedRecord(null); }}>
         {selectedRecord && (
           <div>
-            <Card style={{ marginBottom: '16px' }}>
-              <div className="mb-3"><Text type="secondary">Patient</Text><div className="text-xl font-semibold">{selectedRecord.patientName}</div><div className="text-sm text-gray-500">{selectedRecord.mrn}</div></div>
+            <Card className="">
+              <div className=""><Text type="secondary">Patient</Text><div className="text-xl font-semibold">{selectedRecord.patientName}</div><div className=" ">{selectedRecord.mrn}</div></div>
               <Row gutter={16}>
-                <Col span={12}><div className="mb-3"><Text type="secondary">Location</Text><div>{selectedRecord.woundLocation}</div></div></Col>
-                <Col span={12}><div className="mb-3"><Text type="secondary">Type</Text><div>{selectedRecord.woundType}</div></div></Col>
-                <Col span={12}><div className="mb-3"><Text type="secondary">Size</Text><div>{selectedRecord.size}</div></div></Col>
-                <Col span={12}><div className="mb-3"><Text type="secondary">Stage</Text><div><Tag color="orange">{selectedRecord.stage}</Tag></div></div></Col>
+                <Col span={12}><div className=""><Text type="secondary">Location</Text><div>{selectedRecord.woundLocation}</div></div></Col>
+                <Col span={12}><div className=""><Text type="secondary">Type</Text><div>{selectedRecord.woundType}</div></div></Col>
+                <Col span={12}><div className=""><Text type="secondary">Size</Text><div>{selectedRecord.size}</div></div></Col>
+                <Col span={12}><div className=""><Text type="secondary">Stage</Text><div><Tag color="orange">{selectedRecord.stage}</Tag></div></div></Col>
               </Row>
             </Card>
-            <Card title="Assessment"><div className="mb-4"><Text type="secondary">Status</Text><div>{(() => { const c = getStatusConfig(selectedRecord.status); return <Tag color={c.color}>{c.label}</Tag>; })()}</div></div><div className="mb-4"><Text type="secondary">Assigned Nurse</Text><div>{selectedRecord.nurse}</div></div><div><Text type="secondary">Next Dressing</Text><div>{selectedRecord.nextDressing}</div></div></Card>
+            <Card title="Assessment"><div className=""><Text type="secondary">Status</Text><div>{(() => { const c = getStatusConfig(selectedRecord.status); return <Tag color={c.color}>{c.label}</Tag>; })()}</div></div><div className=""><Text type="secondary">Assigned Nurse</Text><div>{selectedRecord.nurse}</div></div><div><Text type="secondary">Next Dressing</Text><div>{selectedRecord.nextDressing}</div></div></Card>
           </div>
         )}
       </Drawer>

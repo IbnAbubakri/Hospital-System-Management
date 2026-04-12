@@ -37,18 +37,18 @@ export default function PortalDashboardPage() {
   ];
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '1200px', margin: '0 auto' }}>
+    <div className="  sm: sm: lg: lg: max-w-[1200px] mx-auto">
       {/* Welcome Header */}
-      <Card style={{ marginBottom: '24px', background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' }}>
+      <Card className=" bg-gradient-to-br from-purple-600 to-purple-900">
         <Row align="middle" gutter={24}>
           <Col>
-            <Avatar size={80} icon={<UserOutlined />} style={{ background: 'white', color: '#667eea' }} />
+            <Avatar size={80} icon={<UserOutlined />} className="bg-white text-purple-600" />
           </Col>
-          <Col style={{ color: 'white' }}>
-            <Title level={2} style={{ color: 'white', marginBottom: '8px' }}>
+          <Col className="">
+            <Title level={2} className="! !">
               Welcome back, Chukwuemeka!
             </Title>
-            <Text style={{ color: 'rgba(255,255,255,0.9)', fontSize: '16px' }}>
+            <Text className="/90 text-base">
               MRN: MRN-2024-0001 | Age: 45 years
             </Text>
           </Col>
@@ -56,7 +56,7 @@ export default function PortalDashboardPage() {
       </Card>
 
       {/* Quick Stats */}
-      <Row gutter={[16, 16]} style={{ marginBottom: '24px' }}>
+      <Row gutter={[16, 16]} className="">
         {healthStats.map((stat, index) => (
           <Col key={index} xs={12} sm={6}>
             <Card>
@@ -126,7 +126,7 @@ export default function PortalDashboardPage() {
       </Row>
 
       {/* Quick Actions */}
-      <Card style={{ marginTop: '24px' }}>
+      <Card className="">
         <Title level={4}>Quick Actions</Title>
         <Space wrap>
           <Button type="primary" icon={<CalendarOutlined />}>Book Appointment</Button>

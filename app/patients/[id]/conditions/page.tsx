@@ -44,11 +44,11 @@ export default function PatientConditionsPage() {
 
   if (!patient) {
     return (
-      <div style={{ padding: '32px', textAlign: 'center' }}>
+      <div className=" text-center">
         <Title level={3}>Access Denied</Title>
         <Text>Patient not found or you do not have permission to view this page.</Text>
         <br />
-        <Button type="primary" onClick={() => router.back()} style={{ marginTop: '16px' }}>
+          <Button type="primary" onClick={() => router.back()} className="">
           Go Back
         </Button>
       </div>
@@ -142,7 +142,7 @@ export default function PatientConditionsPage() {
   };
 
   return (
-    <div style={{ padding: '24px', maxWidth: '1400px', margin: '0 auto' }}>
+    <div className=" max-w-7xl mx-auto">
       <PageHeader
         title={`${patient.firstName} ${patient.lastName} - Chronic Conditions`}
         subtitle={`MRN: ${patient.mrn}`}
@@ -160,19 +160,19 @@ export default function PatientConditionsPage() {
         {/* Summary Card */}
         <Col xs={24} lg={6}>
           <Card>
-            <Title level={5} className="mb-4">Conditions Overview</Title>
+            <Title level={5} className="">Conditions Overview</Title>
             <div className="space-y-3">
               <div>
                 <Text type="secondary">Total Conditions</Text>
-                <Title level={3} className="!mb-0">{conditions.length}</Title>
+                <Title level={3} className="!">{conditions.length}</Title>
               </div>
               <div>
                 <Text type="secondary">Status</Text>
-                <div className="space-y-1 mt-2">
+                <div className="space-y-1 ">
                   {['Active', 'Controlled', 'In Remission'].map((status) => {
                     const count = conditions.filter((c: any) => c.status === status).length;
                     return count > 0 ? (
-                      <div key={status} className="flex justify-between items-center">
+                      <div key={status} className="  ">
                         <Tag color={getStatusColor(status)}>{status}</Tag>
                         <Text strong>{count}</Text>
                       </div>
@@ -186,7 +186,7 @@ export default function PatientConditionsPage() {
 
         {/* Conditions List */}
         <Col xs={24} lg={18}>
-          <Space orientation="vertical" size="large" style={{ width: '100%' }}>
+            <Space orientation="vertical" size="large" className="w-full">
             {conditions.map((condition) => (
               <Card
                 key={condition.id}
@@ -223,9 +223,9 @@ export default function PatientConditionsPage() {
                   </Col>
                 </Row>
 
-                <div className="mt-3">
+                <div className="">
                   <Text strong>Treatment:</Text>
-                  <div className="mt-1 p-3 bg-gray-50 rounded">
+                  <div className="  bg-gray-50 ">
                     <Text>{condition.treatment}</Text>
                   </div>
                 </div>
@@ -235,7 +235,7 @@ export default function PatientConditionsPage() {
                     title={condition.notes}
                     type="info"
                     showIcon
-                    style={{ marginTop: '12px' }}
+                    className=""
                   />
                 )}
               </Card>
@@ -328,7 +328,7 @@ export default function PatientConditionsPage() {
                 label="Diagnosed Date"
                 rules={[{ required: true, message: 'Required' }]}
               >
-                <DatePicker style={{ width: '100%' }} />
+                <DatePicker className="w-full" />
               </Form.Item>
             </Col>
             <Col span={8}>
@@ -337,7 +337,7 @@ export default function PatientConditionsPage() {
                 label="Last Visit"
                 rules={[{ required: true, message: 'Required' }]}
               >
-                <DatePicker style={{ width: '100%' }} />
+                <DatePicker className="w-full" />
               </Form.Item>
             </Col>
             <Col span={8}>
@@ -346,7 +346,7 @@ export default function PatientConditionsPage() {
                 label="Next Follow-up"
                 rules={[{ required: true, message: 'Required' }]}
               >
-                <DatePicker style={{ width: '100%' }} />
+                <DatePicker className="w-full" />
               </Form.Item>
             </Col>
           </Row>

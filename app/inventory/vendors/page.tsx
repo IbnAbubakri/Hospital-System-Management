@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Card, Table, Button, Space, Typography, Input, Tag, Avatar, Progress } from 'antd';
-import { UserOutlined, SearchOutlined } from '@ant-design/icons';
+import { Card, Table, Button, Space, Typography, Input, Tag, Avatar, Progress, App } from 'antd';
+import { UserOutlined, SearchOutlined, StarOutlined } from '@ant-design/icons';
 
 const { Title, Text } = Typography;
 
@@ -21,6 +21,7 @@ interface Vendor {
 
 export default function VendorsPage() {
   const [searchText, setSearchText] = useState('');
+  const { message } = App.useApp();
 
   const [vendors] = useState<Vendor[]>([
     {
@@ -61,18 +62,28 @@ export default function VendorsPage() {
     },
   ]);
 
+  // Handle view vendor
+  const handleView = (record: Vendor) => {
+    message.success(`Viewing vendor: ${record.name}`);
+  };
+
+  // Handle edit vendor
+  const handleEdit = (record: Vendor) => {
+    message.success(`Editing vendor: ${record.name}`);
+  };
+
   const columns = [
     {
       title: 'Vendor',
       key: 'vendor',
       render: (_: any, record: Vendor) => (
         <Space>
-          <Avatar icon={<UserOutlined />} style={{ background: '#3B82F6' }}>
+          <Avatar icon={<UserOutlined />} className="bg-blue-500">
             {record.name.charAt(0)}
           </Avatar>
           <div>
             <div className="font-medium">{record.name}</div>
-            <Text type="secondary" className="text-xs">{record.category}</Text>
+            <Text type="secondary" className="">{record.category}</Text>
           </div>
         </Space>
       ),
@@ -87,7 +98,7 @@ export default function VendorsPage() {
       render: (rating: number) => (
         <Space>
           <span>{rating}</span>
-          <span style={{ color: '#F59E0B' }}>★</span>
+          <StarOutlined style={{ color: '#F59E0B' }} />
         </Space>
       ),
     },
@@ -101,7 +112,7 @@ export default function VendorsPage() {
       title: 'Total Amount',
       dataIndex: 'totalAmount',
       key: 'totalAmount',
-      render: (amount: string) => <span className="font-semibold text-green-600">{amount}</span>,
+      render: (amount: string) => <span className="font-semibold ">{amount}</span>,
     },
     {
       title: 'Status',
@@ -114,22 +125,22 @@ export default function VendorsPage() {
     {
       title: 'Actions',
       key: 'actions',
-      render: () => (
+      render: (_: any, record: Vendor) => (
         <Space>
-          <Button type="link" size="small">View</Button>
-          <Button type="link" size="small">Edit</Button>
+          <Button type="link" size="small" onClick={() => handleView(record)}>View</Button>
+          <Button type="link" size="small" onClick={() => handleEdit(record)}>Edit</Button>
         </Space>
       ),
     },
   ];
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '1400px', margin: '0 auto' }}>
+    <div className="  sm: sm: lg: lg: max-w-7xl mx-auto">
       <Title level={3}>Vendor Management</Title>
 
       <Card
         title="Vendor Directory"
-        className="p-4 sm:p-6"
+        className=" sm:"
         extra={
           <Input.Search
             placeholder="Search vendors..."

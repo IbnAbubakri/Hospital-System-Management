@@ -42,7 +42,7 @@ export default function RevenueCyclePage() {
       dataIndex: 'amount',
       key: 'amount',
       render: (amount: number) => (
-        <span className={amount > 0 ? 'text-green-600' : 'text-red-600'} font-semibold>
+        <span style={{ fontWeight: 600 }}>
           ₦{amount.toLocaleString()}
         </span>
       ),
@@ -67,7 +67,7 @@ export default function RevenueCyclePage() {
 
   return (
     <div style={{ padding: '24px', maxWidth: '1400px', margin: '0 auto' }}>
-      <div className="flex items-center justify-between mb-6">
+      <div className="   ">
         <div>
           <Title level={3}>Revenue Cycle Management</Title>
           <Text type="secondary">Track hospital revenue and financial performance</Text>

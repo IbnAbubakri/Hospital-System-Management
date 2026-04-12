@@ -70,28 +70,28 @@ export default function ScanReportsPage() {
   ];
 
   return (
-    <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)', padding: '16px' }}>
-      <div style={{ background: 'white', borderRadius: '12px', padding: '16px', border: '1px solid #E2E8F0' }}>
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-slate-50 ">
+      <div className="bg-white -xl  border border-gray-200">
+        <div className=" -col sm:-row items-start sm:   ">
           <div>
-            <h1 className="text-2xl font-semibold text-gray-900 mb-1 flex items-center gap-2">
-              <FileTextOutlined style={{ color: '#6366F1' }} />
+            <h1 className="text-2xl font-semibold     ">
+              <FileTextOutlined className="text-indigo-500" />
               Radiology Reports
             </h1>
-            <p className="text-gray-500 text-sm">Imaging reports and documentation</p>
+            <p className=" ">Imaging reports and documentation</p>
           </div>
         </div>
 
-        <div className="flex items-center gap-3 mb-6">
-          <Input placeholder="Search reports..." prefix={<SearchOutlined />} value={searchText} onChange={(e) => setSearchText(e.target.value)} style={{ flex: 1, maxWidth: '400px' }} />
-          <Select placeholder="Modality" value={modalityFilter} onChange={setModalityFilter} allowClear style={{ width: '140px' }}>
+        <div className="   ">
+          <Input placeholder="Search reports..." prefix={<SearchOutlined />} value={searchText} onChange={(e) => setSearchText(e.target.value)} className="-1 max-w" />
+          <Select placeholder="Modality" value={modalityFilter} onChange={setModalityFilter} allowClear className="">
             <Select.Option value="X-Ray">X-Ray</Select.Option>
             <Select.Option value="CT">CT</Select.Option>
             <Select.Option value="MRI">MRI</Select.Option>
             <Select.Option value="Ultrasound">Ultrasound</Select.Option>
           </Select>
-          <RangePicker style={{ width: '300px' }} />
-          <Badge count={filteredReports.length} style={{ background: '#6366F1' }} />
+          <RangePicker className="" />
+          <Badge count={filteredReports.length} className="bg-indigo-500" />
         </div>
 
         <Table dataSource={filteredReports} columns={columns} rowKey="id" pagination={{ defaultPageSize: 10 }} size="middle" />

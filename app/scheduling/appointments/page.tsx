@@ -67,46 +67,46 @@ export default function SchedulingAppointmentsPage() {
   const completedCount = appointments.filter(a => a.status === 'Completed').length;
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '1400px', margin: '0 auto' }}>
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+    <div className="  sm: sm: lg: lg: max-w-7xl mx-auto">
+      <div className=" -col sm:-row items-start sm:   ">
         <Title level={3}>Appointments Management</Title>
         <Button type="primary" icon={<PlusOutlined />} onClick={() => setIsModalVisible(true)}>
           Book Appointment
         </Button>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px', marginBottom: '24px' }}>
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))]  ">
         <Card>
           <div className="text-center">
-            <div className="text-3xl font-bold text-blue-600">{todayCount}</div>
-            <div className="text-gray-500">Today's Appointments</div>
+            <div className="text-3xl font-bold ">{todayCount}</div>
+            <div className="">Today's Appointments</div>
           </div>
         </Card>
         <Card>
           <div className="text-center">
-            <div className="text-3xl font-bold text-green-600">{confirmedCount}</div>
-            <div className="text-gray-500">Confirmed</div>
+            <div className="text-3xl font-bold ">{confirmedCount}</div>
+            <div className="">Confirmed</div>
           </div>
         </Card>
         <Card>
           <div className="text-center">
             <div className="text-3xl font-bold text-purple-600">{completedCount}</div>
-            <div className="text-gray-500">Completed Today</div>
+            <div className="">Completed Today</div>
           </div>
         </Card>
         <Card>
           <div className="text-center">
-            <div className="text-3xl font-bold text-orange-600">{appointments.filter(a => a.status === 'Pending').length}</div>
-            <div className="text-gray-500">Pending Confirmation</div>
+            <div className="text-3xl font-bold ">{appointments.filter(a => a.status === 'Pending').length}</div>
+            <div className="">Pending Confirmation</div>
           </div>
         </Card>
       </div>
 
       <Card title="All Appointments">
-        <div className="mb-4 flex gap-3">
-          <Input.Search placeholder="Search appointments..." allowClear style={{ width: 250 }} />
-          <DatePicker.RangePicker style={{ width: 280 }} />
-          <Select value={statusFilter} onChange={setStatusFilter} style={{ width: 150 }}>
+        <div className="  ">
+          <Input.Search placeholder="Search appointments..." allowClear className="w-[250px]" />
+          <DatePicker.RangePicker className="w-[280px]" />
+          <Select value={statusFilter} onChange={setStatusFilter} className="w-[150px]">
             <Select.Option value="all">All Status</Select.Option>
             <Select.Option value="confirmed">Confirmed</Select.Option>
             <Select.Option value="pending">Pending</Select.Option>
@@ -141,11 +141,11 @@ export default function SchedulingAppointmentsPage() {
               <Select.Option value="procedure">Procedure</Select.Option>
             </Select>
           </Form.Item>
-          <div style={{ display: 'flex', gap: '16px' }}>
-            <Form.Item name="date" label="Date" rules={[{ required: true }]} style={{ flex: 1 }}>
+          <div className=" ">
+            <Form.Item name="date" label="Date" rules={[{ required: true }]} className="-1">
               <Input type="date" />
             </Form.Item>
-            <Form.Item name="time" label="Time" rules={[{ required: true }]} style={{ flex: 1 }}>
+            <Form.Item name="time" label="Time" rules={[{ required: true }]} className="-1">
               <Select placeholder="Select time">
                 <Select.Option value="09:00">09:00 AM</Select.Option>
                 <Select.Option value="10:00">10:00 AM</Select.Option>

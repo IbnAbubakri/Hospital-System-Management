@@ -37,7 +37,7 @@ export default function ComparativeAnalyticsPage() {
       dataIndex: 'change',
       key: 'change',
       render: (_: unknown, record: any) => (
-        <span className={record.changePercent >= 0 ? 'text-green-600' : 'text-red-600'}>
+        <span className={record.changePercent >= 0 ? '' : ''}>
           {record.change >= 0 ? '+' : ''}{record.change} ({record.changePercent >= 0 ? '+' : ''}{record.changePercent}%)
         </span>
       ),
@@ -48,20 +48,20 @@ export default function ComparativeAnalyticsPage() {
     { title: 'Department', dataIndex: 'department', key: 'department' },
     { title: 'Current Revenue (₦M)', dataIndex: 'currentRevenue', key: 'currentRevenue' },
     { title: 'Baseline Revenue (₦M)', dataIndex: 'baselineRevenue', key: 'baselineRevenue' },
-    { title: 'Growth %', dataIndex: 'growth', key: 'growth', render: (val: number) => <span className={val >= 0 ? 'text-green-600' : 'text-red-600'}>{val >= 0 ? '+' : ''}{val}%</span> },
+    { title: 'Growth %', dataIndex: 'growth', key: 'growth', render: (val: number) => <span className={val >= 0 ? '' : ''}>{val >= 0 ? '+' : ''}{val}%</span> },
     { title: 'Current Admissions', dataIndex: 'admissions', key: 'admissions' },
     { title: 'Baseline Admissions', dataIndex: 'baselineAdmissions', key: 'baselineAdmissions' },
   ];
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '1400px', margin: '0 auto' }}>
+    <div className="  sm: sm: lg: lg:" style={{ maxWidth: '1400px', margin: '0 auto' }}>
       <Title level={3}>Comparative Analytics</Title>
 
       <Card style={{ marginBottom: '24px' }}>
         <Space orientation="vertical" style={{ width: '100%' }} size="large">
-          <div className="flex gap-4">
+          <div className=" ">
             <div>
-              <div className="text-sm text-gray-500 mb-2">Comparison Period</div>
+              <div className="  ">Comparison Period</div>
               <Select value={comparePeriod} onChange={setComparePeriod} style={{ width: 200 }}>
                 <Select.Option value="week">This Week vs Last Week</Select.Option>
                 <Select.Option value="month">This Month vs Last Month</Select.Option>
@@ -70,7 +70,7 @@ export default function ComparativeAnalyticsPage() {
               </Select>
             </div>
             <div>
-              <div className="text-sm text-gray-500 mb-2">Baseline Period</div>
+              <div className="  ">Baseline Period</div>
               <Select value={baselinePeriod} onChange={setBaselinePeriod} style={{ width: 200 }}>
                 <Select.Option value="lastWeek">Last Week</Select.Option>
                 <Select.Option value="lastMonth">Last Month</Select.Option>
@@ -117,30 +117,30 @@ export default function ComparativeAnalyticsPage() {
         <Row gutter={[16, 16]}>
           <Col span={6}>
             <Card size="small" title="Best Performing">
-              <div className="text-sm mb-2"><strong>General Medicine</strong></div>
-              <div className="text-xs text-gray-600">12.7% revenue growth</div>
-              <div className="text-xs text-gray-500">+9 admissions</div>
+              <div className=" "><strong>General Medicine</strong></div>
+              <div className=" ">12.7% revenue growth</div>
+              <div className=" ">+9 admissions</div>
             </Card>
           </Col>
           <Col span={6}>
             <Card size="small" title="Improved Metrics">
-              <div className="text-sm mb-2"><strong>Readmission Rate</strong></div>
-              <div className="text-xs text-green-600">↓ 7.6%</div>
-              <div className="text-xs text-gray-500">Target achieved</div>
+              <div className=" "><strong>Readmission Rate</strong></div>
+              <div className=" ">↓ 7.6%</div>
+              <div className=" ">Target achieved</div>
             </Card>
           </Col>
           <Col span={6}>
             <Card size="small" title="Focus Area">
-              <div className="text-sm mb-2"><strong>Bed Occupancy</strong></div>
-              <div className="text-xs text-orange-600">↓ 4.9%</div>
-              <div className="text-xs text-gray-500">Monitor needed</div>
+              <div className=" "><strong>Bed Occupancy</strong></div>
+              <div className=" ">↓ 4.9%</div>
+              <div className=" ">Monitor needed</div>
             </Card>
           </Col>
           <Col span={6}>
             <Card size="small" title="Growth Opportunity">
-              <div className="text-sm mb-2"><strong>Pediatrics</strong></div>
-              <div className="text-xs text-blue-600">↑ 8.6%</div>
-              <div className="text-xs text-gray-500">Good momentum</div>
+              <div className=" "><strong>Pediatrics</strong></div>
+              <div className=" ">↑ 8.6%</div>
+              <div className=" ">Good momentum</div>
             </Card>
           </Col>
         </Row>

@@ -18,6 +18,16 @@ export default function IncidentReportingPage() {
     { id: 'INC-2024-004', type: 'Near Miss', severity: 'Low', patient: 'N/A', location: 'Pharmacy', date: '2024-02-02', time: '16:45', reportedBy: 'Pharmacist', description: 'Almost dispensed wrong medication', status: 'Resolved', actions: 'Double-check protocol reinforced' },
   ];
 
+  // Handle view details
+  const handleViewDetails = (record: any) => {
+    message.success(`Viewing incident details: ${record.id}`);
+  };
+
+  // Handle follow-up
+  const handleFollowUp = (record: any) => {
+    message.success(`Adding follow-up to incident: ${record.id}`);
+  };
+
   const columns = [
     { title: 'Incident ID', dataIndex: 'id', key: 'id' },
     { title: 'Type', dataIndex: 'type', key: 'type', render: (type: string) => <Tag color="blue">{type}</Tag> },
@@ -36,10 +46,10 @@ export default function IncidentReportingPage() {
     {
       title: 'Actions',
       key: 'actions',
-      render: () => (
+      render: (_: any, record: any) => (
         <Space>
-          <Button type="link" size="small">View Details</Button>
-          <Button type="link" size="small">Follow-up</Button>
+          <Button type="link" size="small" onClick={() => handleViewDetails(record)}>View Details</Button>
+          <Button type="link" size="small" onClick={() => handleFollowUp(record)}>Follow-up</Button>
         </Space>
       )},
   ];
@@ -54,7 +64,7 @@ export default function IncidentReportingPage() {
 
   return (
     <div style={{ padding: '24px', maxWidth: '1400px', margin: '0 auto' }}>
-      <div className="flex items-center justify-between mb-6">
+      <div className="   ">
         <Title level={3}>Incident Reporting System</Title>
         <Button type="primary" icon={<WarningOutlined />} onClick={() => setIsModalVisible(true)}>
           Report Incident
@@ -64,26 +74,26 @@ export default function IncidentReportingPage() {
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px', marginBottom: '24px' }}>
         <Card>
           <div className="text-center">
-            <div className="text-3xl font-bold text-red-600">{incidents.filter(i => i.severity === 'Major').length}</div>
-            <div className="text-gray-500">Major Incidents</div>
+            <div className="text-3xl font-bold ">{incidents.filter(i => i.severity === 'Major').length}</div>
+            <div className="">Major Incidents</div>
           </div>
         </Card>
         <Card>
           <div className="text-center">
-            <div className="text-3xl font-bold text-orange-600">{incidents.filter(i => i.severity === 'Moderate').length}</div>
-            <div className="text-gray-500">Moderate Incidents</div>
+            <div className="text-3xl font-bold ">{incidents.filter(i => i.severity === 'Moderate').length}</div>
+            <div className="">Moderate Incidents</div>
           </div>
         </Card>
         <Card>
           <div className="text-center">
-            <div className="text-3xl font-bold text-blue-600">{incidents.filter(i => i.status === 'Under Investigation').length}</div>
-            <div className="text-gray-500">Under Investigation</div>
+            <div className="text-3xl font-bold ">{incidents.filter(i => i.status === 'Under Investigation').length}</div>
+            <div className="">Under Investigation</div>
           </div>
         </Card>
         <Card>
           <div className="text-center">
-            <div className="text-3xl font-bold text-green-600">{incidents.filter(i => i.status === 'Resolved').length}</div>
-            <div className="text-gray-500">Resolved</div>
+            <div className="text-3xl font-bold ">{incidents.filter(i => i.status === 'Resolved').length}</div>
+            <div className="">Resolved</div>
           </div>
         </Card>
       </div>
@@ -117,7 +127,7 @@ export default function IncidentReportingPage() {
           <Form.Item name="location" label="Location" rules={[{ required: true }]}>
             <Input placeholder="Enter location where incident occurred" />
           </Form.Item>
-          <div style={{ display: 'flex', gap: '16px' }}>
+          <div style={{  gap: '16px' }}>
             <Form.Item name="date" label="Date" rules={[{ required: true }]} style={{ flex: 1 }}>
               <Input type="date" />
             </Form.Item>

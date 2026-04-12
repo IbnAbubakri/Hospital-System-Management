@@ -33,8 +33,8 @@ export default function DiscountsPage() {
   // CRITICAL SECURITY: Restrict access to administrators only
   if (!hasPermission('billing:discounts:view')) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-blue-50 to-slate-50 px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8">
-        <Card className="mt-6 rounded-xl">
+      <div className="min-h-screen bg-gradient-to-b from-blue-50 to-slate-50   sm: sm: lg: lg:">
+        <Card className=" -xl">
           <Alert
             title="Access Denied"
             description="You don&apos;tt have permission to access discount management. This area is restricted to billing staff and administrators only."
@@ -136,7 +136,7 @@ export default function DiscountsPage() {
       title: 'Value',
       key: 'value',
       render: (_: any, record: DiscountRule) => (
-        <span className="font-semibold text-green-600">
+        <span className="font-semibold ">
           {record.type === 'Percentage' ? `${record.value}%` : `₦${record.value.toLocaleString()}`}
         </span>
       )},
@@ -145,16 +145,7 @@ export default function DiscountsPage() {
       dataIndex: 'category',
       key: 'category',
       render: (category: string) => (
-        <span
-          style={{
-            padding: '4px 10px',
-            borderRadius: '6px',
-            fontSize: '13px',
-            fontWeight: 500,
-            background: '#F1F5F9',
-            color: '#475569',
-          }}
-        >
+        <span className=".5  -md  font-medium bg-slate-100 text-slate-600">
           {category}
         </span>
       )},
@@ -163,16 +154,7 @@ export default function DiscountsPage() {
       dataIndex: 'applicableTo',
       key: 'applicableTo',
       render: (applicableTo: string) => (
-        <span
-          style={{
-            padding: '4px 10px',
-            borderRadius: '6px',
-            fontSize: '13px',
-            fontWeight: 500,
-            background: applicableTo === 'All Services' ? '#DBEAFE' : '#D1FAE5',
-            color: applicableTo === 'All Services' ? '#1E40AF' : '#065F46',
-          }}
-        >
+        <span className={`.5  -md  font-medium ${applicableTo === 'All Services' ? 'bg-blue-100 ' : 'bg-emerald-100 '}`}>
           {applicableTo}
         </span>
       )},
@@ -227,11 +209,11 @@ export default function DiscountsPage() {
         type="info"
         showIcon
         closable
-        className="mb-6 rounded-xl"
+        className=" -xl"
       />
 
       {/* Statistics Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-6">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4  ">
         <StatCard
           label="Total Rules"
           value={stats.total}
@@ -267,7 +249,7 @@ export default function DiscountsPage() {
       </div>
 
       {/* Discount Rules List */}
-      <div className="bg-white rounded-xl p-4 sm:p-6 lg:p-6 border border-slate-200">
+      <div className="bg-white -xl  sm: lg: border border-slate-200">
         <SearchFilterBar
           searchPlaceholder="Search discount rules..."
           searchValue={searchText}
@@ -291,8 +273,8 @@ export default function DiscountsPage() {
       {/* Add Discount Rule Modal */}
       <Modal
         title={
-          <div className="flex items-center gap-2">
-            <PlusOutlined style={{ color: '#3B82F6' }} />
+          <div className="  ">
+            <PlusOutlined className="" />
             <span>Add Discount Rule</span>
           </div>
         }
@@ -304,7 +286,7 @@ export default function DiscountsPage() {
         }}
         width={700}
       >
-        <Form form={form} layout="vertical" onFinish={handleSubmit} className="mt-6">
+        <Form form={form} layout="vertical" onFinish={handleSubmit} className="">
           <Form.Item name="name" label="Rule Name" rules={[{ required: true }]}>
             <Input placeholder="Enter discount rule name" />
           </Form.Item>
@@ -320,7 +302,7 @@ export default function DiscountsPage() {
             </Col>
             <Col span={12}>
               <Form.Item name="value" label="Value" rules={[{ required: true }]}>
-                <InputNumber placeholder="Enter value" style={{ width: '100%' }} />
+                <InputNumber placeholder="Enter value" className="w-full" />
               </Form.Item>
             </Col>
           </Row>
@@ -348,12 +330,12 @@ export default function DiscountsPage() {
           <Row gutter={16}>
             <Col span={12}>
               <Form.Item name="minAmount" label="Minimum Amount (₦)">
-                <InputNumber placeholder="Optional" style={{ width: '100%' }} />
+                <InputNumber placeholder="Optional" className="w-full" />
               </Form.Item>
             </Col>
             <Col span={12}>
               <Form.Item name="maxDiscount" label="Max Discount (₦)">
-                <InputNumber placeholder="Optional" style={{ width: '100%' }} />
+                <InputNumber placeholder="Optional" className="w-full" />
               </Form.Item>
             </Col>
           </Row>

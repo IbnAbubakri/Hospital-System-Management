@@ -25,13 +25,13 @@ export default function SchedulingCalendarPage() {
     const dayAppointments = appointments.filter(a => a.date === dateStr);
 
     return (
-      <ul style={{ listStyle: 'none', margin: 0, padding: 0 }}>
+      <ul className="list-none m-0 ">
         {dayAppointments.map((apt) => (
-          <li key={apt.id} style={{ marginBottom: '4px' }}>
+          <li key={apt.id} className="">
             <Badge
               status={apt.status === 'confirmed' ? 'success' : 'warning'}
               text={
-                <span style={{ fontSize: '12px' }}>
+                <span className="">
                   <Tag color={
                     apt.type === 'clinic' ? 'blue' :
                     apt.type === 'opd' ? 'green' :
@@ -60,8 +60,8 @@ export default function SchedulingCalendarPage() {
   };
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '1400px', margin: '0 auto' }}>
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+    <div className="  sm: sm: lg: lg: max-w-7xl mx-auto">
+      <div className=" -col sm:-row items-start sm:   ">
         <Title level={3}>Scheduling Calendar</Title>
         <Button type="primary" icon={<PlusOutlined />} onClick={() => setIsModalVisible(true)}>
           New Appointment

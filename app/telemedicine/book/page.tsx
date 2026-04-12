@@ -82,40 +82,40 @@ export default function TelemedicineBookPage() {
   };
 
   return (
-    <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)', padding: '16px' }}>
-      <div style={{ background: 'white', borderRadius: '12px', padding: '16px', border: '1px solid #E2E8F0' }}>
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-slate-50 ">
+      <div className="bg-white -xl  border border-slate-200">
+        <div className=" -col sm:-row items-start sm:   ">
           <div>
-            <h1 className="text-2xl font-semibold text-gray-900 mb-1 flex items-center gap-2">
-              <VideoCameraOutlined style={{ color: '#8B5CF6' }} />
+            <h1 className="text-2xl font-semibold     ">
+              <VideoCameraOutlined className="color: '#8B5CF6' text-xl" />
               Book Telemedicine Consultation
             </h1>
-            <p className="text-gray-500 text-sm">Schedule online consultation with doctors</p>
+            <p className=" ">Schedule online consultation with doctors</p>
           </div>
           <Button type="primary" icon={<PlusOutlined />} onClick={() => setBookingModalVisible(true)}>
             Book Consultation
           </Button>
         </div>
 
-        <div className="grid grid-cols-2 gap-6 mb-6">
-          <div style={{ padding: '20px', background: 'linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%)', borderRadius: '12px', color: 'white' }}>
-            <div className="flex items-center gap-3 mb-3">
-              <CalendarOutlined style={{ fontSize: '24px' }} />
-              <span className="text-lg font-semibold">Available Slots Today</span>
+        <div className="grid grid-cols-2  ">
+          <div className=" bg-gradient-to-r from-violet-600 to-violet-700 -xl ">
+            <div className="   ">
+              <CalendarOutlined className="text-2xl" />
+              <span className=" font-semibold">Available Slots Today</span>
             </div>
             <div className="text-3xl font-bold">{mockTelemedicineSlots.filter((s: any) => s.available).length}</div>
           </div>
-          <div style={{ padding: '20px', background: 'linear-gradient(135deg, #06B6D4 0%, #0891B2 100%)', borderRadius: '12px', color: 'white' }}>
-            <div className="flex items-center gap-3 mb-3">
-              <VideoCameraOutlined style={{ fontSize: '24px' }} />
-              <span className="text-lg font-semibold">Upcoming Consultations</span>
+          <div className=" bg-gradient-to-r from-cyan-600 to-cyan-700 -xl ">
+            <div className="   ">
+              <VideoCameraOutlined className="text-2xl" />
+              <span className=" font-semibold">Upcoming Consultations</span>
             </div>
             <div className="text-3xl font-bold">{mockTelemedicineConsultations.filter((c: any) => c.status === 'scheduled' || c.status === 'confirmed').length}</div>
           </div>
         </div>
 
-        <div className="flex items-center gap-3 mb-6">
-          <Input placeholder="Search consultations..." prefix={<SearchOutlined />} value={searchText} onChange={(e) => setSearchText(e.target.value)} style={{ flex: 1, maxWidth: '400px' }} />
+        <div className="   ">
+          <Input placeholder="Search consultations..." prefix={<SearchOutlined />} value={searchText} onChange={(e) => setSearchText(e.target.value)} className="-1 max-w" />
         </div>
 
         <Table dataSource={filteredConsultations} columns={columns} rowKey="id" pagination={{ defaultPageSize: 10 }} size="middle" />
@@ -167,7 +167,7 @@ export default function TelemedicineBookPage() {
           </Form.Item>
 
           <Form.Item label="Date" name="date" rules={[{ required: true }]}>
-            <DatePicker style={{ width: '100%' }} disabledDate={(current) => current && current < dayjs().startOf('day')} />
+            <DatePicker className="w-full" disabledDate={(current) => current && current < dayjs().startOf('day')} />
           </Form.Item>
 
           <Form.Item label="Time Slot" name="timeSlot" rules={[{ required: true }]}>

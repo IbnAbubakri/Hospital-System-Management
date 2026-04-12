@@ -102,13 +102,13 @@ export default function RequisitionsPage() {
       key: 'status',
       render: (status: string) => {
         const config = getStatusConfig(status);
-        return <Tag style={{ backgroundColor: config.bg, color: config.color, border: 'none', fontWeight: 500 }}>{config.text}</Tag>;
+        return <Tag className="border-none font-medium" style={{ backgroundColor: config.bg, color: config.color }}>{config.text}</Tag>;
       }},
     {
       title: 'Actions',
       key: 'actions',
       render: (_: any, record: Requisition) => (
-        <div className="flex gap-2">
+        <div className=" ">
           <Button size="small" disabled={record.status !== 'approved'}>Create PO</Button>
           <Button size="small">View Details</Button>
         </div>
@@ -124,24 +124,24 @@ export default function RequisitionsPage() {
   };
 
   return (
-    <div className="min-h-screen px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)' }}>
-      <div className="p-4 sm:p-6" style={{ background: 'white', borderRadius: '12px', border: '1px solid #E2E8F0' }}>
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+    <div className="min-h-screen   sm: sm: lg: lg: bg-gradient-to-b from-blue-50 to-slate-50">
+      <div className=" sm: bg-white -xl border border-slate-200">
+        <div className=" -col sm:-row items-start sm:   ">
           <div>
-            <h1 className="text-2xl font-semibold text-gray-900 mb-1 flex items-center gap-2">
-              <ShoppingOutlined style={{ color: '#8B5CF6' }} />
+            <h1 className="text-2xl font-semibold     ">
+              <ShoppingOutlined className="" />
               Purchase Requisitions
             </h1>
-            <p className="text-gray-500 text-sm">Manage purchase requests and approvals</p>
+            <p className=" ">Manage purchase requests and approvals</p>
           </div>
           <Button type="primary" icon={<PlusOutlined />} onClick={() => setModalVisible(true)} className="w-full sm:w-auto">
             New Requisition
           </Button>
         </div>
 
-        <Row gutter={[16, 16]} className="mb-6">
+        <Row gutter={[16, 16]} className="">
           <Col xs={12} sm={6}>
-            <Card className="p-4 sm:p-6">
+            <Card className=" sm:">
               <Statistic
                 title="Pending"
                 value={mockRequisitions.filter((r: any) => r.status === 'pending').length}
@@ -150,7 +150,7 @@ export default function RequisitionsPage() {
             </Card>
           </Col>
           <Col xs={12} sm={6}>
-            <Card className="p-4 sm:p-6">
+            <Card className=" sm:">
               <Statistic
                 title="Approved"
                 value={mockRequisitions.filter((r: any) => r.status === 'approved').length}
@@ -159,7 +159,7 @@ export default function RequisitionsPage() {
             </Card>
           </Col>
           <Col xs={12} sm={6}>
-            <Card className="p-4 sm:p-6">
+            <Card className=" sm:">
               <Statistic
                 title="Ordered"
                 value={mockRequisitions.filter((r: any) => r.status === 'ordered').length}
@@ -168,7 +168,7 @@ export default function RequisitionsPage() {
             </Card>
           </Col>
           <Col xs={12} sm={6}>
-            <Card className="p-4 sm:p-6">
+            <Card className=" sm:">
               <Statistic
                 title="Total Value"
                 value={mockRequisitions.reduce((sum, r) => sum + r.totalAmount, 0)}
@@ -180,9 +180,9 @@ export default function RequisitionsPage() {
           </Col>
         </Row>
 
-        <div className="flex items-center gap-3 mb-6">
-          <Input placeholder="Search requisitions..." prefix={<SearchOutlined />} value={searchText} onChange={(e) => setSearchText(e.target.value)} style={{ flex: 1, maxWidth: '400px' }} />
-          <Select placeholder="Status" value={statusFilter} onChange={setStatusFilter} allowClear style={{ width: '140px' }}>
+        <div className="   ">
+          <Input placeholder="Search requisitions..." prefix={<SearchOutlined />} value={searchText} onChange={(e) => setSearchText(e.target.value)} className="-1 max-w" />
+          <Select placeholder="Status" value={statusFilter} onChange={setStatusFilter} allowClear className="">
             <Option value="pending">Pending</Option>
             <Option value="approved">Approved</Option>
             <Option value="ordered">Ordered</Option>
@@ -212,7 +212,7 @@ export default function RequisitionsPage() {
             </Select>
           </Form.Item>
           <Form.Item name="requiredDate" label="Required Date" rules={[{ required: true }]}>
-            <DatePicker style={{ width: '100%' }} />
+            <DatePicker className="w-full" />
           </Form.Item>
           <Form.Item name="items" label="Items" rules={[{ required: true }]}>
             <Input.TextArea rows={4} placeholder="List items required" />

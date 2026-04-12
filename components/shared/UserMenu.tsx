@@ -68,7 +68,7 @@ export function UserMenu() {
         }}
       >
         <Avatar
-          size="default"
+          size="medium"
           icon={<UserOutlined />}
           style={{
             background: 'linear-gradient(135deg, #0077B6 0%, #00B4D8 100%)',

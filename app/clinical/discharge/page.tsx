@@ -20,7 +20,7 @@ export default function DischargePage() {
 
   if (!hasPermission('view_emr') && user?.role !== 'Administrator') {
     return (
-      <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)', padding: '16px' }}>
+      <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)' }}>
         <Alert
           title="Access Denied"
           description="You don't have permission to access this page. Please contact your administrator."
@@ -42,20 +42,20 @@ export default function DischargePage() {
   // CRITICAL SECURITY: Check permission and patient access
   if (!hasPermission('inpatients:discharge')) {
     return (
-      <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)', padding: '24px' }}>
+      <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)' }}>
         <div
           style={{
-            background: 'white',
+            backgroundColor: '#ffffff',
             borderRadius: '12px',
             padding: '24px',
             border: '1px solid #E2E8F0',
           }}
         >
-          <div className="flex items-center gap-3 p-4" style={{ background: '#FEF2F2', borderRadius: '8px', border: '1px solid #FECACA' }}>
+          <div className="   " style={{ background: '#FEF2F2', borderRadius: '8px', border: '1px solid #FECACA' }}>
             <FileTextOutlined style={{ color: '#DC2626', fontSize: '20px' }} />
             <div>
-              <h3 className="font-semibold text-red-900">Access Denied</h3>
-              <p className="text-sm text-red-700">You don&apos;tt have permission to discharge patients. This action requires appropriate privileges.</p>
+              <h3 className="font-semibold ">Access Denied</h3>
+              <p className=" ">You don&apos;tt have permission to discharge patients. This action requires appropriate privileges.</p>
             </div>
           </div>
         </div>
@@ -65,23 +65,23 @@ export default function DischargePage() {
 
   if (!patient) {
     return (
-      <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)', padding: '24px' }}>
+      <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)' }}>
         <div
           style={{
-            background: 'white',
+            backgroundColor: '#ffffff',
             borderRadius: '12px',
             padding: '24px',
             border: '1px solid #E2E8F0',
           }}
         >
-          <div className="flex items-center gap-3 p-4" style={{ background: '#FEF2F2', borderRadius: '8px', border: '1px solid #FECACA' }}>
+          <div className="   " style={{ background: '#FEF2F2', borderRadius: '8px', border: '1px solid #FECACA' }}>
             <UserOutlined style={{ color: '#DC2626', fontSize: '20px' }} />
             <div>
-              <h3 className="font-semibold text-red-900">Patient Not Found</h3>
-              <p className="text-sm text-red-700">Patient not found or you do not have permission to view this patient.</p>
+              <h3 className="font-semibold ">Patient Not Found</h3>
+              <p className=" ">Patient not found or you do not have permission to view this patient.</p>
             </div>
           </div>
-          <div className="mt-4">
+          <div className="">
             <GradientButton onClick={() => router.back()}>
               Go Back
             </GradientButton>
@@ -267,7 +267,7 @@ export default function DischargePage() {
                     [diag.code]: { color: '#3B82F6', bg: '#DBEAFE' }
                   }}
                 />
-                <Text className="ml-2" strong>{diag.description}</Text>
+                <Text className="" strong>{diag.description}</Text>
               </div>
             ))}
             </InfoCard>
@@ -283,7 +283,7 @@ export default function DischargePage() {
               dataSource={checklistItems}
               renderItem={(item) => (
                 <List.Item style={{ border: 'none', padding: '4px 0' }}>
-                  <div className="flex items-center gap-3" style={{ width: '100%' }}>
+                  <div className="  " style={{ width: '100%' }}>
                     <Checkbox
                       checked={checkedItems.includes(item)}
                       onChange={() => handleCheckboxChange(item)}

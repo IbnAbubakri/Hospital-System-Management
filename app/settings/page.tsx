@@ -35,15 +35,15 @@ export default function SettingsPage() {
         </span>
       ),
       children: (
-        <Card style={{ borderRadius: 12 }}>
-          <Title level={5} style={{ marginBottom: 24 }}>Profile Settings</Title>
+        <Card style={{ borderRadius: '12px' }}>
+          <Title level={5} style={{ marginBottom: '24px' }}>Profile Settings</Title>
           <Form layout="vertical" initialValues={user ? {
             firstName: user.firstName,
             lastName: user.lastName,
             email: user.email,
             phone: user.phoneNumber,
           } : {}}>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
               <Form.Item label="First Name" name="firstName">
                 <Input size="large" placeholder="Enter first name" />
               </Form.Item>
@@ -72,8 +72,8 @@ export default function SettingsPage() {
         </span>
       ),
       children: (
-        <Card style={{ borderRadius: 12 }}>
-          <Title level={5} style={{ marginBottom: 24 }}>Security Settings</Title>
+        <Card style={{ borderRadius: '12px' }}>
+          <Title level={5} style={{ marginBottom: '24px' }}>Security Settings</Title>
           <Form layout="vertical">
             <Form.Item label="Current Password">
               <Input.Password size="large" placeholder="Enter current password" />
@@ -86,7 +86,7 @@ export default function SettingsPage() {
             </Form.Item>
             <Divider />
             <Title level={5}>Two-Factor Authentication</Title>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 16 }}>
+            <div style={{ display: '', justifyContent: 'space-between', alignItems: 'center', marginTop: 16 }}>
               <div>
                 <Text strong>Enable 2FA</Text>
                 <br />
@@ -109,16 +109,16 @@ export default function SettingsPage() {
         </span>
       ),
       children: (
-        <Card style={{ borderRadius: 12 }}>
-          <Title level={5} style={{ marginBottom: 24 }}>Notification Preferences</Title>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+        <Card style={{ borderRadius: '12px' }}>
+          <Title level={5} style={{ marginBottom: '24px' }}>Notification Preferences</Title>
+          <div style={{ display: '', flexDirection: 'column', gap: '16px' }}>
             {[
               { title: 'Email Notifications', desc: 'Receive appointment reminders via email', defaultChecked: true },
               { title: 'SMS Notifications', desc: 'Receive urgent alerts via SMS', defaultChecked: true },
               { title: 'Browser Notifications', desc: 'Get real-time updates in your browser', defaultChecked: false },
               { title: 'Weekly Reports', desc: 'Receive weekly summary reports', defaultChecked: true },
             ].map((item, index) => (
-              <div key={index} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '16px', background: '#f9fafb', borderRadius: 8 }}>
+              <div key={index} style={{ display: '', justifyContent: 'space-between', alignItems: 'center', padding: '16px', background: '#f9fafb', borderRadius: '8px' }}>
                 <div>
                   <Text strong>{item.title}</Text>
                   <br />
@@ -142,8 +142,8 @@ export default function SettingsPage() {
         </span>
       ),
       children: (
-        <Card style={{ borderRadius: 12 }}>
-          <Title level={5} style={{ marginBottom: 24 }}>Appearance Settings</Title>
+        <Card style={{ borderRadius: '12px' }}>
+          <Title level={5} style={{ marginBottom: '24px' }}>Appearance Settings</Title>
           <Form layout="vertical">
             <Form.Item label="Theme">
               <Select
@@ -190,7 +190,7 @@ export default function SettingsPage() {
   return (
     <div className="settings-page">
       {contextHolder}
-      <Card style={{ borderRadius: 12 }} styles={{ body: { padding: 0 } }}>
+      <Card style={{ borderRadius: '12px' }} styles={{ body: { padding: 0 } }}>
         <Tabs
           tabPosition="left"
           style={{ minHeight: 500 }}

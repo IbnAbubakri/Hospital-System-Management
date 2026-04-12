@@ -115,7 +115,7 @@ export default function CommunicationsAlertsPage() {
   const totalActive = alerts.filter(a => a.status === 'Active').length;
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '1400px', margin: '0 auto' }}>
+    <div className="  sm: sm: lg: lg: max-w-7xl mx-auto">
       <Title level={3}>System Alerts</Title>
 
       {criticalCount > 0 && (
@@ -124,50 +124,50 @@ export default function CommunicationsAlertsPage() {
           type="error"
           showIcon
           icon={<WarningOutlined />}
-          style={{ marginBottom: '24px' }}
+          className=""
         />
       )}
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px', marginBottom: '24px' }}>
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))]  ">
         <Card>
           <div className="text-center">
-            <div className="text-3xl font-bold text-red-600">{criticalCount}</div>
-            <div className="text-gray-500">Critical</div>
+            <div className="text-3xl font-bold ">{criticalCount}</div>
+            <div className="">Critical</div>
           </div>
         </Card>
         <Card>
           <div className="text-center">
-            <div className="text-3xl font-bold text-orange-600">{highCount}</div>
-            <div className="text-gray-500">High Priority</div>
+            <div className="text-3xl font-bold ">{highCount}</div>
+            <div className="">High Priority</div>
           </div>
         </Card>
         <Card>
           <div className="text-center">
-            <div className="text-3xl font-bold text-blue-600">{totalActive}</div>
-            <div className="text-gray-500">Active Alerts</div>
+            <div className="text-3xl font-bold ">{totalActive}</div>
+            <div className="">Active Alerts</div>
           </div>
         </Card>
         <Card>
           <div className="text-center">
-            <div className="text-3xl font-bold text-green-600">{alerts.filter(a => a.status === 'Resolved').length}</div>
-            <div className="text-gray-500">Resolved Today</div>
+            <div className="text-3xl font-bold ">{alerts.filter(a => a.status === 'Resolved').length}</div>
+            <div className="">Resolved Today</div>
           </div>
         </Card>
       </div>
 
       <Card title="Active Alerts">
-        <div className="mb-4">
+        <div className="">
           <Space>
-            <Tag color={filterType === 'all' ? 'blue' : 'default'} onClick={() => setFilterType('all')} style={{ cursor: 'pointer' }}>
+            <Tag color={filterType === 'all' ? 'blue' : 'default'} onClick={() => setFilterType('all')} className="cursor-pointer">
               All ({totalActive})
             </Tag>
-            <Tag color={filterType === 'clinical' ? 'blue' : 'default'} onClick={() => setFilterType('clinical')} style={{ cursor: 'pointer' }}>
+            <Tag color={filterType === 'clinical' ? 'blue' : 'default'} onClick={() => setFilterType('clinical')} className="cursor-pointer">
               Clinical ({alerts.filter(a => a.type === 'Clinical' && a.status === 'Active').length})
             </Tag>
-            <Tag color={filterType === 'safety' ? 'blue' : 'default'} onClick={() => setFilterType('safety')} style={{ cursor: 'pointer' }}>
+            <Tag color={filterType === 'safety' ? 'blue' : 'default'} onClick={() => setFilterType('safety')} className="cursor-pointer">
               Safety ({alerts.filter(a => a.type === 'Safety' && a.status === 'Active').length})
             </Tag>
-            <Tag color={filterType === 'operational' ? 'blue' : 'default'} onClick={() => setFilterType('operational')} style={{ cursor: 'pointer' }}>
+            <Tag color={filterType === 'operational' ? 'blue' : 'default'} onClick={() => setFilterType('operational')} className="cursor-pointer">
               Operational ({alerts.filter(a => a.type === 'Operational' && a.status === 'Active').length})
             </Tag>
           </Space>
@@ -175,7 +175,7 @@ export default function CommunicationsAlertsPage() {
         <Table dataSource={filteredAlerts} columns={columns} rowKey="id" pagination={false} />
       </Card>
 
-      <Card title="All Alerts History" style={{ marginTop: '24px' }}>
+      <Card title="All Alerts History" className="">
         <Table dataSource={alerts} columns={columns} rowKey="id" pagination={{ pageSize: 10 }} />
       </Card>
     </div>

@@ -41,8 +41,8 @@ export default function RealtimeAnalyticsPage() {
   ];
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '1600px', margin: '0 auto' }}>
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+    <div className="  sm: sm: lg: lg:" style={{ maxWidth: '1600px', margin: '0 auto' }}>
+      <div className=" -col sm:-row items-start sm:   ">
         <Title level={3}>Real-Time Analytics</Title>
         <Space>
           <Badge status="processing" text="Live" />
@@ -152,7 +152,7 @@ export default function RealtimeAnalyticsPage() {
                       />
                     }
                     title={
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <div style={{ display: '', justifyContent: 'space-between', alignItems: 'center' }}>
                         <span style={{ fontWeight: 600 }}>{dept.department}</span>
                         <Tag
                           color={dept.occupancy > 90 ? 'error' : dept.occupancy > 75 ? 'warning' : 'success'}
@@ -163,7 +163,7 @@ export default function RealtimeAnalyticsPage() {
                     }
                     description={
                       <div>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px', fontSize: '12px', color: '#6B7280' }}>
+                        <div style={{ display: '', justifyContent: 'space-between', marginBottom: '4px', fontSize: '12px', color: '#6B7280' }}>
                           <span>{dept.patients} / {dept.capacity} patients</span>
                           <span>{dept.beds} beds</span>
                         </div>
@@ -189,7 +189,7 @@ export default function RealtimeAnalyticsPage() {
                 <List.Item>
                   <List.Item.Meta
                     title={
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <div style={{ display: '', justifyContent: 'space-between', alignItems: 'center' }}>
                         <span style={{ fontWeight: 600 }}>{activity.activity}</span>
                         <Tag
                           color={activity.priority === 'Urgent' ? 'error' : activity.priority === 'Scheduled' ? 'blue' : 'default'}
@@ -201,7 +201,7 @@ export default function RealtimeAnalyticsPage() {
                     description={
                       <div style={{ fontSize: '12px', color: '#6B7280' }}>
                         <div>{activity.details}</div>
-                        <div style={{ display: 'flex', gap: '12px', marginTop: '4px' }}>
+                        <div style={{ display: '', gap: '12px', marginTop: '4px' }}>
                           <span>{activity.time}</span>
                           <span>{activity.department}</span>
                         </div>

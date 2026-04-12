@@ -106,13 +106,13 @@ export default function InvoicesPage() {
   // CRITICAL SECURITY: Restrict access to administrators only
   if (!hasPermission('billing:invoices:view')) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-blue-50 to-slate-50 px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8">
+      <div className="min-h-screen bg-gradient-to-b from-blue-50 to-slate-50   sm: sm: lg: lg:">
         <Alert
           title="Access Denied"
           description="You don&apos;tt have permission to access invoice management. This area is restricted to billing staff and administrators only."
           type="error"
           showIcon
-          className="mt-6 rounded-xl"
+          className=" -xl"
         />
       </div>
     );
@@ -137,16 +137,7 @@ export default function InvoicesPage() {
       dataIndex: 'invoiceNumber',
       key: 'invoiceNumber',
       render: (num: string) => (
-        <span
-          style={{
-            padding: '4px 10px',
-            borderRadius: '6px',
-            fontSize: '13px',
-            fontWeight: 500,
-            background: '#DBEAFE',
-            color: '#1E40AF',
-          }}
-        >
+        <span className=".5  -md  font-medium bg-blue-100 ">
           {num}
         </span>
       ),
@@ -156,8 +147,8 @@ export default function InvoicesPage() {
       key: 'patient',
       render: (_: any, record: Invoice) => (
         <div>
-          <div className="font-medium text-gray-900">{record.patientName}</div>
-          <div className="text-xs text-gray-500">{record.mrn}</div>
+          <div className="font-medium ">{record.patientName}</div>
+          <div className=" ">{record.mrn}</div>
         </div>
       ),
     },
@@ -166,16 +157,7 @@ export default function InvoicesPage() {
       dataIndex: 'type',
       key: 'type',
       render: (type: string) => (
-        <span
-          style={{
-            padding: '4px 10px',
-            borderRadius: '6px',
-            fontSize: '13px',
-            fontWeight: 500,
-            background: '#F1F5F9',
-            color: '#475569',
-          }}
-        >
+        <span className=".5  -md  font-medium bg-slate-100 text-slate-600">
           {type}
         </span>
       ),
@@ -187,7 +169,7 @@ export default function InvoicesPage() {
       dataIndex: 'total',
       key: 'total',
       render: (amount: number) => (
-        <span className="font-semibold text-gray-900">₦{amount.toLocaleString()}</span>
+        <span className="font-semibold ">₦{amount.toLocaleString()}</span>
       ),
       sorter: (a: Invoice, b: Invoice) => a.total - b.total,
     },
@@ -200,7 +182,7 @@ export default function InvoicesPage() {
         return (
           <div>
             <div>₦{amount.toLocaleString()}</div>
-            <div className="text-xs text-gray-500">{percentage}%</div>
+            <div className=" ">{percentage}%</div>
           </div>
         );
       },
@@ -244,7 +226,7 @@ export default function InvoicesPage() {
       }
     >
       {/* Statistics Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-6">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4  ">
         <StatCard
           label="Total Invoices"
           value={stats.total}
@@ -280,7 +262,7 @@ export default function InvoicesPage() {
       </div>
 
       {/* Invoice List Section */}
-      <div className="bg-white rounded-xl p-4 sm:p-6 lg:p-6 border border-slate-200">
+      <div className="bg-white -xl  sm: lg: border border-slate-200">
         <SearchFilterBar
           searchPlaceholder="Search invoices by number or patient..."
           searchValue={searchText}
@@ -320,8 +302,8 @@ export default function InvoicesPage() {
       {/* Invoice Detail Drawer */}
       <Drawer
         title={
-          <div className="flex items-center gap-2">
-            <DollarOutlined style={{ color: '#059669' }} />
+          <div className="  ">
+            <DollarOutlined className="" />
             <span>{selectedInvoice?.invoiceNumber}</span>
           </div>
         }
@@ -347,12 +329,12 @@ export default function InvoicesPage() {
             </Descriptions>
 
             <Divider>Invoice Items</Divider>
-            <div className="mt-4">
+            <div className="">
               {selectedInvoice.items.map((item) => (
-                <div key={item.id} className="flex justify-between py-2 border-b" style={{ borderBottom: '1px solid #f0f0f0' }}>
+                <div key={item.id} className="   border-b border-gray-200">
                   <div>
                     <div className="font-medium">{item.service}</div>
-                    <div className="text-xs text-gray-500">{item.date}</div>
+                    <div className=" ">{item.date}</div>
                   </div>
                   <div className="font-semibold">₦{item.amount.toLocaleString()}</div>
                 </div>
@@ -360,38 +342,38 @@ export default function InvoicesPage() {
             </div>
 
             <Divider />
-            <div className="mt-4 space-y-2">
-              <div className="flex justify-between">
+            <div className=" space-y-2">
+              <div className=" ">
                 <Text type="secondary">Subtotal:</Text>
                 <Text>₦{selectedInvoice.subtotal.toLocaleString()}</Text>
               </div>
               {selectedInvoice.discount > 0 && (
-                <div className="flex justify-between">
+                <div className=" ">
                   <Text type="secondary">Discount:</Text>
                   <Text type="danger">-₦{selectedInvoice.discount.toLocaleString()}</Text>
                 </div>
               )}
-              <div className="flex justify-between">
+              <div className=" ">
                 <Text type="secondary">Tax (10%):</Text>
                 <Text>₦{selectedInvoice.tax.toLocaleString()}</Text>
               </div>
-              <div className="flex justify-between pt-2 border-t" style={{ borderTop: '1px solid #f0f0f0' }}>
+              <div className="   border-t border-gray-200">
                 <Text strong>Total:</Text>
-                <Text strong className="text-lg">₦{selectedInvoice.total.toLocaleString()}</Text>
+                <Text strong className="">₦{selectedInvoice.total.toLocaleString()}</Text>
               </div>
-              <div className="flex justify-between">
+              <div className=" ">
                 <Text type="secondary">Paid:</Text>
                 <Text type="success">₦{selectedInvoice.paidAmount.toLocaleString()}</Text>
               </div>
-              <div className="flex justify-between pt-2 border-t" style={{ borderTop: '1px solid #f0f0f0' }}>
+              <div className="   border-t border-gray-200">
                 <Text strong>Balance Due:</Text>
-                <Text strong className="text-lg text-red-600">
+                <Text strong className=" ">
                   ₦{(selectedInvoice.total - selectedInvoice.paidAmount).toLocaleString()}
                 </Text>
               </div>
             </div>
 
-            <div className="mt-6 flex flex-col sm:flex-row gap-2">
+            <div className="  -col sm:-row ">
               <GradientButton icon={<DownloadOutlined />} className="w-full sm:w-auto">Download PDF</GradientButton>
               <GradientButton variant="secondary" icon={<PrinterOutlined />} className="w-full sm:w-auto">Print</GradientButton>
             </div>
@@ -402,8 +384,8 @@ export default function InvoicesPage() {
       {/* Create Invoice Modal */}
       <Modal
         title={
-          <div className="flex items-center gap-2">
-            <PlusOutlined style={{ color: '#3B82F6' }} />
+          <div className="  ">
+            <PlusOutlined className="" />
             <span>Create New Invoice</span>
           </div>
         }
@@ -412,7 +394,7 @@ export default function InvoicesPage() {
         onCancel={() => setCreateModalVisible(false)}
         width={800}
       >
-        <Form layout="vertical" className="mt-6">
+        <Form layout="vertical" className="">
           <Form.Item label="Patient" rules={[{ required: true }]}>
             <Select placeholder="Select patient" showSearch>
               <Select.Option value="1">Chukwuemeka Okonkwo (MRN-2024-0001)</Select.Option>

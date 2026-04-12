@@ -31,13 +31,13 @@ export default function LaboratoryPage() {
   // CRITICAL SECURITY: Restrict access to laboratory module
   if (!hasPermission('laboratory:view')) {
     return (
-      <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)', padding: '24px' }}>
+      <div className="min-h-screen bg-gradient-to-b from-blue-50 to-slate-50 ">
         <Alert
           title="Access Denied"
           description="You don&apos;tt have permission to access the laboratory module. This area is restricted to laboratory staff and authorized personnel."
           type="error"
           showIcon
-          style={{ marginTop: '24px', borderRadius: '12px' }}
+          className=" -xl"
         />
       </div>
     );
@@ -52,16 +52,7 @@ export default function LaboratoryPage() {
       dataIndex: 'orderNumber',
       key: 'orderNumber',
       render: (num: string) => (
-        <span
-          style={{
-            padding: '4px 10px',
-            borderRadius: '6px',
-            fontSize: '13px',
-            fontWeight: 500,
-            background: '#DBEAFE',
-            color: '#1E40AF',
-          }}
-        >
+        <span className=".5  -md  font-medium bg-blue-100 ">
           {num}
         </span>
       ),
@@ -74,7 +65,7 @@ export default function LaboratoryPage() {
       render: (tests: any[]) => (
         <div>
           {tests.map((t, i) => (
-            <div key={i} className="text-sm">{t.testName}</div>
+            <div key={i} className="">{t.testName}</div>
           ))}
         </div>
       ),
@@ -85,19 +76,10 @@ export default function LaboratoryPage() {
       title: 'Priority',
       dataIndex: 'priority',
       key: 'priority',
-      render: (priority: string) => {
-        const color = priority === 'urgent' || priority === 'emergency' ? '#EF4444' : '#64748B';
+        render: (priority: string) => {
+        const isCritical = priority === 'urgent' || priority === 'emergency';
         return (
-          <span
-            style={{
-              padding: '4px 10px',
-              borderRadius: '6px',
-              fontSize: '12px',
-              fontWeight: 500,
-              background: priority === 'urgent' || priority === 'emergency' ? '#FEE2E2' : '#F1F5F9',
-              color,
-            }}
-          >
+          <span className={`.5  -md  font-medium ${isCritical ? 'bg-red-100 ' : 'bg-slate-100 text-slate-600'}`}>
             {priority.toUpperCase()}
           </span>
         );
@@ -140,7 +122,7 @@ export default function LaboratoryPage() {
       }
     >
       {/* Statistics Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 mb-6">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4  sm: ">
         <StatCard
           label="Pending"
           value={stats.pending}
@@ -176,10 +158,10 @@ export default function LaboratoryPage() {
       </div>
 
       {/* Lab Orders Section */}
-      <div style={{ background: 'white', borderRadius: '12px', padding: '24px', border: '1px solid #E2E8F0' }}>
-        <div className="flex items-center gap-2 mb-4">
-          <ExperimentOutlined style={{ color: '#6366F1', fontSize: '20px' }} />
-          <h2 className="text-lg font-semibold text-gray-900">Recent Lab Orders</h2>
+      <div className="bg-white -xl  border border-gray-200">
+        <div className="   ">
+          <ExperimentOutlined className="text-xl text-indigo-500" />
+          <h2 className=" font-semibold ">Recent Lab Orders</h2>
         </div>
 
         <SearchFilterBar

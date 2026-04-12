@@ -32,8 +32,8 @@ export default function LabApprovalPage() {
   if (!hasPermission('laboratory:approval:view')) {
     return (
       <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)', padding: '24px' }}>
-        <div style={{ background: 'white', borderRadius: '12px', padding: '24px', border: '1px solid #E2E8F0', marginTop: '24px' }}>
-          <h2 style={{ fontSize: '20px', fontWeight: 600, color: '#EF4444', marginBottom: '8px' }}>Access Denied</h2>
+        <div style={{ backgroundColor: '#ffffff', borderRadius: '12px', padding: '24px', border: '1px solid #E2E8F0', marginTop: '24px' }}>
+          <h2 style={{ fontSize: '20px', fontWeight: '600', color: '#EF4444', marginBottom: '8px' }}>Access Denied</h2>
           <p style={{ color: '#64748B' }}>
             You don&apos;tt have permission to access lab test approval. This area is restricted to laboratory supervisors and authorized staff.
           </p>
@@ -140,8 +140,8 @@ export default function LabApprovalPage() {
         <span
           style={{
             padding: '4px 10px',
-            borderRadius: '6px',
-            fontSize: '13px',
+            
+            fontSize: "14px",
             fontWeight: 500,
             background: '#E0E7FF',
             color: '#4338CA',
@@ -160,12 +160,10 @@ export default function LabApprovalPage() {
         <span
           style={{
             padding: '4px 10px',
-            borderRadius: '6px',
-            fontSize: '12px',
-            fontWeight: 500,
+            
+                        fontWeight: 500,
             background: '#DBEAFE',
-            color: '#1E40AF',
-          }}
+                      }}
         >
           {mrn}
         </span>
@@ -185,9 +183,8 @@ export default function LabApprovalPage() {
           <span
             style={{
               padding: '4px 10px',
-              borderRadius: '6px',
-              fontSize: '12px',
-              fontWeight: 500,
+              
+                            fontWeight: 500,
               background: bg,
               color,
             }}
@@ -208,7 +205,7 @@ export default function LabApprovalPage() {
       title: 'Actions',
       key: 'actions',
       render: (_: any, record: LabApprovalRequest) => (
-        <div className="flex gap-2">
+        <div className=" ">
           <GradientButton
             variant="secondary"
             size="small"
@@ -251,7 +248,7 @@ export default function LabApprovalPage() {
       subtitle="Review and approve laboratory test requests"
     >
       {/* Statistics Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 mb-6">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4  sm: ">
         <StatCard
           label="Pending Approval"
           value={stats.pending}
@@ -287,8 +284,8 @@ export default function LabApprovalPage() {
       </div>
 
       {/* Approval Queue */}
-      <div style={{ background: 'white', borderRadius: '12px', padding: '24px', border: '1px solid #E2E8F0' }}>
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">Approval Queue</h3>
+      <div style={{ backgroundColor: '#ffffff', borderRadius: '12px', padding: '24px', border: '1px solid #E2E8F0' }}>
+        <h3 className=" font-semibold  ">Approval Queue</h3>
 
         <SearchFilterBar
           searchPlaceholder="Search requests by patient, ID, or test type..."
@@ -358,15 +355,15 @@ export default function LabApprovalPage() {
         {selectedRequest && (
           <div>
             <InfoCard title="Request Information">
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 ">
                 <div>
-                  <div className="text-sm text-gray-500 mb-1">Request ID</div>
+                  <div className="  ">Request ID</div>
                   <div>
                     <span
                       style={{
                         padding: '4px 10px',
-                        borderRadius: '6px',
-                        fontSize: '13px',
+                        
+                        fontSize: "14px",
                         fontWeight: 500,
                         background: '#E0E7FF',
                         color: '#4338CA',
@@ -377,50 +374,48 @@ export default function LabApprovalPage() {
                   </div>
                 </div>
                 <div>
-                  <div className="text-sm text-gray-500 mb-1">Patient</div>
+                  <div className="  ">Patient</div>
                   <div className="font-medium">{selectedRequest.patient}</div>
                 </div>
                 <div>
-                  <div className="text-sm text-gray-500 mb-1">MRN</div>
+                  <div className="  ">MRN</div>
                   <div>
                     <span
                       style={{
                         padding: '4px 10px',
-                        borderRadius: '6px',
-                        fontSize: '12px',
-                        fontWeight: 500,
+                        
+                                                fontWeight: 500,
                         background: '#DBEAFE',
-                        color: '#1E40AF',
-                      }}
+                                              }}
                     >
                       {selectedRequest.mrn}
                     </span>
                   </div>
                 </div>
                 <div>
-                  <div className="text-sm text-gray-500 mb-1">Test Type</div>
+                  <div className="  ">Test Type</div>
                   <div className="font-medium">{selectedRequest.testType}</div>
                 </div>
                 <div>
-                  <div className="text-sm text-gray-500 mb-1">Requested By</div>
+                  <div className="  ">Requested By</div>
                   <div>{selectedRequest.requestedBy}</div>
                 </div>
                 <div>
-                  <div className="text-sm text-gray-500 mb-1">Department</div>
+                  <div className="  ">Department</div>
                   <div>{selectedRequest.department}</div>
                 </div>
                 <div>
-                  <div className="text-sm text-gray-500 mb-1">Priority</div>
+                  <div className="  ">Priority</div>
                   <div>
                     <StatusTag status={selectedRequest.priority.toLowerCase()} type="lab" />
                   </div>
                 </div>
                 <div>
-                  <div className="text-sm text-gray-500 mb-1">Request Date</div>
+                  <div className="  ">Request Date</div>
                   <div>{selectedRequest.requestDate}</div>
                 </div>
                 <div className="col-span-2">
-                  <div className="text-sm text-gray-500 mb-1">Status</div>
+                  <div className="  ">Status</div>
                   <div>
                     <StatusTag status={selectedRequest.status.toLowerCase()} type="lab" showIcon />
                   </div>

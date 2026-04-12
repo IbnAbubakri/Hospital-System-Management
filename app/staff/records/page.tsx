@@ -31,11 +31,11 @@ export default function StaffRecordsPage() {
       title: 'Employee',
       key: 'employee',
       render: (_: any, record: Employee) => (
-        <div className="flex items-center gap-3">
+        <div className="  ">
           <Avatar size={40} icon={<UserOutlined />} src={record.avatar} />
           <div>
             <div className="font-medium">{record.firstName} {record.lastName}</div>
-            <div className="text-xs text-gray-500">{record.employeeNumber}</div>
+            <div className=" ">{record.employeeNumber}</div>
           </div>
         </div>
       ),
@@ -90,32 +90,21 @@ export default function StaffRecordsPage() {
   };
 
   return (
-    <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)', padding: '16px' }}>
-      <div style={{ background: 'white', borderRadius: '12px', padding: '16px', border: '1px solid #E2E8F0' }}>
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+<div className="min-h-screen  bg-gradient-to-b from-sky-50 to-slate-50">
+    <div className="bg-white -xl  border border-slate-200">
+        <div className=" -col sm:-row items-start sm:   ">
           <div>
-            <h1 className="text-2xl font-semibold text-gray-900 mb-1">Employee Records</h1>
-            <p className="text-gray-500 text-sm">Manage all employee information</p>
+            <h1 className="text-2xl font-semibold  ">Employee Records</h1>
+            <p className=" ">Manage all employee information</p>
           </div>
           <Button type="primary" icon={<PlusOutlined />}>Add Employee</Button>
         </div>
 
-        <div className="flex items-center gap-3 mb-6">
-          <Input placeholder="Search employees..." prefix={<SearchOutlined />} value={searchText} onChange={(e) => setSearchText(e.target.value)} style={{ flex: 1, maxWidth: '400px' }} />
-          <Select placeholder="Department" value={deptFilter} onChange={setDeptFilter} allowClear style={{ width: '150px' }}>
-            <Option value="Cardiology">Cardiology</Option>
-            <Option value="General Medicine">General Medicine</Option>
-            <Option value="Pediatrics">Pediatrics</Option>
-            <Option value="Orthopedics">Orthopedics</Option>
-            <Option value="Neurology">Neurology</Option>
-            <Option value="General Triage">General Triage</Option>
-          </Select>
-          <Select placeholder="Status" value={statusFilter} onChange={setStatusFilter} allowClear style={{ width: '120px' }}>
-            <Option value="active">Active</Option>
-            <Option value="inactive">Inactive</Option>
-            <Option value="on_leave">On Leave</Option>
-          </Select>
-          <Badge count={filteredEmployees.length} style={{ background: '#6366F1' }} />
+        <div className="   ">
+          <Input placeholder="Search employees..." prefix={<SearchOutlined />} value={searchText} onChange={(e) => setSearchText(e.target.value)} className="-1 max-w" />
+<Select placeholder="Department" value={deptFilter} onChange={setDeptFilter} allowClear className="" />
+          <Select placeholder="Status" value={statusFilter} onChange={setStatusFilter} allowClear className="" />
+          <Badge count={filteredEmployees.length} className="bg-indigo-500" />
         </div>
 
         <Table dataSource={filteredEmployees} columns={columns} rowKey="id" pagination={{ defaultPageSize: 10 }} size="middle" />

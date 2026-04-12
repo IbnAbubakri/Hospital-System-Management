@@ -26,15 +26,15 @@ export default function RadiologyAnnotatePage() {
   ];
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '1400px', margin: '0 auto' }}>
+    <div className="  sm: sm: lg: lg: max-w-7xl mx-auto">
       <Title level={3}>Image Annotation Tool</Title>
 
-      <div style={{ display: 'flex', gap: '24px' }}>
-        <Card title="Toolbox" style={{ width: '280px' }}>
-          <Space orientation="vertical" style={{ width: '100%' }} size="middle">
+      <div className=" ">
+        <Card title="Toolbox" className="w-[280px]">
+          <Space direction="vertical" className="w-full" size="middle">
             <div>
-              <div className="font-medium mb-2">Drawing Tools</div>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px' }}>
+              <div className="font-medium ">Drawing Tools</div>
+              <div className="grid grid-cols-3 ">
                 {tools.map((tool) => (
                   <Button
                     key={tool.id}
@@ -50,31 +50,24 @@ export default function RadiologyAnnotatePage() {
             </div>
 
             <div>
-              <div className="font-medium mb-2">Line Width</div>
+              <div className="font-medium ">Line Width</div>
               <Slider min={1} max={10} defaultValue={2} />
             </div>
 
             <div>
-              <div className="font-medium mb-2">Color</div>
-              <div style={{ display: 'flex', gap: '8px' }}>
+              <div className="font-medium ">Color</div>
+              <div className=" ">
                 {['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff', '#000000', '#ffffff'].map((color) => (
                   <div
-                    key={color}
-                    style={{
-                      width: '24px',
-                      height: '24px',
-                      backgroundColor: color,
-                      border: '1px solid #d9d9d9',
-                      cursor: 'pointer',
-                      borderRadius: '4px',
-                    }}
+                    className="   cursor-pointer border border-gray-300"
+                    style={{ backgroundColor: color }}
                   />
                 ))}
               </div>
             </div>
 
             <div>
-              <div className="font-medium mb-2">Opacity</div>
+              <div className="font-medium ">Opacity</div>
               <Slider min={0} max={100} defaultValue={100} />
             </div>
 
@@ -86,7 +79,7 @@ export default function RadiologyAnnotatePage() {
 
         <Card
           title="Chest X-Ray - PA View"
-          style={{ flex: 1 }}
+          className="-1"
           extra={
             <Space>
               <Tag color="blue">1 of 2</Tag>
@@ -95,43 +88,24 @@ export default function RadiologyAnnotatePage() {
             </Space>
           }
         >
-          <div
-            style={{
-              backgroundColor: '#000',
-              height: '500px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              position: 'relative',
-              borderRadius: '8px',
-            }}
-          >
-            <div style={{ color: '#fff', textAlign: 'center' }}>
-              <div style={{ fontSize: '18px', fontWeight: 'bold', marginBottom: '8px' }}>CHEST X-RAY</div>
-              <div style={{ fontSize: '14px', opacity: 0.7 }}>PA View</div>
+          <div className="bg-black h-[500px]    relative -lg">
+            <div className=" text-center">
+              <div className=" font-bold ">CHEST X-RAY</div>
+              <div className=" opacity-70">PA View</div>
             </div>
 
             {annotations.map((annotation) => (
               <div
                 key={annotation.id}
-                style={{
-                  position: 'absolute',
-                  left: annotation.x,
-                  top: annotation.y,
-                  padding: '4px 8px',
-                  backgroundColor: annotation.color,
-                  color: '#fff',
-                  borderRadius: '4px',
-                  fontSize: '12px',
-                  cursor: 'move',
-                }}
+                className="absolute      cursor-move"
+                style={{ left: annotation.x, top: annotation.y, backgroundColor: annotation.color }}
               >
                 {annotation.label}
               </div>
             ))}
           </div>
 
-          <Card size="small" title="Annotation Legend" className="mt-4">
+          <Card size="small" title="Annotation Legend" className="">
             <List
               dataSource={annotations}
               renderItem={(item) => (
@@ -144,12 +118,8 @@ export default function RadiologyAnnotatePage() {
                   <List.Item.Meta
                     avatar={
                       <div
-                        style={{
-                          width: '20px',
-                          height: '20px',
-                          backgroundColor: item.color,
-                          borderRadius: '4px',
-                        }}
+                        className="  "
+                        style={{ backgroundColor: item.color }}
                       />
                     }
                     title={item.label}
@@ -161,31 +131,31 @@ export default function RadiologyAnnotatePage() {
           </Card>
         </Card>
 
-        <Card title="Study Information" style={{ width: '300px' }}>
-          <Space orientation="vertical" style={{ width: '100%' }} size="middle">
+        <Card title="Study Information" className="">
+          <Space direction="vertical" className="w-full" size="middle">
             <div>
-              <div className="text-gray-500 text-sm">Study ID</div>
+              <div className=" ">Study ID</div>
               <div className="font-medium">RAD-2024-0892</div>
             </div>
             <div>
-              <div className="text-gray-500 text-sm">Patient</div>
+              <div className=" ">Patient</div>
               <div className="font-medium">Ngozi Eze</div>
-              <div className="text-sm">MRN-2024-0005</div>
+              <div className="">MRN-2024-0005</div>
             </div>
             <div>
-              <div className="text-gray-500 text-sm">Modality</div>
+              <div className=" ">Modality</div>
               <Tag color="purple">X-Ray</Tag>
             </div>
             <div>
-              <div className="text-gray-500 text-sm">Date/Time</div>
+              <div className=" ">Date/Time</div>
               <div className="font-medium">2024-02-05 10:30</div>
             </div>
             <div>
-              <div className="text-gray-500 text-sm">Radiologist</div>
+              <div className=" ">Radiologist</div>
               <div className="font-medium">Dr. Okafor</div>
             </div>
             <div>
-              <div className="text-gray-500 text-sm">Status</div>
+              <div className=" ">Status</div>
               <Tag color="success">Final</Tag>
             </div>
           </Space>

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Card, Typography, Table, Button, Tag, Space, Modal, Form, Input, Select, DatePicker, App } from 'antd';
-import { FileTextOutlined, PlusOutlined, EyeOutlined } from '@ant-design/icons';
+import { FileTextOutlined, PlusOutlined, EyeOutlined, CheckCircleOutlined } from '@ant-design/icons';
 
 const { Title } = Typography;
 
@@ -124,7 +124,7 @@ export default function ConsentsPage() {
 
   return (
     <div style={{ padding: '24px', maxWidth: '1400px', margin: '0 auto' }}>
-      <div className="flex items-center justify-between mb-6">
+      <div className="   ">
         <Title level={3}>Patient Consents</Title>
         <Button type="primary" icon={<PlusOutlined />} onClick={() => setIsModalVisible(true)}>
           Create Consent Form
@@ -188,18 +188,18 @@ export default function ConsentsPage() {
       >
         {selectedConsent && (
           <div>
-            <div className="mb-4 p-4 bg-gray-50 rounded">
-              <h3 className="text-lg font-semibold mb-2">CONSENT FORM</h3>
-              <p className="mb-2"><strong>Patient:</strong> {selectedConsent.patient} ({selectedConsent.mrn})</p>
-              <p className="mb-2"><strong>Type:</strong> {selectedConsent.type}</p>
-              <p className="mb-2"><strong>Procedure:</strong> {selectedConsent.procedure}</p>
-              <p className="mb-2"><strong>Date:</strong> {selectedConsent.date}</p>
-              <p className="mb-2"><strong>Physician:</strong> {selectedConsent.physician}</p>
+            <div className="  bg-gray-50 ">
+              <h3 className=" font-semibold ">CONSENT FORM</h3>
+              <p className=""><strong>Patient:</strong> {selectedConsent.patient} ({selectedConsent.mrn})</p>
+              <p className=""><strong>Type:</strong> {selectedConsent.type}</p>
+              <p className=""><strong>Procedure:</strong> {selectedConsent.procedure}</p>
+              <p className=""><strong>Date:</strong> {selectedConsent.date}</p>
+              <p className=""><strong>Physician:</strong> {selectedConsent.physician}</p>
               <p><strong>Witness:</strong> {selectedConsent.witness}</p>
             </div>
-            <div className="p-4 border rounded">
-              <p className="font-semibold mb-2">Consent Statement:</p>
-              <p className="text-sm">
+            <div className=" border ">
+              <p className="font-semibold ">Consent Statement:</p>
+              <p className="">
                 I hereby authorize {selectedConsent.phician} to perform the procedure/treatment described above.
                 I understand the nature of the procedure, the risks involved, and have had the opportunity to ask questions.
                 I consent to the administration of anesthesia, if necessary, and to the performance of any additional procedures
@@ -207,8 +207,8 @@ export default function ConsentsPage() {
               </p>
             </div>
             {selectedConsent.status === 'Signed' && (
-              <div className="mt-4 p-4 bg-green-50 rounded border border-green-200">
-                <p className="text-green-700 font-semibold">✓ This consent form has been signed</p>
+              <div className="  bg-green-50  border border-green-200">
+                <p className=" font-semibold"><CheckCircleOutlined style={{ color: '#10B981', marginRight: '6px' }} />This consent form has been signed</p>
               </div>
             )}
           </div>

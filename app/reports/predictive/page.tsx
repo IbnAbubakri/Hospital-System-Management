@@ -98,7 +98,7 @@ export default function PredictiveReportPage() {
       key: 'predictedValue',
       align: 'right' as const,
       render: (value: number) => (
-        <span className="font-medium" style={{ color: '#1890ff' }}>{value.toLocaleString()}</span>
+        <span className="font-medium ">{value.toLocaleString()}</span>
       ),
     },
     {
@@ -119,8 +119,8 @@ export default function PredictiveReportPage() {
       align: 'center' as const,
       render: (trend: string) => (
         <Space>
-          {trend === 'up' ? <RiseOutlined style={{ color: '#cf1322' }} /> : trend === 'down' ? <FallOutlined style={{ color: '#3f8600' }} /> : <LineChartOutlined />}
-          <span style={{ textTransform: 'capitalize' }}>{trend}</span>
+          {trend === 'up' ? <RiseOutlined className="" /> : trend === 'down' ? <FallOutlined className="" /> : <LineChartOutlined />}
+          <span className="capitalize">{trend}</span>
         </Space>
       ),
     },
@@ -144,7 +144,7 @@ export default function PredictiveReportPage() {
   };
 
   return (
-    <div style={{ padding: '24px', maxWidth: '1400px', margin: '0 auto' }} className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8">
+    <div className="  sm: sm: lg: lg: max-w-7xl mx-auto">
       <Title level={3}>Predictive Analytics</Title>
 
       <Alert
@@ -153,22 +153,22 @@ export default function PredictiveReportPage() {
         type="info"
         showIcon
         icon={<ThunderboltOutlined />}
-        style={{ marginBottom: 24 }}
+        className=""
       />
 
-      <Row gutter={[24, 24]} style={{ marginBottom: '24px' }}>
+      <Row gutter={[24, 24]} className="">
         <Col xs={12} sm={8}>
-          <Card className="p-4 sm:p-6">
+          <Card className=" sm:">
             <Statistic title="Total Predictions" value={summaryStats.totalPredictions} prefix={<LineChartOutlined />} />
           </Card>
         </Col>
         <Col xs={12} sm={8}>
-          <Card className="p-4 sm:p-6">
-            <Statistic title="High Impact" value={summaryStats.highImpact} valueStyle={{ color: '#ff4d4f' }} />
+          <Card className=" sm:">
+            <Statistic title="High Impact" value={summaryStats.highImpact} valueStyle={{ color: '#EF4444' }} />
           </Card>
         </Col>
         <Col xs={12} sm={8}>
-          <Card className="p-4 sm:p-6">
+          <Card className=" sm:">
             <Statistic title="Avg Confidence" value={summaryStats.avgConfidence} suffix="%" />
           </Card>
         </Col>
@@ -176,9 +176,9 @@ export default function PredictiveReportPage() {
 
       <Card
         title="Prediction Results"
-        className="p-4 sm:p-6"
+        className=" sm:"
         extra={
-          <Select value={modelType} onChange={setModelType} style={{ width: 200 }}>
+          <Select value={modelType} onChange={setModelType} className="w-[200px]">
             <Select.Option value="linear-regression">Linear Regression</Select.Option>
             <Select.Option value="arima">ARIMA</Select.Option>
             <Select.Option value="lstm">LSTM Neural Network</Select.Option>

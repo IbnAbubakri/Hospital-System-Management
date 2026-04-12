@@ -59,20 +59,10 @@ export default function UtilizationReportPage() {
       dataIndex: 'department',
       key: 'department',
       render: (dept: string) => (
-        <div className="flex items-center gap-2">
+        <div className="  ">
           <div
-            style={{
-              width: '32px',
-              height: '32px',
-              borderRadius: '8px',
-              background: 'linear-gradient(135deg, #3B82F6 0%, #2563EB 100%)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              color: 'white',
-              fontSize: '14px',
-              fontWeight: 600,
-            }}
+            className="  -lg      font-semibold"
+            style={{ background: 'linear-gradient(135deg, #3B82F6 0%, #2563EB 100%)' }}
           >
             {dept.charAt(0)}
           </div>
@@ -85,7 +75,7 @@ export default function UtilizationReportPage() {
       dataIndex: 'beds',
       key: 'beds',
       render: (beds: number) => (
-        <span style={{ fontWeight: 600, color: '#3B82F6' }}>{beds}</span>
+        <span className="font-semibold ">{beds}</span>
       ),
     },
     {
@@ -93,7 +83,7 @@ export default function UtilizationReportPage() {
       dataIndex: 'occupied',
       key: 'occupied',
       render: (occupied: number) => (
-        <span style={{ fontWeight: 600, color: '#10B981' }}>{occupied}</span>
+        <span className="font-semibold ">{occupied}</span>
       ),
     },
     {
@@ -117,7 +107,7 @@ export default function UtilizationReportPage() {
       dataIndex: 'admissions',
       key: 'admissions',
       render: (admissions: number) => (
-        <span style={{ fontWeight: 600, color: '#8B5CF6' }}>{admissions}</span>
+        <span className="font-semibold ">{admissions}</span>
       ),
     },
     {
@@ -145,7 +135,7 @@ export default function UtilizationReportPage() {
       }
     >
       {/* Statistics Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-6">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4  ">
         <StatCard
           label="Total Beds"
           value={stats.totalBeds}
@@ -187,10 +177,10 @@ export default function UtilizationReportPage() {
       </div>
 
       {/* Utilization Table */}
-      <div style={{ background: 'white', borderRadius: '12px', padding: '24px', border: '1px solid #E2E8F0' }} className="p-4 sm:p-6">
-        <div className="flex items-center gap-2 mb-4">
-          <BarChartOutlined style={{ color: '#059669', fontSize: '20px' }} />
-          <h2 className="text-lg font-semibold text-gray-900">Department-wise Utilization</h2>
+      <div className="bg-white -xl  border border-slate-200">
+        <div className="   ">
+          <BarChartOutlined className=" text-xl" />
+          <h2 className=" font-semibold ">Department-wise Utilization</h2>
         </div>
 
         <SearchFilterBar
@@ -236,56 +226,35 @@ export default function UtilizationReportPage() {
       </div>
 
       {/* Utilization Summary */}
-      <div style={{ background: 'white', borderRadius: '12px', padding: '24px', border: '1px solid #E2E8F0', marginTop: '24px' }} className="p-4 sm:p-6">
-        <div className="flex items-center gap-2 mb-4">
-          <RestOutlined style={{ color: '#3B82F6', fontSize: '20px' }} />
-          <h2 className="text-lg font-semibold text-gray-900">Utilization Summary</h2>
+      <div className="bg-white -xl  border border-slate-200 ">
+        <div className="   ">
+          <RestOutlined className="color: '#3B82F6' text-xl" />
+          <h2 className=" font-semibold ">Utilization Summary</h2>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div
-            style={{
-              padding: '16px',
-              borderRadius: '10px',
-              background: 'linear-gradient(135deg, #FEE2E2 0%, rgba(255,255,255,0.8) 100%)',
-              border: '1px solid #FCA5A5',
-            }}
-          >
-            <div className="text-sm text-gray-600 mb-2">High Utilization ({'>'}85%)</div>
-            <div className="text-2xl font-bold text-red-600">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 ">
+          <div className=" -xl bg-gradient-to-br from-red-50 to-white border border-red-200">
+            <div className="  ">High Utilization ({'>'}85%)</div>
+            <div className="text-2xl font-bold ">
               {filteredData.filter(d => d.rate > 85).length}
             </div>
-            <div className="text-xs text-gray-500 mt-1">Departments</div>
+            <div className="  ">Departments</div>
           </div>
 
-          <div
-            style={{
-              padding: '16px',
-              borderRadius: '10px',
-              background: 'linear-gradient(135deg, #FEF3C7 0%, rgba(255,255,255,0.8) 100%)',
-              border: '1px solid #FDE68A',
-            }}
-          >
-            <div className="text-sm text-gray-600 mb-2">Moderate Utilization (75-85%)</div>
-            <div className="text-2xl font-bold text-amber-600">
+          <div className=" -xl bg-gradient-to-br from-amber-50 to-white border border-amber-200">
+            <div className="  ">Moderate Utilization (75-85%)</div>
+            <div className="text-2xl font-bold ">
               {filteredData.filter(d => d.rate > 75 && d.rate <= 85).length}
             </div>
-            <div className="text-xs text-gray-500 mt-1">Departments</div>
+            <div className="  ">Departments</div>
           </div>
 
-          <div
-            style={{
-              padding: '16px',
-              borderRadius: '10px',
-              background: 'linear-gradient(135deg, #D1FAE5 0%, rgba(255,255,255,0.8) 100%)',
-              border: '1px solid #A7F3D0',
-            }}
-          >
-            <div className="text-sm text-gray-600 mb-2">Optimal Utilization ({'<'}75%)</div>
-            <div className="text-2xl font-bold text-green-600">
+          <div className=" -xl bg-gradient-to-br from-emerald-50 to-white border border-emerald-200">
+            <div className="  ">Optimal Utilization ({'<'}75%)</div>
+            <div className="text-2xl font-bold ">
               {filteredData.filter(d => d.rate <= 75).length}
             </div>
-            <div className="text-xs text-gray-500 mt-1">Departments</div>
+            <div className="  ">Departments</div>
           </div>
         </div>
       </div>

@@ -121,7 +121,7 @@ export default function MasterDataPage() {
           style={{
             padding: '4px 10px',
             borderRadius: '6px',
-            fontSize: '13px',
+            fontSize: '14px',
             fontWeight: 500,
             background: '#DBEAFE',
             color: '#1E40AF',
@@ -165,7 +165,7 @@ export default function MasterDataPage() {
           style={{
             padding: '4px 10px',
             borderRadius: '6px',
-            fontSize: '13px',
+            fontSize: '14px',
             fontWeight: 500,
             background: gender === 'Male' ? '#DBEAFE' : gender === 'Female' ? '#FCE7F3' : '#F3E8FF',
             color: gender === 'Male' ? '#1E40AF' : gender === 'Female' ? '#BE185D' : '#7C3AED',
@@ -193,7 +193,7 @@ export default function MasterDataPage() {
                 }}
               />
             </div>
-            <span style={{ fontSize: '13px', fontWeight: 500, color }}>{percentage}%</span>
+            <span style={{ fontSize: '14px', fontWeight: 500, color }}>{percentage}%</span>
           </div>
         );
       },
@@ -216,7 +216,7 @@ export default function MasterDataPage() {
       dataIndex: 'roomNumber',
       key: 'roomNumber',
       render: (num: string) => (
-        <span style={{ fontWeight: 600, color: '#1E40AF' }}>{num}</span>
+        <span style={{ fontWeight: '600', color: '#1E40AF' }}>{num}</span>
       ),
     },
     { title: 'Ward', dataIndex: 'ward', key: 'ward' },
@@ -240,7 +240,7 @@ export default function MasterDataPage() {
             style={{
               padding: '4px 10px',
               borderRadius: '6px',
-              fontSize: '13px',
+              fontSize: '14px',
               fontWeight: 500,
               background: colors[type as keyof typeof colors],
               color: textColors[type as keyof typeof textColors],
@@ -269,7 +269,7 @@ export default function MasterDataPage() {
             style={{
               padding: '4px 10px',
               borderRadius: '6px',
-              fontSize: '13px',
+              fontSize: '14px',
               fontWeight: 500,
               background: s.bg,
               color: s.color,
@@ -340,7 +340,7 @@ export default function MasterDataPage() {
       subtitle="Configure and manage departments, wards, and rooms"
     >
       {/* Statistics Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 mb-6">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4  sm: ">
         <StatCard
           label="Total Departments"
           value={departments.length}
@@ -376,7 +376,7 @@ export default function MasterDataPage() {
       </div>
 
       {/* Main Content Card */}
-      <div style={{ background: 'white', borderRadius: '12px', padding: '16px', border: '1px solid #E2E8F0' }}>
+      <div style={{ background: '#ffffff', borderRadius: '12px', padding: '16px', border: '1px solid #E5E7EB' }}>
         <Tabs
           activeKey={activeTab}
           onChange={setActiveTab}
@@ -411,11 +411,11 @@ export default function MasterDataPage() {
           ]}
         />
 
-        <div className="mt-6">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-4">
-            <div className="flex items-center gap-2">
+        <div className="">
+          <div className=" -col sm:-row items-start sm:   ">
+            <div className="  ">
               {tabContent?.icon}
-              <h2 className="text-lg font-semibold text-gray-900">{tabContent?.title}</h2>
+              <h2 className=" font-semibold ">{tabContent?.title}</h2>
             </div>
             <GradientButton icon={<PlusOutlined />} onClick={() => setIsModalVisible(true)}>
               {tabContent?.buttonLabel}
@@ -443,7 +443,7 @@ export default function MasterDataPage() {
       {/* Add Department Modal */}
       <Modal
         title={
-          <div className="flex items-center gap-2">
+          <div className="  ">
             <BuildOutlined style={{ color: '#3B82F6' }} />
             <span>Add Department</span>
           </div>
@@ -461,7 +461,7 @@ export default function MasterDataPage() {
                 width: '100%',
                 padding: '8px 12px',
                 borderRadius: '8px',
-                border: '1px solid #E2E8F0',
+                border: '1px solid #E5E7EB',
               }}
             />
           </Form.Item>
@@ -472,7 +472,7 @@ export default function MasterDataPage() {
                 width: '100%',
                 padding: '8px 12px',
                 borderRadius: '8px',
-                border: '1px solid #E2E8F0',
+                border: '1px solid #E5E7EB',
               }}
             />
           </Form.Item>
@@ -482,7 +482,7 @@ export default function MasterDataPage() {
                 width: '100%',
                 padding: '8px 12px',
                 borderRadius: '8px',
-                border: '1px solid #E2E8F0',
+                border: '1px solid #E5E7EB',
               }}
             >
               <option value="">Select department head</option>
@@ -500,7 +500,7 @@ export default function MasterDataPage() {
                 width: '100%',
                 padding: '8px 12px',
                 borderRadius: '8px',
-                border: '1px solid #E2E8F0',
+                border: '1px solid #E5E7EB',
               }}
             />
           </Form.Item>

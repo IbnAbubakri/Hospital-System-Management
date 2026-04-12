@@ -124,26 +124,26 @@ export default function PharmacyInteractionsPage() {
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px', marginBottom: '24px' }}>
         <Card>
           <div className="text-center">
-            <div className="text-3xl font-bold text-red-600">{majorCount}</div>
-            <div className="text-gray-500">Major Interactions</div>
+            <div className="text-3xl font-bold ">{majorCount}</div>
+            <div className="">Major Interactions</div>
           </div>
         </Card>
         <Card>
           <div className="text-center">
-            <div className="text-3xl font-bold text-orange-600">{moderateCount}</div>
-            <div className="text-gray-500">Moderate Interactions</div>
+            <div className="text-3xl font-bold ">{moderateCount}</div>
+            <div className="">Moderate Interactions</div>
           </div>
         </Card>
         <Card>
           <div className="text-center">
-            <div className="text-3xl font-bold text-blue-600">{interactions.length}</div>
-            <div className="text-gray-500">Total Interactions</div>
+            <div className="text-3xl font-bold ">{interactions.length}</div>
+            <div className="">Total Interactions</div>
           </div>
         </Card>
       </div>
 
       <Card title="Interaction Database">
-        <div className="mb-4 flex gap-3">
+        <div className="  ">
           <Input.Search placeholder="Search drugs..." allowClear style={{ width: 300 }} />
           <Select
             value={severityFilter}

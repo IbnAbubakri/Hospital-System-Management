@@ -82,13 +82,13 @@ export default function ResultsPage() {
   // CRITICAL SECURITY: Restrict access to laboratory staff and doctors
   if (!hasPermission('laboratory:results:view')) {
     return (
-      <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)', padding: '24px' }}>
+      <div className="min-h-screen bg-gradient-to-b from-blue-50 to-slate-50 ">
         <Alert
           title="Access Denied"
           description="You don&apos;tt have permission to access lab results. This area is restricted to laboratory staff and authorized clinical personnel."
           type="error"
           showIcon
-          style={{ marginTop: '24px', borderRadius: '12px' }}
+          className=" -xl"
         />
       </div>
     );
@@ -103,16 +103,7 @@ export default function ResultsPage() {
       dataIndex: 'orderNumber',
       key: 'orderNumber',
       render: (num: string) => (
-        <span
-          style={{
-            padding: '4px 10px',
-            borderRadius: '6px',
-            fontSize: '13px',
-            fontWeight: 500,
-            background: '#DBEAFE',
-            color: '#1E40AF',
-          }}
-        >
+        <span className=".5  -md  font-medium bg-blue-100 ">
           {num}
         </span>
       ),
@@ -157,7 +148,7 @@ export default function ResultsPage() {
       }
     >
       {/* Statistics Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 mb-6">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4  sm: ">
         <StatCard
           label="Pending"
           value={stats.pending}
@@ -193,10 +184,10 @@ export default function ResultsPage() {
       </div>
 
       {/* Lab Results Section */}
-      <div style={{ background: 'white', borderRadius: '12px', padding: '24px', border: '1px solid #E2E8F0' }}>
-        <div className="flex items-center gap-2 mb-4">
-          <ExperimentOutlined style={{ color: '#6366F1', fontSize: '20px' }} />
-          <h2 className="text-lg font-semibold text-gray-900">Lab Results</h2>
+      <div className="bg-white -xl  border border-gray-200">
+        <div className="   ">
+          <ExperimentOutlined className="text-xl text-indigo-500" />
+          <h2 className=" font-semibold ">Lab Results</h2>
         </div>
 
         <SearchFilterBar

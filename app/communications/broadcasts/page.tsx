@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Card, Typography, Form, Input, Select, Button, Space, List, Tag, Modal, App } from 'antd';
-import { SendOutlined, BulbOutlined } from '@ant-design/icons';
+import { SendOutlined, BulbOutlined, CheckCircleOutlined } from '@ant-design/icons';
 
 const { Title } = Typography;
 const { TextArea } = Input;
@@ -64,31 +64,31 @@ export default function BroadcastsPage() {
   };
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '1200px', margin: '0 auto' }}>
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+    <div className="  sm: sm: lg: lg: max-w-6xl mx-auto">
+      <div className=" -col sm:-row items-start sm:   ">
         <Title level={3}>Broadcast Messages</Title>
         <Button type="primary" icon={<BulbOutlined />} onClick={() => setIsModalVisible(true)}>
           Send Broadcast
         </Button>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px', marginBottom: '24px' }}>
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))]  ">
         <Card>
           <div className="text-center">
-            <div className="text-3xl font-bold text-blue-600">{broadcasts.length}</div>
-            <div className="text-gray-500">Total Broadcasts</div>
+            <div className="text-3xl font-bold ">{broadcasts.length}</div>
+            <div className="">Total Broadcasts</div>
           </div>
         </Card>
         <Card>
           <div className="text-center">
-            <div className="text-3xl font-bold text-green-600">{broadcasts.reduce((sum, b) => sum + b.recipients, 0)}</div>
-            <div className="text-gray-500">Total Recipients</div>
+            <div className="text-3xl font-bold ">{broadcasts.reduce((sum, b) => sum + b.recipients, 0)}</div>
+            <div className="">Total Recipients</div>
           </div>
         </Card>
         <Card>
           <div className="text-center">
             <div className="text-3xl font-bold text-purple-600">{broadcasts.filter(b => b.status === 'Delivered').length}</div>
-            <div className="text-gray-500">Successfully Delivered</div>
+            <div className="">Successfully Delivered</div>
           </div>
         </Card>
       </div>
@@ -99,22 +99,22 @@ export default function BroadcastsPage() {
           renderItem={(item) => (
             <List.Item key={item.id}>
               <List.Item.Meta
-                avatar={<SendOutlined style={{ fontSize: '24px', color: '#52C41A' }} />}
+                avatar={<SendOutlined className="text-2xl " />}
                 title={
-                  <div className="flex justify-between items-center">
+                  <div className="  ">
                     <span className="font-medium">{item.title}</span>
                     <Tag color={item.type === 'Emergency' ? 'error' : 'blue'}>{item.type}</Tag>
                   </div>
                 }
                 description={
                   <div>
-                    <p className="text-sm text-gray-700 mb-2">{item.message}</p>
-                    <div className="flex gap-4 text-xs text-gray-500">
+                    <p className="  ">{item.message}</p>
+                    <div className="   ">
                       <span>Target: {item.targetAudience}</span>
                       <span>Sent by: {item.sentBy}</span>
                       <span>Date: {item.sentDate}</span>
                       <span>Recipients: {item.recipients}</span>
-                      <span className="text-green-600">✓ {item.status}</span>
+                      <span><CheckCircleOutlined style={{ color: '#10B981', marginRight: '4px' }} />{item.status}</span>
                     </div>
                   </div>
                 }

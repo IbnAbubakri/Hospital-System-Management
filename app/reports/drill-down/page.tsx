@@ -134,7 +134,7 @@ export default function DrillDownReportPage() {
       dataIndex: 'change',
       key: 'change',
       render: (change: number) => (
-        <span style={{ color: change >= 0 ? '#3f8600' : '#cf1322' }}>
+        <span className={change >= 0 ? '' : ''}>
           {change >= 0 ? '+' : ''}{change}%
         </span>
       ),
@@ -142,12 +142,12 @@ export default function DrillDownReportPage() {
   ];
 
   return (
-    <div style={{ padding: '24px', maxWidth: '1400px', margin: '0 auto' }} className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8">
+    <div className="  sm: sm: lg: lg: max-w-7xl mx-auto">
       <Title level={3}>Drill-Down Reports</Title>
 
-      <Row gutter={[24, 24]} style={{ marginBottom: '24px' }}>
+      <Row gutter={[24, 24]} className="">
         <Col xs={24} md={8}>
-          <Card className="p-4 sm:p-6">
+          <Card className=" sm:">
             <Statistic
               title="Total Data Points"
               value={drillDownData.length}
@@ -157,7 +157,7 @@ export default function DrillDownReportPage() {
           </Card>
         </Col>
         <Col xs={24} md={8}>
-          <Card className="p-4 sm:p-6">
+          <Card className=" sm:">
             <Statistic
               title="Drill-Down Levels"
               value={3}
@@ -167,7 +167,7 @@ export default function DrillDownReportPage() {
           </Card>
         </Col>
         <Col xs={24} md={8}>
-          <Card className="p-4 sm:p-6">
+          <Card className=" sm:">
             <Statistic
               title="Active Period"
               value={dayjs(dateRange[1]).diff(dayjs(dateRange[0]), 'days')}
@@ -179,7 +179,7 @@ export default function DrillDownReportPage() {
 
       <Row gutter={24}>
         <Col xs={24} lg={8}>
-          <Card title="Report Hierarchy" style={{ height: '600px', overflow: 'auto' }} className="p-4 sm:p-6">
+          <Card title="Report Hierarchy" className=" sm: h-[600px] overflow-auto">
             <Tree
               showLine
               switcherIcon={<DownOutlined />}
@@ -189,10 +189,10 @@ export default function DrillDownReportPage() {
               treeData={treeData.map((node) => ({
                 ...node,
                 title: (
-                  <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
+                  <div className="  w-full">
                     <span>{node.title}</span>
                     {node.value !== undefined && (
-                      <Text type="secondary" className="text-sm">
+                      <Text type="secondary" className="">
                         {typeof node.value === 'number' && node.value > 1000
                           ? node.value.toLocaleString()
                           : node.value}
@@ -213,7 +213,7 @@ export default function DrillDownReportPage() {
         <Col xs={24} lg={16}>
           <Card
             title="Detailed Breakdown"
-            className="p-4 sm:p-6"
+            className=" sm:"
             extra={
               <Space wrap>
                 <DatePicker.RangePicker

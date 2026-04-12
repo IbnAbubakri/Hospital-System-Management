@@ -34,20 +34,20 @@ export default function ReadmissionsPage() {
   ];
 
   return (
-    <div style={{ padding: '24px', maxWidth: '1200px', margin: '0 auto' }} className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8">
-      <div className="flex items-center justify-between mb-6 flex-col sm:flex-row gap-3">
+    <div className="  sm: sm: lg: lg: max-w-6xl mx-auto">
+      <div className="    -col sm:-row ">
         <Title level={3}>Patient Readmissions Analysis</Title>
         <Input.Search
           placeholder="Search readmissions..."
           allowClear
-          style={{ width: '100%', maxWidth: '250px' }}
+          className="w-full max-w-[250px]"
           value={searchText}
           onChange={(e) => setSearchText(e.target.value)}
           prefix={<SearchOutlined />}
         />
       </div>
 
-      <Card title="Readmission Cases" className="p-4 sm:p-6">
+      <Card title="Readmission Cases" className=" sm:">
         <div className="overflow-x-auto">
           <Table
             dataSource={readmissions.filter(r =>

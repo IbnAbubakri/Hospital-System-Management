@@ -66,7 +66,7 @@ export default function SchedulingConflictsPage() {
       title: 'Details',
       key: 'details',
       render: (_: unknown, record: any) => (
-        <span className="text-sm">{record.patients || record.procedures || `${record.appointments} appointments affected`}</span>
+        <span className="">{record.patients || record.procedures || `${record.appointments} appointments affected`}</span>
       ),
     },
     {
@@ -101,44 +101,44 @@ export default function SchedulingConflictsPage() {
   const totalCount = conflicts.filter(c => c.status === 'Unresolved').length;
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '1400px', margin: '0 auto' }}>
+    <div className="  sm: sm: lg: lg: max-w-7xl mx-auto">
       <Title level={3}>Scheduling Conflicts</Title>
 
-      <Card style={{ marginBottom: '24px', backgroundColor: highSeverityCount > 0 ? '#FFF7E6' : undefined }}>
-        <div className="flex items-center gap-3">
-          <WarningOutlined style={{ fontSize: '24px', color: highSeverityCount > 0 ? '#FF4D4F' : '#52C41A' }} />
+      <Card className={` ${highSeverityCount > 0 ? 'bg-amber-50' : ''}`}>
+        <div className="  ">
+          <WarningOutlined className={`text-2xl ${highSeverityCount > 0 ? '' : ''}`} />
           <div>
-            <div className="text-lg font-semibold">
+            <div className=" font-semibold">
               {highSeverityCount > 0 ? `${highSeverityCount} High Priority Conflicts` : 'No Critical Conflicts'}
             </div>
-            <div className="text-sm text-gray-600">{totalCount} unresolved conflicts detected</div>
+            <div className=" ">{totalCount} unresolved conflicts detected</div>
           </div>
         </div>
       </Card>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px', marginBottom: '24px' }}>
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))]  ">
         <Card>
           <div className="text-center">
-            <div className="text-3xl font-bold text-red-600">{highSeverityCount}</div>
-            <div className="text-gray-500">High Severity</div>
+            <div className="text-3xl font-bold ">{highSeverityCount}</div>
+            <div className="">High Severity</div>
           </div>
         </Card>
         <Card>
           <div className="text-center">
-            <div className="text-3xl font-bold text-orange-600">{conflicts.filter(c => c.severity === 'Medium' && c.status === 'Unresolved').length}</div>
-            <div className="text-gray-500">Medium Severity</div>
+            <div className="text-3xl font-bold ">{conflicts.filter(c => c.severity === 'Medium' && c.status === 'Unresolved').length}</div>
+            <div className="">Medium Severity</div>
           </div>
         </Card>
         <Card>
           <div className="text-center">
-            <div className="text-3xl font-bold text-blue-600">{conflicts.filter(c => c.status === 'Resolved').length}</div>
-            <div className="text-gray-500">Resolved Today</div>
+            <div className="text-3xl font-bold ">{conflicts.filter(c => c.status === 'Resolved').length}</div>
+            <div className="">Resolved Today</div>
           </div>
         </Card>
         <Card>
           <div className="text-center">
             <div className="text-3xl font-bold text-purple-600">{conflicts.length}</div>
-            <div className="text-gray-500">Total Conflicts</div>
+            <div className="">Total Conflicts</div>
           </div>
         </Card>
       </div>

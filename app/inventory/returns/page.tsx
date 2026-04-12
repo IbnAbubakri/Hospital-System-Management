@@ -54,15 +54,15 @@ export default function InventoryReturnsPage() {
   };
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '1400px', margin: '0 auto' }}>
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+    <div className="  sm: sm: lg: lg: max-w-7xl mx-auto">
+      <div className=" -col sm:-row items-start sm:   ">
         <Title level={3}>Inventory Returns</Title>
         <Button type="primary" icon={<RollbackOutlined />} onClick={() => setIsModalVisible(true)} className="w-full sm:w-auto">
           Initiate Return
         </Button>
       </div>
 
-      <Card title="Return History" className="p-4 sm:p-6">
+      <Card title="Return History" className=" sm:">
         <div className="overflow-x-auto">
           <Table
             dataSource={returns}

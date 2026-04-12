@@ -173,7 +173,7 @@ export default function RevenueCycleAnalyticsPage() {
       dataIndex: 'netRevenue',
       key: 'netRevenue',
       render: (amount: number) => (
-        <span className="font-semibold text-blue-600">₦{amount.toLocaleString()}</span>
+        <span className="font-semibold ">₦{amount.toLocaleString()}</span>
       ),
     },
     {
@@ -181,7 +181,7 @@ export default function RevenueCycleAnalyticsPage() {
       dataIndex: 'collections',
       key: 'collections',
       render: (amount: number) => (
-        <span className="font-semibold text-green-600">₦{amount.toLocaleString()}</span>
+        <span className="font-semibold ">₦{amount.toLocaleString()}</span>
       ),
     },
     {
@@ -192,7 +192,7 @@ export default function RevenueCycleAnalyticsPage() {
         const color = rate >= 95 ? '#10B981' : rate >= 90 ? '#F59E0B' : '#EF4444';
         const bg = rate >= 95 ? '#D1FAE5' : rate >= 90 ? '#FEF3C7' : '#FEE2E2';
         return (
-          <Tag style={{ backgroundColor: bg, color: color, border: 'none', fontWeight: 500, padding: '4px 10px', borderRadius: '6px' }}>
+          <Tag className="border-none font-medium .5  -md" style={{ backgroundColor: bg, color: color }}>
             {rate}%
           </Tag>
         );
@@ -207,7 +207,7 @@ export default function RevenueCycleAnalyticsPage() {
         const color = days <= 40 ? '#10B981' : days <= 50 ? '#F59E0B' : '#EF4444';
         const bg = days <= 40 ? '#D1FAE5' : days <= 50 ? '#FEF3C7' : '#FEE2E2';
         return (
-          <Tag style={{ backgroundColor: bg, color: color, border: 'none', fontWeight: 500, padding: '4px 10px', borderRadius: '6px' }}>
+          <Tag className="border-none font-medium .5  -md" style={{ backgroundColor: bg, color: color }}>
             {days} days
           </Tag>
         );
@@ -253,9 +253,9 @@ export default function RevenueCycleAnalyticsPage() {
       key: 'percentage',
       render: (percentage: number) => (
         <div>
-          <div className="flex items-center gap-2">
+          <div className="  ">
             <Progress percent={percentage} size="small" showInfo={false} />
-            <span className="text-sm">{percentage}%</span>
+            <span className="">{percentage}%</span>
           </div>
         </div>
       ),
@@ -270,7 +270,7 @@ export default function RevenueCycleAnalyticsPage() {
         const bg = trend === 'up' ? '#D1FAE5' : trend === 'down' ? '#FEE2E2' : '#F3F4F6';
         const sign = record.change > 0 ? '+' : '';
         return (
-          <Tag icon={icon} style={{ backgroundColor: bg, color: color, border: 'none', fontWeight: 500, padding: '4px 10px', borderRadius: '6px' }}>
+          <Tag icon={icon} className="border-none font-medium .5  -md" style={{ backgroundColor: bg, color: color }}>
             {sign}{record.change}%
           </Tag>
         );
@@ -284,7 +284,7 @@ export default function RevenueCycleAnalyticsPage() {
       subtitle="Comprehensive analysis of revenue performance and collection metrics"
     >
       {/* Statistics Cards */}
-      <div className="grid grid-cols-4 gap-5 mb-6">
+      <div className="grid grid-cols-4  ">
         <StatCard
           label="Gross Revenue"
           value={Math.round(animatedStats.grossRevenue / 1000000)}
@@ -327,8 +327,8 @@ export default function RevenueCycleAnalyticsPage() {
       </div>
 
       {/* Revenue Breakdown Section */}
-      <div style={{ background: 'white', borderRadius: '12px', padding: '24px', border: '1px solid #E2E8F0', marginBottom: '24px' }}>
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">Revenue Breakdown by Service Category</h3>
+      <div className="bg-white -xl  border border-slate-200 ">
+        <h3 className=" font-semibold  ">Revenue Breakdown by Service Category</h3>
         <ModernTable
           dataSource={revenueBreakdown}
           columns={breakdownColumns}
@@ -338,7 +338,7 @@ export default function RevenueCycleAnalyticsPage() {
       </div>
 
       {/* Monthly Metrics Section */}
-      <div style={{ background: 'white', borderRadius: '12px', padding: '24px', border: '1px solid #E2E8F0' }}>
+      <div className="bg-white -xl  border border-slate-200">
         <SearchFilterBar
           searchPlaceholder="Search periods..."
           searchValue={searchText}
@@ -359,8 +359,8 @@ export default function RevenueCycleAnalyticsPage() {
       {/* Detail Drawer */}
       <Drawer
         title={
-          <div className="flex items-center gap-2">
-            <BarChartOutlined style={{ color: '#3B82F6' }} />
+          <div className="  ">
+            <BarChartOutlined className="" />
             <span>Revenue Period Details</span>
           </div>
         }
@@ -382,19 +382,19 @@ export default function RevenueCycleAnalyticsPage() {
               <Descriptions column={1}>
                 <Descriptions.Item label="Period">{selectedMetric.period}</Descriptions.Item>
                 <Descriptions.Item label="Gross Revenue">
-                  <span className="font-semibold text-blue-600">₦{selectedMetric.grossRevenue.toLocaleString()}</span>
+                  <span className="font-semibold ">₦{selectedMetric.grossRevenue.toLocaleString()}</span>
                 </Descriptions.Item>
                 <Descriptions.Item label="Net Revenue">
-                  <span className="font-semibold text-green-600">₦{selectedMetric.netRevenue.toLocaleString()}</span>
+                  <span className="font-semibold ">₦{selectedMetric.netRevenue.toLocaleString()}</span>
                 </Descriptions.Item>
                 <Descriptions.Item label="Collections">
                   <span className="font-semibold">₦{selectedMetric.collections.toLocaleString()}</span>
                 </Descriptions.Item>
                 <Descriptions.Item label="Adjustments">
-                  <span className="text-red-600">-₦{selectedMetric.adjustments.toLocaleString()}</span>
+                  <span className="">-₦{selectedMetric.adjustments.toLocaleString()}</span>
                 </Descriptions.Item>
                 <Descriptions.Item label="Bad Debt">
-                  <span className="text-red-600">-₦{selectedMetric.badDebt.toLocaleString()}</span>
+                  <span className="">-₦{selectedMetric.badDebt.toLocaleString()}</span>
                 </Descriptions.Item>
               </Descriptions>
             </InfoCard>
@@ -406,17 +406,17 @@ export default function RevenueCycleAnalyticsPage() {
             >
               <Row gutter={16}>
                 <Col span={12}>
-                  <div className="mb-4">
+                  <div className="">
                     <Text type="secondary">Collection Rate</Text>
-                    <div className="text-2xl font-bold" style={{ color: selectedMetric.collectionRate >= 95 ? '#10B981' : '#F59E0B' }}>
+                    <div className={`text-2xl font-bold ${selectedMetric.collectionRate >= 95 ? '' : ''}`}>
                       {selectedMetric.collectionRate}%
                     </div>
                   </div>
                 </Col>
                 <Col span={12}>
-                  <div className="mb-4">
+                  <div className="">
                     <Text type="secondary">Days in A/R</Text>
-                    <div className="text-2xl font-bold" style={{ color: selectedMetric.daysInAR <= 40 ? '#10B981' : '#EF4444' }}>
+                    <div className={`text-2xl font-bold ${selectedMetric.daysInAR <= 40 ? '' : ''}`}>
                       {selectedMetric.daysInAR} days
                     </div>
                   </div>

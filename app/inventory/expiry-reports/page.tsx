@@ -60,7 +60,7 @@ export default function ExpiryReportsPage() {
       render: (days: number) => {
         const urgency = getUrgency(days);
         return (
-          <Tag style={{ backgroundColor: urgency.bg, color: urgency.color, border: 'none', fontWeight: 'bold' }}>
+          <Tag className="border-none font-bold" style={{ backgroundColor: urgency.bg, color: urgency.color }}>
             {days} days
           </Tag>
         );
@@ -82,21 +82,21 @@ export default function ExpiryReportsPage() {
   ];
 
   return (
-    <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #FEF3C7 0%, #F8FAFC 100%)', padding: '24px' }}>
-      <div style={{ background: 'white', borderRadius: '12px', padding: '24px', border: '1px solid #FCE7F3' }}>
-        <div className="flex items-center justify-between mb-6">
+    <div className="min-h-screen bg-gradient-to-b from-amber-100 to-slate-50 ">
+      <div className="bg-white -xl  border border-pink-200">
+        <div className="   ">
           <div>
-            <h1 className="text-2xl font-semibold text-gray-900 mb-1 flex items-center gap-2">
-              <ExclamationCircleOutlined style={{ color: '#DC2626' }} />
+            <h1 className="text-2xl font-semibold     ">
+              <ExclamationCircleOutlined className="" />
               Expiry Reports
             </h1>
-            <p className="text-gray-500 text-sm">Track expiring items and manage alerts</p>
+            <p className=" ">Track expiring items and manage alerts</p>
           </div>
         </div>
 
-        <Row gutter={[16, 16]} className="mb-6">
+        <Row gutter={[16, 16]} className="">
           <Col xs={24} sm={8}>
-            <Card className="p-4 sm:p-6" style={{ background: '#FEE2E2', border: '2px solid #FECACA' }}>
+            <Card className=" sm: bg-red-100 border-2 border-red-200">
               <Statistic
                 title="Critical (≤7 days)"
                 value={filteredAlerts.filter((a: any) => a.daysToExpiry <= 7).length}
@@ -105,7 +105,7 @@ export default function ExpiryReportsPage() {
             </Card>
           </Col>
           <Col xs={24} sm={8}>
-            <Card className="p-4 sm:p-6" style={{ background: '#FEF3C7', border: '2px solid #FDE68A' }}>
+            <Card className=" sm: bg-amber-100 border-2 border-amber-200">
               <Statistic
                 title="Warning (8-30 days)"
                 value={filteredAlerts.filter((a: any) => a.daysToExpiry > 7 && a.daysToExpiry <= 30).length}
@@ -114,7 +114,7 @@ export default function ExpiryReportsPage() {
             </Card>
           </Col>
           <Col xs={24} sm={8}>
-            <Card className="p-4 sm:p-6" style={{ background: '#DBEAFE', border: '2px solid #BFDBFE' }}>
+            <Card className=" sm: bg-blue-100 border-2 border-blue-200">
               <Statistic
                 title="Total Value at Risk"
                 value={totalValue}

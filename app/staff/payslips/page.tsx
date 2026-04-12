@@ -16,7 +16,7 @@ export default function StaffPayslipsPage() {
     { title: 'Employee', dataIndex: 'name', key: 'name' },
     { title: 'Month', dataIndex: 'month', key: 'month' },
     { title: 'Basic Salary', dataIndex: 'basic', key: 'basic' },
-    { title: 'Net Pay', dataIndex: 'netPay', key: 'netPay', render: (amt: string) => <span className="font-semibold text-green-600">{amt}</span> },
+    { title: 'Net Pay', dataIndex: 'netPay', key: 'netPay', render: (amt: string) => <span className="font-semibold ">{amt}</span> },
     { title: 'Status', dataIndex: 'status', key: 'status', render: (status: string) => <Tag color="success">{status}</Tag> },
     {
       title: 'Actions',
@@ -31,7 +31,7 @@ export default function StaffPayslipsPage() {
   ];
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '1000px', margin: '0 auto' }}>
+    <div className="  sm: sm: lg: lg: max-w-5xl mx-auto">
       <Title level={3}>Employee Payslips</Title>
       <Card title="Payslip Generation">
         <Table dataSource={payslips} columns={columns} rowKey="id" />

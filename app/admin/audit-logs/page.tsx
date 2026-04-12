@@ -80,7 +80,7 @@ export default function AuditLogsPage() {
       key: 'timestamp',
       width: 150,
       render: (timestamp: string) => (
-        <span style={{ fontFamily: 'monospace', fontSize: '13px' }}>{timestamp}</span>
+        <span style={{ fontFamily: 'monospace', fontSize: '14px' }}>{timestamp}</span>
       ),
     },
     {
@@ -89,9 +89,9 @@ export default function AuditLogsPage() {
       key: 'user',
       width: 200,
       render: (email: string) => (
-        <div className="flex items-center gap-2">
+        <div className="  ">
           <UserOutlined style={{ color: '#6B7280', fontSize: '14px' }} />
-          <span style={{ fontSize: '13px' }}>{email}</span>
+          <span style={{ fontSize: '14px' }}>{email}</span>
         </div>
       ),
     },
@@ -106,7 +106,7 @@ export default function AuditLogsPage() {
           Update: { bg: '#DBEAFE', color: '#1E40AF' },
           Delete: { bg: '#FEE2E2', color: '#991B1B' },
           View: { bg: '#EDE9FE', color: '#5B21B6' },
-          Login: { bg: '#FEF3C7', color: '#92400E' },
+          Login: { bg: '#FEF3C7', color: '#B45309' },
         };
         const style = colors[action as keyof typeof colors] || { bg: '#F3F4F6', color: '#374151' };
         return (
@@ -114,7 +114,7 @@ export default function AuditLogsPage() {
             style={{
               padding: '4px 10px',
               borderRadius: '6px',
-              fontSize: '13px',
+              fontSize: '14px',
               fontWeight: 500,
               background: style.bg,
               color: style.color,
@@ -135,7 +135,7 @@ export default function AuditLogsPage() {
           style={{
             padding: '4px 10px',
             borderRadius: '6px',
-            fontSize: '13px',
+            fontSize: '14px',
             fontWeight: 500,
             background: '#F3F4F6',
             color: '#374151',
@@ -152,7 +152,7 @@ export default function AuditLogsPage() {
       key: 'ip',
       width: 130,
       render: (ip: string) => (
-        <span style={{ fontFamily: 'monospace', fontSize: '13px', color: '#6B7280' }}>{ip}</span>
+        <span style={{ fontFamily: 'monospace', fontSize: '14px', color: '#64748B' }}>{ip}</span>
       ),
     },
     {
@@ -161,7 +161,7 @@ export default function AuditLogsPage() {
       key: 'status',
       width: 100,
       render: (status: string) => (
-        <div className="flex items-center gap-2">
+        <div className="  ">
           {status === 'Success' ? (
             <CheckCircleOutlined style={{ color: '#10B981', fontSize: '16px' }} />
           ) : (
@@ -171,7 +171,7 @@ export default function AuditLogsPage() {
             style={{
               padding: '4px 10px',
               borderRadius: '6px',
-              fontSize: '13px',
+              fontSize: '14px',
               fontWeight: 500,
               background: status === 'Success' ? '#D1FAE5' : '#FEE2E2',
               color: status === 'Success' ? '#065F46' : '#991B1B',
@@ -203,7 +203,7 @@ export default function AuditLogsPage() {
       subtitle="Track and monitor all system activities and security events"
     >
       {/* Statistics Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 mb-6">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4  sm: ">
         <StatCard
           label="Total Events"
           value={logs.length}
@@ -239,15 +239,15 @@ export default function AuditLogsPage() {
       </div>
 
       {/* Filters Section */}
-      <div className="p-4 sm:p-6 overflow-x-auto" style={{ background: 'white', borderRadius: '12px', border: '1px solid #E2E8F0', marginBottom: '24px' }}>
-        <div className="flex items-center gap-2 mb-4">
+      <div className=" sm: overflow-x-auto" style={{ background: '#ffffff', borderRadius: '12px', border: '1px solid #E5E7EB', marginBottom: '24px' }}>
+        <div className="   ">
           <SecurityScanOutlined style={{ color: '#6366F1', fontSize: '20px' }} />
-          <h2 className="text-lg font-semibold text-gray-900">Filter Logs</h2>
+          <h2 className=" font-semibold ">Filter Logs</h2>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 ">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Date Range</label>
+            <label className="block  font-medium  ">Date Range</label>
             <RangePicker
               style={{ width: '100%' }}
               value={dateRange}
@@ -257,13 +257,13 @@ export default function AuditLogsPage() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Action</label>
+            <label className="block  font-medium  ">Action</label>
             <select
               style={{
                 width: '100%',
                 padding: '8px 12px',
                 borderRadius: '8px',
-                border: '1px solid #E2E8F0',
+                border: '1px solid #E5E7EB',
               }}
               value={actionFilter}
               onChange={(e) => setActionFilter(e.target.value)}
@@ -276,13 +276,13 @@ export default function AuditLogsPage() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Module</label>
+            <label className="block  font-medium  ">Module</label>
             <select
               style={{
                 width: '100%',
                 padding: '8px 12px',
                 borderRadius: '8px',
-                border: '1px solid #E2E8F0',
+                border: '1px solid #E5E7EB',
               }}
               value={moduleFilter}
               onChange={(e) => setModuleFilter(e.target.value)}
@@ -295,13 +295,13 @@ export default function AuditLogsPage() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Status</label>
+            <label className="block  font-medium  ">Status</label>
             <select
               style={{
                 width: '100%',
                 padding: '8px 12px',
                 borderRadius: '8px',
-                border: '1px solid #E2E8F0',
+                border: '1px solid #E5E7EB',
               }}
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
@@ -315,7 +315,7 @@ export default function AuditLogsPage() {
       </div>
 
       {/* Audit Logs Table */}
-      <div className="p-4 sm:p-6 overflow-x-auto" style={{ background: 'white', borderRadius: '12px', border: '1px solid #E2E8F0' }}>
+      <div className=" sm: overflow-x-auto" style={{ backgroundColor: '#ffffff', borderRadius: '12px', border: '1px solid #E2E8F0' }}>
         <SearchFilterBar
           searchPlaceholder="Search by user email..."
           searchValue={userFilter}

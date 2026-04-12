@@ -42,16 +42,16 @@ export default function LabContrastPage() {
   };
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '1400px', margin: '0 auto' }}>
+    <div className="  sm: sm: lg: lg:" style={{ maxWidth: '1280px', margin: '0 auto' }}>
       <Title level={3}>Contrast Media Allergies</Title>
 
-      <Card title={<><WarningOutlined style={{ color: '#F59E0B' }} /> Warning: Critical Allergy Information</>} className="p-4 sm:p-6" style={{ marginBottom: '24px', backgroundColor: '#FFF7E6', borderColor: '#FFD591' }}>
-        <p className="mb-2"><strong>Important:</strong> These patients have documented contrast media allergies. Alternative imaging methods or premedication may be required.</p>
+      <Card title={<><WarningOutlined style={{ color: '#F59E0B' }} /> Warning: Critical Allergy Information</>} className=" sm:" style={{ marginBottom: '24px', backgroundColor: '#FFF7E6', borderColor: '#FFD591' }}>
+        <p className=""><strong>Important:</strong> These patients have documented contrast media allergies. Alternative imaging methods or premedication may be required.</p>
         <p>Always verify allergy status before ordering contrast-enhanced studies.</p>
       </Card>
 
-      <div className="flex flex-col lg:flex-row gap-6">
-        <Card title="Record New Allergy" style={{ flex: 1, maxWidth: '400px' }}>
+      <div className=" -col lg:-row ">
+        <Card title="Record New Allergy" style={{ flex: '1', maxWidth: '448px' }}>
           <Form form={form} layout="vertical">
             <Form.Item name="patient" label="Patient" rules={[{ required: true }]}>
               <Select placeholder="Select patient" showSearch>
@@ -91,7 +91,7 @@ export default function LabContrastPage() {
           </Form>
         </Card>
 
-        <Card title="Documented Allergies" className="flex-1">
+        <Card title="Documented Allergies" className="-1">
           <div className="overflow-x-auto">
             <Table
               dataSource={allergies}

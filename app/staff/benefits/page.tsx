@@ -17,7 +17,7 @@ export default function StaffBenefitsPage() {
   ];
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '1000px', margin: '0 auto' }}>
+    <div className="  sm: sm: lg: lg: max-w-5xl mx-auto">
       <Title level={3}>Staff Benefits Administration</Title>
       <Card title="Available Benefits">
         <List
@@ -30,7 +30,7 @@ export default function StaffBenefitsPage() {
               ]}
             >
               <List.Item.Meta
-                avatar={<CheckCircleOutlined style={{ fontSize: '20px', color: '#10B981' }} />}
+                avatar={<CheckCircleOutlined className="text-xl " />}
                 title={<span className="font-medium">{benefit.name}</span>}
                 description={benefit.coverage}
               />

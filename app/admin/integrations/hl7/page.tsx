@@ -163,7 +163,7 @@ export default function HL7IntegrationPage() {
       title="HL7 Integration Configuration"
       subtitle="Manage Health Level Seven messaging endpoints"
     >
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  ">
         <StatCard
           label="Total Endpoints"
           value={stats.totalEndpoints}
@@ -210,7 +210,7 @@ export default function HL7IntegrationPage() {
         />
       </InfoCard>
 
-      <div className="mt-6">
+      <div className="">
         <InfoCard title="Recent Message Log">
         <ModernTable
           dataSource={messages}

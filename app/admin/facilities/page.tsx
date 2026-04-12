@@ -16,7 +16,7 @@ export default function FacilitiesPage() {
   // CRITICAL SECURITY: Restrict access to administrators only
   if (!hasPermission('admin:facilities:view')) {
     return (
-      <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)', padding: '16px' }}>
+      <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)' }}>
         <Alert
           title="Access Denied"
           description="You don&apos;tt have permission to access facilities management. This area is restricted to administrators only."
@@ -128,7 +128,7 @@ export default function FacilitiesPage() {
       }
     >
       {/* Statistics Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 mb-6">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4  sm: ">
         <StatCard
           label="Total Facilities"
           value={facilities.length}
@@ -165,11 +165,11 @@ export default function FacilitiesPage() {
       </div>
 
       {/* Buildings & Facilities Section */}
-      <div className="p-4 sm:p-6 overflow-x-auto" style={{ background: 'white', borderRadius: '12px', border: '1px solid #E2E8F0', marginBottom: '24px' }}>
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-4">
-          <div className="flex items-center gap-2">
+      <div className=" sm: overflow-x-auto" style={{ backgroundColor: '#ffffff', borderRadius: '12px', border: '1px solid #E2E8F0', marginBottom: '24px' }}>
+        <div className=" -col sm:-row items-start sm:   ">
+          <div className="  ">
             <BuildOutlined style={{ color: '#6366F1', fontSize: '20px' }} />
-            <h2 className="text-lg font-semibold text-gray-900">Buildings & Facilities</h2>
+            <h2 className=" font-semibold ">Buildings & Facilities</h2>
           </div>
         </div>
 
@@ -204,11 +204,11 @@ export default function FacilitiesPage() {
       </div>
 
       {/* Medical Equipment Section */}
-      <div className="p-4 sm:p-6 overflow-x-auto" style={{ background: 'white', borderRadius: '12px', border: '1px solid #E2E8F0' }}>
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-4">
-          <div className="flex items-center gap-2">
+      <div className=" sm: overflow-x-auto" style={{ backgroundColor: '#ffffff', borderRadius: '12px', border: '1px solid #E2E8F0' }}>
+        <div className=" -col sm:-row items-start sm:   ">
+          <div className="  ">
             <BuildOutlined style={{ color: '#8B5CF6', fontSize: '20px' }} />
-            <h2 className="text-lg font-semibold text-gray-900">Medical Equipment</h2>
+            <h2 className=" font-semibold ">Medical Equipment</h2>
           </div>
           <GradientButton variant="secondary" icon={<PlusOutlined />} className="w-full sm:w-auto">
             Add Equipment

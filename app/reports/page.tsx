@@ -18,13 +18,13 @@ export default function ReportsPage() {
 
   if (!hasPermission('reports:view') && !hasPermission('reports:clinical:view')) {
     return (
-      <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)', padding: '16px' }}>
+      <div className="min-h-screen bg-gradient-to-b from-blue-50 to-slate-50 ">
         <Alert
           title="Access Denied"
           description="You don't have permission to access reports. Please contact your administrator."
           type="error"
           showIcon
-          style={{ marginTop: '24px', borderRadius: '12px' }}
+          className=" "
         />
       </div>
     );
@@ -127,8 +127,8 @@ export default function ReportsPage() {
       dataIndex: 'name',
       key: 'name',
       render: (name: string, record: any) => (
-        <div className="flex items-center gap-2">
-          <FileTextOutlined style={{ color: '#3B82F6' }} />
+        <div className="  ">
+          <FileTextOutlined className="" />
           <span className="font-medium">{name}</span>
         </div>
       ),
@@ -141,9 +141,8 @@ export default function ReportsPage() {
         <span
           style={{
             padding: '4px 10px',
-            borderRadius: '6px',
-            fontSize: '13px',
-            fontWeight: 500,
+            
+                        fontWeight: 500,
             background: category === 'Clinical'
               ? '#DBEAFE'
               : category === 'Financial'
@@ -174,10 +173,7 @@ export default function ReportsPage() {
           size="small"
           icon={<DownloadOutlined />}
           disabled={record.status !== 'ready'}
-          style={{
-            borderRadius: '8px',
-            fontWeight: 500,
-          }}
+          className=" font-medium"
         >
           Download
         </Button>
@@ -196,7 +192,7 @@ export default function ReportsPage() {
       }
     >
       {/* Statistics Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-6">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4  ">
         <StatCard
           label="Total Reports"
           value={89}
@@ -232,10 +228,10 @@ export default function ReportsPage() {
       </div>
 
       {/* Report Categories */}
-      <div style={{ background: 'white', borderRadius: '12px', padding: '24px', border: '1px solid #E2E8F0', marginBottom: '24px' }} className="p-4 sm:p-6">
-        <div className="flex items-center gap-2 mb-4">
-          <FolderOutlined style={{ color: '#3B82F6', fontSize: '20px' }} />
-          <h2 className="text-lg font-semibold text-gray-900">Report Categories</h2>
+      <div className=" bg-white   border border-slate-200">
+        <div className="   ">
+          <FolderOutlined className="color: '#3B82F6' text" />
+          <h2 className=" font-semibold ">Report Categories</h2>
         </div>
         <Row gutter={[16, 16]}>
           {reportCategories.map((cat) => (
@@ -243,8 +239,7 @@ export default function ReportsPage() {
               <div
                 onClick={() => router.push(cat.path)}
                 style={{
-                  padding: '20px',
-                  borderRadius: '12px',
+                                    
                   background: `linear-gradient(135deg, ${cat.bg} 0%, rgba(255,255,255,0.8) 100%)`,
                   border: `1px solid ${cat.border}`,
                   cursor: 'pointer',
@@ -263,32 +258,23 @@ export default function ReportsPage() {
               >
                 <div
                   style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '12px',
-                    marginBottom: '12px',
-                  }}
+                                                                                                  }}
                 >
                   <div
                     style={{
                       width: '48px',
-                      height: '48px',
-                      borderRadius: '10px',
+                                            
                       background: `linear-gradient(135deg, ${cat.color} 0%, ${cat.color}99 100%)`,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      color: 'white',
-                      fontSize: '20px',
+                                                                                                              text
                     }}
                   >
                     {cat.icon}
                   </div>
-                  <div style={{ flex: 1 }}>
-                    <h3 className="text-sm font-semibold text-gray-900 mb-1">
+                  <div className="-1">
+                    <h3 className=" font-semibold  ">
                       {cat.name}
                     </h3>
-                    <Text style={{ fontSize: '12px', color: '#64748B' }}>
+                    <Text className=" text-slate-500">
                       {cat.description}
                     </Text>
                   </div>
@@ -296,13 +282,13 @@ export default function ReportsPage() {
                 <div
                   style={{
                     padding: '4px 10px',
-                    borderRadius: '6px',
-                    background: 'white',
+                    
+                    
                     border: `1px solid ${cat.border}`,
-                    display: 'inline-block',
+                    display: 'inline-flex',
                   }}
                 >
-                  <Text style={{ fontSize: '12px', fontWeight: 600, color: cat.color }}>
+                  <Text className=" font-semibold" style={{ color: cat.color }}>
                     {cat.count} reports
                   </Text>
                 </div>
@@ -313,21 +299,21 @@ export default function ReportsPage() {
       </div>
 
       {/* Generate Custom Report */}
-      <div style={{ background: 'white', borderRadius: '12px', padding: '24px', border: '1px solid #E2E8F0', marginBottom: '24px' }} className="p-4 sm:p-6">
-        <div className="flex items-center gap-2 mb-4">
-          <PlusOutlined style={{ color: '#10B981', fontSize: '20px' }} />
-          <h2 className="text-lg font-semibold text-gray-900">Generate Custom Report</h2>
+      <div className=" bg-white   border border-slate-200">
+        <div className="   ">
+          <PlusOutlined className="color: '#10B981' text" />
+          <h2 className=" font-semibold ">Generate Custom Report</h2>
         </div>
         <Row gutter={16}>
           <Col span={6}>
-            <label className="block text-sm mb-2 font-medium" style={{ color: '#374151' }}>
+            <label className="block   font-medium ">
               Report Type
             </label>
             <Select
               placeholder="Select type"
               value={reportType}
               onChange={setReportType}
-              style={{ width: '100%', borderRadius: '8px' }}
+              className="w-full "
             >
               <Option value="summary">Summary Report</Option>
               <Option value="detailed">Detailed Report</Option>
@@ -335,14 +321,14 @@ export default function ReportsPage() {
             </Select>
           </Col>
           <Col span={6}>
-            <label className="block text-sm mb-2 font-medium" style={{ color: '#374151' }}>
+            <label className="block   font-medium ">
               Category
             </label>
             <Select
               placeholder="Select category"
               value={category}
               onChange={setCategory}
-              style={{ width: '100%', borderRadius: '8px' }}
+              className="w-full "
             >
               <Option value="clinical">Clinical</Option>
               <Option value="operational">Operational</Option>
@@ -351,13 +337,13 @@ export default function ReportsPage() {
             </Select>
           </Col>
           <Col span={6}>
-            <label className="block text-sm mb-2 font-medium" style={{ color: '#374151' }}>
+            <label className="block   font-medium ">
               Date Range
             </label>
-            <DatePicker.RangePicker style={{ width: '100%', borderRadius: '8px' }} />
+            <DatePicker.RangePicker className="w-full " />
           </Col>
           <Col span={6}>
-            <label className="block text-sm mb-2 font-medium" style={{ color: '#374151' }}>
+            <label className="block   font-medium ">
               &nbsp;
             </label>
             <GradientButton icon={<PlusOutlined />} block>
@@ -368,17 +354,16 @@ export default function ReportsPage() {
       </div>
 
       {/* Recent Reports */}
-      <div style={{ background: 'white', borderRadius: '12px', padding: '24px', border: '1px solid #E2E8F0' }} className="p-4 sm:p-6">
-        <div className="flex items-center justify-between mb-4 flex-col sm:flex-row gap-3">
-          <div className="flex items-center gap-2">
-            <FileTextOutlined style={{ color: '#8B5CF6', fontSize: '20px' }} />
-            <h2 className="text-lg font-semibold text-gray-900">Recent Reports</h2>
+      <div className="bg-white   border border-slate-200">
+        <div className="    -col sm:-row ">
+          <div className="  ">
+            <FileTextOutlined className="color: '#8B5CF6' text" />
+            <h2 className=" font-semibold ">Recent Reports</h2>
           </div>
           <Button
             type="link"
-            style={{ color: '#3B82F6', fontWeight: 500 }}
+            className="color: '#3B82F6' font-medium w-full sm:w-auto"
             onClick={() => router.push('/reports/clinical')}
-            className="w-full sm:w-auto"
           >
             View All
           </Button>

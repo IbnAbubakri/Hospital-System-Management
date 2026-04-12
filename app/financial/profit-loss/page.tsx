@@ -163,13 +163,13 @@ export default function ProfitLossPage() {
         const color = (isRevenue && isPositive) || (!isRevenue && !isPositive) ? 'success' : 'error';
         return (
           <div>
-            <div className="flex items-center gap-1">
+            <div className="  ">
               {isPositive ? <RiseOutlined /> : <FallOutlined />}
               <span style={{ color: isRevenue ? (isPositive ? '#10B981' : '#EF4444') : (!isPositive ? '#10B981' : '#EF4444') }}>
                 {isPositive ? '+' : ''}₦{record.variance.toLocaleString()}
               </span>
             </div>
-            <Text type="secondary" className="text-xs">({isPositive ? '+' : ''}{record.variancePercent}%)</Text>
+            <Text type="secondary" className="">({isPositive ? '+' : ''}{record.variancePercent}%)</Text>
           </div>
         );
       },
@@ -192,7 +192,7 @@ export default function ProfitLossPage() {
             <div>₦{amount.toLocaleString()}</div>
             <Text
               type="secondary"
-              className="text-xs"
+              className=""
               style={{ color: isPositive ? '#10B981' : '#EF4444' }}
             >
               {isPositive ? '+' : ''}₦{variance.toLocaleString()}
@@ -287,18 +287,18 @@ export default function ProfitLossPage() {
         }} />
 
         <div className="page-content" style={{ animationDelay: '0s', position: 'relative', zIndex: 1 }}>
-          <div className="flex items-center gap-3 mb-1">
+          <div className="   ">
             <div style={{
               width: '4px',
               height: '28px',
               background: 'linear-gradient(180deg, #3B82F6 0%, #2563EB 100%)',
               borderRadius: '2px'
             }} />
-            <h1 className="text-2xl font-semibold text-gray-900">
+            <h1 className="text-2xl font-semibold ">
               Profit & Loss Statement
             </h1>
           </div>
-          <p className="text-gray-500 text-sm" style={{ marginLeft: '7px' }}>
+          <p className=" " style={{ marginLeft: '7px' }}>
             Monthly financial performance analysis
           </p>
 
@@ -314,7 +314,7 @@ export default function ProfitLossPage() {
                   border: '1px solid #DBEAFE',
                 }}
               >
-                <div className="text-sm font-medium" style={{ color: '#64748B', marginBottom: '6px' }}>
+                <div className=" font-medium" style={{ color: '#6B7280', marginBottom: '6px' }}>
                   Total Revenue
                 </div>
                 <div className="stat-number" style={{ fontSize: '24px', fontWeight: 700, color: '#3B82F6', lineHeight: 1 }}>
@@ -332,7 +332,7 @@ export default function ProfitLossPage() {
                   border: '1px solid #FECACA',
                 }}
               >
-                <div className="text-sm font-medium" style={{ color: '#64748B', marginBottom: '6px' }}>
+                <div className=" font-medium" style={{ color: '#6B7280', marginBottom: '6px' }}>
                   Total Expenses
                 </div>
                 <div className="stat-number" style={{ fontSize: '24px', fontWeight: 700, color: '#EF4444', lineHeight: 1 }}>
@@ -350,7 +350,7 @@ export default function ProfitLossPage() {
                   border: '1px solid #A7F3D0',
                 }}
               >
-                <div className="text-sm font-medium" style={{ color: '#64748B', marginBottom: '6px' }}>
+                <div className=" font-medium" style={{ color: '#6B7280', marginBottom: '6px' }}>
                   Net Profit
                 </div>
                 <div className="stat-number" style={{ fontSize: '24px', fontWeight: 700, color: '#10B981', lineHeight: 1 }}>
@@ -368,7 +368,7 @@ export default function ProfitLossPage() {
                   border: '1px solid #DDD6FE',
                 }}
               >
-                <div className="text-sm font-medium" style={{ color: '#64748B', marginBottom: '6px' }}>
+                <div className=" font-medium" style={{ color: '#6B7280', marginBottom: '6px' }}>
                   Profit Margin
                 </div>
                 <div className="stat-number" style={{ fontSize: '24px', fontWeight: 700, color: '#8B5CF6', lineHeight: 1 }}>
@@ -381,11 +381,11 @@ export default function ProfitLossPage() {
       </div>
 
       {/* Content Section */}
-      <div className="px-8 py-6 page-content" style={{ animationDelay: '0.1s' }}>
+      <div className="  page-content" style={{ animationDelay: '0.1s' }}>
         <Card
           title="Profit & Loss Details"
           extra={
-            <div className="flex gap-3">
+            <div className=" ">
               <Search
                 placeholder="Search items..."
                 allowClear
@@ -433,11 +433,11 @@ export default function ProfitLossPage() {
         {selectedItem && (
           <div>
             <Card style={{ marginBottom: '16px' }}>
-              <div className="mb-3">
+              <div className="">
                 <Text type="secondary">Category</Text>
                 <div><Tag color="blue">{selectedItem.category}</Tag></div>
               </div>
-              <div className="mb-3">
+              <div className="">
                 <Text type="secondary">Item</Text>
                 <div className="text-xl font-semibold">{selectedItem.item}</div>
               </div>
@@ -462,7 +462,7 @@ export default function ProfitLossPage() {
                   />
                 </Col>
               </Row>
-              <div className="mt-4 p-4 bg-gray-50 rounded">
+              <div className="  bg-gray-50 ">
                 <Text type="secondary">Variance: </Text>
                 <Text strong style={{ color: selectedItem.variance >= 0 ? '#10B981' : '#EF4444' }}>
                   {selectedItem.variance >= 0 ? '+' : ''}₦{selectedItem.variance.toLocaleString()} ({selectedItem.variancePercent}%)
@@ -489,7 +489,7 @@ export default function ProfitLossPage() {
                   />
                 </Col>
               </Row>
-              <div className="mt-4 p-4 bg-gray-50 rounded">
+              <div className="  bg-gray-50 ">
                 <Text type="secondary">Budget Variance: </Text>
                 <Text strong style={{ color: selectedItem.budgetVariance >= 0 ? '#10B981' : '#EF4444' }}>
                   {selectedItem.budgetVariance >= 0 ? '+' : ''}₦{selectedItem.budgetVariance.toLocaleString()}

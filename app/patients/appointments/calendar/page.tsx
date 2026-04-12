@@ -102,7 +102,7 @@ export default function AppointmentCalendarPage() {
   };
 
   return (
-    <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)' }}>
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-slate-50">
       <style jsx global>{`
         @keyframes fadeInUp {
           from {
@@ -231,48 +231,26 @@ export default function AppointmentCalendarPage() {
       `}</style>
 
       {/* Header Section */}
-      <div style={{
-        padding: '32px',
-        background: 'linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%)',
-        borderBottom: '1px solid #E2E8F0',
-        position: 'relative',
-        overflow: 'hidden'
-      }}>
+      <div className=" bg-gradient-to-br from-white to-slate-50 border-b border-slate-200 relative overflow-hidden">
         {/* Decorative background elements */}
-        <div style={{
-          position: 'absolute',
-          top: '-50px',
-          right: '-50px',
-          width: '200px',
-          height: '200px',
-          background: 'radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 70%)',
-          borderRadius: '50%',
-        }} />
-        <div style={{
-          position: 'absolute',
-          bottom: '-80px',
-          left: '100px',
-          width: '300px',
-          height: '300px',
-          background: 'radial-gradient(circle, rgba(16, 185, 129, 0.06) 0%, transparent 70%)',
-          borderRadius: '50%',
-        }} />
+        <div className="absolute -top-10 -right-10  h-[200px] bg-[radial-gradient(circle,rgba(59,130,246,0.08)_0%,transparent_70%)] -full" />
+        <div className="absolute -bottom-20 left-[100px]  h-[300px] bg-[radial-gradient(circle,rgba(16,185,129,0.06)_0%,transparent_70%)] -full" />
 
-        <div className="page-content" style={{ animationDelay: '0s', position: 'relative', zIndex: 1 }}>
-          <div className="flex items-center justify-between mb-8">
+        <div className="page-content relative z-10" style={{ animationDelay: '0s' }}>
+          <div className="   ">
             <div>
-              <div className="flex items-center gap-3 mb-1">
+              <div className="   ">
                 <div style={{
                   width: '4px',
                   height: '28px',
                   background: 'linear-gradient(180deg, #3B82F6 0%, #2563EB 100%)',
                   borderRadius: '2px'
                 }} />
-                <h1 className="text-2xl font-semibold text-gray-900">
+                <h1 className="text-2xl font-semibold ">
                   Appointment Calendar
                 </h1>
               </div>
-              <p className="text-gray-500 text-sm" style={{ marginLeft: '7px' }}>
+              <p className=" " style={{ marginLeft: '7px' }}>
                 View and manage appointments by date
               </p>
             </div>
@@ -280,19 +258,14 @@ export default function AppointmentCalendarPage() {
               type="primary"
               icon={<CalendarOutlined />}
               onClick={() => router.push('/patients/appointments')}
-              style={{
-                height: '42px',
-                borderRadius: '10px',
-                fontWeight: 600,
-                padding: '0 20px',
-              }}
+              className="  font-semibold "
             >
               List View
             </Button>
           </div>
 
           {/* Stats Cards */}
-          <div className="grid grid-cols-4 gap-5">
+          <div className="grid grid-cols-4 ">
             {[
               { label: "Today's", value: animatedStats.today, color: '#3B82F6', bg: '#EFF6FF', border: '#DBEAFE' },
               { label: 'This Week', value: animatedStats.week, color: '#10B981', bg: '#D1FAE5', border: '#A7F3D0' },
@@ -303,22 +276,16 @@ export default function AppointmentCalendarPage() {
                 key={index}
                 className="stat-card"
                 style={{
-                  padding: '16px',
-                  borderRadius: '12px',
+                                    
                   background: `linear-gradient(135deg, ${stat.bg} 0%, rgba(255,255,255,0.8) 100%)`,
                   border: `1px solid ${stat.border}`,
                   cursor: 'default',
                 }}
               >
-                <div className="text-sm font-medium" style={{ color: '#64748B', marginBottom: '6px' }}>
+                <div className=" font-medium text-slate-500 .5">
                   {stat.label}
                 </div>
-                <div className="stat-number" style={{
-                  fontSize: '28px',
-                  fontWeight: 700,
-                  color: stat.color,
-                  lineHeight: 1,
-                }}>
+                <div className="stat-number text-[28px] font-bold leading-none" style={{ color: stat.color }}>
                   {stat.value}
                 </div>
               </div>
@@ -328,64 +295,41 @@ export default function AppointmentCalendarPage() {
       </div>
 
       {/* Calendar Section */}
-      <div className="px-8 py-6 page-content" style={{ animationDelay: '0.1s' }}>
+      <div className="  page-content" style={{ animationDelay: '0.1s' }}>
         {/* Calendar Controls */}
         <div
-          className="flex items-center justify-between p-4 mb-6"
-          style={{
-            background: 'white',
-            borderRadius: '12px',
-            border: '1px solid #E2E8F0',
-            boxShadow: '0 1px 3px rgba(0, 0, 0, 0.05)',
-          }}
+          className="     bg-white  border border-slate-200 shadow"
         >
-          <div className="flex items-center gap-3">
+          <div className="  ">
             <Button
               icon={<LeftOutlined />}
               onClick={handlePreviousMonth}
-              style={{
-                borderRadius: '8px',
-                border: '1px solid #E2E8F0',
-              }}
+              className=" border border-slate-200"
             >
               Previous
             </Button>
             <Button
               onClick={handleToday}
-              style={{
-                borderRadius: '8px',
-                border: '1px solid #E2E8F0',
-                fontWeight: 600,
-              }}
+              className=" border border-slate-200 font-semibold"
             >
               Today
             </Button>
             <Button
               icon={<RightOutlined />}
               onClick={handleNextMonth}
-              style={{
-                borderRadius: '8px',
-                border: '1px solid #E2E8F0',
-              }}
+              className=" border border-slate-200"
             >
               Next
             </Button>
           </div>
 
-          <div
-            style={{
-              padding: '10px 24px',
-              borderRadius: '10px',
-              background: 'linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%)',
-              border: '1px solid #BFDBFE',
-            }}
-          >
-            <span className="text-lg font-semibold" style={{ color: '#1D4ED8' }}>
+          <div className=".5   bg-gradient-to-br from-blue-50 to-blue-100 border border-blue-200">
+            <span className=" font-semibold ">
               {currentMonth.format('MMMM YYYY')}
             </span>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="  ">
             <Select
               defaultValue="month"
               style={{ width: 120 }}
@@ -402,15 +346,7 @@ export default function AppointmentCalendarPage() {
         </div>
 
         {/* Calendar */}
-        <div
-          style={{
-            background: 'white',
-            borderRadius: '12px',
-            border: '1px solid #E2E8F0',
-            overflow: 'hidden',
-            boxShadow: '0 1px 3px rgba(0, 0, 0, 0.05)',
-          }}
-        >
+        <div className="bg-white  border border-slate-200 overflow-hidden shadow">
           <AppointmentCalendar currentMonth={currentMonth} onMonthChange={setCurrentMonth} />
         </div>
       </div>

@@ -26,33 +26,33 @@ export default function PaymentOnlinePage() {
   };
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '1200px', margin: '0 auto' }}>
+    <div className="  sm: sm: lg: lg: max-w-[1200px] mx-auto">
       <Title level={3}>Online Payment</Title>
 
-      <div style={{ display: 'flex', gap: '24px', flexDirection: 'row', flexWrap: 'wrap' }}>
-        <Card title="Select Invoices to Pay" style={{ flex: 1, minWidth: 300 }}>
-          <Space orientation="vertical" style={{ width: '100%' }} size="middle">
+      <div className="  -row -wrap">
+        <Card title="Select Invoices to Pay" className="-1 min-w-[300px]">
+          <Space direction="vertical" className="w-full" size="middle">
             {invoices.map((invoice) => (
-              <div key={invoice.id} className="flex justify-between items-center p-3 border rounded">
+              <div key={invoice.id} className="    border ">
                 <div>
                   <div className="font-medium">{invoice.id}</div>
-                  <div className="text-sm text-gray-500">{invoice.description}</div>
-                  <div className="text-xs text-gray-400">{invoice.date}</div>
+                  <div className=" ">{invoice.description}</div>
+                  <div className=" ">{invoice.date}</div>
                 </div>
-                <div className="flex items-center gap-2">
+                <div className="  ">
                   <span className="font-semibold">₦{invoice.amount.toLocaleString()}</span>
                   <input type="checkbox" defaultChecked />
                 </div>
               </div>
             ))}
-            <div className="flex justify-between items-center pt-3 border-t">
+            <div className="    border-t">
               <span className="font-semibold">Total Amount:</span>
-              <span className="text-xl font-bold text-blue-600">₦{totalAmount.toLocaleString()}</span>
+              <span className="text-xl font-bold ">₦{totalAmount.toLocaleString()}</span>
             </div>
           </Space>
         </Card>
 
-        <Card title="Payment Details" style={{ flex: 1, minWidth: 350 }}>
+        <Card title="Payment Details" className="-1 min-w-[350px]">
           <Form form={form} layout="vertical">
             <Form.Item label="Payment Method">
               <Radio.Group value={paymentMethod} onChange={(e) => setPaymentMethod(e.target.value)}>
@@ -67,7 +67,7 @@ export default function PaymentOnlinePage() {
                 <Form.Item name="cardNumber" label="Card Number" rules={[{ required: true }]}>
                   <Input placeholder="1234 5678 9012 3456" maxLength={19} />
                 </Form.Item>
-                <div style={{ display: 'flex', gap: '16px' }}>
+                <div className=" ">
                   <Form.Item name="expiry" label="Expiry Date" rules={[{ required: true }]}>
                     <Input placeholder="MM/YY" maxLength={5} />
                   </Form.Item>
@@ -92,8 +92,8 @@ export default function PaymentOnlinePage() {
                     <Select.Option value="uba">United Bank for Africa</Select.Option>
                   </Select>
                 </Form.Item>
-                <div className="p-4 bg-gray-50 rounded">
-                  <p className="font-medium mb-2">Bank Transfer Details:</p>
+                <div className=" bg-gray-50 ">
+                  <p className="font-medium ">Bank Transfer Details:</p>
                   <p>Account Name: Hospital Management Ltd</p>
                   <p>Account Number: 1234567890</p>
                   <p>Bank: GTBank</p>
@@ -111,10 +111,10 @@ export default function PaymentOnlinePage() {
                     <Select.Option value="zenith">Zenith Bank</Select.Option>
                   </Select>
                 </Form.Item>
-                <div className="p-4 bg-gray-50 rounded">
-                  <p className="font-medium mb-2">Dial the USSD code below:</p>
-                  <p className="text-xl font-bold text-blue-600">*737*{totalAmount}*1234567890#</p>
-                  <p className="text-sm text-gray-500 mt-2">Follow the prompts to complete payment</p>
+                <div className=" bg-gray-50 ">
+                  <p className="font-medium ">Dial the USSD code below:</p>
+                  <p className="text-xl font-bold ">*737*{totalAmount}*1234567890#</p>
+                  <p className="  ">Follow the prompts to complete payment</p>
                 </div>
               </>
             )}

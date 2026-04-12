@@ -27,7 +27,7 @@ export default function ExecutiveDashboardPage() {
 
   return (
     <div style={{ padding: '24px' }}>
-      <div className="flex items-center justify-between mb-6">
+      <div className="   ">
         <div>
           <Title level={2}>Executive Dashboard</Title>
           <Text type="secondary">Hospital-wide performance overview</Text>
@@ -68,12 +68,12 @@ export default function ExecutiveDashboardPage() {
         <Row gutter={[16, 16]}>
           {departmentPerformance.map((dept, index) => (
             <Col key={index} xs={24} sm={12} lg={24} xl={12}>
-              <div style={{ marginBottom: '16px' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
-                  <Text strong>{dept.department}</Text>
-                  <Text type="secondary">{dept.patients} patients</Text>
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div style={{ marginBottom: '16px' }}>
+                  <div style={{ display: '', justifyContent: 'space-between', marginBottom: '8px' }}>
+                    <Text strong>{dept.department}</Text>
+                    <Text type="secondary">{dept.patients} patients</Text>
+                  </div>
+                  <div style={{ display: '', justifyContent: 'space-between', alignItems: 'center' }}>
                   <Text>Revenue: {dept.revenue}</Text>
                   <Text>Satisfaction: {dept.satisfaction}%</Text>
                 </div>

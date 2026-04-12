@@ -54,8 +54,8 @@ export default function RadiologyTemplatesPage() {
   );
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '1400px', margin: '0 auto' }}>
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+    <div className="  sm: sm: lg: lg: max-w-7xl mx-auto">
+      <div className=" -col sm:-row items-start sm:   ">
         <Title level={3}>Radiology Procedure Templates</Title>
         <Button type="primary" icon={<PlusOutlined />} onClick={() => setIsModalVisible(true)}>
           Create Template
@@ -63,13 +63,13 @@ export default function RadiologyTemplatesPage() {
       </div>
 
       <Card>
-        <div className="mb-4">
+        <div className="">
           <Input.Search
             placeholder="Search templates..."
             allowClear
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
-            style={{ width: 300 }}
+            className="w-[300px]"
           />
         </div>
         <div className="overflow-x-auto">

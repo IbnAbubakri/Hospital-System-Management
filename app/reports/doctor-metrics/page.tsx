@@ -37,12 +37,12 @@ export default function DoctorMetricsPage() {
       key: 'doctor',
       render: (_: unknown, record: any) => (
         <Space>
-          <Avatar icon={<UserOutlined />} style={{ background: '#3B82F6' }}>
+          <Avatar icon={<UserOutlined />} className="bg-blue-500">
             {record.name.charAt(0)}
           </Avatar>
           <div>
             <div className="font-medium">{record.name}</div>
-            <Text type="secondary" className="text-xs">{record.department}</Text>
+            <Text type="secondary" className="">{record.department}</Text>
           </div>
         </Space>
       ),
@@ -75,7 +75,7 @@ export default function DoctorMetricsPage() {
       dataIndex: 'revenue',
       key: 'revenue',
       sorter: (a: any, b: any) => parseFloat(a.revenue.replace(/[₦M]/g, '')) - parseFloat(b.revenue.replace(/[₦M]/g, '')),
-      render: (revenue: string) => <span className="font-semibold text-green-600">{revenue}</span>,
+      render: (revenue: string) => <span className="font-semibold ">{revenue}</span>,
     },
     {
       title: 'Actions',
@@ -103,27 +103,27 @@ export default function DoctorMetricsPage() {
   };
 
   return (
-    <div style={{ padding: '24px', maxWidth: '1400px', margin: '0 auto' }} className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8">
+    <div className="  sm: sm: lg: lg: max-w-7xl mx-auto">
       <Title level={3}>Doctor Performance Metrics</Title>
 
-      <Row gutter={[16, 16]} style={{ marginBottom: '24px' }}>
+      <Row gutter={[16, 16]} className="">
         <Col xs={12} sm={6}>
-          <Card className="p-4 sm:p-6">
+          <Card className=" sm:">
             <Statistic title="Total Active Patients" value={totalStats.patients} prefix={<UserOutlined />} />
           </Card>
         </Col>
         <Col xs={12} sm={6}>
-          <Card className="p-4 sm:p-6">
+          <Card className=" sm:">
             <Statistic title="Total Consultations" value={totalStats.consultations} prefix={<CalendarOutlined />} />
           </Card>
         </Col>
         <Col xs={12} sm={6}>
-          <Card className="p-4 sm:p-6">
+          <Card className=" sm:">
             <Statistic title="Avg Satisfaction" value={totalStats.avgSatisfaction} suffix="%" />
           </Card>
         </Col>
         <Col xs={12} sm={6}>
-          <Card className="p-4 sm:p-6">
+          <Card className=" sm:">
             <Statistic title="Total Revenue" value={totalStats.revenue} prefix="₦" />
           </Card>
         </Col>
@@ -131,13 +131,13 @@ export default function DoctorMetricsPage() {
 
       <Card
         title="Doctor Performance List"
-        className="p-4 sm:p-6"
+        className=" sm:"
         extra={
           <Space wrap>
             <Input.Search
               placeholder="Search doctors..."
               allowClear
-              style={{ width: 200 }}
+              className="w-[200px]"
               value={searchText}
               onChange={(e) => setSearchText(e.target.value)}
               prefix={<SearchOutlined />}
@@ -147,7 +147,7 @@ export default function DoctorMetricsPage() {
               value={departmentFilter}
               onChange={setDepartmentFilter}
               allowClear
-              style={{ width: 150 }}
+              className="w-[150px]"
             >
               <Select.Option value="Cardiology">Cardiology</Select.Option>
               <Select.Option value="General Medicine">General Medicine</Select.Option>

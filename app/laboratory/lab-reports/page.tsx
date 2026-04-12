@@ -54,7 +54,7 @@ export default function LabReportsPage() {
       title: 'Actions',
       key: 'actions',
       render: () => (
-        <div className="flex gap-2">
+        <div className=" ">
           <Button size="small" icon={<DownloadOutlined />}>Download</Button>
           <Button size="small" icon={<PrinterOutlined />}>Print</Button>
         </div>
@@ -63,21 +63,21 @@ export default function LabReportsPage() {
   ];
 
   return (
-    <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)', padding: '24px' }}>
-      <div style={{ background: 'white', borderRadius: '12px', padding: '24px', border: '1px solid #E2E8F0' }}>
-        <div className="flex items-center justify-between mb-6">
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-slate-50 ">
+      <div className="bg-white -xl  border border-gray-200">
+        <div className="   ">
           <div>
-            <h1 className="text-2xl font-semibold text-gray-900 mb-1 flex items-center gap-2">
-              <FileTextOutlined style={{ color: '#10B981' }} />
+            <h1 className="text-2xl font-semibold     ">
+              <FileTextOutlined className="" />
               Lab Reports
             </h1>
-            <p className="text-gray-500 text-sm">Generate and manage laboratory reports</p>
+            <p className=" ">Generate and manage laboratory reports</p>
           </div>
         </div>
 
-        <div className="flex items-center gap-3 mb-6">
-          <Input placeholder="Search reports..." prefix={<SearchOutlined />} value={searchText} onChange={(e) => setSearchText(e.target.value)} style={{ flex: 1, maxWidth: '400px' }} />
-          <Badge count={filteredReports.length} style={{ background: '#10B981' }} />
+        <div className="   ">
+          <Input placeholder="Search reports..." prefix={<SearchOutlined />} value={searchText} onChange={(e) => setSearchText(e.target.value)} className="-1 max-w" />
+          <Badge count={filteredReports.length} className="bg-emerald-500" />
         </div>
 
         <Table dataSource={filteredReports} columns={columns} rowKey="id" pagination={{ defaultPageSize: 10 }} size="middle" />

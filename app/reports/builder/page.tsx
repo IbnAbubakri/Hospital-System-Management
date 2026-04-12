@@ -35,55 +35,55 @@ export default function ReportBuilderPage() {
   };
 
   return (
-    <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)', padding: '24px' }} className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8">
-      <div style={{ background: 'white', borderRadius: '12px', padding: '24px', border: '1px solid #E2E8F0' }} className="p-4 sm:p-6">
-        <div className="flex items-center justify-between mb-6 flex-col sm:flex-row gap-3">
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-slate-50   sm: sm: lg: lg:">
+      <div className="bg-white -xl  border border-slate-200">
+        <div className="    -col sm:-row ">
           <div>
-            <h1 className="text-2xl font-semibold text-gray-900 mb-1 flex items-center gap-2">
-              <BarChartOutlined style={{ color: '#8B5CF6' }} />
+            <h1 className="text-2xl font-semibold     ">
+              <BarChartOutlined className="" />
               Custom Report Builder
             </h1>
-            <p className="text-gray-500 text-sm">Create and manage custom reports</p>
+            <p className=" ">Create and manage custom reports</p>
           </div>
           <Button type="primary" icon={<PlusOutlined />} onClick={() => setModalVisible(true)} className="w-full sm:w-auto">
             New Report
           </Button>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-          <Card hoverable style={{ borderRadius: '12px' }}>
-            <div className="flex items-center gap-3 mb-3">
-              <div style={{ width: '40px', height: '40px', borderRadius: '8px', background: '#DBEAFE', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <TableOutlined style={{ color: '#3B82F6' }} />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  ">
+          <Card hoverable className="-xl">
+            <div className="   ">
+              <div className="  -lg bg-blue-100   ">
+                <TableOutlined className="" />
               </div>
               <span className="font-medium">Tabular Report</span>
             </div>
-            <p className="text-sm text-gray-500">Create detailed data tables with filters and grouping</p>
+            <p className=" ">Create detailed data tables with filters and grouping</p>
           </Card>
 
-          <Card hoverable style={{ borderRadius: '12px' }}>
-            <div className="flex items-center gap-3 mb-3">
-              <div style={{ width: '40px', height: '40px', borderRadius: '8px', background: '#D1FAE5', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <LineChartOutlined style={{ color: '#10B981' }} />
+          <Card hoverable className="-xl">
+            <div className="   ">
+              <div className="  -lg bg-emerald-100   ">
+                <LineChartOutlined className="" />
               </div>
               <span className="font-medium">Chart Report</span>
             </div>
-            <p className="text-sm text-gray-500">Visualize data with line, bar, and pie charts</p>
+            <p className=" ">Visualize data with line, bar, and pie charts</p>
           </Card>
 
-          <Card hoverable style={{ borderRadius: '12px' }}>
-            <div className="flex items-center gap-3 mb-3">
-              <div style={{ width: '40px', height: '40px', borderRadius: '8px', background: '#FED7AA', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <PieChartOutlined style={{ color: '#F59E0B' }} />
+          <Card hoverable className="-xl">
+            <div className="   ">
+              <div className="  -lg bg-orange-100   ">
+                <PieChartOutlined className="" />
               </div>
               <span className="font-medium">Summary Report</span>
             </div>
-            <p className="text-sm text-gray-500">Key metrics and KPIs in summary format</p>
+            <p className=" ">Key metrics and KPIs in summary format</p>
           </Card>
         </div>
 
-        <div className="mb-4">
-          <h2 className="text-lg font-semibold text-gray-900 mb-4">My Reports</h2>
+        <div className="">
+          <h2 className=" font-semibold  ">My Reports</h2>
         </div>
 
         <div className="overflow-x-auto">
@@ -109,7 +109,7 @@ export default function ReportBuilderPage() {
               title: 'Actions',
               key: 'actions',
               render: () => (
-                <div className="flex gap-2 flex-wrap">
+                <div className="  -wrap">
                   <Button size="small" icon={<DownloadOutlined />}>Export</Button>
                   <Button size="small" danger>Delete</Button>
                 </div>
@@ -143,7 +143,7 @@ export default function ReportBuilderPage() {
             </Select>
           </Form.Item>
           <Form.Item label="Date Range">
-            <RangePicker style={{ width: '100%' }} />
+            <RangePicker className="w-full" />
           </Form.Item>
         </Form>
       </Modal>

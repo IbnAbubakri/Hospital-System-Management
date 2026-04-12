@@ -156,7 +156,7 @@ export default function TimesheetsPage() {
         <Space>
           <div>
             <div className="font-medium">{name}</div>
-            <Text type="secondary" className="text-xs">{record.staffId}</Text>
+            <Text type="secondary" className="">{record.staffId}</Text>
           </div>
         </Space>
       ),
@@ -172,8 +172,8 @@ export default function TimesheetsPage() {
       key: 'weekPeriod',
       render: (_: any, record: TimesheetEntry) => (
         <div>
-          <div className="text-sm">{dayjs(record.weekStart).format('MMM DD')}</div>
-          <Text type="secondary" className="text-xs">to {dayjs(record.weekEnd).format('MMM DD')}</Text>
+          <div className="">{dayjs(record.weekStart).format('MMM DD')}</div>
+          <Text type="secondary" className="">to {dayjs(record.weekEnd).format('MMM DD')}</Text>
         </div>
       ),
     },
@@ -187,14 +187,14 @@ export default function TimesheetsPage() {
       title: 'Overtime',
       dataIndex: 'overtimeHours',
       key: 'overtimeHours',
-      render: (hours: number) => <span style={{ color: '#faad14' }}>{hours}h</span>,
+      render: (hours: number) => <span className="text-yellow-500">{hours}h</span>,
     },
     {
       title: 'Total Hours',
       dataIndex: 'totalHours',
       key: 'totalHours',
       render: (hours: number) => (
-        <span className="font-medium" style={{ color: hours > 40 ? '#3f8600' : '#1890ff' }}>{hours}h</span>
+        <span className={`font-medium ${hours > 40 ? '' : ''}`}>{hours}h</span>
       ),
     },
     {
@@ -254,10 +254,10 @@ export default function TimesheetsPage() {
   };
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '1400px', margin: '0 auto' }}>
+    <div className="  sm: sm: lg: lg: max-w-7xl mx-auto">
       <Title level={3}>Timesheet Management</Title>
 
-      <Row gutter={[24, 24]} style={{ marginBottom: '24px' }}>
+      <Row gutter={[24, 24]} className="">
         <Col xs={24} sm={12} md={4}>
           <Card>
             <Statistic title="Total Timesheets" value={stats.total} prefix={<ClockCircleOutlined />} />
@@ -270,12 +270,12 @@ export default function TimesheetsPage() {
         </Col>
         <Col xs={24} sm={12} md={4}>
           <Card>
-            <Statistic title="Submitted" value={stats.submitted} valueStyle={{ color: '#faad14' }} />
+            <Statistic title="Submitted" value={stats.submitted} valueStyle={{ color: '#EAB308' }} />
           </Card>
         </Col>
         <Col xs={24} sm={12} md={4}>
           <Card>
-            <Statistic title="Approved" value={stats.approved} valueStyle={{ color: '#52c41a' }} />
+            <Statistic title="Approved" value={stats.approved} valueStyle={{ color: '#10B981' }} />
           </Card>
         </Col>
         <Col xs={24} sm={12} md={4}>
@@ -291,7 +291,7 @@ export default function TimesheetsPage() {
       </Row>
 
       <Card>
-        <Space style={{ marginBottom: 16 }}>
+        <Space className="">
           <Select
             placeholder="Status"
             value={statusFilter}
@@ -339,7 +339,7 @@ export default function TimesheetsPage() {
       >
         {selectedTimesheet && (
           <div>
-            <Descriptions bordered column={2} size="small" style={{ marginBottom: 16 }}>
+            <Descriptions bordered column={2} size="small" className="">
               <Descriptions.Item label="Staff Name">{selectedTimesheet.staffName}</Descriptions.Item>
               <Descriptions.Item label="Staff ID">{selectedTimesheet.staffId}</Descriptions.Item>
               <Descriptions.Item label="Department">{selectedTimesheet.department}</Descriptions.Item>
@@ -358,7 +358,7 @@ export default function TimesheetsPage() {
               <Descriptions.Item label="Regular Hours">{selectedTimesheet.regularHours}h</Descriptions.Item>
               <Descriptions.Item label="Overtime Hours">{selectedTimesheet.overtimeHours}h</Descriptions.Item>
               <Descriptions.Item label="Total Hours">
-                <span style={{ fontWeight: 'bold', color: '#1890ff' }}>{selectedTimesheet.totalHours}h</span>
+                <span className="font-bold ">{selectedTimesheet.totalHours}h</span>
               </Descriptions.Item>
               {selectedTimesheet.submittedOn && (
                 <Descriptions.Item label="Submitted On">
@@ -403,7 +403,7 @@ export default function TimesheetsPage() {
                   '100%': '#87d068',
                 }}
               />
-              <div className="text-xs text-gray-500 mt-1">
+              <div className="  ">
                 Regular: {selectedTimesheet.regularHours}h | Overtime: {selectedTimesheet.overtimeHours}h
               </div>
             </div>

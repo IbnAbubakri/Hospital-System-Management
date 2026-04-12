@@ -69,10 +69,10 @@ export default function PortalBillsPage() {
   const totalPaid = invoices.filter((i: any) => i.status === 'paid').reduce((sum, i) => sum + i.amount, 0);
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '1200px', margin: '0 auto' }}>
-      <h2 className="text-2xl font-bold mb-4">Bills & Payments</h2>
+    <div className="  sm: sm: lg: lg:" style={{ maxWidth: '1200px', margin: '0 auto' }}>
+      <h2 className="text-2xl font-bold ">Bills & Payments</h2>
 
-      <Row gutter={16} className="mb-4">
+      <Row gutter={16} className="">
         <Col span={12}>
           <Card>
             <Statistic

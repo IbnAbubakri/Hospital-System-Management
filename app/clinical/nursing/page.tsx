@@ -100,12 +100,12 @@ export default function NursingPage() {
   if (!hasPermission('clinical:nursing:view')) {
     return (
       <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)', padding: '24px' }}>
-        <div style={{ background: 'white', borderRadius: '12px', padding: '24px', border: '1px solid #E2E8F0' }}>
-          <div className="flex items-center gap-3 p-4" style={{ background: '#FEF2F2', borderRadius: '8px', border: '1px solid #FECACA' }}>
+        <div style={{ backgroundColor: '#ffffff', borderRadius: '12px', padding: '24px', border: '1px solid #E2E8F0' }}>
+          <div className="   " style={{ background: '#FEF2F2', borderRadius: '8px', border: '1px solid #FECACA' }}>
             <UserOutlined style={{ color: '#DC2626', fontSize: '20px' }} />
             <div>
-              <h3 className="font-semibold text-red-900">Access Denied</h3>
-              <p className="text-sm text-red-700">You don&apos;tt have permission to access nursing documentation. This area is restricted to clinical staff.</p>
+              <h3 className="font-semibold ">Access Denied</h3>
+              <p className=" ">You don&apos;tt have permission to access nursing documentation. This area is restricted to clinical staff.</p>
             </div>
           </div>
         </div>
@@ -128,15 +128,15 @@ export default function NursingPage() {
       title: 'Date/Time',
       dataIndex: 'date',
       key: 'date',
-      render: (date: string) => <span className="text-sm">{date}</span>,
+      render: (date: string) => <span className="">{date}</span>,
     },
     {
       title: 'Patient',
       key: 'patient',
       render: (_: any, record: NursingNote) => (
         <div>
-          <div className="font-medium text-gray-900">{record.patient}</div>
-          <div className="text-xs text-gray-500">{record.mrn}</div>
+          <div className="font-medium ">{record.patient}</div>
+          <div className=" ">{record.mrn}</div>
         </div>
       ),
     },
@@ -146,7 +146,7 @@ export default function NursingPage() {
       dataIndex: 'note',
       key: 'note',
       ellipsis: true,
-      render: (note: string) => <span className="text-sm text-gray-600">{note}</span>,
+      render: (note: string) => <span className=" ">{note}</span>,
     },
     {
       title: 'Status',
@@ -185,7 +185,7 @@ export default function NursingPage() {
       }
     >
       {/* Statistics Cards */}
-      <div className="grid grid-cols-4 gap-5 mb-6">
+      <div className="grid grid-cols-4  ">
         <StatCard
           label="Total Notes"
           value={stats.total}
@@ -221,7 +221,7 @@ export default function NursingPage() {
       </div>
 
       {/* Nursing Notes Section */}
-      <div style={{ background: 'white', borderRadius: '12px', padding: '24px', border: '1px solid #E2E8F0' }}>
+      <div style={{ backgroundColor: '#ffffff', borderRadius: '12px', padding: '24px', border: '1px solid #E2E8F0' }}>
         <SearchFilterBar
           searchPlaceholder="Search notes by patient, ID, or nurse..."
           searchValue={searchText}
@@ -251,7 +251,7 @@ export default function NursingPage() {
       {/* Add Nursing Note Modal */}
       <Modal
         title={
-          <div className="flex items-center gap-2">
+          <div className="  ">
             <FileTextOutlined style={{ color: '#3B82F6' }} />
             <span>Add Nursing Note</span>
           </div>

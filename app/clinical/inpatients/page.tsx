@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { Space, Alert } from 'antd';
-import { EyeOutlined, UserAddOutlined, MedicineBoxOutlined, HomeOutlined } from '@ant-design/icons';
+import { EyeOutlined, UserOutlined, MedicineBoxOutlined, HomeOutlined } from '@ant-design/icons';
 import { useRouter } from 'next/navigation';
 import { PageShell, StatCard, ModernTable, SearchFilterBar, StatusTag, GradientButton } from '@/components/design-system';
 import { mockInpatients } from '@/lib/mockData';
@@ -32,13 +32,13 @@ export default function InpatientsPage() {
   // CRITICAL SECURITY: Restrict access to clinical staff
   if (!hasPermission('clinical:inpatients:view')) {
     return (
-      <div className="min-h-screen px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)' }}>
+      <div className="min-h-screen   sm: sm: lg: lg:" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)' }}>
         <Alert
           title="Access Denied"
           description="You don&apos;tt have permission to access inpatient management. This area is restricted to clinical staff."
           type="error"
           showIcon
-          className="mt-6"
+          className=""
           style={{ borderRadius: '12px' }}
         />
       </div>
@@ -62,7 +62,7 @@ export default function InpatientsPage() {
       render: (name: string, record: any) => (
         <a
           onClick={() => router.push(`/patients/${record.patientId}`)}
-          className="text-blue-600 font-medium hover:text-blue-700"
+          className=" font-medium hover:"
         >
           {name}
         </a>
@@ -74,7 +74,7 @@ export default function InpatientsPage() {
       render: (_: unknown, record: any) => (
         <div>
           <div className="font-medium">{record.ward}</div>
-          <div className="text-sm text-gray-500">Bed {record.bed}</div>
+          <div className=" ">Bed {record.bed}</div>
         </div>
       ),
     },
@@ -130,13 +130,13 @@ export default function InpatientsPage() {
       title="Inpatient Management"
       subtitle="Manage inpatient admissions, bed assignments, and ward status"
       action={
-        <GradientButton icon={<UserAddOutlined />} onClick={() => router.push('/clinical/inpatients/admission')}>
+        <GradientButton icon={<UserOutlined />} onClick={() => router.push('/clinical/inpatients/admission')}>
           New Admission
         </GradientButton>
       }
     >
       {/* Statistics Cards */}
-      <div className="grid grid-cols-4 gap-5 mb-6">
+      <div className="grid grid-cols-4  ">
         <StatCard
           label="Total Inpatients"
           value={stats.total}
@@ -173,12 +173,12 @@ export default function InpatientsPage() {
       </div>
 
       {/* Bed Status by Ward */}
-      <div style={{ background: 'white', borderRadius: '12px', padding: '24px', border: '1px solid #E2E8F0', marginBottom: '24px' }}>
-        <div className="flex items-center gap-2 mb-4">
+      <div style={{ background: '#ffffff', borderRadius: '12px', padding: '24px', border: '1px solid #E5E7EB', marginBottom: '24px' }}>
+        <div className="   ">
           <HomeOutlined style={{ color: '#6366F1', fontSize: '20px' }} />
-          <h2 className="text-lg font-semibold text-gray-900">Bed Status by Ward</h2>
+          <h2 className=" font-semibold ">Bed Status by Ward</h2>
         </div>
-        <div className="grid grid-cols-4 gap-4">
+        <div className="grid grid-cols-4 ">
           {bedData.map((ward) => (
             <div
               key={ward.ward}
@@ -190,19 +190,19 @@ export default function InpatientsPage() {
               }}
             >
               <div className="text-center">
-                <h3 className="font-semibold text-gray-900 mb-3">{ward.ward}</h3>
-                <div className="flex justify-around text-center">
+                <h3 className="font-semibold  ">{ward.ward}</h3>
+                <div className=" justify-around text-center">
                   <div>
-                    <div className="text-2xl font-bold text-green-600">{ward.available}</div>
-                    <div className="text-xs text-gray-500">Available</div>
+                    <div className="text-2xl font-bold ">{ward.available}</div>
+                    <div className=" ">Available</div>
                   </div>
                   <div>
-                    <div className="text-2xl font-bold text-red-600">{ward.occupied}</div>
-                    <div className="text-xs text-gray-500">Occupied</div>
+                    <div className="text-2xl font-bold ">{ward.occupied}</div>
+                    <div className=" ">Occupied</div>
                   </div>
                   <div>
-                    <div className="text-2xl font-bold text-gray-900">{ward.total}</div>
-                    <div className="text-xs text-gray-500">Total</div>
+                    <div className="text-2xl font-bold ">{ward.total}</div>
+                    <div className=" ">Total</div>
                   </div>
                 </div>
               </div>
@@ -212,7 +212,7 @@ export default function InpatientsPage() {
       </div>
 
       {/* Current Inpatients */}
-      <div style={{ background: 'white', borderRadius: '12px', padding: '24px', border: '1px solid #E2E8F0' }}>
+      <div style={{ background: '#ffffff', borderRadius: '12px', padding: '24px', border: '1px solid #E5E7EB' }}>
         <SearchFilterBar
           searchPlaceholder="Search by patient, ward, or bed..."
           searchValue={searchText}

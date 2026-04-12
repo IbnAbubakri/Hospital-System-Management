@@ -32,8 +32,8 @@ export default function FeesPage() {
   // CRITICAL SECURITY: Restrict access to administrators only
   if (!hasPermission('billing:fees:view')) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-blue-50 to-slate-50 px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8">
-        <Card className="mt-6 rounded-xl">
+      <div className="min-h-screen bg-gradient-to-b from-blue-50 to-slate-50   sm: sm: lg: lg:">
+        <Card className=" -xl">
           <Alert
             title="Access Denied"
             description="You don&apos;tt have permission to access fee schedule management. This area is restricted to billing staff and administrators only."
@@ -173,16 +173,7 @@ export default function FeesPage() {
       dataIndex: 'code',
       key: 'code',
       render: (code: string) => (
-        <span
-          style={{
-            padding: '4px 10px',
-            borderRadius: '6px',
-            fontSize: '13px',
-            fontWeight: 500,
-            background: '#DBEAFE',
-            color: '#1E40AF',
-          }}
-        >
+        <span className=".5  -md  font-medium bg-blue-100 ">
           {code}
         </span>
       )},
@@ -191,16 +182,7 @@ export default function FeesPage() {
       dataIndex: 'category',
       key: 'category',
       render: (category: string) => (
-        <span
-          style={{
-            padding: '4px 10px',
-            borderRadius: '6px',
-            fontSize: '13px',
-            fontWeight: 500,
-            background: '#F1F5F9',
-            color: '#475569',
-          }}
-        >
+        <span className=".5  -md  font-medium bg-slate-100 text-slate-600">
           {category}
         </span>
       )},
@@ -214,7 +196,7 @@ export default function FeesPage() {
       dataIndex: 'amount',
       key: 'amount',
       render: (amount: number) => (
-        <span className="font-semibold text-green-600">₦{amount.toLocaleString()}</span>
+        <span className="font-semibold ">₦{amount.toLocaleString()}</span>
       ),
       sorter: (a: FeeSchedule, b: FeeSchedule) => a.amount - b.amount},
     {
@@ -252,7 +234,7 @@ export default function FeesPage() {
       }
     >
       {/* Statistics Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-6">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4  ">
         <StatCard
           label="Total Fees"
           value={stats.totalFees}
@@ -289,7 +271,7 @@ export default function FeesPage() {
       </div>
 
       {/* Fee Schedule List */}
-      <div className="bg-white rounded-xl p-4 sm:p-6 lg:p-6 border border-slate-200">
+      <div className="bg-white -xl  sm: lg: border border-slate-200">
         <SearchFilterBar
           searchPlaceholder="Search fees by code or service..."
           searchValue={searchText}
@@ -325,8 +307,8 @@ export default function FeesPage() {
       {/* Add/Edit Fee Modal */}
       <Modal
         title={
-          <div className="flex items-center gap-2">
-            <PlusOutlined style={{ color: '#3B82F6' }} />
+          <div className="  ">
+            <PlusOutlined className="" />
             <span>{editingFee ? 'Edit Fee' : 'Add New Fee'}</span>
           </div>
         }
@@ -339,7 +321,7 @@ export default function FeesPage() {
         }}
         width={600}
       >
-        <Form form={form} layout="vertical" onFinish={handleSubmit} className="mt-6">
+        <Form form={form} layout="vertical" onFinish={handleSubmit} className="">
           <Form.Item name="category" label="Category" rules={[{ required: true }]}>
             <Select placeholder="Select category">
               {categories.map((cat) => (
@@ -360,7 +342,7 @@ export default function FeesPage() {
             </Col>
             <Col span={12}>
               <Form.Item name="amount" label="Amount (₦)" rules={[{ required: true }]}>
-                <InputNumber placeholder="Enter amount" style={{ width: '100%' }} />
+                <InputNumber placeholder="Enter amount" className="w-full" />
               </Form.Item>
             </Col>
           </Row>

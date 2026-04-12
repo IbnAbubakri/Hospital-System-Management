@@ -128,7 +128,7 @@ export default function PrescriptionRenewPage() {
 
   return (
     <div style={{ padding: '24px', maxWidth: '1400px', margin: '0 auto' }}>
-      <div className="flex items-center justify-between mb-6">
+      <div className="   ">
         <Title level={3}>Prescription Renewals</Title>
       </div>
 
@@ -154,7 +154,7 @@ export default function PrescriptionRenewPage() {
       >
         {selectedPrescription && (
           <div>
-            <div className="mb-4 p-3 bg-gray-50 rounded">
+            <div className="  bg-gray-50 ">
               <p><strong>Patient:</strong> {selectedPrescription.patient} ({selectedPrescription.mrn})</p>
               <p><strong>Current Dosage:</strong> {selectedPrescription.dosage}</p>
               <p><strong>Original Prescriber:</strong> {selectedPrescription.prescribedBy}</p>

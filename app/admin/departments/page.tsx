@@ -75,7 +75,7 @@ export default function DepartmentsPage() {
   // CRITICAL SECURITY: Restrict access to administrators only
   if (!hasPermission('admin:departments:view')) {
     return (
-      <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)', padding: '16px' }}>
+      <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%) }' }}>
         <Alert
           title="Access Denied"
           description="You don&apos;tt have permission to access department management. This area is restricted to administrators only."
@@ -131,11 +131,11 @@ export default function DepartmentsPage() {
       title: 'Department',
       key: 'department',
       render: (_: unknown, record: Department) => (
-        <div className="flex items-center gap-3">
+        <div className="  ">
           <Avatar size={40} icon={<BuildOutlined />} style={{ backgroundColor: '#3B82F6' }} />
           <div>
-            <div className="font-medium text-gray-900">{record.name}</div>
-            <div className="text-xs text-gray-500">{record.code}</div>
+            <div className="font-medium ">{record.name}</div>
+            <div className=" ">{record.code}</div>
           </div>
         </div>
       ),
@@ -150,9 +150,9 @@ export default function DepartmentsPage() {
         <span
           style={{
             padding: '4px 10px',
-            borderRadius: '6px',
-            fontSize: '13px',
-            fontWeight: 500,
+
+
+
             background: '#F1F5F9',
             color: '#475569',
           }}
@@ -200,7 +200,7 @@ export default function DepartmentsPage() {
       }
     >
       {/* Statistics Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 mb-6">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4  sm: ">
         <StatCard
           label="Total Departments"
           value={stats.total}
@@ -236,7 +236,7 @@ export default function DepartmentsPage() {
       </div>
 
       {/* Departments List Section */}
-      <div className="p-4 sm:p-6 overflow-x-auto" style={{ background: 'white', borderRadius: '12px', border: '1px solid #E2E8F0' }}>
+      <div className=" sm: overflow-x-auto" style={{ backgroundColor: '#ffffff', borderRadius: '12px', border: '1px solid #E2E8F0' }}>
         <SearchFilterBar
           searchPlaceholder="Search departments by name, code, or head..."
           searchValue={searchText}

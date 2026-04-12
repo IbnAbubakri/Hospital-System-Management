@@ -130,8 +130,8 @@ export default function AppointmentsPage() {
       key: 'patient',
       render: (_: any, record: Appointment) => (
         <div className="patient-name-cell">
-          <div className="font-medium text-gray-900">{record.patientName}</div>
-          <div className="text-xs text-gray-500">MRN: {record.patientId}</div>
+          <div className="font-medium ">{record.patientName}</div>
+          <div className=" ">MRN: {record.patientId}</div>
         </div>
       ),
       sorter: (a: Appointment, b: Appointment) =>
@@ -141,21 +141,21 @@ export default function AppointmentsPage() {
       title: 'Doctor',
       dataIndex: 'doctorName',
       key: 'doctorName',
-      render: (doctor: string) => <span className="text-sm">{doctor}</span>,
+      render: (doctor: string) => <span className="">{doctor}</span>,
     },
     {
       title: 'Department',
       dataIndex: 'department',
       key: 'department',
-      render: (dept: string) => <span className="text-sm">{dept}</span>,
+      render: (dept: string) => <span className="">{dept}</span>,
     },
     {
       title: 'Date & Time',
       key: 'dateTime',
       render: (_: any, record: Appointment) => (
-        <span className="text-sm">
+        <span className="">
           <div>{formatDate(record.date)}</div>
-          <div className="text-xs text-gray-500">{record.startTime} - {record.endTime}</div>
+          <div className=" ">{record.startTime} - {record.endTime}</div>
         </span>
       ),
       sorter: (a: Appointment, b: Appointment) => new Date(a.date).getTime() - new Date(b.date).getTime(),
@@ -179,7 +179,7 @@ export default function AppointmentsPage() {
               color: config.color,
               border: 'none',
               fontWeight: 500,
-              fontSize: '13px',
+              fontSize: '14px',
               padding: '3px 10px',
               borderRadius: '6px',
             }}
@@ -195,7 +195,7 @@ export default function AppointmentsPage() {
       key: 'status',
       render: (status: string) => {
         const config: Record<string, { color: string; bg: string; text: string }> = {
-          scheduled: { color: '#6B7280', bg: '#F3F4F6', text: 'Scheduled' },
+          scheduled: { color: '#64748B', bg: '#F3F4F6', text: 'Scheduled' },
           confirmed: { color: '#10B981', bg: '#D1FAE5', text: 'Confirmed' },
           in_progress: { color: '#F59E0B', bg: '#FEF3C7', text: 'In Progress' },
           completed: { color: '#3B82F6', bg: '#DBEAFE', text: 'Completed' },
@@ -211,7 +211,7 @@ export default function AppointmentsPage() {
               color,
               border: 'none',
               fontWeight: 500,
-              fontSize: '13px',
+              fontSize: '14px',
               padding: '3px 10px',
               borderRadius: '6px',
             }}
@@ -224,7 +224,7 @@ export default function AppointmentsPage() {
   ];
 
   return (
-    <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)' }}>
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-slate-50">
       <style jsx global>{`
         @keyframes fadeInUp {
           from {
@@ -416,37 +416,15 @@ export default function AppointmentsPage() {
       `}</style>
 
       {/* Header Section */}
-      <div style={{
-        padding: '32px',
-        background: 'linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%)',
-        borderBottom: '1px solid #E2E8F0',
-        position: 'relative',
-        overflow: 'hidden'
-      }}>
+      <div className=" bg-gradient-to-br from-white to-slate-50 border-b border-slate-200 relative overflow-hidden">
         {/* Decorative background elements */}
-        <div style={{
-          position: 'absolute',
-          top: '-50px',
-          right: '-50px',
-          width: '200px',
-          height: '200px',
-          background: 'radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 70%)',
-          borderRadius: '50%',
-        }} />
-        <div style={{
-          position: 'absolute',
-          bottom: '-80px',
-          left: '100px',
-          width: '300px',
-          height: '300px',
-          background: 'radial-gradient(circle, rgba(16, 185, 129, 0.06) 0%, transparent 70%)',
-          borderRadius: '50%',
-        }} />
+        <div className="absolute -top-10 -right-10  h-[200px] bg-[radial-gradient(circle,rgba(59,130,246,0.08)_0%,transparent_70%)] -full" />
+        <div className="absolute -bottom-20 left-[100px]  h-[300px] bg-[radial-gradient(circle,rgba(16,185,129,0.06)_0%,transparent_70%)] -full" />
 
-        <div className="page-content" style={{ animationDelay: '0s', position: 'relative', zIndex: 1 }}>
-          <div className="flex items-center justify-between mb-8">
+        <div className="page-content relative z-10" style={{ animationDelay: '0s' }}>
+          <div className="   ">
             <div>
-              <div className="flex items-center gap-3 mb-1">
+              <div className="   ">
                 <div style={{
                   width: '4px',
                   height: '28px',
@@ -454,7 +432,7 @@ export default function AppointmentsPage() {
                   borderRadius: '2px'
                 }} />
                 <div>
-                  <h1 className="text-2xl font-semibold text-gray-900">
+                  <h1 className="text-2xl font-semibold ">
                     Appointments
                   </h1>
                   {user?.role === 'Doctor' && (
@@ -464,7 +442,7 @@ export default function AppointmentsPage() {
                   )}
                 </div>
               </div>
-              <p className="text-gray-500 text-sm" style={{ marginLeft: '7px' }}>
+              <p className=" " style={{ marginLeft: '7px' }}>
                 {user?.role === 'Administrator'
                   ? 'Manage all patient appointments and schedules'
                   : `View and manage your ${userAppointments.length} scheduled appointments`
@@ -477,27 +455,27 @@ export default function AppointmentsPage() {
                   background: departmentColors?.bg || 'linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%)',
                   borderRadius: '8px',
                   border: `1px solid ${departmentColors?.border || '#BFDBFE'}`,
-                  display: 'inline-flex',
+                  display: 'inline-',
                   alignItems: 'center',
                   gap: '8px'
                 }}>
                   <WarningOutlined style={{ color: departmentColors?.text || '#1D4ED8', fontSize: '14px' }} />
-                  <Text style={{ color: departmentColors?.text || '#1E40AF', fontSize: '13px', fontWeight: 500 }}>
+                  <Text style={{ color: departmentColors?.text || '#1E40AF', fontSize: '14px', fontWeight: 500 }}>
                     No upcoming appointments. Use the "New Appointment" button to schedule one.
                   </Text>
                 </div>
               )}
             </div>
-            <div className="flex items-center gap-3">
+            <div className="  ">
               <Button
                 icon={<CalendarOutlined />}
                 onClick={() => router.push('/patients/appointments/calendar')}
                 style={{
-                  height: '42px',
-                  borderRadius: '10px',
+                  height: '40px',
+                  borderRadius: '12px',
                   fontWeight: 600,
                   padding: '0 20px',
-                  border: '1px solid #E2E8F0',
+                  border: '1px solid #E5E7EB',
                 }}
               >
                 Calendar View
@@ -507,8 +485,8 @@ export default function AppointmentsPage() {
                 icon={<PlusOutlined />}
                 onClick={handleModalOpen}
                 style={{
-                  height: '42px',
-                  borderRadius: '10px',
+                  height: '40px',
+                  borderRadius: '12px',
                   fontWeight: 600,
                   padding: '0 20px',
                 }}
@@ -519,7 +497,7 @@ export default function AppointmentsPage() {
           </div>
 
           {/* Stats Cards */}
-          <div className="grid grid-cols-4 gap-5">
+          <div className="grid grid-cols-4 ">
             {[
               { label: 'Total Appointments', value: animatedStats.total, color: '#3B82F6', bg: '#EFF6FF', border: '#DBEAFE' },
               { label: "Today's", value: animatedStats.today, color: '#10B981', bg: '#D1FAE5', border: '#A7F3D0' },
@@ -537,7 +515,7 @@ export default function AppointmentsPage() {
                   cursor: 'default',
                 }}
               >
-                <div className="text-sm font-medium" style={{ color: '#64748B', marginBottom: '6px' }}>
+                <div className=" font-medium" style={{ color: '#64748B', marginBottom: '6px' }}>
                   {stat.label}
                 </div>
                 <div className="stat-number" style={{
@@ -555,18 +533,18 @@ export default function AppointmentsPage() {
       </div>
 
       {/* Content Section */}
-      <div className="px-8 py-6 page-content" style={{ animationDelay: '0.1s' }}>
+      <div className="  page-content" style={{ animationDelay: '0.1s' }}>
         {/* Search and Filter Bar */}
         <div
-          className="flex items-center gap-3 mb-6 p-4"
+          className="    "
           style={{
-            background: 'white',
+            background: '#ffffff',
             borderRadius: '12px',
-            border: '1px solid #E2E8F0',
+            border: '1px solid #E5E7EB',
             boxShadow: '0 1px 3px rgba(0, 0, 0, 0.05)',
           }}
         >
-          <div className="flex-1">
+          <div className="-1">
             <Search
               placeholder="Search appointments..."
               allowClear
@@ -600,7 +578,7 @@ export default function AppointmentsPage() {
               border: '1px solid #BFDBFE',
             }}
           >
-            <span className="text-sm font-medium" style={{ color: '#1D4ED8' }}>
+            <span className=" font-medium" style={{ color: '#1D4ED8' }}>
               {filteredAppointments.length} appointments
             </span>
           </div>
@@ -608,15 +586,15 @@ export default function AppointmentsPage() {
 
         {/* Table */}
         <div
-          style={{
-            background: 'white',
-            borderRadius: '12px',
-            border: '1px solid #E2E8F0',
-            overflow: 'hidden',
-            transition: 'all 0.3s ease',
-            boxShadow: '0 1px 3px rgba(0, 0, 0, 0.05)',
-          }}
-        >
+            style={{
+              background: '#ffffff',
+              borderRadius: '12px',
+              border: '1px solid #E5E7EB',
+              overflow: 'hidden',
+              transition: 'all 0.3s ease',
+              boxShadow: '0 1px 3px rgba(0, 0, 0, 0.05)',
+            }}
+          >
           <Table
             dataSource={filteredAppointments}
             columns={columns}

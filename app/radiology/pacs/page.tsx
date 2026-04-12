@@ -51,10 +51,10 @@ export default function RadiologyPACSPage() {
   const storagePercentage = (storageUsed / storageTotal) * 100;
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '1400px', margin: '0 auto' }}>
+    <div className="  sm: sm: lg: lg: max-w-7xl mx-auto">
       <Title level={3}>PACS (Picture Archiving & Communication System)</Title>
 
-      <Row gutter={[16, 16]} style={{ marginBottom: '24px' }}>
+      <Row gutter={[16, 16]} className="">
         <Col span={6}>
           <Card>
             <Statistic
@@ -79,7 +79,7 @@ export default function RadiologyPACSPage() {
             <Statistic
               title="Available"
               value={1980}
-              valueStyle={{ color: '#52c41a' }}
+              valueStyle={{ color: '#10B981' }}
             />
           </Card>
         </Col>

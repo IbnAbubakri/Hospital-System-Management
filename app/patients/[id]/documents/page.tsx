@@ -40,11 +40,11 @@ export default function PatientDocumentsPage() {
 
   if (!patient) {
     return (
-      <div style={{ padding: '32px', textAlign: 'center' }}>
+      <div className=" text-center">
         <Title level={3}>Access Denied</Title>
         <Text>Patient not found or you do not have permission to view this page.</Text>
         <br />
-        <Button type="primary" onClick={() => router.back()} style={{ marginTop: '16px' }}>
+          <Button type="primary" onClick={() => router.back()} className="">
           Go Back
         </Button>
       </div>
@@ -117,10 +117,10 @@ export default function PatientDocumentsPage() {
       key: 'name',
       render: (_: any, record: Document) => (
         <Space>
-          <FileOutlined style={{ fontSize: '20px', color: '#3B82F6' }} />
+          <FileOutlined className="text-xl " />
           <div>
             <div className="font-medium">{record.name}</div>
-            <Text type="secondary" className="text-xs">
+            <Text type="secondary" className="">
               {record.type}
             </Text>
           </div>
@@ -143,17 +143,17 @@ export default function PatientDocumentsPage() {
       title: 'Size',
       dataIndex: 'size',
       key: 'size',
-      render: (size: number) => <span className="text-sm">{formatFileSize(size)}</span>},
+      render: (size: number) => <span className="">{formatFileSize(size)}</span>},
     {
       title: 'Uploaded By',
       dataIndex: 'uploadedBy',
       key: 'uploadedBy',
-      render: (uploadedBy: string) => <span className="text-sm">{uploadedBy}</span>},
+      render: (uploadedBy: string) => <span className="">{uploadedBy}</span>},
     {
       title: 'Date',
       dataIndex: 'uploadDate',
       key: 'uploadDate',
-      render: (date: string) => <span className="text-sm">{date}</span>},
+      render: (date: string) => <span className="">{date}</span>},
     {
       title: 'Status',
       dataIndex: 'status',
@@ -187,7 +187,7 @@ export default function PatientDocumentsPage() {
   ];
 
   return (
-    <div style={{ padding: '24px', maxWidth: '1400px', margin: '0 auto' }}>
+    <div className=" max-w-7xl mx-auto">
       <PageHeader
         title={`${patient.firstName} ${patient.lastName} - Documents`}
         subtitle={`MRN: ${patient.mrn}`}
@@ -204,33 +204,33 @@ export default function PatientDocumentsPage() {
           <Card
             title={
               <Space>
-                <CloudUploadOutlined style={{ color: '#3B82F6' }} />
+                <CloudUploadOutlined className="" />
                 <span>Upload Documents</span>
               </Space>
             }
             style={{ height: '100%' }}
           >
-            <Dragger {...uploadProps} style={{ marginBottom: '16px' }}>
+            <Dragger {...uploadProps} className="">
               <p className="ant-upload-drag-icon">
-                <UploadOutlined style={{ fontSize: '48px', color: '#3B82F6' }} />
+                <UploadOutlined style={{ fontSize: 48 }} className="" />
               </p>
               <p className="ant-upload-text">Click or drag files to this area to upload</p>
               <p className="ant-upload-hint">Support for PDF, Images, DOCX files</p>
             </Dragger>
 
-            <div className="mb-4">
-              <Text type="secondary" className="text-sm">
+            <div className="">
+              <Text type="secondary" className="">
                 Supported file types: PDF, JPG, PNG, DOCX
               </Text>
               <br />
-              <Text type="secondary" className="text-sm">
+              <Text type="secondary" className="">
                 Maximum file size: 10 MB
               </Text>
             </div>
 
-            <div className="space-y-2 mb-4">
+            <div className="space-y-2 ">
               <Text strong>Document Categories:</Text>
-              <div className="flex flex-wrap gap-2">
+              <div className=" -wrap ">
                 {['Medical Report', 'Lab Result', 'Insurance', 'ID Proof', 'Other'].map((cat) => (
                   <Tag key={cat}>{cat}</Tag>
                 ))}
@@ -241,7 +241,7 @@ export default function PatientDocumentsPage() {
               <Progress
                 percent={uploading ? 50 : 100}
                 status={uploading ? 'active' : 'success'}
-                className="mb-3"
+                className=""
               />
             )}
 
@@ -263,7 +263,7 @@ export default function PatientDocumentsPage() {
           <Card
             title={
               <Space>
-                <FileOutlined style={{ color: '#10B981' }} />
+                <FileOutlined className="" />
                 <span>Document Repository</span>
                 <Tag color="blue">{documents.length} documents</Tag>
               </Space>
@@ -281,7 +281,7 @@ export default function PatientDocumentsPage() {
       </Row>
 
       {/* Storage Usage */}
-      <Card style={{ marginTop: '24px' }}>
+      <Card className="">
         <Title level={5}>Storage Usage</Title>
         <Progress
           percent={35}
@@ -289,7 +289,7 @@ export default function PatientDocumentsPage() {
             '0%': '#108ee9',
             '100%': '#87d068'}}
         />
-        <div className="flex justify-between text-sm text-gray-500 mt-2">
+        <div className="    ">
           <span>3.5 MB used of 10 MB</span>
           <span>35%</span>
         </div>

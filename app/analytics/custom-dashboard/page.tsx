@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Card, Typography, Row, Col, Table, Button, Tag, Space, Modal, Form, Input, Select, App } from 'antd';
-import { PlusOutlined, SettingOutlined, TeamOutlined, DollarOutlined, BedOutlined, InboxOutlined, StarOutlined, ExperimentOutlined, BarChartOutlined, SwapOutlined, RiseOutlined, CreditCardOutlined, HomeOutlined } from '@ant-design/icons';
+import { PlusOutlined, SettingOutlined, TeamOutlined, DollarOutlined, ApartmentOutlined, InboxOutlined, StarOutlined, ExperimentOutlined, BarChartOutlined, SwapOutlined, RiseOutlined, CreditCardOutlined, HomeOutlined } from '@ant-design/icons';
 
 const { Title } = Typography;
 
@@ -21,7 +21,7 @@ export default function CustomDashboardPage() {
   const availableWidgets = [
     { id: 'patientStats', name: 'Patient Statistics', category: 'Clinical', icon: <TeamOutlined /> },
     { id: 'revenue', name: 'Revenue Tracker', category: 'Financial', icon: <DollarOutlined /> },
-    { id: 'occupancy', name: 'Bed Occupancy', category: 'Operations', icon: <BedOutlined /> },
+    { id: 'occupancy', name: 'Bed Occupancy', category: 'Operations', icon: <ApartmentOutlined /> },
     { id: 'admissions', name: 'Admissions Rate', category: 'Clinical', icon: <InboxOutlined /> },
     { id: 'quality', name: 'Quality Metrics', category: 'Quality', icon: <StarOutlined /> },
     { id: 'expenses', name: 'Operating Expenses', category: 'Financial', icon: <ExperimentOutlined /> },
@@ -60,8 +60,8 @@ export default function CustomDashboardPage() {
   };
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '1400px', margin: '0 auto' }}>
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+    <div className="  sm: sm: lg: lg:" style={{ maxWidth: '1400px', margin: '0 auto' }}>
+      <div className=" -col sm:-row items-start sm:   ">
         <Title level={3}>Custom Dashboards</Title>
         <Button type="primary" icon={<PlusOutlined />} onClick={() => setIsModalVisible(true)}>
           Create Dashboard
@@ -72,16 +72,16 @@ export default function CustomDashboardPage() {
         <Col span={6}>
           <Card>
             <div className="text-center">
-              <div className="text-3xl font-bold text-blue-600">{savedDashboards.length}</div>
-              <div className="text-gray-500">Saved Dashboards</div>
+              <div className="text-3xl font-bold ">{savedDashboards.length}</div>
+              <div className="">Saved Dashboards</div>
             </div>
           </Card>
         </Col>
         <Col span={6}>
           <Card>
             <div className="text-center">
-              <div className="text-3xl font-bold text-green-600">{savedDashboards.reduce((sum, d) => sum + d.views, 0)}</div>
-              <div className="text-gray-500">Total Views</div>
+              <div className="text-3xl font-bold ">{savedDashboards.reduce((sum, d) => sum + d.views, 0)}</div>
+              <div className="">Total Views</div>
             </div>
           </Card>
         </Col>
@@ -89,15 +89,15 @@ export default function CustomDashboardPage() {
           <Card>
             <div className="text-center">
               <div className="text-3xl font-bold text-purple-600">{availableWidgets.length}</div>
-              <div className="text-gray-500">Available Widgets</div>
+              <div className="">Available Widgets</div>
             </div>
           </Card>
         </Col>
         <Col span={6}>
           <Card>
             <div className="text-center">
-              <div className="text-3xl font-bold text-orange-600">3</div>
-              <div className="text-gray-500">Widget Categories</div>
+              <div className="text-3xl font-bold ">3</div>
+              <div className="">Widget Categories</div>
             </div>
           </Card>
         </Col>
@@ -112,7 +112,7 @@ export default function CustomDashboardPage() {
           {availableWidgets.map((widget) => (
             <Col span={6} key={widget.id}>
               <Card size="small" hoverable style={{ cursor: 'pointer' }}>
-                <div className="flex items-center gap-2 mb-2">
+                <div className="   ">
                   <span className="text-xl">{widget.icon}</span>
                   <span className="font-medium">{widget.name}</span>
                 </div>

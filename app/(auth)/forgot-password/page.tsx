@@ -23,25 +23,25 @@ export default function ForgotPasswordPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center p-4">
-      <div className="w-full max-w-md">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100    ">
+      <div className="w-full max-w">
         {/* Back Button */}
         <Button
           type="text"
           icon={<ArrowLeftOutlined />}
           onClick={() => router.push('/login')}
-          className="mb-4"
+          className=""
         >
           Back to Login
         </Button>
 
         {/* Card */}
         <Card className="shadow-xl">
-          <div className="text-center mb-6">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-4">
+          <div className="text-center ">
+            <div className="inline-     bg-blue-100 -full ">
               <MailOutlined className="text-3xl text-[#0077B6]" />
             </div>
-            <Title level={3} className="!mb-2">
+            <Title level={3} className="!">
               Forgot Password?
             </Title>
             <Text type="secondary">
@@ -56,7 +56,7 @@ export default function ForgotPasswordPage() {
               description="We've sent a password reset link to your email address. Please check your inbox."
               type="success"
               showIcon
-              className="mb-4"
+              className=""
             />
           ) : (
             <Form
@@ -73,7 +73,7 @@ export default function ForgotPasswordPage() {
                 ]}
               >
                 <Input
-                  prefix={<MailOutlined className="text-gray-400" />}
+                  prefix={<MailOutlined className="" />}
                   placeholder="Email address"
                 />
               </Form.Item>
@@ -92,7 +92,7 @@ export default function ForgotPasswordPage() {
             </Form>
           )}
 
-          <div className="text-center mt-4">
+          <div className="text-center ">
             <Link href="/login" className="text-[#0077B6]">
               Back to Sign In
             </Link>

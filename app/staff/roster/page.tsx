@@ -105,11 +105,11 @@ export default function RosterPage() {
       title: 'Employee',
       key: 'employee',
       render: (_: any, record: ShiftScheduleItem) => (
-        <div className="flex items-center gap-3">
+        <div className="  ">
           <Avatar size={32} icon={<UserOutlined />} />
           <div>
             <div className="font-medium">{record.employeeName}</div>
-            <div className="text-xs text-gray-500">{record.department}</div>
+            <div className=" ">{record.department}</div>
           </div>
         </div>
       ),
@@ -122,8 +122,8 @@ export default function RosterPage() {
       key: 'check',
       render: (_: any, record: ShiftScheduleItem) => (
         <div>
-          <div className="text-sm">In: {record.checkIn || '—'}</div>
-          <div className="text-xs text-gray-500">Out: {record.checkOut || '—'}</div>
+          <div className="">In: {record.checkIn || '—'}</div>
+          <div className=" ">Out: {record.checkOut || '—'}</div>
         </div>
       ),
     },
@@ -140,8 +140,8 @@ export default function RosterPage() {
       render: (status: string) => {
         const config = getStatusConfig(status);
         return (
-          <div className="flex items-center gap-2">
-            {status === 'present' && <CheckCircleOutlined style={{ color: '#10B981' }} />}
+          <div className="  ">
+            {status === 'present' && <CheckCircleOutlined className="" />}
             <Tag style={{ backgroundColor: config.bg, color: config.color, border: 'none', fontWeight: 500 }}>{config.text}</Tag>
           </div>
         );
@@ -150,20 +150,20 @@ export default function RosterPage() {
   ];
 
   return (
-    <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)', padding: '16px' }}>
-      <div style={{ background: 'white', borderRadius: '12px', padding: '16px', border: '1px solid #E2E8F0' }}>
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+    <div className="min-h-screen  bg-gradient-to-b from-sky-50 to-slate-50">
+      <div className="bg-white -xl  border border-slate-200">
+        <div className=" -col sm:-row items-start sm:   ">
           <div>
-            <h1 className="text-2xl font-semibold text-gray-900 mb-1 flex items-center gap-2">
-              <ClockCircleOutlined style={{ color: '#8B5CF6' }} />
+            <h1 className="text-2xl font-semibold     ">
+              <ClockCircleOutlined className="" />
               Staff Roster & Scheduling
             </h1>
-            <p className="text-gray-500 text-sm">Manage staff shifts and duty schedules</p>
+            <p className=" ">Manage staff shifts and duty schedules</p>
           </div>
           <Button type="primary">Generate Roster</Button>
         </div>
 
-        <Row gutter={[24, 24]} className="mb-6">
+        <Row gutter={[24, 24]} className="">
           <Col span={6}>
             <Card>
               <Statistic
@@ -202,7 +202,7 @@ export default function RosterPage() {
           </Col>
         </Row>
 
-        <div className="flex items-center gap-3 mb-6">
+        <div className="   ">
           <Input
             placeholder="Search employees..."
             value={searchText}

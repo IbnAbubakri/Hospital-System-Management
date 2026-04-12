@@ -37,7 +37,7 @@ export default function DiseaseTrendsPage() {
       dataIndex: 'percentage',
       key: 'percentage',
       render: (pct: number) => (
-        <span className={pct > 0 ? 'text-red-600' : pct < 0 ? 'text-green-600' : ''}>
+        <span className={pct > 0 ? '' : pct < 0 ? '' : ''}>
           {pct > 0 ? '+' : ''}{pct}%
         </span>
       ),
@@ -56,23 +56,23 @@ export default function DiseaseTrendsPage() {
   ];
 
   return (
-    <div style={{ padding: '24px', maxWidth: '1200px', margin: '0 auto' }} className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8">
+    <div className="  sm: sm: lg: lg: max-w-6xl mx-auto">
       <Title level={3}>Disease Trends & Epidemiology</Title>
 
-      <Card title="Health Alert" className="p-4 sm:p-6">
+      <Card title="Health Alert" className=" sm:">
         <Space orientation="vertical" size="middle">
-          <div className="flex items-center gap-3">
-            <WarningOutlined style={{ color: '#F59E0B', fontSize: '20px' }} />
+          <div className="  ">
+            <WarningOutlined className="color: '#F59E0B' text-xl" />
             <Text><strong>Malaria cases increasing by 15%</strong> - Additional resources allocated to General Medicine</Text>
           </div>
-          <div className="flex items-center gap-3">
-            <WarningOutlined style={{ color: '#EF4444', fontSize: '20px' }} />
+          <div className="  ">
+            <WarningOutlined className="color: '#EF4444' text-xl" />
             <Text><strong>Hypertension cases at 189</strong> - High risk condition requiring monitoring</Text>
           </div>
         </Space>
       </Card>
 
-      <Card title="Monthly Disease Statistics" style={{ marginTop: '24px' }} className="p-4 sm:p-6">
+      <Card title="Monthly Disease Statistics" className="  sm:">
         <div className="overflow-x-auto">
           <Table
             dataSource={trends}

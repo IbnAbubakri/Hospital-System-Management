@@ -111,7 +111,7 @@ export default function QualityIncidentsPage() {
 
   return (
     <div style={{ padding: '24px', maxWidth: '1400px', margin: '0 auto' }}>
-      <div className="flex items-center justify-between mb-6">
+      <div className="   ">
         <Title level={3}>Incident Reporting</Title>
         <Button type="primary" icon={<PlusOutlined />} onClick={() => setIsModalVisible(true)}>
           Report Incident
@@ -121,32 +121,32 @@ export default function QualityIncidentsPage() {
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px', marginBottom: '24px' }}>
         <Card>
           <div className="text-center">
-            <div className="text-3xl font-bold text-red-600">{openCount}</div>
-            <div className="text-gray-500">Open Incidents</div>
+            <div className="text-3xl font-bold ">{openCount}</div>
+            <div className="">Open Incidents</div>
           </div>
         </Card>
         <Card>
           <div className="text-center">
-            <div className="text-3xl font-bold text-orange-600">{reviewCount}</div>
-            <div className="text-gray-500">Under Review</div>
+            <div className="text-3xl font-bold ">{reviewCount}</div>
+            <div className="">Under Review</div>
           </div>
         </Card>
         <Card>
           <div className="text-center">
-            <div className="text-3xl font-bold text-green-600">{resolvedCount}</div>
-            <div className="text-gray-500">Resolved</div>
+            <div className="text-3xl font-bold ">{resolvedCount}</div>
+            <div className="">Resolved</div>
           </div>
         </Card>
         <Card>
           <div className="text-center">
-            <div className="text-3xl font-bold text-blue-600">{incidents.length}</div>
-            <div className="text-gray-500">Total Incidents</div>
+            <div className="text-3xl font-bold ">{incidents.length}</div>
+            <div className="">Total Incidents</div>
           </div>
         </Card>
       </div>
 
       <Card title="Incident Log">
-        <div className="mb-4">
+        <div className="">
           <Select
             value={statusFilter}
             onChange={setStatusFilter}

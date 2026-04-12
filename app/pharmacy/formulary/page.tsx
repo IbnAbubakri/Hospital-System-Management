@@ -40,7 +40,7 @@ export default function FormularyPage() {
       render: (stock: number, record: Drug) => (
         <div>
           <div>{stock} units</div>
-          <div className="text-xs text-gray-500">Reorder: {record.reorderLevel}</div>
+          <div className=" ">Reorder: {record.reorderLevel}</div>
         </div>
       ),
     },
@@ -68,16 +68,16 @@ export default function FormularyPage() {
 
   return (
     <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)', padding: '24px' }}>
-      <div style={{ background: 'white', borderRadius: '12px', padding: '24px', border: '1px solid #E2E8F0' }}>
-        <div className="flex items-center justify-between mb-6">
+      <div style={{ backgroundColor: '#ffffff', borderRadius: '12px', padding: '24px', border: '1px solid #E2E8F0' }}>
+        <div className="   ">
           <div>
-            <h1 className="text-2xl font-semibold text-gray-900 mb-1">Drug Formulary</h1>
-            <p className="text-gray-500 text-sm">Hospital drug catalog and inventory</p>
+            <h1 className="text-2xl font-semibold  ">Drug Formulary</h1>
+            <p className=" ">Hospital drug catalog and inventory</p>
           </div>
           <Button type="primary" icon={<PlusOutlined />}>Add Drug</Button>
         </div>
 
-        <div className="flex items-center gap-3 mb-6">
+        <div className="   ">
           <Input
             placeholder="Search drugs..."
             prefix={<SearchOutlined />}

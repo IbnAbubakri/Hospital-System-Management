@@ -119,12 +119,12 @@ export default function ClinicalDecisionSupportPage() {
             <Alert
               key={alert.id}
               title={
-                <div className="flex justify-between items-start">
+                <div className="  items-start">
                   <div>
                     <div className="font-semibold">{alert.title}</div>
-                    <div className="text-sm">{alert.patient} ({alert.mrn})</div>
+                    <div className="">{alert.patient} ({alert.mrn})</div>
                   </div>
-                  <div className="flex gap-2">
+                  <div className=" ">
                     <Tag color={alert.category === 'Patient Safety' ? 'red' : 'blue'}>{alert.category}</Tag>
                     <Tag color={alert.severity === 'Critical' ? 'error' : alert.severity === 'High' ? 'warning' : 'default'}>
                       {alert.severity}
@@ -161,8 +161,8 @@ export default function ClinicalDecisionSupportPage() {
                   description={
                     <div>
                       <div><strong>Guideline:</strong> {guideline.guideline}</div>
-                      <div className="text-sm text-gray-700 mt-1">{guideline.recommendation}</div>
-                      <div className="text-xs text-gray-500 mt-1">Source: {guideline.source} • Updated: {guideline.lastUpdated}</div>
+                      <div className="  ">{guideline.recommendation}</div>
+                      <div className="  ">Source: {guideline.source} • Updated: {guideline.lastUpdated}</div>
                     </div>
                   }
                 />
@@ -175,10 +175,10 @@ export default function ClinicalDecisionSupportPage() {
           <List
             dataSource={protocols}
             renderItem={(protocol) => (
-              <Card key={protocol.id} size="small" className="mb-3" style={{ backgroundColor: '#f0f7ff' }}>
-                <div className="font-semibold mb-2">{protocol.name}</div>
-                <div className="text-sm text-gray-600 mb-2"><strong>Trigger:</strong> {protocol.trigger}</div>
-                <div className="text-sm">
+              <Card key={protocol.id} size="small" className="" style={{ backgroundColor: '#f0f7ff' }}>
+                <div className="font-semibold ">{protocol.name}</div>
+                <div className="  "><strong>Trigger:</strong> {protocol.trigger}</div>
+                <div className="">
                   <strong>Actions:</strong>
                   <ul style={{ paddingLeft: '20px', margin: '4px 0 0 0' }}>
                     {protocol.actions.map((action, idx) => (

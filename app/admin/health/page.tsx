@@ -32,7 +32,7 @@ export default function HealthPage() {
   ];
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '1400px', margin: '0 auto' }}>
+    <div className="  sm: sm: lg: lg:" style={{ maxWidth: '1280px', margin: '0 auto' }}>
       <Title level={3}>System Health</Title>
 
       <Row gutter={[16, 16]} style={{ marginBottom: '24px' }}>
@@ -82,30 +82,30 @@ export default function HealthPage() {
         <Col xs={24} sm={24} md={12}>
           <Card title="System Resources">
             <Space direction="vertical" style={{ width: '100%' }} size="large">
-              <div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
-                  <span>CPU Usage</span>
+                <div>
+                  <div style={{ display: '', justifyContent: 'space-between', marginBottom: '8px' }}>
+                    <span>CPU Usage</span>
                   <span>{systemMetrics.cpu}%</span>
                 </div>
                 <Progress percent={systemMetrics.cpu} strokeColor={systemMetrics.cpu > 80 ? '#EF4444' : '#6366F1'} />
               </div>
-              <div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
-                  <span>Memory Usage</span>
+                <div>
+                  <div style={{ display: '', justifyContent: 'space-between', marginBottom: '8px' }}>
+                    <span>Memory Usage</span>
                   <span>{systemMetrics.memory}%</span>
                 </div>
                 <Progress percent={systemMetrics.memory} strokeColor={systemMetrics.memory > 80 ? '#EF4444' : '#6366F1'} />
               </div>
-              <div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
-                  <span>Disk Usage</span>
+                <div>
+                  <div style={{ display: '', justifyContent: 'space-between', marginBottom: '8px' }}>
+                    <span>Disk Usage</span>
                   <span>{systemMetrics.disk}%</span>
                 </div>
                 <Progress percent={systemMetrics.disk} strokeColor={systemMetrics.disk > 80 ? '#EF4444' : '#6366F1'} />
               </div>
-              <div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
-                  <span>Network Usage</span>
+                <div>
+                  <div style={{ display: '', justifyContent: 'space-between', marginBottom: '8px' }}>
+                    <span>Network Usage</span>
                   <span>{systemMetrics.network}%</span>
                 </div>
                 <Progress percent={systemMetrics.network} strokeColor={systemMetrics.network > 80 ? '#EF4444' : '#6366F1'} />
@@ -130,7 +130,7 @@ export default function HealthPage() {
                       )
                     }
                     title={
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <div style={{ display: '', justifyContent: 'space-between', alignItems: 'center' }}>
                         <span>{service.name}</span>
                         <Tag color={service.status === 'Healthy' ? 'success' : service.status === 'Warning' ? 'warning' : 'error'}>
                           {service.status}
@@ -138,7 +138,7 @@ export default function HealthPage() {
                       </div>
                     }
                     description={
-                      <div style={{ display: 'flex', gap: '16px', fontSize: '12px', color: '#6B7280' }}>
+                      <div style={{ display: '', gap: '16px', fontSize: '12px', color: '#6B7280' }}>
                         <span>Uptime: {service.uptime}</span>
                         <span>Response: {service.responseTime}</span>
                       </div>
@@ -160,13 +160,13 @@ export default function HealthPage() {
                 <List.Item>
                   <List.Item.Meta
                     title={
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <div style={{ display: '', justifyContent: 'space-between', alignItems: 'center' }}>
                         <span>{incident.issue}</span>
                         <Tag color="success">{incident.status}</Tag>
                       </div>
                     }
                     description={
-                      <div style={{ display: 'flex', gap: '16px', fontSize: '12px', color: '#6B7280' }}>
+                      <div style={{ display: '', gap: '16px', fontSize: '12px', color: '#6B7280' }}>
                         <span>{incident.time}</span>
                         <span>{incident.service}</span>
                         <span>Duration: {incident.duration}</span>

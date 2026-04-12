@@ -52,7 +52,7 @@ export default function EDTrackingPage() {
       render: (_: any, record: EmergencyPatient) => (
         <div>
           <div className="font-medium">{record.patientName}</div>
-          <div className="text-xs text-gray-500">{record.mrn}</div>
+          <div className=" ">{record.mrn}</div>
         </div>
       ),
     },
@@ -65,18 +65,11 @@ export default function EDTrackingPage() {
         const config = getTriageColor(level);
         return (
           <div
+            className="  -full    font-bold text-base"
             style={{
-              width: '40px',
-              height: '40px',
-              borderRadius: '50%',
               background: config.bg,
               border: `2px solid ${config.border}`,
               color: config.text,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontWeight: 'bold',
-              fontSize: '16px',
             }}
           >
             {level}
@@ -109,7 +102,7 @@ export default function EDTrackingPage() {
       key: 'status',
       render: (status: string) => {
         const config = getStatusConfig(status);
-        return <Tag style={{ backgroundColor: config.bg, color: config.color, border: 'none', fontWeight: 500 }}>{status.replace('_', ' ').toUpperCase()}</Tag>;
+        return <Tag className="border-none font-medium" style={{ backgroundColor: config.bg, color: config.color }}>{status.replace('_', ' ').toUpperCase()}</Tag>;
       },
     },
     {
@@ -127,41 +120,41 @@ export default function EDTrackingPage() {
   };
 
   return (
-    <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #FEF2F2 0%, #F8FAFC 100%)', padding: '16px' }}>
-      <div style={{ background: 'white', borderRadius: '12px', padding: '16px', border: '1px solid #E2E8F0' }}>
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+    <div className="min-h-screen bg-gradient-to-b from-red-50 to-slate-50 ">
+      <div className="bg-white -xl  border border-gray-200">
+        <div className=" -col sm:-row items-start sm:   ">
           <div>
-            <h1 className="text-2xl font-semibold text-gray-900 mb-1 flex items-center gap-2">
-              <WarningOutlined style={{ color: '#DC2626' }} />
+            <h1 className="text-2xl font-semibold     ">
+              <WarningOutlined className="" />
               ED Tracking Board
             </h1>
-            <p className="text-gray-500 text-sm">Real-time emergency department patient tracking</p>
+            <p className=" ">Real-time emergency department patient tracking</p>
           </div>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-          <div style={{ padding: '16px', background: '#FEF2F2', borderRadius: '10px', border: '2px solid #FECACA' }}>
-            <div className="text-sm text-gray-500 mb-1">Total Patients</div>
-            <div className="text-2xl font-bold text-red-600">{mockEDStats.totalPatients}</div>
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4  ">
+          <div className=" bg-red-50 -xl border-2 border-red-200">
+            <div className="  ">Total Patients</div>
+            <div className="text-2xl font-bold ">{mockEDStats.totalPatients}</div>
           </div>
-          <div style={{ padding: '16px', background: '#FEF3C7', borderRadius: '10px', border: '2px solid #FDE68A' }}>
-            <div className="text-sm text-gray-500 mb-1">Critical (1-2)</div>
+          <div className=" bg-yellow-50 -xl border-2 border-yellow-200">
+            <div className="  ">Critical (1-2)</div>
             <div className="text-2xl font-bold text-yellow-600">{mockEDStats.critical}</div>
           </div>
-          <div style={{ padding: '16px', background: '#DBEAFE', borderRadius: '10px', border: '2px solid #BFDBFE' }}>
-            <div className="text-sm text-gray-500 mb-1">In Progress</div>
-            <div className="text-2xl font-bold text-blue-600">{mockEDStats.inProgress}</div>
+          <div className=" bg-blue-50 -xl border-2 border-blue-200">
+            <div className="  ">In Progress</div>
+            <div className="text-2xl font-bold ">{mockEDStats.inProgress}</div>
           </div>
-          <div style={{ padding: '16px', background: '#F9FAFB', borderRadius: '10px', border: '2px solid #E5E7EB' }}>
-            <div className="text-sm text-gray-500 mb-1">Bed Occupancy</div>
-            <div className="text-2xl font-bold text-gray-700">{mockEDStats.bedOccupancy}/{mockEDStats.totalBeds}</div>
+          <div className=" bg-gray-50 -xl border-2 border-gray-200">
+            <div className="  ">Bed Occupancy</div>
+            <div className="text-2xl font-bold ">{mockEDStats.bedOccupancy}/{mockEDStats.totalBeds}</div>
             <Progress percent={Math.round((mockEDStats.bedOccupancy / mockEDStats.totalBeds) * 100)} size="small" strokeColor="#6B7280" showInfo={false} />
           </div>
         </div>
 
-        <div className="flex items-center gap-3 mb-6">
-          <Input placeholder="Search patients..." prefix={<SearchOutlined />} value={searchText} onChange={(e) => setSearchText(e.target.value)} style={{ flex: 1, maxWidth: '400px' }} />
-          <Badge count={filteredPatients.length} style={{ background: '#DC2626' }} />
+        <div className="   ">
+          <Input placeholder="Search patients..." prefix={<SearchOutlined />} value={searchText} onChange={(e) => setSearchText(e.target.value)} className="-1 max-w" />
+          <Badge count={filteredPatients.length} className="bg-red-600" />
         </div>
 
         <Table dataSource={filteredPatients} columns={columns} rowKey="id" pagination={false} size="middle" />
@@ -178,26 +171,19 @@ export default function EDTrackingPage() {
         }}
       >
         {selectedPatient && (
-          <div className="flex flex-col h-full">
-            <div style={{ padding: '16px', background: 'linear-gradient(135deg, #FEF2F2 0%, #FEE2E2 100%)', borderRadius: '12px', marginBottom: '16px' }}>
-              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className=" -col h-full">
+            <div className=" bg-gradient-to-r from-red-50 to-red-100 -xl ">
+              <div className=" -col sm:-row items-start sm:  ">
                 <div>
-                  <h2 className="text-xl font-bold text-gray-900 mb-1">{selectedPatient.patientName}</h2>
-                  <p className="text-sm text-gray-600">{selectedPatient.mrn}</p>
+                  <h2 className="text-xl font-bold  ">{selectedPatient.patientName}</h2>
+                  <p className=" ">{selectedPatient.mrn}</p>
                 </div>
                 <div
+                  className=" h-[60px] -full    font-bold text-2xl"
                   style={{
-                    width: '60px',
-                    height: '60px',
-                    borderRadius: '50%',
                     background: getTriageColor(selectedPatient.triageLevel).bg,
                     border: `3px solid ${getTriageColor(selectedPatient.triageLevel).border}`,
                     color: getTriageColor(selectedPatient.triageLevel).text,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    fontWeight: 'bold',
-                    fontSize: '24px',
                   }}
                 >
                   {selectedPatient.triageLevel}
@@ -205,40 +191,40 @@ export default function EDTrackingPage() {
               </div>
             </div>
 
-            <div className="flex-1 overflow-y-auto" style={{ padding: '16px' }}>
-              <div className="mb-4">
-                <h3 className="text-sm font-semibold text-gray-900 mb-2">Chief Complaint</h3>
-                <p className="text-sm text-gray-600">{selectedPatient.chiefComplaint}</p>
+            <div className="-1 overflow-y-auto ">
+              <div className="">
+                <h3 className=" font-semibold  ">Chief Complaint</h3>
+                <p className=" ">{selectedPatient.chiefComplaint}</p>
               </div>
 
-              <div className="mb-4">
-                <h3 className="text-sm font-semibold text-gray-900 mb-2">Vitals</h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
+              <div className="">
+                <h3 className=" font-semibold  ">Vitals</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 ">
                   {selectedPatient.vitals.bloodPressure && (
-                    <div style={{ padding: '8px', background: '#F9FAFB', borderRadius: '6px' }}>
-                      <div className="text-xs text-gray-500">BP</div>
-                      <div className="text-sm font-medium">{selectedPatient.vitals.bloodPressure}</div>
+                    <div className=" bg-gray-50 ">
+                      <div className=" ">BP</div>
+                      <div className=" font-medium">{selectedPatient.vitals.bloodPressure}</div>
                     </div>
                   )}
                   {selectedPatient.vitals.pulse && (
-                    <div style={{ padding: '8px', background: '#F9FAFB', borderRadius: '6px' }}>
-                      <div className="text-xs text-gray-500">Pulse</div>
-                      <div className="text-sm font-medium">{selectedPatient.vitals.pulse} bpm</div>
+                    <div className=" bg-gray-50 ">
+                      <div className=" ">Pulse</div>
+                      <div className=" font-medium">{selectedPatient.vitals.pulse} bpm</div>
                     </div>
                   )}
                   {selectedPatient.vitals.spO2 && (
-                    <div style={{ padding: '8px', background: '#F9FAFB', borderRadius: '6px' }}>
-                      <div className="text-xs text-gray-500">SpO2</div>
-                      <div className="text-sm font-medium">{selectedPatient.vitals.spO2}%</div>
+                    <div className=" bg-gray-50 ">
+                      <div className=" ">SpO2</div>
+                      <div className=" font-medium">{selectedPatient.vitals.spO2}%</div>
                     </div>
                   )}
                 </div>
               </div>
 
               {selectedPatient.assignedDoctor && (
-                <div style={{ padding: '12px', background: '#EFF6FF', borderRadius: '8px' }}>
-                  <div className="text-xs text-gray-500">Assigned Doctor</div>
-                  <div className="text-sm font-medium">{selectedPatient.assignedDoctor}</div>
+                <div className=" bg-blue-50 -lg">
+                  <div className=" ">Assigned Doctor</div>
+                  <div className=" font-medium">{selectedPatient.assignedDoctor}</div>
                 </div>
               )}
             </div>

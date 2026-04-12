@@ -56,7 +56,7 @@ export default function ComparativeReportPage() {
       key: 'change',
       align: 'right' as const,
       render: (value: number) => (
-        <span style={{ color: value > 0 ? '#cf1322' : value < 0 ? '#3f8600' : '#8c8c8c' }}>
+        <span className={value > 0 ? '' : value < 0 ? '' : ''}>
           {value > 0 ? '+' : ''}{value.toLocaleString()}
         </span>
       ),
@@ -68,8 +68,8 @@ export default function ComparativeReportPage() {
       align: 'right' as const,
       render: (value: number, record: ComparisonData) => (
         <Space>
-          {record.trend === 'up' ? <RiseOutlined style={{ color: '#3f8600' }} /> : record.trend === 'down' ? <FallOutlined style={{ color: '#cf1322' }} /> : null}
-          <span style={{ color: value > 0 ? '#3f8600' : value < 0 ? '#cf1322' : '#8c8c8c' }}>
+          {record.trend === 'up' ? <RiseOutlined className="" /> : record.trend === 'down' ? <FallOutlined className="" /> : null}
+          <span className={value > 0 ? '' : value < 0 ? '' : ''}>
             {value > 0 ? '+' : ''}{value}%
           </span>
         </Space>
@@ -84,22 +84,22 @@ export default function ComparativeReportPage() {
   };
 
   return (
-    <div style={{ padding: '24px', maxWidth: '1400px', margin: '0 auto' }} className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8">
+    <div className="  sm: sm: lg: lg: max-w-7xl mx-auto">
       <Title level={3}>Comparative Analysis Reports</Title>
 
-      <Row gutter={[24, 24]} style={{ marginBottom: '24px' }}>
+      <Row gutter={[24, 24]} className="">
         <Col xs={12} sm={8}>
-          <Card className="p-4 sm:p-6">
+          <Card className=" sm:">
             <Statistic title="Total Metrics" value={summaryStats.totalMetrics} prefix={<BarChartOutlined />} />
           </Card>
         </Col>
         <Col xs={12} sm={8}>
-          <Card className="p-4 sm:p-6">
-            <Statistic title="Improved" value={summaryStats.improved} valueStyle={{ color: '#3f8600' }} />
+          <Card className=" sm:">
+            <Statistic title="Improved" value={summaryStats.improved} valueStyle={{ color: '#059669' }} />
           </Card>
         </Col>
         <Col xs={12} sm={8}>
-          <Card className="p-4 sm:p-6">
+          <Card className=" sm:">
             <Statistic title="Avg Improvement" value={summaryStats.avgImprovement} suffix="%" />
           </Card>
         </Col>
@@ -107,10 +107,10 @@ export default function ComparativeReportPage() {
 
       <Card
         title="Comparison Data"
-        className="p-4 sm:p-6"
+        className=" sm:"
         extra={
           <Space wrap>
-            <Select value={periodType} onChange={setPeriodType} style={{ width: 150 }}>
+            <Select value={periodType} onChange={setPeriodType} className="w-[150px]">
               <Select.Option value="month-over-month">Month over Month</Select.Option>
               <Select.Option value="quarter-over-quarter">Quarter over Quarter</Select.Option>
               <Select.Option value="year-over-year">Year over Year</Select.Option>
@@ -118,7 +118,7 @@ export default function ComparativeReportPage() {
             <DatePicker.RangePicker
               value={dateRange}
               onChange={setDateRange}
-              style={{ width: 250 }}
+              className="w-[250px]"
             />
             <Button icon={<DownloadOutlined />} className="w-full sm:w-auto">Export</Button>
           </Space>

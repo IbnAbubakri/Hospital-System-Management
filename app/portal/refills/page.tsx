@@ -73,10 +73,10 @@ export default function RefillsPage() {
   };
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '1200px', margin: '0 auto' }}>
+    <div className="  sm: sm: lg: lg: max-w-[1200px] mx-auto">
       <Title level={3}>Medication Refills</Title>
 
-      <Card title="Active Medications" style={{ marginBottom: '24px' }}>
+      <Card title="Active Medications" className="">
         <div className="overflow-x-auto">
         <Table
           dataSource={medications}

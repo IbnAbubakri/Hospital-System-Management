@@ -102,7 +102,7 @@ export default function QualityAuditsPage() {
       dataIndex: 'compliant',
       key: 'compliant',
       render: (rate: number) => (
-        <span className={rate >= 90 ? 'text-green-600 font-semibold' : rate >= 80 ? 'text-orange-600 font-semibold' : 'text-red-600 font-semibold'}>
+        <span style={{ color: rate >= 90 ? '#059669' : rate >= 80 ? '#EA580C' : '#DC2626' }}>
           {rate}%
         </span>
       ),
@@ -136,32 +136,32 @@ export default function QualityAuditsPage() {
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px', marginBottom: '24px' }}>
         <Card>
           <div className="text-center">
-            <div className="text-3xl font-bold text-blue-600">{audits.length}</div>
-            <div className="text-gray-500">Total Audits</div>
+            <div className="text-3xl font-bold ">{audits.length}</div>
+            <div className="">Total Audits</div>
           </div>
         </Card>
         <Card>
           <div className="text-center">
-            <div className="text-3xl font-bold text-green-600">{audits.filter(a => a.status === 'Completed').length}</div>
-            <div className="text-gray-500">Completed</div>
+            <div className="text-3xl font-bold ">{audits.filter(a => a.status === 'Completed').length}</div>
+            <div className="">Completed</div>
           </div>
         </Card>
         <Card>
           <div className="text-center">
             <div className="text-3xl font-bold text-purple-600">{avgCompliance}%</div>
-            <div className="text-gray-500">Avg Compliance</div>
+            <div className="">Avg Compliance</div>
           </div>
         </Card>
         <Card>
           <div className="text-center">
-            <div className="text-3xl font-bold text-orange-600">{audits.reduce((sum, a) => sum + a.recommendations, 0)}</div>
-            <div className="text-gray-500">Total Recommendations</div>
+            <div className="text-3xl font-bold ">{audits.reduce((sum, a) => sum + a.recommendations, 0)}</div>
+            <div className="">Total Recommendations</div>
           </div>
         </Card>
       </div>
 
       <Card title="Audit Schedule & Results">
-        <div className="mb-4 flex gap-3">
+        <div className="  ">
           <Select
             value={statusFilter}
             onChange={setStatusFilter}

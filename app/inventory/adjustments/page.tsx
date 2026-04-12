@@ -29,7 +29,7 @@ export default function StockAdjustmentsPage() {
       dataIndex: 'quantity',
       key: 'quantity',
       render: (qty: number) => (
-        <span className={qty > 0 ? 'text-green-600' : 'text-red-600'}>{qty > 0 ? '+' : ''}{qty}</span>
+        <span className={qty > 0 ? '' : ''}>{qty > 0 ? '+' : ''}{qty}</span>
       ),
     },
     { title: 'Reason', dataIndex: 'reason', key: 'reason' },
@@ -42,13 +42,13 @@ export default function StockAdjustmentsPage() {
   ];
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '1200px', margin: '0 auto' }}>
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+    <div className="  sm: sm: lg: lg: max-w-6xl mx-auto">
+      <div className=" -col sm:-row items-start sm:   ">
         <Title level={3}>Stock Adjustments</Title>
         <Button type="primary" icon={<PlusOutlined />} className="w-full sm:w-auto">New Adjustment</Button>
       </div>
 
-      <Card className="p-4 sm:p-6">
+      <Card className=" sm:">
         <div className="overflow-x-auto">
           <Table dataSource={adjustments} columns={columns} rowKey="id" />
         </div>

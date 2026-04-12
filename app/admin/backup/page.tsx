@@ -137,7 +137,7 @@ export default function BackupPage() {
       }
     >
       {/* Statistics Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 mb-6">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4  sm: ">
         <StatCard
           label="Total Backups"
           value={backups.length}
@@ -182,28 +182,28 @@ export default function BackupPage() {
         >
         <Space size="large" style={{ width: '100%' }}>
           <div style={{ flex: 1 }}>
-            <div className="flex justify-between mb-2">
+            <div className="  ">
               <span className="font-medium">Local Storage</span>
-              <span className="text-gray-600">75 GB / 100 GB</span>
+              <span className="">75 GB / 100 GB</span>
             </div>
             <Progress
               percent={75}
               strokeColor="#3B82F6"
               style={{ marginBottom: '8px' }}
             />
-            <div className="text-sm text-gray-500">75% used</div>
+            <div className=" ">75% used</div>
           </div>
           <div style={{ flex: 1 }}>
-            <div className="flex justify-between mb-2">
+            <div className="  ">
               <span className="font-medium">Cloud Storage</span>
-              <span className="text-gray-600">45 GB / 500 GB</span>
+              <span className="">45 GB / 500 GB</span>
             </div>
             <Progress
               percent={9}
               strokeColor="#10B981"
               style={{ marginBottom: '8px' }}
             />
-            <div className="text-sm text-gray-500">9% used</div>
+            <div className=" ">9% used</div>
           </div>
         </Space>
         </InfoCard>
@@ -240,7 +240,7 @@ export default function BackupPage() {
       {/* Create Backup Modal */}
       <Modal
         title={
-          <div className="flex items-center gap-2">
+          <div className="  ">
             <CloudUploadOutlined style={{ color: '#3B82F6' }} />
             <span>Create New Backup</span>
           </div>
@@ -253,11 +253,11 @@ export default function BackupPage() {
         {backupInProgress ? (
           <div style={{ textAlign: 'center', padding: '20px' }}>
             <Progress percent={66} status="active" strokeColor="#3B82F6" />
-            <p className="mt-4 text-gray-600">Creating backup...</p>
+            <p className=" ">Creating backup...</p>
           </div>
         ) : (
           <div>
-            <p className="mb-4 text-gray-600">Select backup type:</p>
+            <p className=" ">Select backup type:</p>
             <Space orientation="vertical" style={{ width: '100%' }}>
               <GradientButton
                 variant="secondary"

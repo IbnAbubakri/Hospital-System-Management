@@ -89,7 +89,7 @@ export default function RadiologyViewerPage() {
       subtitle="View and analyze radiology studies and images"
     >
       {/* Statistics Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 mb-6">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4  sm: ">
         <StatCard
           label="Total Studies"
           value={totalStudies}
@@ -125,78 +125,34 @@ export default function RadiologyViewerPage() {
       </div>
 
       {/* Image Viewer Section */}
-      <div style={{ display: 'flex', gap: '24px', height: 'calc(100vh - 320px)' }}>
+      <div className="  h-[calc(100vh-320px)]">
         {/* Studies List */}
         <div
-          style={{
-            width: '400px',
-            background: 'white',
-            borderRadius: '12px',
-            border: '1px solid #E2E8F0',
-            padding: '20px',
-            overflowY: 'auto',
-          }}
+          className=" bg-white -xl border border-gray-200  overflow-y-auto"
         >
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Recent Studies</h3>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+          <h3 className=" font-semibold  ">Recent Studies</h3>
+          <div className=" -col ">
             {studies.map((item) => (
               <div
                 key={item.id}
                 onClick={() => setSelectedStudy(item)}
-                style={{
-                  cursor: 'pointer',
-                  backgroundColor: selectedStudy?.id === item.id ? '#EFF6FF' : 'white',
-                  padding: '16px',
-                  borderRadius: '10px',
-                  border: `1px solid ${selectedStudy?.id === item.id ? '#3B82F6' : '#E2E8F0'}`,
-                  transition: 'all 0.2s ease',
-                }}
-                onMouseEnter={(e) => {
-                  if (selectedStudy?.id !== item.id) {
-                    e.currentTarget.style.borderColor = '#93C5FD';
-                    e.currentTarget.style.boxShadow = '0 4px 12px rgba(59, 130, 246, 0.1)';
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  if (selectedStudy?.id !== item.id) {
-                    e.currentTarget.style.borderColor = '#E2E8F0';
-                    e.currentTarget.style.boxShadow = 'none';
-                  }
-                }}
+                className={` -xl border cursor-pointer transition-all duration-200 ${selectedStudy?.id === item.id ? 'bg-blue-50 border-blue-500' : 'bg-white border-gray-200 hover:border-blue-300 hover:shadow'}`}
               >
-                <div className="flex items-start gap-3">
-                  <div
-                    style={{
-                      width: '40px',
-                      height: '40px',
-                      borderRadius: '8px',
-                      background: '#DBEAFE',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      flexShrink: 0,
-                    }}
-                  >
-                    <FileImageOutlined style={{ fontSize: '18px', color: '#3B82F6' }} />
+                <div className=" items-start ">
+                  <div className="  -lg bg-blue-100    -shrink-0">
+                    <FileImageOutlined className=" " />
                   </div>
-                  <div style={{ flex: 1, minWidth: 0 }}>
-                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 gap-2 mb-1">
-                      <span className="font-medium text-gray-900 text-sm">{item.studyType}</span>
+                  <div className="-1 min-">
+                    <div className=" -col sm:-row items-start sm:    ">
+                      <span className="font-medium  ">{item.studyType}</span>
                       <span
-                        style={{
-                          padding: '2px 8px',
-                          borderRadius: '6px',
-                          fontSize: '11px',
-                          fontWeight: 500,
-                          background: item.status === 'final' ? '#D1FAE5' : '#FEF3C7',
-                          color: item.status === 'final' ? '#059669' : '#D97706',
-                        }}
+                        className={` .5   font-medium ${item.status === 'final' ? 'bg-green-100 ' : 'bg-yellow-100 text-yellow-700'}`}
                       >
                         {item.status}
                       </span>
                     </div>
-                    <div className="text-xs text-gray-500 mb-1">{item.patient} ({item.mrn})</div>
-                    <div className="text-xs text-gray-400">{item.date} • {item.view} • {item.images} images</div>
+                    <div className="  ">{item.patient} ({item.mrn})</div>
+                    <div className=" ">{item.date} • {item.view} • {item.images} images</div>
                   </div>
                 </div>
               </div>
@@ -206,27 +162,19 @@ export default function RadiologyViewerPage() {
 
         {/* Image Viewer */}
         <div
-          style={{
-            flex: 1,
-            background: 'white',
-            borderRadius: '12px',
-            border: '1px solid #E2E8F0',
-            padding: '16px',
-            display: 'flex',
-            flexDirection: 'column',
-          }}
+          className="-1 bg-white -xl border border-gray-200   -col"
         >
           {selectedStudy ? (
             <>
               {/* Header */}
-              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-4">
+              <div className=" -col sm:-row items-start sm:   ">
                 <div>
-                  <h2 className="text-xl font-semibold text-gray-900 mb-1">
+                  <h2 className="text-xl font-semibold  ">
                     {selectedStudy.studyType} - {selectedStudy.view}
                   </h2>
-                  <p className="text-sm text-gray-500">{selectedStudy.patient} • {selectedStudy.mrn}</p>
+                  <p className=" ">{selectedStudy.patient} • {selectedStudy.mrn}</p>
                 </div>
-                <div style={{ display: 'flex', gap: '8px' }}>
+                <div className=" ">
                   <GradientButton variant="secondary" size="small" icon={<ZoomInOutlined />}>
                     Zoom
                   </GradientButton>
@@ -244,74 +192,56 @@ export default function RadiologyViewerPage() {
                 icon={<FileImageOutlined />}
                 color="#3B82F6"
               >
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '12px', marginTop: '8px' }}>
+                <div className="grid grid-cols-3  ">
                   <div>
-                    <div style={{ fontSize: '12px', color: '#64748B', marginBottom: '4px' }}>Study ID</div>
-                    <div style={{ fontSize: '14px', fontWeight: 500, color: '#1E293B' }}>{selectedStudy.id}</div>
+                    <div className=" text-slate-500 ">Study ID</div>
+                    <div className=" font-medium ">{selectedStudy.id}</div>
                   </div>
                   <div>
-                    <div style={{ fontSize: '12px', color: '#64748B', marginBottom: '4px' }}>Date</div>
-                    <div style={{ fontSize: '14px', fontWeight: 500, color: '#1E293B' }}>{selectedStudy.date}</div>
+                    <div className=" text-slate-500 ">Date</div>
+                    <div className=" font-medium ">{selectedStudy.date}</div>
                   </div>
                   <div>
-                    <div style={{ fontSize: '12px', color: '#64748B', marginBottom: '4px' }}>Time</div>
-                    <div style={{ fontSize: '14px', fontWeight: 500, color: '#1E293B' }}>{selectedStudy.time}</div>
+                    <div className=" text-slate-500 ">Time</div>
+                    <div className=" font-medium ">{selectedStudy.time}</div>
                   </div>
                   <div>
-                    <div style={{ fontSize: '12px', color: '#64748B', marginBottom: '4px' }}>Patient</div>
-                    <div style={{ fontSize: '14px', fontWeight: 500, color: '#1E293B' }}>{selectedStudy.patient}</div>
+                    <div className=" text-slate-500 ">Patient</div>
+                    <div className=" font-medium ">{selectedStudy.patient}</div>
                   </div>
                   <div>
-                    <div style={{ fontSize: '12px', color: '#64748B', marginBottom: '4px' }}>MRN</div>
-                    <div style={{ fontSize: '14px', fontWeight: 500, color: '#1E293B' }}>{selectedStudy.mrn}</div>
+                    <div className=" text-slate-500 ">MRN</div>
+                    <div className=" font-medium ">{selectedStudy.mrn}</div>
                   </div>
                   <div>
-                    <div style={{ fontSize: '12px', color: '#64748B', marginBottom: '4px' }}>Radiologist</div>
-                    <div style={{ fontSize: '14px', fontWeight: 500, color: '#1E293B' }}>{selectedStudy.radiologist}</div>
+                    <div className=" text-slate-500 ">Radiologist</div>
+                    <div className=" font-medium ">{selectedStudy.radiologist}</div>
                   </div>
                 </div>
               </InfoCard>
 
               {/* Image Display Area */}
-              <div style={{ flex: 1, display: 'flex', gap: '16px', marginBottom: '16px' }}>
+              <div className="-1   ">
                 {/* Main Image Viewer */}
-                <div
-                  style={{
-                    flex: 1,
-                    background: '#000',
-                    borderRadius: '10px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    position: 'relative',
-                    overflow: 'hidden',
-                  }}
-                >
-                  <FileImageOutlined style={{ fontSize: '80px', color: '#333' }} />
-                  <div style={{ position: 'absolute', color: '#fff', textAlign: 'center' }}>
-                    <div style={{ fontSize: '28px', fontWeight: 'bold', marginBottom: '8px' }}>
+                  <div className="-1 bg-black -xl    relative overflow-hidden">
+                    <FileImageOutlined className="text-8xl " />
+                    <div className="absolute  text-center">
+                      <div className="text-3xl font-bold ">
                       {selectedStudy.studyType}
                     </div>
-                    <div style={{ fontSize: '16px', opacity: 0.8 }}>Image 1 of {selectedStudy.images}</div>
+                      <div className="text-base opacity-80">Image 1 of {selectedStudy.images}</div>
                   </div>
                 </div>
 
                 {/* Tools Panel */}
-                <div style={{ width: '280px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                <div className="w-[280px]  -col ">
                   {/* Image Adjustments */}
-                  <div
-                    style={{
-                      padding: '16px',
-                      background: 'white',
-                      borderRadius: '10px',
-                      border: '1px solid #E2E8F0',
-                    }}
-                  >
-                    <h4 className="text-sm font-semibold text-gray-900 mb-3">Image Adjustments</h4>
-                    <div className="mb-4">
-                      <div className="flex justify-between mb-2">
-                        <span className="text-sm text-gray-600">Brightness</span>
-                        <span className="text-sm font-medium">{brightness}%</span>
+                  <div className=" bg-white -xl border border-gray-200">
+                    <h4 className=" font-semibold  ">Image Adjustments</h4>
+                    <div className="">
+                      <div className="  ">
+                        <span className=" ">Brightness</span>
+                        <span className=" font-medium">{brightness}%</span>
                       </div>
                       <input
                         type="range"
@@ -319,13 +249,13 @@ export default function RadiologyViewerPage() {
                         max={200}
                         value={brightness}
                         onChange={(e) => setBrightness(Number(e.target.value))}
-                        style={{ width: '100%' }}
+                        className="w-full"
                       />
                     </div>
                     <div>
-                      <div className="flex justify-between mb-2">
-                        <span className="text-sm text-gray-600">Contrast</span>
-                        <span className="text-sm font-medium">{contrast}%</span>
+                      <div className="  ">
+                        <span className=" ">Contrast</span>
+                        <span className=" font-medium">{contrast}%</span>
                       </div>
                       <input
                         type="range"
@@ -333,38 +263,19 @@ export default function RadiologyViewerPage() {
                         max={200}
                         value={contrast}
                         onChange={(e) => setContrast(Number(e.target.value))}
-                        style={{ width: '100%' }}
+                        className="w-full"
                       />
                     </div>
                   </div>
 
                   {/* Image Navigation */}
-                  <div
-                    style={{
-                      padding: '16px',
-                      background: 'white',
-                      borderRadius: '10px',
-                      border: '1px solid #E2E8F0',
-                    }}
-                  >
-                    <h4 className="text-sm font-semibold text-gray-900 mb-3">Image Navigation</h4>
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px' }}>
+                  <div className=" bg-white -xl border border-gray-200">
+                    <h4 className=" font-semibold  ">Image Navigation</h4>
+                    <div className="grid grid-cols-3 ">
                       {Array.from({ length: Math.min(selectedStudy.images, 9) }, (_, i) => (
                         <div
                           key={i}
-                          style={{
-                            backgroundColor: '#F3F4F6',
-                            height: '60px',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            borderRadius: '8px',
-                            cursor: 'pointer',
-                            border: i === 0 ? '2px solid #3B82F6' : '1px solid #E2E8F0',
-                            fontWeight: 500,
-                            fontSize: '13px',
-                            color: i === 0 ? '#3B82F6' : '#6B7280',
-                          }}
+                          className={`h-[60px]    -lg cursor-pointer font-medium  ${i === 0 ? 'bg-gray-100 border-2 border-blue-500 ' : 'bg-gray-100 border border-gray-200 '}`}
                         >
                           {i + 1}
                         </div>
@@ -373,16 +284,9 @@ export default function RadiologyViewerPage() {
                   </div>
 
                   {/* Tools */}
-                  <div
-                    style={{
-                      padding: '16px',
-                      background: 'white',
-                      borderRadius: '10px',
-                      border: '1px solid #E2E8F0',
-                    }}
-                  >
-                    <h4 className="text-sm font-semibold text-gray-900 mb-3">Tools</h4>
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                  <div className=" bg-white -xl border border-gray-200">
+                    <h4 className=" font-semibold  ">Tools</h4>
+                    <div className=" -col ">
                       <GradientButton variant="secondary" size="small" block>
                         Measure
                       </GradientButton>
@@ -404,35 +308,20 @@ export default function RadiologyViewerPage() {
               </div>
 
               {/* Impressions */}
-              <div
-                style={{
-                  padding: '16px',
-                  background: 'white',
-                  borderRadius: '10px',
-                  border: '1px solid #E2E8F0',
-                }}
-              >
-                <h4 className="text-sm font-semibold text-gray-900 mb-3">Impressions</h4>
-                <ul style={{ paddingLeft: '20px', margin: 0 }}>
-                  <li className="text-sm text-gray-700 mb-2">No active cardiopulmonary process</li>
-                  <li className="text-sm text-gray-700 mb-2">Normal cardiac size and contour</li>
-                  <li className="text-sm text-gray-700">Lung fields clear without infiltrates</li>
+                  <div className=" bg-white -xl border border-gray-200">
+                <h4 className=" font-semibold  ">Impressions</h4>
+                <ul className="list-disc pl-5 m-0">
+                  <li className="  ">No active cardiopulmonary process</li>
+                  <li className="  ">Normal cardiac size and contour</li>
+                  <li className=" ">Lung fields clear without infiltrates</li>
                 </ul>
               </div>
             </>
           ) : (
-            <div
-              style={{
-                flex: 1,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: '#9CA3AF',
-              }}
-            >
-              <div style={{ textAlign: 'center' }}>
-                <FileImageOutlined style={{ fontSize: '80px', marginBottom: '16px' }} />
-                <p className="text-lg">Select a radiology study to view images</p>
+            <div className="-1    ">
+              <div className="text-center">
+                <FileImageOutlined className="text-8xl " />
+                <p className="">Select a radiology study to view images</p>
               </div>
             </div>
           )}

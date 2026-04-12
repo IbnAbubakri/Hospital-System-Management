@@ -38,7 +38,7 @@ export default function StaffPerformancePage() {
   ];
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '1200px', margin: '0 auto' }}>
+    <div className="  sm: sm: lg: lg: max-w-6xl mx-auto">
       <Title level={3}>Staff Performance Reviews</Title>
       <Card>
         <Table dataSource={performance} columns={columns} rowKey="id" />

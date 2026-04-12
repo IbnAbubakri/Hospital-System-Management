@@ -23,10 +23,10 @@ export default function PatientMergePage() {
   ];
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '1200px', margin: '0 auto' }}>
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+    <div className="  sm: sm: lg: lg: max-w-6xl mx-auto">
+      <div className=" -col sm:-row items-start sm:   ">
         <div>
-          <Title level={3} className="!mb-1">Duplicate Patient Records</Title>
+          <Title level={3} className="!">Duplicate Patient Records</Title>
           <Text type="secondary">Merge duplicate patient records</Text>
         </div>
       </div>
@@ -36,7 +36,7 @@ export default function PatientMergePage() {
         description="Select the primary record to keep. All medical history will be consolidated into the selected record."
         type="warning"
         showIcon
-        style={{ marginBottom: '24px' }}
+        className=""
       />
 
       <Card
@@ -50,7 +50,7 @@ export default function PatientMergePage() {
           prefix={<SearchOutlined />}
         />
 
-        <div className="mt-6">
+        <div className="">
           <Title level={5}>Potential Duplicates Found</Title>
           <div className="overflow-x-auto">
         <Table
@@ -63,7 +63,7 @@ export default function PatientMergePage() {
         </div>
       </Card>
 
-      <Card style={{ marginTop: '24px' }} title="Merge Summary">
+      <Card className="" title="Merge Summary">
         <Space orientation="vertical" size="middle">
           <div><strong>Primary Record:</strong> MRN-2024-0001</div>
           <div><strong>Merge with:</strong> MRN-2024-0025</div>

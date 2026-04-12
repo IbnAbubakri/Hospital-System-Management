@@ -136,7 +136,7 @@ export function DashboardLayout({ children, title }: DashboardLayoutProps) {
         {/* Left: Spacer */}
         <div style={{ flex: 1 }}>
           {title && (
-            <Text style={{ fontSize: 16, color: '#374151', fontWeight: 500 }}>
+            <Text style={{ fontSize: 16, color: '#374151', font-medium }}>
               {title}
             </Text>
           )}

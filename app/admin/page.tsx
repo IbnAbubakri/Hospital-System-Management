@@ -138,11 +138,11 @@ export default function AdminPage() {
       title: 'User',
       key: 'user',
       render: (_: any, record: UserAccount) => (
-        <div className="flex items-center gap-3">
+        <div className="  ">
           <Avatar size={40} icon={<UserOutlined />} style={{ backgroundColor: '#3B82F6' }} />
           <div>
-            <div className="font-medium text-gray-900">{record.name}</div>
-            <div className="text-xs text-gray-500">@{record.username}</div>
+            <div className="font-medium ">{record.name}</div>
+            <div className=" ">@{record.username}</div>
           </div>
         </div>
       ),
@@ -157,7 +157,7 @@ export default function AdminPage() {
           style={{
             padding: '4px 10px',
             borderRadius: '6px',
-            fontSize: '13px',
+            fontSize: '14px',
             fontWeight: 500,
             background: role === 'Admin' ? '#DBEAFE' : '#F1F5F9',
             color: role === 'Admin' ? '#1E40AF' : '#475569',
@@ -192,7 +192,7 @@ export default function AdminPage() {
       subtitle="Manage users, roles, permissions, and system configuration"
     >
       {/* Admin Quick Access Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 mb-6">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4  sm: ">
         {adminSections.map((section, index) => (
           <StatCard
             key={section.key}
@@ -207,11 +207,11 @@ export default function AdminPage() {
       </div>
 
       {/* User Management Section */}
-      <div className="p-4 sm:p-6 overflow-x-auto" style={{ background: 'white', borderRadius: '12px', border: '1px solid #E2E8F0' }}>
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
-          <div className="flex items-center gap-2">
+      <div className=" sm: overflow-x-auto" style={{ background: '#ffffff', borderRadius: '12px', border: '1px solid #E5E7EB' }}>
+        <div className=" -col sm:-row sm: sm:  ">
+          <div className="  ">
             <TeamOutlined style={{ color: '#3B82F6', fontSize: '20px' }} />
-            <h2 className="text-lg font-semibold text-gray-900">User Accounts</h2>
+            <h2 className=" font-semibold ">User Accounts</h2>
           </div>
           <GradientButton icon={<PlusOutlined />} onClick={() => setModalVisible(true)} className="w-full sm:w-auto">
             Add User
@@ -253,7 +253,7 @@ export default function AdminPage() {
       {/* Add User Modal */}
       <Modal
         title={
-          <div className="flex items-center gap-2">
+          <div className="  ">
             <UserOutlined style={{ color: '#3B82F6' }} />
             <span>Add New User</span>
           </div>
@@ -271,7 +271,7 @@ export default function AdminPage() {
                 width: '100%',
                 padding: '8px 12px',
                 borderRadius: '8px',
-                border: '1px solid #E2E8F0',
+                border: '1px solid #E5E7EB',
               }}
             />
           </Form.Item>
@@ -283,7 +283,7 @@ export default function AdminPage() {
                 width: '100%',
                 padding: '8px 12px',
                 borderRadius: '8px',
-                border: '1px solid #E2E8F0',
+                border: '1px solid #E5E7EB',
               }}
             />
           </Form.Item>
@@ -295,7 +295,7 @@ export default function AdminPage() {
                 width: '100%',
                 padding: '8px 12px',
                 borderRadius: '8px',
-                border: '1px solid #E2E8F0',
+                border: '1px solid #E5E7EB',
               }}
             />
           </Form.Item>
@@ -305,7 +305,7 @@ export default function AdminPage() {
                 width: '100%',
                 padding: '8px 12px',
                 borderRadius: '8px',
-                border: '1px solid #E2E8F0',
+                border: '1px solid #E5E7EB',
               }}
             >
               <option value="">Select role</option>
@@ -321,7 +321,7 @@ export default function AdminPage() {
                 width: '100%',
                 padding: '8px 12px',
                 borderRadius: '8px',
-                border: '1px solid #E2E8F0',
+                border: '1px solid #E5E7EB',
               }}
             >
               <option value="">Select department</option>
@@ -339,7 +339,7 @@ export default function AdminPage() {
                 width: '100%',
                 padding: '8px 12px',
                 borderRadius: '8px',
-                border: '1px solid #E2E8F0',
+                border: '1px solid #E5E7EB',
               }}
             />
           </Form.Item>

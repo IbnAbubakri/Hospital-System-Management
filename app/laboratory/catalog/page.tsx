@@ -268,10 +268,10 @@ export default function LabCatalogPage() {
   ];
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '1400px', margin: '0 auto' }}>
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 gap-4">
+    <div className="  sm: sm: lg: lg:" style={{ maxWidth: '1280px', margin: '0 auto' }}>
+      <div className=" -col sm:-row items-start sm:   ">
         <div>
-          <Title level={3} className="!mb-1">Laboratory Test Catalog</Title>
+          <Title level={3} className="!">Laboratory Test Catalog</Title>
           <Text type="secondary">Browse and order laboratory tests</Text>
         </div>
         <Button type="primary" icon={<PlusOutlined />} className="w-full sm:w-auto">
@@ -279,7 +279,7 @@ export default function LabCatalogPage() {
         </Button>
       </div>
 
-      <Card className="mb-6">
+      <Card className="">
         <Row gutter={16}>
           <Col xs={24} sm={8}>
             <Search

@@ -122,12 +122,12 @@ export default function StaffRegisterPage() {
       key: 'employee',
       render: (_: any, record: StaffMember) => (
         <Space>
-          <Avatar icon={<UserOutlined />} style={{ background: '#3B82F6' }}>
+          <Avatar icon={<UserOutlined />} className="bg-blue-500">
             {record.firstName.charAt(0)}{record.lastName.charAt(0)}
           </Avatar>
           <div>
             <div className="font-medium">{record.firstName} {record.lastName}</div>
-            <Text type="secondary" className="text-xs">{record.employeeId}</Text>
+            <Text type="secondary" className="">{record.employeeId}</Text>
           </div>
         </Space>
       ),
@@ -140,7 +140,7 @@ export default function StaffRegisterPage() {
         <div>
           <div><Tag color="blue">{record.role}</Tag></div>
           {record.specialization && (
-            <Text type="secondary" className="text-xs">{record.specialization}</Text>
+            <Text type="secondary" className="">{record.specialization}</Text>
           )}
         </div>
       )},
@@ -154,10 +154,10 @@ export default function StaffRegisterPage() {
       key: 'contact',
       render: (_: any, record: StaffMember) => (
         <div>
-          <div className="flex items-center gap-1 text-sm">
+          <div className="   ">
             <MailOutlined /> {record.email}
           </div>
-          <div className="flex items-center gap-1 text-sm">
+          <div className="   ">
             <PhoneOutlined /> {record.phone}
           </div>
         </div>
@@ -166,7 +166,7 @@ export default function StaffRegisterPage() {
       title: 'Qualification',
       dataIndex: 'qualification',
       key: 'qualification',
-      render: (qual: string) => <Text className="text-sm">{qual}</Text>},
+      render: (qual: string) => <Text className="">{qual}</Text>},
     {
       title: 'Status',
       dataIndex: 'status',
@@ -202,10 +202,10 @@ export default function StaffRegisterPage() {
     onLeave: staff.filter((s: any) => s.status === 'On Leave').length};
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '1400px', margin: '0 auto' }}>
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+    <div className="  sm: sm: lg: lg: max-w-7xl mx-auto">
+      <div className=" -col sm:-row items-start sm:   ">
         <div>
-          <Title level={3} className="!mb-1">Staff Registration</Title>
+          <Title level={3} className="!">Staff Registration</Title>
           <Text type="secondary">Register and manage hospital staff members</Text>
         </div>
         <Button type="primary" icon={<PlusOutlined />} onClick={() => setIsModalOpen(true)}>
@@ -213,20 +213,20 @@ export default function StaffRegisterPage() {
         </Button>
       </div>
 
-      <Row gutter={[16, 16]} style={{ marginBottom: '24px' }}>
+      <Row gutter={[16, 16]} className="">
         <Col xs={12} sm={6}>
           <Card>
             <div className="text-center">
-              <div className="text-2xl font-bold text-blue-600">{stats.total}</div>
-              <div className="text-sm text-gray-500">Total Staff</div>
+              <div className="text-2xl font-bold ">{stats.total}</div>
+              <div className=" ">Total Staff</div>
             </div>
           </Card>
         </Col>
         <Col xs={12} sm={6}>
           <Card>
             <div className="text-center">
-              <div className="text-2xl font-bold text-green-600">{stats.active}</div>
-              <div className="text-sm text-gray-500">Active</div>
+              <div className="text-2xl font-bold ">{stats.active}</div>
+              <div className=" ">Active</div>
             </div>
           </Card>
         </Col>
@@ -234,7 +234,7 @@ export default function StaffRegisterPage() {
           <Card>
             <div className="text-center">
               <div className="text-2xl font-bold text-purple-600">{stats.doctors}</div>
-              <div className="text-sm text-gray-500">Doctors</div>
+              <div className=" ">Doctors</div>
             </div>
           </Card>
         </Col>
@@ -242,7 +242,7 @@ export default function StaffRegisterPage() {
           <Card>
             <div className="text-center">
               <div className="text-2xl font-bold text-cyan-600">{stats.nurses}</div>
-              <div className="text-sm text-gray-500">Nurses</div>
+              <div className=" ">Nurses</div>
             </div>
           </Card>
         </Col>
@@ -254,7 +254,7 @@ export default function StaffRegisterPage() {
           <Search
             placeholder="Search staff..."
             allowClear
-            style={{ width: 250 }}
+            className=""
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
             prefix={<SearchOutlined />}
@@ -357,7 +357,7 @@ export default function StaffRegisterPage() {
           </Row>
 
           <Form.Item name="joiningDate" label="Joining Date" rules={[{ required: true }]}>
-            <DatePicker style={{ width: '100%' }} />
+            <DatePicker className="w-full" />
           </Form.Item>
 
           <Form.Item name="status" label="Status" initialValue="Active">

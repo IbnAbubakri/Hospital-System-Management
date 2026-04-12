@@ -58,31 +58,31 @@ export default function InventoryContractsPage() {
   const activeContracts = contracts.filter(c => c.status === 'Active').length;
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '1400px', margin: '0 auto' }}>
+    <div className="  sm: sm: lg: lg: max-w-7xl mx-auto">
       <Title level={3}>Vendor Contracts</Title>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
-        <Card className="p-4 sm:p-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  ">
+        <Card className=" sm:">
           <div className="text-center">
-            <div className="text-3xl font-bold text-blue-600">{contracts.length}</div>
-            <div className="text-gray-500">Total Contracts</div>
+            <div className="text-3xl font-bold ">{contracts.length}</div>
+            <div className="">Total Contracts</div>
           </div>
         </Card>
-        <Card className="p-4 sm:p-6">
+        <Card className=" sm:">
           <div className="text-center">
-            <div className="text-3xl font-bold text-green-600">{activeContracts}</div>
-            <div className="text-gray-500">Active Contracts</div>
+            <div className="text-3xl font-bold ">{activeContracts}</div>
+            <div className="">Active Contracts</div>
           </div>
         </Card>
-        <Card className="p-4 sm:p-6">
+        <Card className=" sm:">
           <div className="text-center">
             <div className="text-3xl font-bold text-purple-600">₦{(totalValue / 1000000).toFixed(1)}M</div>
-            <div className="text-gray-500">Total Contract Value</div>
+            <div className="">Total Contract Value</div>
           </div>
         </Card>
       </div>
 
-      <Card title="Active Contracts" className="p-4 sm:p-6">
+      <Card title="Active Contracts" className=" sm:">
         <div className="overflow-x-auto">
           <Table
             dataSource={contracts}

@@ -22,16 +22,16 @@ export default function ResetPasswordPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center p-4">
-      <div className="w-full max-w-md">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100    ">
+      <div className="w-full max-w">
         <Card className="shadow-xl">
           {success ? (
-            <div className="text-center py-6">
-              <CheckCircleOutlined className="text-6xl text-green-500 mb-4" />
-              <Title level={3} className="!mb-2">
+            <div className="text-center ">
+              <CheckCircleOutlined className="text-6xl color: '#10B981' " />
+              <Title level={3} className="!">
                 Password Reset Successful
               </Title>
-              <Text type="secondary" className="block mb-6">
+              <Text type="secondary" className="block ">
                 Your password has been successfully reset. You can now sign in
                 with your new password.
               </Text>
@@ -47,8 +47,8 @@ export default function ResetPasswordPage() {
             </div>
           ) : (
             <>
-              <div className="text-center mb-6">
-                <Title level={3} className="!mb-2">
+              <div className="text-center ">
+                <Title level={3} className="!">
                   Reset Password
                 </Title>
                 <Text type="secondary">
@@ -70,7 +70,7 @@ export default function ResetPasswordPage() {
                   ]}
                 >
                   <Input.Password
-                    prefix={<LockOutlined className="text-gray-400" />}
+                    prefix={<LockOutlined className="" />}
                     placeholder="New Password"
                   />
                 </Form.Item>
@@ -93,7 +93,7 @@ export default function ResetPasswordPage() {
                   ]}
                 >
                   <Input.Password
-                    prefix={<LockOutlined className="text-gray-400" />}
+                    prefix={<LockOutlined className="" />}
                     placeholder="Confirm New Password"
                   />
                 </Form.Item>

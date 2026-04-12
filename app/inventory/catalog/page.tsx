@@ -123,7 +123,7 @@ export default function InventoryCatalogPage() {
       title: 'Min/Max',
       key: 'limits',
       render: (_: any, record: InventoryItem) => (
-        <Text className="text-sm">{record.minStock} / {record.maxStock}</Text>
+        <Text className="">{record.minStock} / {record.maxStock}</Text>
       )},
     { title: 'Location', dataIndex: 'location', key: 'location' },
     { title: 'Supplier', dataIndex: 'supplier', key: 'supplier' },
@@ -161,10 +161,10 @@ export default function InventoryCatalogPage() {
     outOfStock: inventory.filter((i: any) => i.status === 'Out of Stock').length};
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '1400px', margin: '0 auto' }}>
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+    <div className="  sm: sm: lg: lg: max-w-7xl mx-auto">
+      <div className=" -col sm:-row items-start sm:   ">
         <div>
-          <Title level={3} className="!mb-1">Inventory Catalog</Title>
+          <Title level={3} className="!">Inventory Catalog</Title>
           <Text type="secondary">Manage hospital inventory, supplies, and equipment</Text>
         </div>
         <Button type="primary" icon={<PlusOutlined />} onClick={() => setIsModalOpen(true)} className="w-full sm:w-auto">
@@ -179,40 +179,40 @@ export default function InventoryCatalogPage() {
           type="warning"
           showIcon
           closable
-          className="mb-4"
+          className=""
         />
       )}
 
-      <Row gutter={[16, 16]} style={{ marginBottom: '24px' }}>
+      <Row gutter={[16, 16]} className="">
         <Col xs={12} sm={6}>
-          <Card className="p-4 sm:p-6">
+          <Card className=" sm:">
             <div className="text-center">
-              <div className="text-2xl font-bold text-blue-600">{stats.total}</div>
-              <div className="text-sm text-gray-500">Total Items</div>
+              <div className="text-2xl font-bold ">{stats.total}</div>
+              <div className=" ">Total Items</div>
             </div>
           </Card>
         </Col>
         <Col xs={12} sm={6}>
-          <Card className="p-4 sm:p-6">
+          <Card className=" sm:">
             <div className="text-center">
-              <div className="text-2xl font-bold text-green-600">{stats.inStock}</div>
-              <div className="text-sm text-gray-500">In Stock</div>
+              <div className="text-2xl font-bold ">{stats.inStock}</div>
+              <div className=" ">In Stock</div>
             </div>
           </Card>
         </Col>
         <Col xs={12} sm={6}>
-          <Card className="p-4 sm:p-6">
+          <Card className=" sm:">
             <div className="text-center">
-              <div className="text-2xl font-bold text-orange-600">{stats.lowStock}</div>
-              <div className="text-sm text-gray-500">Low Stock</div>
+              <div className="text-2xl font-bold ">{stats.lowStock}</div>
+              <div className=" ">Low Stock</div>
             </div>
           </Card>
         </Col>
         <Col xs={12} sm={6}>
-          <Card className="p-4 sm:p-6">
+          <Card className=" sm:">
             <div className="text-center">
-              <div className="text-2xl font-bold text-red-600">{stats.outOfStock}</div>
-              <div className="text-sm text-gray-500">Out of Stock</div>
+              <div className="text-2xl font-bold ">{stats.outOfStock}</div>
+              <div className=" ">Out of Stock</div>
             </div>
           </Card>
         </Col>
@@ -220,14 +220,14 @@ export default function InventoryCatalogPage() {
 
       <Card
         title="Inventory Items"
-        className="p-4 sm:p-6"
+        className=" sm:"
         extra={
           <div className="overflow-x-auto w-full">
             <Space className="w-full sm:w-auto">
               <Input.Search
                 placeholder="Search items..."
                 allowClear
-                style={{ width: 150 }}
+                className="w-[150px] sm:w-[200px]"
                 className="sm:w-[200px]"
                 value={searchText}
                 onChange={(e) => setSearchText(e.target.value)}
@@ -238,7 +238,7 @@ export default function InventoryCatalogPage() {
                 value={categoryFilter}
                 onChange={setCategoryFilter}
                 allowClear
-                style={{ width: 100 }}
+                className="w-[100px] sm:w-[120px]"
                 className="sm:w-[120px]"
               >
                 <Select.Option value="Medication">Medication</Select.Option>
@@ -305,7 +305,7 @@ export default function InventoryCatalogPage() {
           <Row gutter={16}>
             <Col span={8}>
               <Form.Item name="quantity" label="Quantity" rules={[{ required: true }]}>
-                <InputNumber min={0} style={{ width: '100%' }} />
+                <InputNumber min={0} className="w-full" />
               </Form.Item>
             </Col>
             <Col span={8}>
@@ -323,12 +323,12 @@ export default function InventoryCatalogPage() {
           <Row gutter={16}>
             <Col span={12}>
               <Form.Item name="minStock" label="Min Stock Level" rules={[{ required: true }]}>
-                <InputNumber min={0} style={{ width: '100%' }} />
+                <InputNumber min={0} className="w-full" />
               </Form.Item>
             </Col>
             <Col span={12}>
               <Form.Item name="maxStock" label="Max Stock Level" rules={[{ required: true }]}>
-                <InputNumber min={0} style={{ width: '100%' }} />
+                <InputNumber min={0} className="w-full" />
               </Form.Item>
             </Col>
           </Row>

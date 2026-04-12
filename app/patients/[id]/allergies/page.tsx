@@ -39,11 +39,11 @@ export default function PatientAllergiesPage() {
 
   if (!patient) {
     return (
-      <div style={{ padding: '32px', textAlign: 'center' }}>
+      <div className=" text-center">
         <Title level={3}>Access Denied</Title>
         <Text>Patient not found or you do not have permission to view this page.</Text>
         <br />
-        <Button type="primary" onClick={() => router.back()} style={{ marginTop: '16px' }}>
+          <Button type="primary" onClick={() => router.back()} className="">
           Go Back
         </Button>
       </div>
@@ -137,7 +137,7 @@ export default function PatientAllergiesPage() {
   const hasSevereAllergies = allergies.some((a) => a.severity === 'Severe' || a.severity === 'Life-Threatening');
 
   return (
-    <div style={{ padding: '24px', maxWidth: '1200px', margin: '0 auto' }}>
+    <div className=" max-w-6xl mx-auto">
       <PageHeader
         title={`${patient.firstName} ${patient.lastName} - Allergies`}
         subtitle={`MRN: ${patient.mrn}`}
@@ -158,7 +158,7 @@ export default function PatientAllergiesPage() {
           type="error"
           showIcon
           icon={<ExclamationCircleOutlined />}
-          style={{ marginBottom: '24px' }}
+          className=""
         />
       )}
 
@@ -166,19 +166,19 @@ export default function PatientAllergiesPage() {
         {/* Summary Card */}
         <Col xs={24} lg={8}>
           <Card>
-            <Title level={5} className="mb-4">Allergy Summary</Title>
+            <Title level={5} className="">Allergy Summary</Title>
             <div className="space-y-4">
               <div>
                 <Text type="secondary">Total Allergies</Text>
-                <Title level={3} className="!mb-0">{allergies.length}</Title>
+                <Title level={3} className="!">{allergies.length}</Title>
               </div>
               <div>
                 <Text type="secondary">Severity Breakdown</Text>
-                <div className="space-y-1 mt-2">
+                <div className="space-y-1 ">
                   {['Mild', 'Moderate', 'Severe', 'Life-Threatening'].map((severity) => {
                     const count = allergies.filter((a: any) => a.severity === severity).length;
                     return count > 0 ? (
-                      <div key={severity} className="flex justify-between items-center">
+                      <div key={severity} className="  ">
                         <Tag color={getSeverityColor(severity)}>{severity}</Tag>
                         <Text strong>{count}</Text>
                       </div>
@@ -188,7 +188,7 @@ export default function PatientAllergiesPage() {
               </div>
               <div>
                 <Text type="secondary">Categories</Text>
-                <div className="flex flex-wrap gap-2 mt-2">
+                <div className=" -wrap  ">
                   {Array.from(new Set(allergies.map((a) => a.category))).map((category) => (
                     <Tag key={category} color={getCategoryColor(category)}>
                       {category}
@@ -201,14 +201,14 @@ export default function PatientAllergiesPage() {
 
           {/* Critical Allergies Alert */}
           {hasSevereAllergies && (
-            <Card style={{ marginTop: '16px', background: '#FEF2F2', borderColor: '#FECACA' }}>
+            <Card className=" bg-red-50 border-red-200">
               <Space>
-                <WarningOutlined style={{ color: '#DC2626', fontSize: '20px' }} />
+                <WarningOutlined className="color: '#DC2626' text-xl" />
                 <div>
-                  <Title level={5} className="!mb-1" style={{ color: '#DC2626' }}>
+                  <Title level={5} className="! ">
                     Critical Warning
                   </Title>
-                  <Text type="secondary" className="text-sm">
+                  <Text type="secondary" className="">
                     All medications must be checked against these allergies before administration
                   </Text>
                 </div>
@@ -222,7 +222,7 @@ export default function PatientAllergiesPage() {
           <Card
             title={
               <Space>
-                <MedicineBoxOutlined style={{ color: '#EF4444' }} />
+                <MedicineBoxOutlined className="" />
                 <span>Recorded Allergies</span>
               </Space>
             }
@@ -232,10 +232,10 @@ export default function PatientAllergiesPage() {
                 dataSource={allergies}
                 renderItem={(allergy) => (
                   <List.Item
+                    className={`pl-4 ${allergy.severity === 'Severe' || allergy.severity === 'Life-Threatening' ? 'bg-red-50' : ''}`}
                     style={{
                       borderLeft: `4px solid ${allergy.severity === 'Severe' || allergy.severity === 'Life-Threatening' ? '#DC2626' : '#D1D5DB'}`,
-                      paddingLeft: '16px',
-                      background: allergy.severity === 'Severe' || allergy.severity === 'Life-Threatening' ? '#FEF2F2' : 'transparent'}}
+                    }}
                     actions={[
                       <Button type="text" icon={<EditOutlined />} onClick={() => handleEdit(allergy)} />,
                       <Popconfirm
@@ -251,7 +251,7 @@ export default function PatientAllergiesPage() {
                     <List.Item.Meta
                       title={
                         <Space>
-                          <span className="font-medium text-lg">{allergy.name}</span>
+                          <span className="font-medium ">{allergy.name}</span>
                           <Tag color={getCategoryColor(allergy.category)}>{allergy.category}</Tag>
                           <Tag color={getSeverityColor(allergy.severity)}>{allergy.severity}</Tag>
                         </Space>
@@ -268,7 +268,7 @@ export default function PatientAllergiesPage() {
                               title={allergy.notes}
                               type="info"
                               showIcon
-                              style={{ marginTop: '8px' }}
+                              className=""
                             />
                           )}
                         </div>

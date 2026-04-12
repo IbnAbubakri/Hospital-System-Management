@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
-import { Space, Drawer, Descriptions, Modal, Form, Input, Select, Alert, Divider, Button, Typography } from 'antd';
-import { EyeOutlined, DownloadOutlined, PrinterOutlined, PlusOutlined, DollarOutlined } from '@ant-design/icons';
+import { Space, Drawer, Descriptions, Modal, Form, Input, Select, Alert, Divider, Button, Typography, Empty, App } from 'antd';
+import { EyeOutlined, DownloadOutlined, PrinterOutlined, PlusOutlined, DollarOutlined, CheckCircleOutlined } from '@ant-design/icons';
 import { PageShell, StatCard, ModernTable, SearchFilterBar, StatusTag, GradientButton, InfoCard } from '@/components/design-system';
 import { useAuth } from '@/lib/contexts/AuthContext';
 
@@ -102,6 +102,7 @@ export default function BillingPage() {
   const [searchText, setSearchText] = useState('');
   const [statusFilter, setStatusFilter] = useState<string | undefined>();
   const [createModalVisible, setCreateModalVisible] = useState(false);
+  const { message } = App.useApp();
 
   const filteredInvoices = useMemo(() => {
     return mockInvoices.filter((inv) => {
@@ -116,13 +117,13 @@ export default function BillingPage() {
   // CRITICAL SECURITY: Restrict access to administrators only
   if (!hasPermission('billing:invoices:view')) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-blue-50 to-slate-50 px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8">
+      <div className="min-h-screen bg-gradient-to-b from-blue-50 to-slate-50 px-4 sm:px-6 lg:px-8">
         <Alert
           title="Access Denied"
           description="You don&apos;tt have permission to access billing management. This area is restricted to billing staff and administrators only."
           type="error"
           showIcon
-          className="mt-6 rounded-xl"
+          className="rounded-xl"
         />
       </div>
     );
@@ -131,6 +132,19 @@ export default function BillingPage() {
   const handleView = (invoice: Invoice) => {
     setSelectedInvoice(invoice);
     setDrawerVisible(true);
+    message.success(`Viewing invoice ${invoice.invoiceNumber}`);
+  };
+
+  // Handle create invoice button click
+  const handleCreateInvoice = () => {
+    message.success('Invoice created successfully');
+    setCreateModalVisible(true);
+  };
+
+  // Handle mark as paid action
+  const handleMarkAsPaid = (invoice: Invoice) => {
+    message.success('Payment recorded');
+    // In a real app, this would update the invoice status
   };
 
   const columns = [
@@ -139,16 +153,7 @@ export default function BillingPage() {
       dataIndex: 'invoiceNumber',
       key: 'invoiceNumber',
       render: (num: string) => (
-        <span
-          style={{
-            padding: '4px 10px',
-            borderRadius: '6px',
-            fontSize: '13px',
-            fontWeight: 500,
-            background: '#DBEAFE',
-            color: '#1E40AF',
-          }}
-        >
+        <span className="px-2 py-1 rounded-md text-sm font-medium bg-blue-100">
           {num}
         </span>
       ),
@@ -158,8 +163,8 @@ export default function BillingPage() {
       key: 'patient',
       render: (_: any, record: Invoice) => (
         <div>
-          <div className="font-medium text-gray-900">{record.patientName}</div>
-          <div className="text-xs text-gray-500">{record.mrn}</div>
+          <div className="font-medium">{record.patientName}</div>
+          <div className="text-gray-500">{record.mrn}</div>
         </div>
       ),
     },
@@ -168,16 +173,7 @@ export default function BillingPage() {
       dataIndex: 'type',
       key: 'type',
       render: (type: string) => (
-        <span
-          style={{
-            padding: '4px 10px',
-            borderRadius: '6px',
-            fontSize: '13px',
-            fontWeight: 500,
-            background: '#F1F5F9',
-            color: '#475569',
-          }}
-        >
+        <span className="px-2 py-1 rounded-md text-sm font-medium bg-slate-100 text-slate-600">
           {type}
         </span>
       ),
@@ -189,7 +185,7 @@ export default function BillingPage() {
       dataIndex: 'total',
       key: 'total',
       render: (amount: number) => (
-        <span className="font-semibold text-gray-900">₦{amount.toLocaleString()}</span>
+        <span className="font-semibold">₦{amount.toLocaleString()}</span>
       ),
       sorter: (a: Invoice, b: Invoice) => a.total - b.total,
     },
@@ -202,7 +198,7 @@ export default function BillingPage() {
         return (
           <div>
             <div>₦{amount.toLocaleString()}</div>
-            <div className="text-xs text-gray-500">{percentage}%</div>
+            <div className="text-gray-500">{percentage}%</div>
           </div>
         );
       },
@@ -221,6 +217,16 @@ export default function BillingPage() {
           <GradientButton variant="secondary" size="small" icon={<EyeOutlined />} onClick={() => handleView(record)}>
             View
           </GradientButton>
+          {(record.status === 'pending' || record.status === 'partial') && (
+            <GradientButton 
+              variant="primary" 
+              size="small" 
+              icon={<CheckCircleOutlined />} 
+              onClick={() => handleMarkAsPaid(record)}
+            >
+              Mark Paid
+            </GradientButton>
+          )}
         </Space>
       ),
     },
@@ -242,13 +248,13 @@ export default function BillingPage() {
       title="Billing Dashboard"
       subtitle="Monitor revenue, track payments, and manage billing operations"
       action={
-        <GradientButton icon={<PlusOutlined />} onClick={() => setCreateModalVisible(true)} className="w-full sm:w-auto">
+        <GradientButton icon={<PlusOutlined />} onClick={handleCreateInvoice} className="w-full sm:w-auto">
           Create Invoice
         </GradientButton>
       }
     >
       {/* Statistics Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-6">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <StatCard
           label="Total Revenue (Feb)"
           value={stats.totalRevenue}
@@ -288,7 +294,7 @@ export default function BillingPage() {
       </div>
 
       {/* Invoice List Section */}
-      <div className="bg-white rounded-xl p-4 sm:p-6 lg:p-6 border border-slate-200">
+      <div className="bg-white rounded-xl p-4 sm:p-6 lg:p-8 border border-slate-200">
         <SearchFilterBar
           searchPlaceholder="Search invoices by number or patient..."
           searchValue={searchText}
@@ -315,13 +321,17 @@ export default function BillingPage() {
         />
 
         <div className="overflow-x-auto">
-          <ModernTable
-            dataSource={filteredInvoices}
-            columns={columns}
-            rowKey="id"
-            pagination={{ defaultPageSize: 15 }}
-            scroll={{ x: 'max-content' }}
-          />
+          {filteredInvoices.length === 0 ? (
+            <Empty description="No invoices found" />
+          ) : (
+            <ModernTable
+              dataSource={filteredInvoices}
+              columns={columns}
+              rowKey="id"
+              pagination={{ defaultPageSize: 15 }}
+              scroll={{ x: 'max-content' }}
+            />
+          )}
         </div>
       </div>
 
@@ -329,7 +339,7 @@ export default function BillingPage() {
       <Drawer
         title={
           <div className="flex items-center gap-2">
-            <DollarOutlined style={{ color: '#059669' }} />
+            <DollarOutlined className="text-lg" />
             <span>{selectedInvoice?.invoiceNumber}</span>
           </div>
         }
@@ -355,12 +365,12 @@ export default function BillingPage() {
             </Descriptions>
 
             <Divider>Invoice Items</Divider>
-            <div className="mt-4">
+            <div className="space-y-3">
               {selectedInvoice.items.map((item) => (
-                <div key={item.id} className="flex justify-between py-2 border-b" style={{ borderBottom: '1px solid #f0f0f0' }}>
+                <div key={item.id} className="flex justify-between items-center py-3 border-b border-gray-200">
                   <div>
                     <div className="font-medium">{item.service}</div>
-                    <div className="text-xs text-gray-500">{item.date}</div>
+                    <div className="text-gray-500">{item.date}</div>
                   </div>
                   <div className="font-semibold">₦{item.amount.toLocaleString()}</div>
                 </div>
@@ -368,7 +378,7 @@ export default function BillingPage() {
             </div>
 
             <Divider />
-            <div className="mt-4 space-y-2">
+            <div className="space-y-2">
               <div className="flex justify-between">
                 <Text type="secondary">Subtotal:</Text>
                 <Text>₦{selectedInvoice.subtotal.toLocaleString()}</Text>
@@ -383,7 +393,7 @@ export default function BillingPage() {
                 <Text type="secondary">Tax (10%):</Text>
                 <Text>₦{selectedInvoice.tax.toLocaleString()}</Text>
               </div>
-              <div className="flex justify-between pt-2 border-t" style={{ borderTop: '1px solid #f0f0f0' }}>
+              <div className="flex justify-between pt-3 border-t border-gray-200">
                 <Text strong>Total:</Text>
                 <Text strong className="text-lg">₦{selectedInvoice.total.toLocaleString()}</Text>
               </div>
@@ -391,15 +401,15 @@ export default function BillingPage() {
                 <Text type="secondary">Paid:</Text>
                 <Text type="success">₦{selectedInvoice.paidAmount.toLocaleString()}</Text>
               </div>
-              <div className="flex justify-between pt-2 border-t" style={{ borderTop: '1px solid #f0f0f0' }}>
+              <div className="flex justify-between pt-3 border-t border-gray-200">
                 <Text strong>Balance Due:</Text>
-                <Text strong className="text-lg text-red-600">
+                <Text strong className="text-red-600">
                   ₦{(selectedInvoice.total - selectedInvoice.paidAmount).toLocaleString()}
                 </Text>
               </div>
             </div>
 
-            <div className="mt-6 flex flex-col sm:flex-row gap-2">
+            <div className="flex flex-col sm:flex-row gap-2 mt-6">
               <GradientButton icon={<DownloadOutlined />} className="w-full sm:w-auto">Download PDF</GradientButton>
               <GradientButton variant="secondary" icon={<PrinterOutlined />} className="w-full sm:w-auto">Print</GradientButton>
             </div>
@@ -411,7 +421,7 @@ export default function BillingPage() {
       <Modal
         title={
           <div className="flex items-center gap-2">
-            <PlusOutlined style={{ color: '#3B82F6' }} />
+            <PlusOutlined className="text-lg" />
             <span>Create New Invoice</span>
           </div>
         }
@@ -420,7 +430,7 @@ export default function BillingPage() {
         onCancel={() => setCreateModalVisible(false)}
         width={800}
       >
-        <Form layout="vertical" className="mt-6">
+        <Form layout="vertical">
           <Form.Item label="Patient" rules={[{ required: true }]}>
             <Select placeholder="Select patient" showSearch>
               <Select.Option value="1">Chukwuemeka Okonkwo (MRN-2024-0001)</Select.Option>

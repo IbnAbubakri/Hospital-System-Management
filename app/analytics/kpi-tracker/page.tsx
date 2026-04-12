@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Card, Typography, Row, Col, Statistic, Progress, Space, Select, DatePicker, Tag, List } from 'antd';
-import { RiseOutlined, FallOutlined, ArrowUpOutlined, ArrowDownOutlined, LikeOutlined, BedOutlined, CalendarOutlined, SyncOutlined, DollarOutlined, LightningOutlined, ClockCircleOutlined, MedicineBoxOutlined } from '@ant-design/icons';
+import { RiseOutlined, FallOutlined, ArrowUpOutlined, ArrowDownOutlined, LikeOutlined, ApartmentOutlined, CalendarOutlined, SyncOutlined, DollarOutlined, ThunderboltOutlined, ClockCircleOutlined, MedicineBoxOutlined } from '@ant-design/icons';
 
 const { Title } = Typography;
 
@@ -28,7 +28,7 @@ export default function KPITrackerPage() {
       previous: 82,
       unit: '%',
       trend: 'down',
-      icon: <BedOutlined />,
+      icon: <ApartmentOutlined />,
       category: 'Operations',
       status: 'below-target',
     },
@@ -72,7 +72,7 @@ export default function KPITrackerPage() {
       previous: 85,
       unit: '%',
       trend: 'up',
-      icon: <LightningOutlined />,
+      icon: <ThunderboltOutlined />,
       category: 'HR',
       status: 'on-track',
     },
@@ -105,8 +105,8 @@ export default function KPITrackerPage() {
   const aboveTargetCount = kpis.filter(k => k.status === 'above-target').length;
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '1400px', margin: '0 auto' }}>
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+    <div className="  sm: sm: lg: lg:" style={{ maxWidth: '1400px', margin: '0 auto' }}>
+      <div className=" -col sm:-row items-start sm:alignItems: 'center'   ">
         <Title level={3}>KPI Tracker</Title>
         <Space>
           <Select value={timeRange} onChange={setTimeRange} style={{ width: 120 }}>
@@ -162,7 +162,7 @@ export default function KPITrackerPage() {
         {kpis.map((kpi, index) => (
           <Col span={12} key={index}>
             <Card>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '16px' }}>
+              <div style={{ display: '', justifyContent: 'space-between', alignItems: '-start', marginBottom: '16px' }}>
                 <div>
                   <div style={{ fontSize: '24px', marginBottom: '8px' }}>{kpi.icon}</div>
                   <div style={{ fontSize: '14px', fontWeight: 600, color: '#374151' }}>{kpi.name}</div>
@@ -177,7 +177,7 @@ export default function KPITrackerPage() {
                 </Tag>
               </div>
 
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '16px' }}>
+              <div style={{ display: '', justifyContent: 'space-between', alignItems: '-end', marginBottom: '16px' }}>
                 <div>
                   <div style={{ fontSize: '32px', fontWeight: 700, color: '#1F2937' }}>
                     {kpi.unit === '₦' ? `₦${kpi.current.toLocaleString()}` : `${kpi.current}${kpi.unit}`}
@@ -188,7 +188,7 @@ export default function KPITrackerPage() {
                 </div>
                 <div style={{ textAlign: 'right' }}>
                   <div style={{
-                    display: 'inline-flex',
+                    display: 'inline-',
                     alignItems: 'center',
                     gap: '4px',
                     padding: '4px 12px',

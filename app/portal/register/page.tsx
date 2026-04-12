@@ -23,25 +23,14 @@ export default function PortalRegisterPage() {
 
   return (
     <div
-      className="px-4 py-6 sm:px-6 sm:py-8"
-      style={{
-        minHeight: '100vh',
-        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center'
-      }}
+      className="  sm: sm:"
+      className="min-h-screen bg-gradient-to-br from-purple-600 to-purple-900   "
     >
       <Card
-        style={{
-          width: '100%',
-          maxWidth: '500px',
-          borderRadius: '16px',
-          boxShadow: '0 20px 60px rgba(0,0,0,0.3)'
-        }}
+      className="w-full max-w-[500px] -2xl shadow-[0_20px_60px_rgba(0,0,0,0.3)]"
       >
-        <div style={{ textAlign: 'center', marginBottom: '32px' }}>
-          <Title level={2} style={{ color: '#667eea', marginBottom: '8px' }}>
+        <div className="text-center ">
+          <Title level={2} className="!text-purple-600 !">
             Patient Portal Registration
           </Title>
           <Text type="secondary">Create your account to access medical records</Text>
@@ -52,7 +41,7 @@ export default function PortalRegisterPage() {
           description="Fill in your details to create a patient portal account. You will need your MRN to complete registration."
           type="info"
           showIcon
-          style={{ marginBottom: '24px' }}
+          className=""
         />
 
         <Form form={form} layout="vertical" onFinish={handleRegister}>
@@ -168,7 +157,7 @@ export default function PortalRegisterPage() {
                 background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
                 border: 'none',
                 fontSize: '16px',
-                fontWeight: 600
+                fontWeight: 600,
               }}
             >
               Create Account

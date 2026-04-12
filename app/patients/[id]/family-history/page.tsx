@@ -38,11 +38,11 @@ export default function PatientFamilyHistoryPage() {
 
   if (!patient) {
     return (
-      <div style={{ padding: '32px', textAlign: 'center' }}>
+      <div className=" text-center">
         <Title level={3}>Access Denied</Title>
         <Text>Patient not found or you do not have permission to view this page.</Text>
         <br />
-        <Button type="primary" onClick={() => router.back()} style={{ marginTop: '16px' }}>
+          <Button type="primary" onClick={() => router.back()} className="">
           Go Back
         </Button>
       </div>
@@ -146,7 +146,7 @@ export default function PatientFamilyHistoryPage() {
   };
 
   return (
-    <div style={{ padding: '24px', maxWidth: '1200px', margin: '0 auto' }}>
+    <div className=" max-w-6xl mx-auto">
       <PageHeader
         title={`${patient.firstName} ${patient.lastName} - Family History`}
         subtitle={`MRN: ${patient.mrn}`}
@@ -164,15 +164,15 @@ export default function PatientFamilyHistoryPage() {
         {/* Summary Card */}
         <Col xs={24} lg={8}>
           <Card>
-            <Title level={5} className="mb-4">Family History Summary</Title>
+            <Title level={5} className="">Family History Summary</Title>
             <div className="space-y-4">
               <div>
                 <Text type="secondary">Total Family Members</Text>
-                <Title level={3} className="!mb-0">{familyHistory.length}</Title>
+                <Title level={3} className="!">{familyHistory.length}</Title>
               </div>
               <div>
                 <Text type="secondary">Reported Conditions</Text>
-                <div className="flex flex-wrap gap-2 mt-2">
+                <div className=" -wrap  ">
                   {Array.from(new Set(familyHistory.flatMap((m) => m.conditions))).map((condition) => (
                     <Tag key={condition} color={getConditionColor(condition)}>
                       {condition}
@@ -182,16 +182,16 @@ export default function PatientFamilyHistoryPage() {
               </div>
               <div>
                 <Text type="secondary">Conditions Requiring Monitoring</Text>
-                <div className="mt-2">
+                <div className="">
                   {['Hypertension', 'Diabetes Type 2', 'Heart Disease'].filter((c: any) =>
                     familyHistory.some((m) => m.conditions.includes(c))
                   ).map((condition) => (
-                    <Tag key={condition} color="warning" className="mb-1">
+                    <Tag key={condition} color="warning" className="">
                       {condition}
                     </Tag>
                   ))}
                   {familyHistory.every((m) => !['Hypertension', 'Diabetes Type 2', 'Heart Disease'].some((c) => m.conditions.includes(c))) && (
-                    <Text type="secondary" className="text-sm">No high-risk conditions identified</Text>
+                    <Text type="secondary" className="">No high-risk conditions identified</Text>
                   )}
                 </div>
               </div>
@@ -238,7 +238,8 @@ export default function PatientFamilyHistoryPage() {
                             alignItems: 'center',
                             justifyContent: 'center',
                             color: 'white',
-                            fontWeight: 600}}
+                            fontWeight: 600,
+                          }}
                         >
                           {member.name.charAt(0)}
                         </div>
@@ -252,15 +253,15 @@ export default function PatientFamilyHistoryPage() {
                       }
                       description={
                         <div>
-                          <div className="mb-1">
+                          <div className="">
                             {member.conditions.map((condition) => (
-                              <Tag key={condition} color={getConditionColor(condition)} className="mb-1">
+                              <Tag key={condition} color={getConditionColor(condition)} className="">
                                 {condition}
                               </Tag>
                             ))}
                           </div>
                           {member.notes && (
-                            <Text type="secondary" className="text-sm">
+                            <Text type="secondary" className="">
                               {member.notes}
                             </Text>
                           )}

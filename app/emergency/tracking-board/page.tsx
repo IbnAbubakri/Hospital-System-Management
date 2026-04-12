@@ -52,189 +52,189 @@ export default function TrackingBoardPage() {
   const byPriority = (priority: string) => patients.filter(p => p.priority === priority);
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '1600px', margin: '0 auto' }}>
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+    <div className="  sm: sm: lg: lg: max-w-[1600px] mx-auto">
+      <div className=" -col sm:-row items-start sm:   ">
         <Title level={3}>Emergency Department Tracking Board</Title>
         <Space size="large">
           <Badge count={patients.length} showZero><UserOutlined /> Patients</Badge>
-          <Badge count={patients.filter(p => p.status === 'waiting').length} showZero style={{ backgroundColor: '#52c41a' }}><ClockCircleOutlined /> Waiting</Badge>
-          <Badge count={patients.filter(p => p.priority === 'critical').length} showZero style={{ backgroundColor: '#f5222d' }}>Critical</Badge>
+          <Badge count={patients.filter(p => p.status === 'waiting').length} showZero className="bg-green-500"><ClockCircleOutlined /> Waiting</Badge>
+          <Badge count={patients.filter(p => p.priority === 'critical').length} showZero className="bg-red-500">Critical</Badge>
         </Space>
       </div>
 
       <Card>
         <Tabs defaultActiveKey="status">
           <TabPane tab="By Status" key="status">
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px' }}>
-              <Card title={<Badge count={byStatus('waiting').length} showZero><span style={{ fontWeight: 'normal' }}>Waiting</span></Badge>} size="small" type="inner">
-                <Space orientation="vertical" style={{ width: '100%' }}>
+            <div className="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] ">
+              <Card title={<Badge count={byStatus('waiting').length} showZero><span className="font-normal">Waiting</span></Badge>} size="small" type="inner">
+                <Space direction="vertical" className="w-full">
                   {byStatus('waiting').map((patient) => (
-                    <Card key={patient.id} size="small" className="shadow-sm">
-                      <div className="flex justify-between items-start mb-2">
+                    <Card key={patient.id} size="small" className="shadow">
+                      <div className="  items-start ">
                         <div>
                           <div className="font-semibold">{patient.name}</div>
-                          <div className="text-xs text-gray-500">{patient.age} yrs • {patient.complaint}</div>
+                          <div className=" ">{patient.age} yrs • {patient.complaint}</div>
                         </div>
                         <Tag color={getPriorityColor(patient.priority)}>{patient.priority}</Tag>
                       </div>
-                      <div className="text-xs text-gray-500">
+                      <div className=" ">
                         <ClockCircleOutlined /> Wait: {patient.waitTime} min
                       </div>
                     </Card>
                   ))}
-                  {byStatus('waiting').length === 0 && <div className="text-center text-gray-400 py-4">No patients</div>}
+                  {byStatus('waiting').length === 0 && <div className="text-center  ">No patients</div>}
                 </Space>
               </Card>
 
-              <Card title={<Badge count={byStatus('nursing').length} showZero><span style={{ fontWeight: 'normal' }}>Nursing</span></Badge>} size="small" type="inner">
-                <Space orientation="vertical" style={{ width: '100%' }}>
+              <Card title={<Badge count={byStatus('nursing').length} showZero><span className="font-normal">Nursing</span></Badge>} size="small" type="inner">
+                <Space direction="vertical" className="w-full">
                   {byStatus('nursing').map((patient) => (
-                    <Card key={patient.id} size="small" className="shadow-sm">
-                      <div className="flex justify-between items-start mb-2">
+                    <Card key={patient.id} size="small" className="shadow">
+                      <div className="  items-start ">
                         <div>
                           <div className="font-semibold">{patient.name}</div>
-                          <div className="text-xs text-gray-500">{patient.age} yrs • {patient.complaint}</div>
+                          <div className=" ">{patient.age} yrs • {patient.complaint}</div>
                         </div>
                         <Tag color={getPriorityColor(patient.priority)}>{patient.priority}</Tag>
                       </div>
-                      <div className="text-xs text-gray-500">
+                      <div className=" ">
                         Duration: {patient.duration} min
                       </div>
                     </Card>
                   ))}
-                  {byStatus('nursing').length === 0 && <div className="text-center text-gray-400 py-4">No patients</div>}
+                  {byStatus('nursing').length === 0 && <div className="text-center  ">No patients</div>}
                 </Space>
               </Card>
 
-              <Card title={<Badge count={byStatus('tests').length} showZero><span style={{ fontWeight: 'normal' }}>Tests/Labs</span></Badge>} size="small" type="inner">
-                <Space orientation="vertical" style={{ width: '100%' }}>
+              <Card title={<Badge count={byStatus('tests').length} showZero><span className="font-normal">Tests/Labs</span></Badge>} size="small" type="inner">
+                <Space direction="vertical" className="w-full">
                   {byStatus('tests').map((patient) => (
-                    <Card key={patient.id} size="small" className="shadow-sm">
-                      <div className="flex justify-between items-start mb-2">
+                    <Card key={patient.id} size="small" className="shadow">
+                      <div className="  items-start ">
                         <div>
                           <div className="font-semibold">{patient.name}</div>
-                          <div className="text-xs text-gray-500">{patient.age} yrs • {patient.complaint}</div>
+                          <div className=" ">{patient.age} yrs • {patient.complaint}</div>
                         </div>
                         <Tag color={getPriorityColor(patient.priority)}>{patient.priority}</Tag>
                       </div>
-                      <div className="text-xs text-gray-500">
+                      <div className=" ">
                         Duration: {patient.duration} min
                       </div>
                     </Card>
                   ))}
-                  {byStatus('tests').length === 0 && <div className="text-center text-gray-400 py-4">No patients</div>}
+                  {byStatus('tests').length === 0 && <div className="text-center  ">No patients</div>}
                 </Space>
               </Card>
 
-              <Card title={<Badge count={byStatus('doctor').length} showZero><span style={{ fontWeight: 'normal' }}>With Doctor</span></Badge>} size="small" type="inner">
-                <Space orientation="vertical" style={{ width: '100%' }}>
+              <Card title={<Badge count={byStatus('doctor').length} showZero><span className="font-normal">With Doctor</span></Badge>} size="small" type="inner">
+                <Space direction="vertical" className="w-full">
                   {byStatus('doctor').map((patient) => (
-                    <Card key={patient.id} size="small" className="shadow-sm">
-                      <div className="flex justify-between items-start mb-2">
+                    <Card key={patient.id} size="small" className="shadow">
+                      <div className="  items-start ">
                         <div>
                           <div className="font-semibold">{patient.name}</div>
-                          <div className="text-xs text-gray-500">{patient.age} yrs • {patient.complaint}</div>
+                          <div className=" ">{patient.age} yrs • {patient.complaint}</div>
                         </div>
                         <Tag color={getPriorityColor(patient.priority)}>{patient.priority}</Tag>
                       </div>
-                      <div className="text-xs text-gray-500">
+                      <div className=" ">
                         {patient.doctor} • {patient.duration} min
                       </div>
                     </Card>
                   ))}
-                  {byStatus('doctor').length === 0 && <div className="text-center text-gray-400 py-4">No patients</div>}
+                  {byStatus('doctor').length === 0 && <div className="text-center  ">No patients</div>}
                 </Space>
               </Card>
 
-              <Card title={<Badge count={byStatus('discharge').length} showZero><span style={{ fontWeight: 'normal' }}>Discharge</span></Badge>} size="small" type="inner">
-                <Space orientation="vertical" style={{ width: '100%' }}>
+              <Card title={<Badge count={byStatus('discharge').length} showZero><span className="font-normal">Discharge</span></Badge>} size="small" type="inner">
+                <Space direction="vertical" className="w-full">
                   {byStatus('discharge').map((patient) => (
-                    <Card key={patient.id} size="small" className="shadow-sm">
-                      <div className="flex justify-between items-start mb-2">
+                    <Card key={patient.id} size="small" className="shadow">
+                      <div className="  items-start ">
                         <div>
                           <div className="font-semibold">{patient.name}</div>
-                          <div className="text-xs text-gray-500">{patient.age} yrs • {patient.complaint}</div>
+                          <div className=" ">{patient.age} yrs • {patient.complaint}</div>
                         </div>
-                        <CheckCircleOutlined style={{ color: '#52c41a' }} />
+                        <CheckCircleOutlined className="" />
                       </div>
-                      <div className="text-xs text-gray-500">
+                      <div className=" ">
                         {patient.doctor} • Ready for discharge
                       </div>
                     </Card>
                   ))}
-                  {byStatus('discharge').length === 0 && <div className="text-center text-gray-400 py-4">No patients</div>}
+                  {byStatus('discharge').length === 0 && <div className="text-center  ">No patients</div>}
                 </Space>
               </Card>
             </div>
           </TabPane>
 
           <TabPane tab="By Priority" key="priority">
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px' }}>
+            <div className="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] ">
               <Card title={<Tag color="error">Critical</Tag>} size="small" type="inner">
-                <Space orientation="vertical" style={{ width: '100%' }}>
+                <Space direction="vertical" className="w-full">
                   {byPriority('critical').map((patient) => (
-                    <Card key={patient.id} size="small" className="shadow-sm">
-                      <div className="flex justify-between items-start mb-2">
+                    <Card key={patient.id} size="small" className="shadow">
+                      <div className="  items-start ">
                         <div>
                           <div className="font-semibold">{patient.name}</div>
-                          <div className="text-xs text-gray-500">{patient.age} yrs • {patient.complaint}</div>
+                          <div className=" ">{patient.age} yrs • {patient.complaint}</div>
                         </div>
                         <Tag color={getStatusColor(patient.status)}>{getStatusLabel(patient.status)}</Tag>
                       </div>
                     </Card>
                   ))}
-                  {byPriority('critical').length === 0 && <div className="text-center text-gray-400 py-4">No patients</div>}
+                  {byPriority('critical').length === 0 && <div className="text-center  ">No patients</div>}
                 </Space>
               </Card>
 
               <Card title={<Tag color="warning">High</Tag>} size="small" type="inner">
-                <Space orientation="vertical" style={{ width: '100%' }}>
+                <Space direction="vertical" className="w-full">
                   {byPriority('high').map((patient) => (
-                    <Card key={patient.id} size="small" className="shadow-sm">
-                      <div className="flex justify-between items-start mb-2">
+                    <Card key={patient.id} size="small" className="shadow">
+                      <div className="  items-start ">
                         <div>
                           <div className="font-semibold">{patient.name}</div>
-                          <div className="text-xs text-gray-500">{patient.age} yrs • {patient.complaint}</div>
+                          <div className=" ">{patient.age} yrs • {patient.complaint}</div>
                         </div>
                         <Tag color={getStatusColor(patient.status)}>{getStatusLabel(patient.status)}</Tag>
                       </div>
                     </Card>
                   ))}
-                  {byPriority('high').length === 0 && <div className="text-center text-gray-400 py-4">No patients</div>}
+                  {byPriority('high').length === 0 && <div className="text-center  ">No patients</div>}
                 </Space>
               </Card>
 
               <Card title={<Tag color="processing">Medium</Tag>} size="small" type="inner">
-                <Space orientation="vertical" style={{ width: '100%' }}>
+                <Space direction="vertical" className="w-full">
                   {byPriority('medium').map((patient) => (
-                    <Card key={patient.id} size="small" className="shadow-sm">
-                      <div className="flex justify-between items-start mb-2">
+                    <Card key={patient.id} size="small" className="shadow">
+                      <div className="  items-start ">
                         <div>
                           <div className="font-semibold">{patient.name}</div>
-                          <div className="text-xs text-gray-500">{patient.age} yrs • {patient.complaint}</div>
+                          <div className=" ">{patient.age} yrs • {patient.complaint}</div>
                         </div>
                         <Tag color={getStatusColor(patient.status)}>{getStatusLabel(patient.status)}</Tag>
                       </div>
                     </Card>
                   ))}
-                  {byPriority('medium').length === 0 && <div className="text-center text-gray-400 py-4">No patients</div>}
+                  {byPriority('medium').length === 0 && <div className="text-center  ">No patients</div>}
                 </Space>
               </Card>
 
               <Card title={<Tag color="default">Low</Tag>} size="small" type="inner">
-                <Space orientation="vertical" style={{ width: '100%' }}>
+                <Space direction="vertical" className="w-full">
                   {byPriority('low').map((patient) => (
-                    <Card key={patient.id} size="small" className="shadow-sm">
-                      <div className="flex justify-between items-start mb-2">
+                    <Card key={patient.id} size="small" className="shadow">
+                      <div className="  items-start ">
                         <div>
                           <div className="font-semibold">{patient.name}</div>
-                          <div className="text-xs text-gray-500">{patient.age} yrs • {patient.complaint}</div>
+                          <div className=" ">{patient.age} yrs • {patient.complaint}</div>
                         </div>
                         <Tag color={getStatusColor(patient.status)}>{getStatusLabel(patient.status)}</Tag>
                       </div>
                     </Card>
                   ))}
-                  {byPriority('low').length === 0 && <div className="text-center text-gray-400 py-4">No patients</div>}
+                  {byPriority('low').length === 0 && <div className="text-center  ">No patients</div>}
                 </Space>
               </Card>
             </div>

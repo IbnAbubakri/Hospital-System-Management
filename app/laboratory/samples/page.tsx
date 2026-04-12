@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Table, Button, Tag, Progress } from 'antd';
+import { Table, Button, Tag, Progress, App } from 'antd';
 import { ToolOutlined, PlusOutlined } from '@ant-design/icons';
 import { formatDate } from '@/lib/utils';
 
@@ -26,6 +26,12 @@ const mockEquipment: Equipment[] = [
 ];
 
 export default function EquipmentPage() {
+  const { message } = App.useApp();
+  // Handle add equipment
+  const handleAddEquipment = () => {
+    message.success('Add equipment feature coming soon');
+  };
+
   const columns = [
     { title: 'Equipment ID', dataIndex: 'equipmentId', key: 'id' },
     { title: 'Name', dataIndex: 'name', key: 'name' },
@@ -51,27 +57,27 @@ export default function EquipmentPage() {
   ];
 
   return (
-    <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)', padding: '24px' }}>
-      <div className="p-4 sm:p-6" style={{ background: 'white', borderRadius: '12px', border: '1px solid #E2E8F0' }}>
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 gap-4">
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-slate-50 ">
+      <div className=" sm: bg-white -xl border border-gray-200">
+        <div className=" -col sm:-row items-start sm:   ">
           <div>
-            <h1 className="text-2xl font-semibold text-gray-900 mb-1">Lab Equipment</h1>
-            <p className="text-gray-500 text-sm">Laboratory equipment management and maintenance</p>
+            <h1 className="text-2xl font-semibold  ">Lab Equipment</h1>
+            <p className=" ">Laboratory equipment management and maintenance</p>
           </div>
-          <Button type="primary" icon={<PlusOutlined />} className="w-full sm:w-auto">Add Equipment</Button>
+          <Button type="primary" icon={<PlusOutlined />} onClick={handleAddEquipment} className="w-full sm:w-auto">Add Equipment</Button>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
-          <div style={{ padding: '16px', background: '#F9FAFB', borderRadius: '8px' }}>
-            <div className="text-sm text-gray-500 mb-1">Total Equipment</div>
-            <div className="text-2xl font-bold text-gray-900">{mockEquipment.length}</div>
+        <div className="grid grid-cols-1 sm:grid-cols-3  ">
+          <div className=" bg-gray-50 -lg">
+            <div className="  ">Total Equipment</div>
+            <div className="text-2xl font-bold ">{mockEquipment.length}</div>
           </div>
-          <div style={{ padding: '16px', background: '#F0FDF4', borderRadius: '8px' }}>
-            <div className="text-sm text-gray-500 mb-1">Operational</div>
-            <div className="text-2xl font-bold text-green-600">{mockEquipment.filter((e: any) => e.status === 'operational').length}</div>
+          <div className=" bg-green-50 -lg">
+            <div className="  ">Operational</div>
+            <div className="text-2xl font-bold ">{mockEquipment.filter((e: any) => e.status === 'operational').length}</div>
           </div>
-          <div style={{ padding: '16px', background: '#FEF3C7', borderRadius: '8px' }}>
-            <div className="text-sm text-gray-500 mb-1">Under Maintenance</div>
+          <div className=" bg-yellow-50 -lg">
+            <div className="  ">Under Maintenance</div>
             <div className="text-2xl font-bold text-yellow-600">{mockEquipment.filter((e: any) => e.status === 'maintenance').length}</div>
           </div>
         </div>

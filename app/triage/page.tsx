@@ -32,14 +32,14 @@ export default function TriagePage() {
   // Permission check - only nurses and admins can access triage
   if (!hasPermission('triage_patients') && user?.role !== 'Administrator') {
     return (
-      <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)' }}>
-        <div style={{ padding: '32px' }}>
+      <div className="min-h-screen bg-gradient-to-b from-blue-50 to-slate-50">
+        <div className="">
           <Alert
             title="Access Denied"
             description="You don't have permission to access the triage center. This area is restricted to nurses and administrators only."
             type="error"
             showIcon
-            style={{ borderRadius: '12px' }}
+            className="-xl"
           />
         </div>
       </div>
@@ -104,10 +104,10 @@ export default function TriagePage() {
           <div>
             <strong>Appointment Scheduled Successfully!</strong>
           </div>
-          <div style={{ marginTop: '8px', fontSize: '12px' }}>
+          <div className=" ">
             Patient assigned to <strong>{doctorName}</strong> on {values.date?.format('MMMM D, YYYY')} at {values.time}
           </div>
-          <div style={{ marginTop: '4px', fontSize: '11px', color: '#10B981' }}>
+          <div className="  ">
             Doctor has been notified
           </div>
         </>
@@ -143,7 +143,7 @@ export default function TriagePage() {
   ];
 
   return (
-    <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)' }}>
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-slate-50">
       <style jsx global>{`
         @keyframes fadeInUp {
           from {
@@ -162,27 +162,18 @@ export default function TriagePage() {
 
       {/* Header Section */}
       <div
-        style={{
-          padding: '32px',
-          background: 'linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%)',
-          borderBottom: '1px solid #E2E8F0',
-          position: 'relative',
-          overflow: 'hidden'}}
-      >
+        className=" bg-gradient-to-br from-white to-slate-50 border-b border-slate-200 relative overflow-hidden">
         <div className="page-content">
-          <div className="flex items-center gap-3 mb-2">
+          <div className="   ">
             <div
-              style={{
-                width: '4px',
-                height: '28px',
-                background: 'linear-gradient(180deg, #EC4899 0%, #DB2777 100%)',
-                borderRadius: '2px'}}
+              className="  -[2px]"
+              style={{ background: 'linear-gradient(180deg, #EC4899 0%, #DB2777 100%)' }}
             />
-            <h1 className="text-2xl font-semibold text-gray-900">
+            <h1 className="text-2xl font-semibold ">
               Nurse Triage Center
             </h1>
           </div>
-          <p className="text-gray-500 text-sm" style={{ marginLeft: '7px' }}>
+          <p className="color: '#6B7280'  ml-[7px]">
             Receive patient complaints, assess severity, and assign to appropriate doctors based on availability
           </p>
           <Alert
@@ -191,25 +182,24 @@ export default function TriagePage() {
             type="info"
             showIcon
             icon={<TeamOutlined />}
-            style={{ marginTop: '16px', maxWidth: '600px' }}
+            className=" max-w-2xl"
           />
         </div>
       </div>
 
       {/* Main Content */}
-      <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8 page-content" style={{ animationDelay: '0.1s' }}>
+      <div className="  sm: sm: lg: lg: page-content" style={{ animationDelay: '0.1s' }}>
         <Row gutter={[24, 24]}>
           {/* Left Column - Triage Form */}
           <Col xs={24} lg={16}>
             <Card
               title={
-                <div className="flex items-center gap-2">
-                  <MedicineBoxOutlined style={{ color: '#EC4899' }} />
+                <div className="  ">
+                  <MedicineBoxOutlined className="text-pink-500" />
                   <span>Patient Triage Form</span>
                 </div>
               }
-              className="p-4 sm:p-6"
-              style={{ borderRadius: '12px', border: '1px solid #E2E8F0' }}
+              className=" sm: -xl border border-slate-200"
             >
               <Form form={form} layout="vertical" onFinish={handleSubmitTriage}>
                 {/* Patient Selection */}
@@ -230,7 +220,7 @@ export default function TriagePage() {
                           <div className="font-medium">
                             {patient.firstName} {patient.lastName}
                           </div>
-                          <div className="text-xs text-gray-500">
+                          <div className=" color: '#6B7280'">
                             MRN: {patient.mrn} • {calculateAge(patient.dateOfBirth)}y • {patient.gender}
                           </div>
                         </div>
@@ -266,7 +256,7 @@ export default function TriagePage() {
                       <Option key={option.value} value={option.value}>
                         <div>
                           <div className="font-medium">{option.label}</div>
-                          <div className="text-xs text-gray-500">{option.description}</div>
+                          <div className=" color: '#6B7280'">{option.description}</div>
                         </div>
                       </Option>
                     ))}
@@ -283,12 +273,9 @@ export default function TriagePage() {
                     }
                     disabled
                     placeholder="Auto-detected based on complaint"
-                    style={{
-                      background: getDepartmentByComplaint(form.getFieldValue('complaint'))
-                        ? '#F0FDF4'
-                        : '#F3F4F6'}}
+                    className={getDepartmentByComplaint(form.getFieldValue('complaint')) ? 'bg-green-50' : 'bg-gray-100'}
                   />
-                  <Text type="secondary" style={{ fontSize: '12px' }}>
+                  <Text type="secondary" className="">
                     Department is automatically detected based on complaint. You can manually override below.
                   </Text>
                 </Form.Item>
@@ -331,7 +318,7 @@ export default function TriagePage() {
                 >
                   <DatePicker
                     size="large"
-                    style={{ width: '100%' }}
+                    className="w-full"
                     onChange={handleDateChange}
                     disabledDate={(current) => current && current < dayjs().startOf('day')}
                   />
@@ -340,40 +327,40 @@ export default function TriagePage() {
                 {/* Available Time Slots */}
                 {selectedDate && selectedDepartment && (
                   <>
-                    <Alert
-                      title={`Available doctors for ${selectedDepartment} on ${dayOfWeek}, ${selectedDate.format('MMM D')}`}
-                      description={
-                        availableDoctors.length > 0
-                          ? `${availableDoctors.length} doctor(s) available`
-                          : 'No doctors available on this day. Please choose a different date.'
-                      }
-                      type={availableDoctors.length > 0 ? 'success' : 'warning'}
-                      showIcon
-                      style={{ marginBottom: '16px' }}
-                    />
+<Alert
+                    title={`Available doctors for ${selectedDepartment} on ${dayOfWeek}, ${selectedDate.format('MMM D')}`}
+                    description={
+                      availableDoctors.length > 0
+                        ? `${availableDoctors.length} doctor(s) available`
+                        : 'No doctors available on this day. Please choose a different date.'
+                    }
+                    type={availableDoctors.length > 0 ? 'success' : 'warning'}
+                    showIcon
+                    className=""
+                  />
 
                     {/* Show Available Time Slots for Each Doctor */}
                     {availableDoctors.map((doctor) => (
                       <Card
                         key={doctor.doctorId}
                         size="small"
-                        style={{ marginBottom: '12px', border: '1px solid #E5E7EB' }}
+                        className=" border border-gray-200"
                       >
-                        <div style={{ marginBottom: '8px' }}>
+                        <div className="">
                           <Text strong>{doctor.doctorName}</Text>
-                          <Tag color="blue" style={{ marginLeft: '8px' }}>
+                          <Tag color="blue" className="">
                             {doctor.maxAppointmentsPerDay} slots/day
                           </Tag>
                         </div>
-                        <div style={{ marginTop: '8px' }}>
-                          <Text type="secondary" style={{ fontSize: '12px' }}>
+                        <div className="">
+                          <Text type="secondary" className="">
                             Available times:
                           </Text>
-                          <div style={{ marginTop: '8px', display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                          <div className="  -wrap ">
                             {doctor.timeSlots.map((time: string) => (
                               <Tag
                                 key={time}
-                                style={{ cursor: 'pointer' }}
+                                className="cursor-pointer"
                                 onClick={() => {
                                   form.setFieldValue('doctorId', doctor.doctorId);
                                   form.setFieldValue('time', time);
@@ -432,12 +419,7 @@ export default function TriagePage() {
                     size="large"
                     block
                     icon={<CheckCircleOutlined />}
-                    style={{
-                      height: '48px',
-                      borderRadius: '10px',
-                      fontWeight: 600,
-                      background: 'linear-gradient(135deg, #EC4899 0%, #DB2777 100%)',
-                      border: 'none'}}
+                    className=" -xl font-semibold bg-gradient-to-r from-pink-500 to-pink-700 border-none"
                   >
                     Assign to Doctor & Schedule Appointment
                   </Button>
@@ -450,24 +432,24 @@ export default function TriagePage() {
           <Col xs={24} lg={8}>
             {/* Doctor Availability Reference */}
             <Card
-              title={<span style={{ fontSize: '14px', fontWeight: 600 }}>Doctor Schedule Reference</span>}
+              title={<span className=" font-semibold">Doctor Schedule Reference</span>}
               size="small"
-              style={{ borderRadius: '12px', border: '1px solid #E2E8F0', marginBottom: '16px' }}
+              className="-xl border border-slate-200 "
             >
               <List
                 size="small"
                 dataSource={doctorAvailability}
                 renderItem={(item) => (
-                  <List.Item style={{ padding: '8px 0' }}>
-                    <div style={{ width: '100%' }}>
-                      <div style={{ fontWeight: 500, fontSize: '13px' }}>{item.doctorName}</div>
-                      <div style={{ fontSize: '12px', color: '#64748B' }}>
-                        <Tag color="blue" style={{ fontSize: '11px', marginTop: '4px' }}>
+                  <List.Item className="">
+                    <div className="w-full">
+                      <div className="font-medium ">{item.doctorName}</div>
+                      <div className=" text-slate-500">
+                        <Tag color="blue" className=" ">
                           {item.department}
                         </Tag>
                       </div>
-                      <div style={{ fontSize: '12px', color: '#64748B', marginTop: '4px' }}>
-                        <ClockCircleOutlined style={{ marginRight: '4px' }} />
+                      <div className=" text-slate-500 ">
+                        <ClockCircleOutlined className="" />
                         {item.availableDays.join(', ')}
                       </div>
                     </div>
@@ -478,38 +460,38 @@ export default function TriagePage() {
 
             {/* Department Guide */}
             <Card
-              title={<span style={{ fontSize: '14px', fontWeight: 600 }}>Department Triage Guide</span>}
+              title={<span className=" font-semibold">Department Triage Guide</span>}
               size="small"
-              style={{ borderRadius: '12px', border: '1px solid #E2E8F0' }}
+              className="-xl border border-slate-200"
             >
-              <div style={{ fontSize: '12px' }}>
-                <div style={{ marginBottom: '12px' }}>
+              <div className="">
+                <div className="">
                   <Tag color="red">Cardiology</Tag>
-                  <div style={{ marginTop: '4px', color: '#64748B' }}>
+                  <div className=" text-slate-500">
                     Chest pain, heart issues, hypertension
                   </div>
                 </div>
-                <div style={{ marginBottom: '12px' }}>
+                <div className="">
                   <Tag color="blue">General Medicine</Tag>
-                  <div style={{ marginTop: '4px', color: '#64748B' }}>
+                  <div className=" text-slate-500">
                     Fever, malaria, flu, general checkup
                   </div>
                 </div>
-                <div style={{ marginBottom: '12px' }}>
+                <div className="">
                   <Tag color="orange">Orthopedics</Tag>
-                  <div style={{ marginTop: '4px', color: '#64748B' }}>
+                  <div className=" text-slate-500">
                     Fractures, bone/joint pain, sports injuries
                   </div>
                 </div>
-                <div style={{ marginBottom: '12px' }}>
+                <div className="">
                   <Tag color="purple">Pediatrics</Tag>
-                  <div style={{ marginTop: '4px', color: '#64748B' }}>
+                  <div className=" text-slate-500">
                     Children, infants, pediatric issues
                   </div>
                 </div>
                 <div>
                   <Tag color="green">Neurology</Tag>
-                  <div style={{ marginTop: '4px', color: '#64748B' }}>
+                  <div className=" text-slate-500">
                     Migraine, seizures, neurological issues
                   </div>
                 </div>

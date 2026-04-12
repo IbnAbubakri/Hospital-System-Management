@@ -20,8 +20,8 @@ export default function StaffPayrollPage() {
     { title: 'Basic Salary', dataIndex: 'basic', key: 'basic' },
     { title: 'Allowances', dataIndex: 'allowance', key: 'allowance' },
     { title: 'Bonus', dataIndex: 'bonus', key: 'bonus' },
-    { title: 'Deductions', dataIndex: 'deductions', key: 'deductions', render: (amt: string) => <span className="text-red-600">{amt}</span> },
-    { title: 'Net Pay', dataIndex: 'net', key: 'net', render: (amt: string) => <span className="font-semibold text-green-600">{amt}</span> },
+    { title: 'Deductions', dataIndex: 'deductions', key: 'deductions', render: (amt: string) => <span className="">{amt}</span> },
+    { title: 'Net Pay', dataIndex: 'net', key: 'net', render: (amt: string) => <span className="font-semibold ">{amt}</span> },
     {
       title: 'Actions',
       key: 'actions',
@@ -35,7 +35,7 @@ export default function StaffPayrollPage() {
   ];
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '1400px', margin: '0 auto' }}>
+    <div className="  sm: sm: lg: lg: max-w-7xl mx-auto">
       <Title level={3}>Payroll Management</Title>
       <Card title="Payroll - February 2024">
         <Table dataSource={payroll} columns={columns} rowKey="id" scroll={{ x: 1000 }} />

@@ -35,7 +35,7 @@ export default function LabTrendsPage() {
       key: 'change',
       render: (change: number, record: any) => (
         <div>
-          <span className={change > 0 ? 'text-red-600' : change < 0 ? 'text-green-600' : 'text-gray-600'}>
+          <span className={change > 0 ? '' : change < 0 ? '' : ''}>
             {record.trend === 'up' && <RiseOutlined />}
             {record.trend === 'down' && <FallOutlined />}
             {record.trend === 'stable' && <MinusOutlined />}
@@ -78,7 +78,7 @@ export default function LabTrendsPage() {
   const overallChange = Math.round(((totalTests - lastMonthTests) / lastMonthTests) * 100);
 
   return (
-    <div className="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-8" style={{ maxWidth: '1400px', margin: '0 auto' }}>
+    <div className="  sm: sm: lg: lg:" style={{ maxWidth: '1280px', margin: '0 auto' }}>
       <Title level={3}>Laboratory Test Trends</Title>
 
       <Row gutter={[16, 16]} style={{ marginBottom: '24px' }}>

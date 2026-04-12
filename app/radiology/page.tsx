@@ -26,13 +26,13 @@ export default function RadiologyPage() {
   // CRITICAL SECURITY: Restrict access to radiology staff
   if (!hasPermission('radiology:view')) {
     return (
-      <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #F8FAFC 100%)', padding: '16px' }}>
+      <div className="min-h-screen bg-gradient-to-b from-blue-50 to-slate-50 ">
         <Alert
           title="Access Denied"
           description="You don&apos;tt have permission to access radiology services. This area is restricted to radiology staff and authorized clinical personnel."
           type="error"
           showIcon
-          style={{ marginTop: '24px', borderRadius: '12px' }}
+          className=" -xl"
         />
       </div>
     );
@@ -77,16 +77,7 @@ export default function RadiologyPage() {
       dataIndex: 'orderNumber',
       key: 'orderNumber',
       render: (num: string) => (
-        <span
-          style={{
-            padding: '4px 10px',
-            borderRadius: '6px',
-            fontSize: '13px',
-            fontWeight: 500,
-            background: '#DBEAFE',
-            color: '#1E40AF',
-          }}
-        >
+        <span className=".5  -md  font-medium bg-blue-100 ">
           {num}
         </span>
       ),
@@ -98,17 +89,7 @@ export default function RadiologyPage() {
       dataIndex: 'modality',
       key: 'modality',
       render: (m: string) => (
-        <span
-          style={{
-            padding: '4px 10px',
-            borderRadius: '6px',
-            fontSize: '13px',
-            fontWeight: 500,
-            background: '#F3E8FF',
-            color: '#7C3AED',
-            textTransform: 'uppercase',
-          }}
-        >
+        <span className=".5  -md  font-medium bg-purple-100 text-purple-700 uppercase">
           {m}
         </span>
       ),
@@ -150,7 +131,7 @@ export default function RadiologyPage() {
       }
     >
       {/* Statistics Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 mb-6">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4  sm: ">
         <StatCard
           label="Pending Scans"
           value={stats.pending}
@@ -186,10 +167,10 @@ export default function RadiologyPage() {
       </div>
 
       {/* Imaging Orders Section */}
-      <div style={{ background: 'white', borderRadius: '12px', padding: '16px', border: '1px solid #E2E8F0' }}>
-        <div className="flex items-center gap-2 mb-4">
-          <ScanOutlined style={{ color: '#6366F1', fontSize: '20px' }} />
-          <h2 className="text-lg font-semibold text-gray-900">Imaging Orders</h2>
+      <div className="bg-white -xl  border border-gray-200">
+        <div className="   ">
+          <ScanOutlined className="text-indigo-500 text-xl" />
+          <h2 className=" font-semibold ">Imaging Orders</h2>
         </div>
 
         <SearchFilterBar

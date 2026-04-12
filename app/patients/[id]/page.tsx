@@ -28,7 +28,7 @@ export default function PatientDetailPage() {
   if (!patient) {
     return (
       <PageShell title="Access Denied">
-        <div style={{ padding: '32px', maxWidth: '600px', margin: '0 auto' }}>
+        <div style={{ padding: '32px', maxWidth: '672px', margin: '0 auto' }}>
           <Alert
             message="Access Denied"
             description={
@@ -78,8 +78,8 @@ export default function PatientDetailPage() {
             icon={<CalendarOutlined />}
             onClick={() => router.push(`/patients/appointments/new?patientId=${patient.id}`)}
             style={{
-              height: '42px',
-              borderRadius: '10px',
+              height: '40px',
+              borderRadius: '12px',
               fontWeight: 600,
               padding: '0 20px',
             }}
@@ -93,7 +93,7 @@ export default function PatientDetailPage() {
       }
     >
       {/* Statistics Cards */}
-      <div className="grid grid-cols-4 gap-5 mb-6">
+      <div className="grid grid-cols-4  ">
         <StatCard
           label="Age"
           value={calculateAge(patient.dateOfBirth)}
@@ -133,30 +133,30 @@ export default function PatientDetailPage() {
       </div>
 
       {/* Patient Overview Card */}
-      <div style={{ background: 'white', borderRadius: '12px', padding: '24px', border: '1px solid #E2E8F0', marginBottom: '24px' }}>
+      <div style={{ background: '#ffffff', borderRadius: '12px', padding: '24px', border: '1px solid #E5E7EB', marginBottom: '24px' }}>
         <Row gutter={24}>
           <Col xs={24} md={6} style={{ textAlign: 'center' }}>
             <div
               style={{
-                width: '100px',
+                width: '96px',
                 height: '100px',
                 borderRadius: '50%',
                 background: 'linear-gradient(135deg, #3B82F6 0%, #2563EB 100%)',
-                display: 'flex',
+                display: '',
                 alignItems: 'center',
                 justifyContent: 'center',
                 margin: '0 auto 16px',
-                color: 'white',
+                color: '#ffffff',
                 fontSize: '36px',
                 fontWeight: 700,
               }}
             >
               {patient.firstName.charAt(0)}{patient.lastName.charAt(0)}
             </div>
-            <Title level={4} className="!mb-1">
+            <Title level={4} className="!">
               {patient.firstName} {patient.lastName}
             </Title>
-            <Text type="secondary" style={{ fontSize: '13px' }}>{patient.mrn}</Text>
+            <Text type="secondary" style={{ fontSize: '14px' }}>{patient.mrn}</Text>
             <div style={{ marginTop: '12px' }}>
               <StatusTag status={patient.status} type="patient" />
             </div>
@@ -175,7 +175,7 @@ export default function PatientDetailPage() {
       </div>
 
       {/* Detailed Information Tabs */}
-      <div style={{ background: 'white', borderRadius: '12px', padding: '24px', border: '1px solid #E2E8F0' }}>
+      <div style={{ background: '#ffffff', borderRadius: '12px', padding: '24px', border: '1px solid #E5E7EB' }}>
         <Tabs
           defaultActiveKey="overview"
           items={[
@@ -194,7 +194,7 @@ export default function PatientDetailPage() {
                         <div>
                           <Text type="secondary">Full Name</Text>
                           <br />
-                          <Text strong style={{ fontSize: '15px' }}>{patient.firstName} {patient.lastName}</Text>
+                          <Text strong style={{ fontSize: '16px' }}>{patient.firstName} {patient.lastName}</Text>
                         </div>
                         <div>
                           <Text type="secondary">Date of Birth</Text>
@@ -216,13 +216,13 @@ export default function PatientDetailPage() {
                       color="#10B981"
                     >
                       <Space direction="vertical" className="w-full" size="middle">
-                        <div className="flex items-center gap-2">
-                          <PhoneOutlined className="text-gray-400" />
+                        <div className="  ">
+                          <PhoneOutlined className="" />
                           <Text style={{ fontSize: '14px' }}>{patient.contactNumber}</Text>
                         </div>
                         {patient.email && (
-                          <div className="flex items-center gap-2">
-                            <MailOutlined className="text-gray-400" />
+                          <div className="  ">
+                            <MailOutlined className="" />
                             <Text style={{ fontSize: '14px' }}>{patient.email}</Text>
                           </div>
                         )}
@@ -290,7 +290,7 @@ export default function PatientDetailPage() {
                               style={{
                                 padding: '4px 12px',
                                 borderRadius: '6px',
-                                fontSize: '13px',
+                                fontSize: '14px',
                                 fontWeight: 500,
                               }}
                               color="error"
@@ -318,7 +318,7 @@ export default function PatientDetailPage() {
                               style={{
                                 padding: '4px 12px',
                                 borderRadius: '6px',
-                                fontSize: '13px',
+                                fontSize: '14px',
                                 fontWeight: 500,
                               }}
                               color="warning"
@@ -344,7 +344,7 @@ export default function PatientDetailPage() {
                             <div>
                               <Text strong>{item.condition}</Text>
                               <br />
-                              <Text type="secondary" style={{ fontSize: '13px' }}>{item.date} | {item.doctor}</Text>
+                              <Text type="secondary" style={{ fontSize: '14px' }}>{item.date} | {item.doctor}</Text>
                             </div>
                           ),
                         }))}
@@ -364,26 +364,26 @@ export default function PatientDetailPage() {
                       <div
                         style={{
                           padding: '16px',
-                          background: 'white',
-                          borderRadius: '10px',
-                          border: '1px solid #E2E8F0',
+                          background: '#ffffff',
+                          borderRadius: '12px',
+                          border: '1px solid #E5E7EB',
                           marginBottom: '16px',
                         }}
                       >
-                        <div className="flex justify-between items-start mb-3">
+                        <div className="  items-start ">
                           <div style={{ flex: 1 }}>
-                            <Text strong style={{ fontSize: '15px', display: 'block', marginBottom: '4px' }}>
+                            <Text strong style={{ fontSize: '16px', display: 'block', marginBottom: '4px' }}>
                               {visit.diagnosis}
                             </Text>
-                            <Text type="secondary" style={{ fontSize: '13px' }}>
+                            <Text type="secondary" style={{ fontSize: '14px' }}>
                               {visit.department} • {visit.doctor}
                             </Text>
                           </div>
                           <StatusTag status={visit.status} type="appointment" />
                         </div>
-                        <div className="flex items-center gap-2">
-                          <CalendarOutlined style={{ color: '#64748B', fontSize: '13px' }} />
-                          <Text type="secondary" style={{ fontSize: '13px' }}>{visit.date}</Text>
+                        <div className="  ">
+                          <CalendarOutlined style={{ color: '#94A3B8', fontSize: '14px' }} />
+                          <Text type="secondary" style={{ fontSize: '14px' }}>{visit.date}</Text>
                         </div>
                       </div>
                     </Col>
@@ -400,12 +400,12 @@ export default function PatientDetailPage() {
                     padding: '40px',
                     textAlign: 'center',
                     background: 'linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%)',
-                    borderRadius: '10px',
+                    borderRadius: '12px',
                   }}
                 >
                   <IdcardOutlined style={{ fontSize: '48px', color: '#CBD5E1', marginBottom: '16px' }} />
-                  <div className="text-lg font-semibold text-gray-700 mb-2">No documents uploaded yet</div>
-                  <div className="text-sm text-gray-500">Documents will appear here once uploaded</div>
+                  <div className=" font-semibold  ">No documents uploaded yet</div>
+                  <div className=" ">Documents will appear here once uploaded</div>
                 </div>
               ),
             },

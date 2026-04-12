@@ -84,13 +84,13 @@ export default function TurnaroundTimePage() {
       title: 'Avg TAT',
       dataIndex: 'avgTAT',
       key: 'avgTAT',
-      render: (t: number) => <span className="font-semibold text-orange-600">{t} min</span>
+      render: (t: number) => <span className="font-semibold ">{t} min</span>
     },
     {
       title: 'Target',
       dataIndex: 'targetTAT',
       key: 'targetTAT',
-      render: (t: number) => <span className="text-gray-600">{t} min</span>
+      render: (t: number) => <span className="">{t} min</span>
     },
     {
       title: 'Compliance',
@@ -217,14 +217,13 @@ export default function TurnaroundTimePage() {
           position: 'absolute',
           top: '-50px',
           right: '-50px',
-          width: '200px',
-          height: '200px',
+                    height: '200px',
           background: 'radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 70%)',
           borderRadius: '50%',
         }} />
 
         <div className="page-content" style={{ animationDelay: '0s', position: 'relative', zIndex: 1 }}>
-          <div className="flex items-center gap-3 mb-1">
+          <div className="   ">
             <div style={{
               width: '4px',
               height: '28px',
@@ -232,12 +231,12 @@ export default function TurnaroundTimePage() {
               borderRadius: '2px'
             }} />
             <div>
-              <h1 className="text-2xl font-semibold text-gray-900">
+              <h1 className="text-2xl font-semibold ">
                 Turnaround Time Analytics
               </h1>
             </div>
           </div>
-          <p className="text-gray-500 text-sm" style={{ marginLeft: '7px' }}>
+          <p className=" " style={{ marginLeft: '7px' }}>
             Monitor test processing times and compliance targets
           </p>
 
@@ -253,11 +252,11 @@ export default function TurnaroundTimePage() {
                   border: '1px solid #DBEAFE',
                 }}
               >
-                <div className="text-sm font-medium" style={{ color: '#64748B', marginBottom: '6px' }}>
+                <div className=" font-medium" style={{ color: '#64748B', marginBottom: '6px' }}>
                   Avg TAT
                 </div>
                 <div className="stat-number" style={{ fontSize: '28px', fontWeight: 700, color: '#3B82F6', lineHeight: 1 }}>
-                  {animatedStats.avgTAT} <span className="text-lg">min</span>
+                  {animatedStats.avgTAT} <span className="">min</span>
                 </div>
               </div>
             </Col>
@@ -271,11 +270,11 @@ export default function TurnaroundTimePage() {
                   border: '1px solid #A7F3D0',
                 }}
               >
-                <div className="text-sm font-medium" style={{ color: '#64748B', marginBottom: '6px' }}>
+                <div className=" font-medium" style={{ color: '#64748B', marginBottom: '6px' }}>
                   Compliance
                 </div>
                 <div className="stat-number" style={{ fontSize: '28px', fontWeight: 700, color: '#10B981', lineHeight: 1 }}>
-                  {animatedStats.compliance} <span className="text-lg">%</span>
+                  {animatedStats.compliance} <span className="">%</span>
                 </div>
               </div>
             </Col>
@@ -289,7 +288,7 @@ export default function TurnaroundTimePage() {
                   border: '1px solid #DDD6FE',
                 }}
               >
-                <div className="text-sm font-medium" style={{ color: '#64748B', marginBottom: '6px' }}>
+                <div className=" font-medium" style={{ color: '#64748B', marginBottom: '6px' }}>
                   Total Samples
                 </div>
                 <div className="stat-number" style={{ fontSize: '28px', fontWeight: 700, color: '#8B5CF6', lineHeight: 1 }}>
@@ -307,7 +306,7 @@ export default function TurnaroundTimePage() {
                   border: '1px solid #FDE68A',
                 }}
               >
-                <div className="text-sm font-medium" style={{ color: '#64748B', marginBottom: '6px' }}>
+                <div className=" font-medium" style={{ color: '#64748B', marginBottom: '6px' }}>
                   Within Target
                 </div>
                 <div className="stat-number" style={{ fontSize: '28px', fontWeight: 700, color: '#F59E0B', lineHeight: 1 }}>
@@ -320,11 +319,11 @@ export default function TurnaroundTimePage() {
       </div>
 
       {/* Content Section */}
-      <div className="px-8 py-6 page-content" style={{ animationDelay: '0.1s' }}>
+      <div className="  page-content" style={{ animationDelay: '0.1s' }}>
         <Card
           title="TAT by Test"
           extra={
-            <div className="flex gap-3">
+            <div className=" ">
               <Search
                 placeholder="Search tests..."
                 allowClear
@@ -368,7 +367,7 @@ export default function TurnaroundTimePage() {
         {selectedRecord && (
           <div>
             <Card style={{ marginBottom: '16px' }}>
-              <div className="mb-4">
+              <div className="">
                 <Text type="secondary">Test</Text>
                 <div className="text-xl font-semibold">{selectedRecord.test}</div>
                 <div><Tag color="blue">{selectedRecord.department}</Tag></div>
@@ -376,19 +375,19 @@ export default function TurnaroundTimePage() {
 
               <Row gutter={16}>
                 <Col span={12}>
-                  <div className="mb-3">
+                  <div className="">
                     <Text type="secondary">Average TAT</Text>
-                    <div className="text-lg font-semibold text-orange-600">{selectedRecord.avgTAT} min</div>
+                    <div className=" font-semibold ">{selectedRecord.avgTAT} min</div>
                   </div>
                 </Col>
                 <Col span={12}>
-                  <div className="mb-3">
+                  <div className="">
                     <Text type="secondary">Target TAT</Text>
-                    <div className="text-lg font-semibold">{selectedRecord.targetTAT} min</div>
+                    <div className=" font-semibold">{selectedRecord.targetTAT} min</div>
                   </div>
                 </Col>
                 <Col span={12}>
-                  <div className="mb-3">
+                  <div className="">
                     <Text type="secondary">Compliance</Text>
                     <div>
                       <Tag color={selectedRecord.compliance >= 95 ? 'success' : selectedRecord.compliance >= 90 ? 'warning' : 'error'}>
@@ -398,21 +397,21 @@ export default function TurnaroundTimePage() {
                   </div>
                 </Col>
                 <Col span={12}>
-                  <div className="mb-3">
+                  <div className="">
                     <Text type="secondary">Total Samples</Text>
-                    <div className="text-lg font-semibold">{selectedRecord.samples}</div>
+                    <div className=" font-semibold">{selectedRecord.samples}</div>
                   </div>
                 </Col>
                 <Col span={12}>
-                  <div className="mb-3">
+                  <div className="">
                     <Text type="secondary">Within Target</Text>
-                    <div className="text-lg font-semibold">{selectedRecord.withinTarget}</div>
+                    <div className=" font-semibold">{selectedRecord.withinTarget}</div>
                   </div>
                 </Col>
                 <Col span={12}>
-                  <div className="mb-3">
+                  <div className="">
                     <Text type="secondary">Trend</Text>
-                    <div className="flex items-center gap-2">
+                    <div className="  ">
                       {getTrendIcon(selectedRecord.trend)}
                       <Tag color={selectedRecord.trend === 'improving' ? 'success' : selectedRecord.trend === 'declining' ? 'error' : 'default'}>
                         {selectedRecord.trend.toUpperCase()}
@@ -424,16 +423,16 @@ export default function TurnaroundTimePage() {
             </Card>
 
             <Card title="Performance Metrics" style={{ marginBottom: '16px' }}>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="bg-blue-50 p-4 rounded-lg">
-                  <div className="text-sm text-gray-600">SLA Achievement</div>
-                  <div className="text-2xl font-bold text-blue-600">
+              <div className="grid grid-cols-2 ">
+                <div className="bg-blue-50  -lg">
+                  <div className=" ">SLA Achievement</div>
+                  <div className="text-2xl font-bold ">
                     {Math.round((selectedRecord.withinTarget / selectedRecord.samples) * 100)}%
                   </div>
                 </div>
-                <div className="bg-green-50 p-4 rounded-lg">
-                  <div className="text-sm text-gray-600">TAT Variance</div>
-                  <div className="text-2xl font-bold text-green-600">
+                <div className="bg-green-50  -lg">
+                  <div className=" ">TAT Variance</div>
+                  <div className="text-2xl font-bold ">
                     {Math.abs(selectedRecord.avgTAT - selectedRecord.targetTAT)} min
                   </div>
                 </div>

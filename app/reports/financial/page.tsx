@@ -70,16 +70,7 @@ export default function FinancialReportsPage() {
       dataIndex: 'category',
       key: 'category',
       render: (cat: string) => (
-        <span
-          style={{
-            padding: '4px 10px',
-            borderRadius: '6px',
-            fontSize: '13px',
-            fontWeight: 500,
-            background: '#DBEAFE',
-            color: '#1E40AF',
-          }}
-        >
+        <span className="px-[10px]  -md  font-medium bg-blue-100 ">
           {cat}
         </span>
       ),
@@ -97,13 +88,13 @@ export default function FinancialReportsPage() {
       key: 'change',
       render: (_: any, record: RevenueItem) => (
         <div>
-          <div className="flex items-center gap-2">
-            {record.change > 0 ? <ArrowUpOutlined style={{ color: '#10B981' }} /> : <ArrowDownOutlined style={{ color: '#EF4444' }} />}
-            <span style={{ color: record.change > 0 ? '#10B981' : '#EF4444', fontWeight: 500 }}>
+          <div className="  ">
+            {record.change > 0 ? <ArrowUpOutlined className="" /> : <ArrowDownOutlined className="" />}
+            <span style={{ color: record.change > 0 ? '#10B981' : '#EF4444' }}>
               {formatCurrency(Math.abs(record.change))}
             </span>
           </div>
-          <div className="text-xs text-gray-500">({record.changePercent > 0 ? '+' : ''}{record.changePercent}%)</div>
+          <div className=" ">({record.changePercent > 0 ? '+' : ''}{record.changePercent}%)</div>
         </div>
       ),
     },
@@ -126,20 +117,11 @@ export default function FinancialReportsPage() {
           }
         >
           {/* Statistics Cards */}
-          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-6">
-            <div
-              style={{
-                padding: '24px',
-                background: 'linear-gradient(135deg, #059669 0%, #047857 100%)',
-                borderRadius: '12px',
-                color: 'white',
-                boxShadow: '0 4px 6px -1px rgba(5, 150, 105, 0.1)',
-              }}
-              className="p-4 sm:p-6"
-            >
-              <div className="text-sm opacity-90 mb-2">Total Revenue</div>
-              <div className="text-3xl font-bold mb-1">{formatCurrency(totalRevenue)}</div>
-              <div className="text-sm opacity-90 flex items-center gap-1">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4  ">
+            <div className=" sm: bg-gradient-to-br from-emerald-600 to-emerald-700 -xl  shadow">
+              <div className=" opacity-90 ">Total Revenue</div>
+              <div className="text-3xl font-bold ">{formatCurrency(totalRevenue)}</div>
+              <div className=" opacity-90   ">
                 <ArrowUpOutlined />
                 {formatCurrency(totalChange)}
               </div>
@@ -160,26 +142,18 @@ export default function FinancialReportsPage() {
               border="#93C5FD"
               index={2}
             />
-            <div
-              style={{
-                padding: '20px',
-                background: 'white',
-                borderRadius: '12px',
-                border: '1px solid #E2E8F0',
-              }}
-              className="p-4 sm:p-6"
-            >
-              <div className="text-sm text-gray-500 mb-2">Collection Rate</div>
-              <div className="text-3xl font-bold text-green-600 mb-2">94.5%</div>
+            <div className=" sm: bg-white -xl border border-slate-200">
+              <div className="  ">Collection Rate</div>
+              <div className="text-3xl font-bold color: '#059669' ">94.5%</div>
               <Progress percent={94.5} size="small" strokeColor="#10B981" showInfo={false} />
             </div>
           </div>
 
           {/* Revenue Details Section */}
-          <div style={{ background: 'white', borderRadius: '12px', padding: '24px', border: '1px solid #E2E8F0' }} className="p-4 sm:p-6">
-            <div className="flex items-center gap-2 mb-4">
-              <DollarOutlined style={{ color: '#059669', fontSize: '20px' }} />
-              <h2 className="text-lg font-semibold text-gray-900">Revenue Breakdown</h2>
+          <div className="bg-white -xl  border border-slate-200">
+            <div className="   ">
+              <DollarOutlined className=" text-xl" />
+              <h2 className=" font-semibold ">Revenue Breakdown</h2>
             </div>
 
             <SearchFilterBar
@@ -208,8 +182,8 @@ export default function FinancialReportsPage() {
               filterLabel="items"
             />
 
-            <div className="mb-4">
-              <RangePicker style={{ width: '100%', maxWidth: '300px' }} />
+            <div className="">
+              <RangePicker className="w-full max-w-[300px]" />
             </div>
 
             <div className="overflow-x-auto">
@@ -223,9 +197,9 @@ export default function FinancialReportsPage() {
                   <Table.Summary fixed>
                     <Table.Summary.Row>
                       <Table.Summary.Cell index={0} colSpan={2} className="font-semibold">
-                        <span className="text-lg">Total</span>
+                        <span className="">Total</span>
                       </Table.Summary.Cell>
-                      <Table.Summary.Cell index={1} className="font-semibold text-lg">
+                      <Table.Summary.Cell index={1} className="font-semibold ">
                         {formatCurrency(totalRevenue)}
                       </Table.Summary.Cell>
                       <Table.Summary.Cell index={2} />

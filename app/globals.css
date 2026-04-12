@@ -129,16 +129,16 @@ a {
 
 /* Ant Design overrides */
 .ant-layout-sider {
-  background: linear-gradient(180deg, #B45309 0%, #92400E 100%) !important;
+  background: var(--medical-blue-900) !important;
   box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1) !important;
 }
 
 .ant-menu-dark {
-  background: linear-gradient(180deg, #B45309 0%, #92400E 100%) !important;
+  background: var(--medical-blue-900) !important;
 }
 
 .ant-menu-dark .ant-menu-item-selected {
-  background-color: #D97706 !important;
+  background-color: var(--medical-blue-600) !important;
   border-radius: 8px !important;
   margin: 4px 8px !important;
   width: calc(100% - 16px) !important;
@@ -152,7 +152,7 @@ a {
 }
 
 .ant-menu-dark .ant-menu-item:hover {
-  background-color: #B45309 !important;
+  background-color: var(--medical-blue-800) !important;
   transform: translateX(4px) !important;
 }
 

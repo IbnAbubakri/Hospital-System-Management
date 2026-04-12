@@ -1062,6 +1062,59 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+/* Accessibility - Focus Indicators */
+*:focus-visible {
+  outline: 2px solid #0077B6;
+  outline-offset: 2px;
+}
+
+/* Screen reader only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ========================================
+   EMPTY STATE STYLES
+   ======================================== */
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+  text-align: center;
+}
+
+.empty-state-icon {
+  font-size: 48px;
+  color: #9CA3AF;
+  margin-bottom: 16px;
+  opacity: 0.8;
+}
+
+.empty-state-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 8px;
+}
+
+.empty-state-description {
+  font-size: 14px;
+  color: #6B7280;
+  margin-bottom: 24px;
+  max-width: 400px;
+}
+
 /* User Dropdown Trigger */
 .user-dropdown-trigger:hover {
   background: #F3F4F6;

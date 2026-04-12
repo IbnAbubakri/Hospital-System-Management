@@ -653,6 +653,86 @@ a {
   }
 }
 
+/* Sidebar Collapse Button */
+.sider-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 64px;
+  cursor: pointer;
+  transition: all 0.3s;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sider-logo:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.logo-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-text {
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  margin-left: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.collapse-btn {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+  color: white;
+  font-size: 16px;
+}
+
+.collapse-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateX(-50%) scale(1.05);
+}
+
+/* Sidebar collapsed state */
+.ant-layout-sider-collapsed .sider-logo {
+  padding: 0;
+}
+
+.ant-layout-sider-collapsed .logo-text {
+  display: none;
+}
+
+.ant-layout-sider-collapsed .collapse-btn {
+  width: 32px;
+  height: 32px;
+}
+
+/* Header collapse trigger */
+.collapse-trigger-btn {
+  font-size: 18px !important;
+  color: #6B7280 !important;
+  padding: 4px 8px !important;
+  border-radius: 6px !important;
+}
+
+.collapse-trigger-btn:hover {
+  background: #F3F4F6 !important;
+  color: #374151 !important;
+}
+
 /* ========================================
    TABLE RESPONSIVE WRAPPER
    ======================================== */

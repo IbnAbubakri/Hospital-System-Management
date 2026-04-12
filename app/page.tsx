@@ -22,6 +22,7 @@ export default function DashboardPage() {
     case 'nurse':
     case 'Nurse':
     case 'Head Nurse':
+    case 'AuxiliaryNurse':
       return <NurseDashboard />;
     default:
       return <AdminDashboard />;

@@ -369,6 +369,371 @@ a {
   }
 }
 
+/* ========================================
+   MOBILE RESPONSIVE STYLES
+   ======================================== */
+
+/* Extra Small Devices (phones under 576px) */
+@media (max-width: 575px) {
+  /* Layout adjustments */
+  .ant-layout {
+    min-height: auto !important;
+  }
+  
+  .ant-layout-sider {
+    position: fixed !important;
+    z-index: 1000 !important;
+    height: 100vh !important;
+  }
+  
+  .ant-layout-sider-collapsed {
+    width: 0 !important;
+    min-width: 0 !important;
+  }
+  
+  .ant-layout-sider-has-trigger {
+    padding-bottom: 0 !important;
+  }
+  
+  /* Content padding */
+  .main-content,
+  .ant-layout-content {
+    padding: 12px !important;
+    margin: 0 !important;
+  }
+  
+  /* Card adjustments */
+  .ant-card {
+    border-radius: 8px !important;
+    margin-bottom: 12px !important;
+  }
+  
+  .ant-card-body {
+    padding: 12px !important;
+  }
+  
+  /* Table responsive */
+  .ant-table {
+    font-size: 12px !important;
+  }
+  
+  .ant-table-thead > tr > th {
+    padding: 10px 8px !important;
+    font-size: 11px !important;
+  }
+  
+  .ant-table-tbody > tr > td {
+    padding: 8px !important;
+    font-size: 12px !important;
+  }
+  
+  /* Typography */
+  .ant-typography,
+  .ant-typography h1,
+  .ant-typography h2,
+  .ant-typography h3,
+  .ant-typography h4 {
+    font-size: 14px !important;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-size: 16px !important;
+  }
+  
+  /* Button adjustments */
+  .ant-btn {
+    height: 36px !important;
+    font-size: 12px !important;
+    padding: 0 12px !important;
+  }
+  
+  .ant-btn-sm {
+    height: 28px !important;
+    font-size: 11px !important;
+  }
+  
+  /* Form adjustments */
+  .ant-form-item {
+    margin-bottom: 12px !important;
+  }
+  
+  .ant-form-item-label > label {
+    font-size: 12px !important;
+  }
+  
+  .ant-input,
+  .ant-select-selector {
+    height: 36px !important;
+    font-size: 12px !important;
+  }
+  
+  /* Stat cards grid */
+  .ant-row {
+    margin-left: -4px !important;
+    margin-right: -4px !important;
+  }
+  
+  .ant-col {
+    padding-left: 4px !important;
+    padding-right: 4px !important;
+  }
+  
+  /* Hide some elements on mobile */
+  .hide-mobile {
+    display: none !important;
+  }
+  
+  /* Modal adjustments */
+  .ant-modal {
+    margin: 12px !important;
+    max-width: calc(100vw - 24px) !important;
+  }
+  
+  .ant-modal-content {
+    border-radius: 8px !important;
+  }
+  
+  /* Menu adjustments */
+  .ant-menu-item {
+    padding: 0 12px !important;
+  }
+  
+  /* Tag adjustments */
+  .ant-tag {
+    font-size: 10px !important;
+    padding: 2px 8px !important;
+  }
+  
+  /* Drawer */
+  .ant-drawer-content-wrapper {
+    width: 100% !important;
+  }
+  
+  /* Description list */
+  .ant-descriptions-item-label {
+    font-size: 11px !important;
+  }
+  
+  .ant-descriptions-item-content {
+    font-size: 12px !important;
+  }
+  
+  /* Page header */
+  .page-header-gradient {
+    padding: 16px !important;
+    border-radius: 8px !important;
+    margin-bottom: 16px !important;
+  }
+}
+
+/* Small Devices (phones 576px - 767px) */
+@media (min-width: 576px) and (max-width: 767px) {
+  .main-content {
+    padding: 16px !important;
+  }
+  
+  .ant-col-xs-24 {
+    margin-bottom: 16px !important;
+  }
+  
+  .hide-tablet {
+    display: none !important;
+  }
+}
+
+/* Medium Devices (tablets 768px - 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+  .main-content {
+    padding: 20px !important;
+  }
+  
+  .ant-col-md-12 {
+    margin-bottom: 16px !important;
+  }
+  
+  .ant-col-md-8 {
+    margin-bottom: 16px !important;
+  }
+  
+  .ant-col-md-6 {
+    margin-bottom: 12px !important;
+  }
+}
+
+/* Large Devices (tablets 992px - 1199px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .ant-col-lg-6 {
+    margin-bottom: 16px !important;
+  }
+  
+  .ant-col-lg-8 {
+    margin-bottom: 16px !important;
+  }
+}
+
+/* XL Devices (small laptops 1200px - 1535px) */
+@media (min-width: 1200px) and (max-width: 1535px) {
+  .main-content {
+    padding: 24px !important;
+  }
+}
+
+/* XXL Devices (large screens 1536px+) */
+@media (min-width: 1536px) {
+  .main-content {
+    padding: 32px !important;
+    max-width: 1920px;
+    margin: 0 auto;
+  }
+}
+
+/* ========================================
+   DASHBOARD RESPONSIVE STYLES
+   ======================================== */
+
+/* Stats grid responsive */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 16px;
+}
+
+@media (min-width: 576px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 992px) {
+  .stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ========================================
+   SIDEBAR RESPONSIVE
+   ======================================== */
+
+@media (max-width: 767px) {
+  .ant-layout-sider {
+    z-index: 1050 !important;
+  }
+  
+  .ant-layout-sider-collapsed {
+    width: 0 !important;
+  }
+  
+  .ant-layout-sider-trigger {
+    display: none !important;
+  }
+  
+  /* Mobile menu toggle button */
+  .mobile-menu-toggle {
+    display: block !important;
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
+    z-index: 1051;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+}
+
+@media (min-width: 768px) {
+  .mobile-menu-toggle {
+    display: none !important;
+  }
+}
+
+/* ========================================
+   TABLE RESPONSIVE WRAPPER
+   ======================================== */
+
+.table-responsive-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 0 -12px;
+  padding: 0 12px;
+}
+
+.table-responsive-wrapper .ant-table {
+  min-width: 600px;
+}
+
+@media (max-width: 575px) {
+  .table-responsive-wrapper {
+    margin: 0 -8px;
+    padding: 0 8px;
+  }
+  
+  .table-responsive-wrapper .ant-table {
+    min-width: 500px;
+  }
+}
+
+/* ========================================
+   FORM RESPONSIVE
+   ======================================== */
+
+.form-responsive {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+@media (min-width: 576px) {
+  .form-responsive {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  
+  .form-responsive .ant-form-item {
+    width: calc(50% - 8px);
+  }
+}
+
+@media (min-width: 992px) {
+  .form-responsive .ant-form-item {
+    width: calc(33.333% - 11px);
+  }
+}
+
+/* ========================================
+   CARD GRID RESPONSIVE
+   ======================================== */
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 576px) {
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1600px) {
+  .cards-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
 /* Prevent text overflow */
 .text-overflow-ellipsis {
   overflow: hidden;

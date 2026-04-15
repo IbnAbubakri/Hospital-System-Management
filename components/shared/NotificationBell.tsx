@@ -44,7 +44,8 @@ export function NotificationBell() {
     <div
       className="notification-dropdown"
       style={{
-        width: '380px',
+        width: 'clamp(280px, 90vw, 380px)',
+        maxWidth: '90vw',
         backgroundColor: 'white',
         borderRadius: '12px',
         boxShadow: '0 10px 40px rgba(0, 0, 0, 0.15)',
@@ -168,6 +169,9 @@ export function NotificationBell() {
       popupRender={() => notificationContent}
       trigger={['click']}
       placement="bottomRight"
+      overlayStyle={{ 
+        maxWidth: '90vw',
+      }}
     >
       <Badge count={unreadCount} size="small" offset={[-5, 5]} style={{ backgroundColor: '#EF4444' }}>
         <Button

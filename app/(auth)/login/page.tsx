@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Form, Input, Button, Typography, Checkbox, Card, App } from 'antd';
-import { MailOutlined, LockOutlined, MedicineBoxOutlined } from '@ant-design/icons';
+import { Form, Input, Button, Typography, Checkbox, App } from 'antd';
+import { MailOutlined, LockOutlined } from '@ant-design/icons';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useAuth } from '@/lib/contexts/AuthContext';
@@ -34,26 +34,38 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 px-4 py-12">
-      <div className="w-full max-w-md">
-        {/* Logo & Header */}
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl mb-5 shadow-lg" style={{ background: 'linear-gradient(135deg, #0EA5E9 0%, #0284C7 50%, #0369A1 100%)', boxShadow: '0 8px 25px 0 rgba(14, 165, 233, 0.4)' }}>
-            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 2L4 7V17L12 22L20 17V7L12 2Z" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M12 8V16M8 12H16" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-              <circle cx="12" cy="12" r="2.5" fill="white"/>
-            </svg>
+    <div className="login-page">
+      {/* Animated Background */}
+      <div className="login-bg">
+        <div className="bg-shape bg-shape-1"></div>
+        <div className="bg-shape bg-shape-2"></div>
+        <div className="bg-shape bg-shape-3"></div>
+      </div>
+
+      <div className="login-container">
+        {/* Logo Section */}
+        <div className="login-header">
+          <div className="logo-wrapper">
+            <div className="logo-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2L4 7V17L12 22L20 17V7L12 2Z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M12 8V16M8 12H16" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </div>
+            <div className="logo-text">
+              <Title level={2} className="!mb-0 !text-white">MedCore</Title>
+              <Text className="!text-white/70">Hospital Management System</Text>
+            </div>
           </div>
-          <Title level={1} className="!text-gray-900 !mb-1 !text-3xl font-bold" style={{ letterSpacing: '-0.02em' }}>MedCore</Title>
-          <Text className="text-gray-500 text-sm">Hospital Management System</Text>
         </div>
 
         {/* Login Card */}
-        <Card 
-          className="shadow-xl border-0 rounded-2xl"
-          styles={{ body: { padding: '32px' } }}
-        >
+        <div className="login-card">
+          <div className="card-header">
+            <Title level={3} className="!mb-1">Welcome back</Title>
+            <Text type="secondary">Enter your credentials to access the dashboard</Text>
+          </div>
+
           <Form
             name="login"
             onFinish={handleLogin}
@@ -62,78 +74,261 @@ export default function LoginPage() {
             size="large"
           >
             <Form.Item
-              label={<span className="text-gray-700 font-medium">Email</span>}
               name="email"
               rules={[
-                { required: true, message: 'Please enter your email!' },
-                { type: 'email', message: 'Please enter a valid email!' },
+                { required: true, message: 'Please enter your email' },
+                { type: 'email', message: 'Please enter a valid email' },
               ]}
             >
               <Input
-                prefix={<MailOutlined className="text-gray-400" />}
-                placeholder="name@example.com"
-                className="rounded-lg"
-                style={{ borderColor: '#e5e7eb' }}
+                prefix={<MailOutlined />}
+                placeholder="Email address"
+                className="login-input"
               />
             </Form.Item>
 
             <Form.Item
-              label={<span className="text-gray-700 font-medium">Password</span>}
               name="password"
-              rules={[{ required: true, message: 'Please enter your password!' }]}
+              rules={[{ required: true, message: 'Please enter your password' }]}
             >
               <Input.Password
-                prefix={<LockOutlined className="text-gray-400" />}
-                placeholder="Enter your password"
-                className="rounded-lg"
-                style={{ borderColor: '#e5e7eb' }}
+                prefix={<LockOutlined />}
+                placeholder="Password"
+                className="login-input"
               />
             </Form.Item>
 
-            <div className="flex justify-between items-center mb-6">
+            <div className="card-footer">
               <Form.Item name="remember" valuePropName="checked" noStyle>
-                <Checkbox className="text-gray-600">Remember me</Checkbox>
+                <Checkbox>Remember me</Checkbox>
               </Form.Item>
-              <Link href="/forgot-password" className="text-indigo-600 hover:text-indigo-700 font-medium text-sm">
+              <Link href="/forgot-password" className="forgot-link">
                 Forgot password?
               </Link>
             </div>
 
-            <Form.Item className="!mb-0">
-              <Button
-                type="primary"
-                htmlType="submit"
-                loading={loading}
-                block
-                className="h-12 rounded-lg font-semibold text-base"
-                style={{
-                  background: '#4f46e5',
-                  border: 'none',
-                }}
-              >
-                Sign In
-              </Button>
-            </Form.Item>
+            <Button
+              type="primary"
+              htmlType="submit"
+              loading={loading}
+              block
+              className="login-btn"
+            >
+              Sign In
+            </Button>
           </Form>
-        </Card>
+
+          <div className="help-text">
+            <Text type="secondary">
+              Need help? Contact your system administrator
+            </Text>
+          </div>
+        </div>
 
         {/* Footer */}
-        <div className="mt-6 text-center">
-          <Text className="text-gray-500 text-sm">
-            Don&apos;t have an account?{' '}
-            <Link href="/register" className="text-indigo-600 hover:text-indigo-700 font-medium">
-              Contact your administrator
-            </Link>
-          </Text>
-        </div>
-
-        {/* Help Text */}
-        <div className="mt-4 pt-4 border-t border-gray-200">
-          <Text className="block text-center text-gray-400 text-xs">
-            For login credentials, please contact your system administrator
-          </Text>
-        </div>
+        <Text className="login-footer">
+          © 2024 MedCore Hospital Management. All rights reserved.
+        </Text>
       </div>
+
+      <style jsx>{`
+        .login-page {
+          min-height: 100vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+          position: relative;
+          overflow: hidden;
+          padding: 20px;
+        }
+
+        .login-bg {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+        }
+
+        .bg-shape {
+          position: absolute;
+          border-radius: 50%;
+          filter: blur(80px);
+          opacity: 0.5;
+        }
+
+        .bg-shape-1 {
+          width: 400px;
+          height: 400px;
+          background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+          top: -100px;
+          right: -100px;
+          animation: float 8s ease-in-out infinite;
+        }
+
+        .bg-shape-2 {
+          width: 300px;
+          height: 300px;
+          background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
+          bottom: -50px;
+          left: -50px;
+          animation: float 10s ease-in-out infinite reverse;
+        }
+
+        .bg-shape-3 {
+          width: 200px;
+          height: 200px;
+          background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          animation: pulse 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+          0%, 100% { transform: translate(0, 0); }
+          50% { transform: translate(20px, 20px); }
+        }
+
+        @keyframes pulse {
+          0%, 100% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
+          50% { opacity: 0.5; transform: translate(-50%, -50%) scale(1.1); }
+        }
+
+        .login-container {
+          width: 100%;
+          max-width: 420px;
+          position: relative;
+          z-index: 10;
+        }
+
+        .login-header {
+          text-align: center;
+          margin-bottom: 32px;
+        }
+
+        .logo-wrapper {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 12px;
+        }
+
+        .logo-icon {
+          width: 56px;
+          height: 56px;
+          border-radius: 16px;
+          background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-shadow: 0 8px 32px rgba(59, 130, 246, 0.4);
+        }
+
+        .logo-text {
+          text-align: left;
+        }
+
+        .login-card {
+          background: rgba(255, 255, 255, 0.95);
+          backdrop-filter: blur(20px);
+          border-radius: 24px;
+          padding: 40px;
+          box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .card-header {
+          margin-bottom: 32px;
+          text-align: center;
+        }
+
+        .card-footer {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 24px;
+        }
+
+        .forgot-link {
+          color: #3b82f6;
+          font-size: 14px;
+          transition: color 0.2s;
+        }
+
+        .forgot-link:hover {
+          color: #2563eb;
+        }
+
+        .login-btn {
+          height: 48px;
+          font-size: 16px;
+          font-weight: 600;
+          background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+          border: none;
+          border-radius: 12px;
+          transition: all 0.3s;
+          box-shadow: 0 4px 14px rgba(59, 130, 246, 0.4);
+        }
+
+        .login-btn:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
+        }
+
+        .help-text {
+          margin-top: 24px;
+          text-align: center;
+          padding-top: 24px;
+          border-top: 1px solid #e5e7eb;
+        }
+
+        .login-footer {
+          display: block;
+          text-align: center;
+          margin-top: 24px;
+          color: rgba(255, 255, 255, 0.5);
+          font-size: 13px;
+        }
+
+        :global(.login-input) {
+          height: 48px;
+          border-radius: 12px;
+          border: 1px solid #e5e7eb;
+          background: #f9fafb;
+          transition: all 0.2s;
+        }
+
+        :global(.login-input:hover) {
+          border-color: #3b82f6;
+          background: #fff;
+        }
+
+        :global(.login-input:focus) {
+          border-color: #3b82f6;
+          box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+          background: #fff;
+        }
+
+        :global(.login-input .ant-input-prefix) {
+          color: #9ca3af;
+          margin-right: 12px;
+        }
+
+        @media (max-width: 480px) {
+          .login-card {
+            padding: 32px 24px;
+          }
+
+          .logo-wrapper {
+            flex-direction: column;
+            gap: 8px;
+          }
+
+          .logo-text {
+            text-align: center;
+          }
+        }
+      `}</style>
     </div>
   );
 }

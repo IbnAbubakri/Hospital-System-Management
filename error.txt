@@ -1,24 +1,32 @@
-# Login Credentials
+==> Running 'npm run start'
+> hospital-frontend@0.1.0 start
+> next start
+▲ Next.js 16.2.3
+- Local:         http://localhost:10000
+- Network:       http://10.194.27.128:10000
+✓ Ready in 1496ms
+==> Running 'npm run start'
+> hospital-frontend@0.1.0 start
+> next start
+▲ Next.js 16.2.3
+- Local:         http://localhost:10000
+- Network:       http://10.197.17.50:10000
+✓ Ready in 1303ms
+==> Running 'npm run start'
+> hospital-frontend@0.1.0 start
+> next start
+▲ Next.js 16.2.3
+- Local:         http://localhost:10000
+- Network:       http://10.197.16.200:10000
+✓ Ready in 1504ms
 
-## Administrator
-| Email | Password | Name | Department |
-|-------|----------|------|-------------|
-| admin@lagosmedical.com | admin123 | System Administrator | Administration |
 
-## Doctors
-| Email | Password | Name | Department |
-|-------|----------|------|-------------|
-| adeleke@lagosmedical.com | adeleke123 | Dr. Ngozi Adeleke | Cardiology |
-| okoro@lagosmedical.com | okoro123 | Dr. Emeka Okoro | General Medicine |
-| bakare@lagosmedical.com | bakare123 | Dr. Tunde Bakare | Orthopedics |
-| yusuf@lagosmedical.com | yusuf123 | Dr. Aisha Yusuf | Pediatrics |
-| nwosu@lagosmedical.com | nwosu123 | Dr. Chinedu Nwosu | Neurology |
+---------------------------------
 
-## Nurses (AuxiliaryNurse)
-| Email | Password | Name | Department |
-|-------|----------|------|-------------|
-| amaka.nurse@lagosmedical.com | nurse123 | Amaka Okafor | General Triage |
-| grace.nurse@lagosmedical.com | nurse123 | Grace Adebayo | General Triage |
-| chinedu.nurse@lagosmedical.com | nurse123 | Chinedu Eze | General Triage |
-| funmilayo.nurse@lagosmedical.com | nurse123 | Funmilayo Adewale | General Triage |
-| kelechi.nurse@lagosmedical.com | nurse123 | Kelechi Nnamdi | General Triage
+(index):1  GET https://hospital-system-management.onrender.com/_next/static/media/caa3a2e1cccd8315-s.p.16t1db8_9y2o~.woff2 net::ERR_ABORTED 502 (Bad Gateway)Understand this error
+(index):1  GET https://hospital-system-management.onrender.com/_next/static/chunks/03lcsy-e2ekgx.js net::ERR_ABORTED 502 (Bad Gateway)Understand this error
+(index):1  GET https://hospital-system-management.onrender.com/_next/static/chunks/turbopack-0wz.0-kb_s5wh.js net::ERR_ABORTED 502 (Bad Gateway)Understand this error
+(index):1  GET https://hospital-system-management.onrender.com/_next/static/chunks/042nfhwgs2d54.js net::ERR_ABORTED 502 (Bad Gateway)Understand this error
+(index):1  GET https://hospital-system-management.onrender.com/_next/static/chunks/09p~tk3p8rt8a.js net::ERR_ABORTED 502 (Bad Gateway)Understand this error
+(index):1  GET https://hospital-system-management.onrender.com/_next/static/chunks/00n7t~pbj54ya.js net::ERR_ABORTED 502 (Bad Gateway)Understand this error
+(index):1  GET https://hospital-system-management.onrender.com/_next/static/chunks/0ykf7frt9ftxk.js net::ERR_ABORTED 502 (Bad Gateway)

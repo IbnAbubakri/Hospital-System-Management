@@ -1,3 +1,6 @@
+// © 2026 Abubakri Faaruq Adebowale (IbnAbubakri). All rights reserved.
+// Faruqsuzay@gmail.com | +2349061345507
+
 import React from 'react';
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
